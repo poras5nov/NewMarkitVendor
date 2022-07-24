@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "272120694071",
+    "project_id": "newmarkit-7ca3b",
+    "storage_bucket": "newmarkit-7ca3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272120694071:android:c93a9852cadaceb0cd86b2",
+        "android_client_info": {
+          "package_name": "com.app.market_vendor_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272120694071-2rgk9brojgmipl07jjaq1c2rc4b5d4d2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.market_vendor_app",
+            "certificate_hash": "acfaa56cb0df3df475bbb484e5500acfa3e17fcb"
+          }
+        },
+        {
+          "client_id": "272120694071-l7ceqcchpjg8l97f58prg25liu0olts4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxkyZaRC6maReA-qXUw3_CNQaL6h5QwKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272120694071-l7ceqcchpjg8l97f58prg25liu0olts4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

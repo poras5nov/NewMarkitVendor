@@ -1,0 +1,110 @@
+[
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/ucrop_loader_circle_scale.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/6596747023e47e455d7d8ef10c450188/jetified-ucrop-2.2.8/res/anim/ucrop_loader_circle_scale.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_popup_enter.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/ucrop_loader_circle_path.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/6596747023e47e455d7d8ef10c450188/jetified-ucrop-2.2.8/res/anim/ucrop_loader_circle_path.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_popup_exit.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_checkbox_to_unchecked_check_path_merged_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_checkbox_to_unchecked_check_path_merged_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_radio_to_off_mtrl_ring_outer_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_radio_to_off_mtrl_ring_outer_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_slide_in_top.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_radio_to_off_mtrl_ring_outer_path_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_radio_to_off_mtrl_ring_outer_path_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_checkbox_to_checked_box_inner_merged_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_checkbox_to_checked_box_inner_merged_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_fade_out.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_tooltip_enter.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_tooltip_enter.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_radio_to_on_mtrl_ring_outer_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_radio_to_on_mtrl_ring_outer_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_slide_out_top.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_radio_to_on_mtrl_ring_outer_path_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_radio_to_on_mtrl_ring_outer_path_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_radio_to_on_mtrl_dot_group_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_radio_to_on_mtrl_dot_group_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_radio_to_off_mtrl_dot_group_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_radio_to_off_mtrl_dot_group_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_fade_in.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_checkbox_to_checked_icon_null_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_checkbox_to_checked_icon_null_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/fragment_fast_out_extra_slow_in.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/f2195038e42bcb7c1ab1f8d42d2471a2/fragment-1.3.4/res/anim/fragment_fast_out_extra_slow_in.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/abc_tooltip_exit.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/abc_tooltip_exit.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_checkbox_to_unchecked_icon_null_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_checkbox_to_unchecked_icon_null_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_checkbox_to_unchecked_box_inner_merged_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_checkbox_to_unchecked_box_inner_merged_animation.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/anim/btn_checkbox_to_checked_box_outer_merged_animation.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/anim/btn_checkbox_to_checked_box_outer_merged_animation.xml"
+    }
+]

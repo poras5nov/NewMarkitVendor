@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/drawable-v21/notification_action_background.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/drawable-v21/abc_dialog_material_background.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/fad6a58a876fe2509aa8b6f3be316c6c/appcompat-1.3.1/res/drawable-v21/abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/fad6a58a876fe2509aa8b6f3be316c6c/appcompat-1.3.1/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/fad6a58a876fe2509aa8b6f3be316c6c/appcompat-1.3.1/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/fad6a58a876fe2509aa8b6f3be316c6c/appcompat-1.3.1/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/drawable-v21/abc_list_divider_material.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/fad6a58a876fe2509aa8b6f3be316c6c/appcompat-1.3.1/res/drawable-v21/abc_list_divider_material.xml"
+    }
+]
