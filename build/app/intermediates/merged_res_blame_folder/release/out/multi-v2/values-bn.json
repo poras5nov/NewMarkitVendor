@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/app/intermediates/incremental/mergeReleaseResources/merged.dir/values-bn/values-bn.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/app/intermediates/incremental/mergeReleaseResources/merged.dir/values-bn/values-bn.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/185cef875471b00b7124cad3d3eba692/jetified-play-services-basement-18.0.0/res/values-bn/values.xml",

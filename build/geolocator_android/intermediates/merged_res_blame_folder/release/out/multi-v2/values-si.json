@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/geolocator_android/intermediates/res/merged/release/values-si/values-si.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/res/merged/release/values-si/values-si.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/c0796fceb309906e303a50d662a24f10/jetified-play-services-basement-17.0.0/res/values-si/values.xml",
@@ -57,7 +57,7 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/geolocator_android/intermediates/incremental/mergeReleaseResources/merged.dir/values-si/values-si.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/incremental/mergeReleaseResources/merged.dir/values-si/values-si.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/c0796fceb309906e303a50d662a24f10/jetified-play-services-basement-17.0.0/res/values-si/values.xml",

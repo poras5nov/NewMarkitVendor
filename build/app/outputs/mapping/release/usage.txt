@@ -4717,11 +4717,11 @@ androidx.appcompat.widget.ActionMenuPresenter:
     public void onRestoreInstanceState(android.os.Parcelable)
     public void onSubUiVisibilityChanged(boolean)
     private static final java.lang.String TAG
+com.onesignal.OSPermissionObserver:
+    public abstract void onOSPermissionChanged(com.onesignal.OSPermissionStateChanges)
 com.google.firebase.provider.FirebaseInitProvider:
     private static final java.lang.String TAG
     static final java.lang.String EMPTY_APPLICATION_ID_PROVIDER_AUTHORITY
-com.onesignal.OSPermissionObserver:
-    public abstract void onOSPermissionChanged(com.onesignal.OSPermissionStateChanges)
 com.google.common.collect.FluentIterable
 com.google.common.collect.NullsFirstOrdering
 android.support.v4.media.session.MediaControllerCompatApi23$TransportControls
@@ -16991,9 +16991,9 @@ com.google.android.datatransport.runtime.backends.CreationContext:
     public static com.google.android.datatransport.runtime.backends.CreationContext create(android.content.Context,com.google.android.datatransport.runtime.time.Clock,com.google.android.datatransport.runtime.time.Clock)
     private static final java.lang.String DEFAULT_BACKEND_NAME
 androidx.customview.widget.ExploreByTouchHelper
-io.flutter.embedding.engine.systemchannels.PlatformChannel:
-    private static final java.lang.String TAG
 io.flutter.embedding.engine.systemchannels.PlatformViewsChannel:
+    private static final java.lang.String TAG
+io.flutter.embedding.engine.systemchannels.PlatformChannel:
     private static final java.lang.String TAG
 kotlinx.coroutines.flow.FlowKt__ReduceKt$single$$inlined$collect$1
 com.google.common.collect.Multisets$FilteredMultiset$1
@@ -24996,8 +24996,8 @@ kotlin.KotlinVersion:
     public static final kotlin.KotlinVersion$Companion Companion
 androidx.appcompat.view.StandaloneActionMode:
     private boolean mFocusable
-androidx.lifecycle.DefaultLifecycleObserver$-CC
 io.flutter.plugin.common.BinaryMessenger$-CC
+androidx.lifecycle.DefaultLifecycleObserver$-CC
 io.flutter.plugin.platform.PlatformView$-CC:
     public static void $default$onInputConnectionLocked(io.flutter.plugin.platform.PlatformView)
     public static void $default$onInputConnectionUnlocked(io.flutter.plugin.platform.PlatformView)

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/google_maps_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-sv/values-sv.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/google_maps_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-sv/values-sv.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/d56a7874b3ac402dfab610041aab47b2/jetified-play-services-base-17.0.0/res/values-sv/values.xml",
@@ -57,7 +57,7 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/google_maps_flutter/intermediates/res/merged/release/values-sv/values-sv.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/google_maps_flutter/intermediates/res/merged/release/values-sv/values-sv.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/d56a7874b3ac402dfab610041aab47b2/jetified-play-services-base-17.0.0/res/values-sv/values.xml",

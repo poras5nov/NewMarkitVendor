@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/values-iw/values-iw.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/image_cropper/intermediates/incremental/mergeReleaseResources/merged.dir/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/values-iw/values-iw.xml",
@@ -33,7 +33,7 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/incremental/mergeReleaseResources/merged.dir/values-iw/values-iw.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/image_cropper/intermediates/res/merged/release/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/26f6e9326b843a5118a3ac4f6ddd796c/appcompat-1.3.0/res/values-iw/values-iw.xml",

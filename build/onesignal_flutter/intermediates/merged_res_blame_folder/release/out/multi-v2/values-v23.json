@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/6ddeea2d4844a23f549bc0cb9179c954/work-runtime-2.7.1/res/values-v23/values-v23.xml",
@@ -54,7 +54,7 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/values-v23/values-v23.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/res/merged/release/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/6ddeea2d4844a23f549bc0cb9179c954/work-runtime-2.7.1/res/values-v23/values-v23.xml",

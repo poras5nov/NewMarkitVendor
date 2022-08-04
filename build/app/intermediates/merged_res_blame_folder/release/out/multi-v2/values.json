@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/app/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/app/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/e1fd0b035420647e4900d28584ea9242/coordinatorlayout-1.0.0/res/values/values.xml",
@@ -133,25 +133,6 @@
                     }
                 },
                 {
-                    "source": "/Users/mac/Downloads/market_vendor_app/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,807",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "465,971"
-                    },
-                    "to": {
-                        "startLines": "1542,1547",
-                        "startColumns": "4,4",
-                        "startOffsets": "101589,101886",
-                        "endLines": "1546,1549",
-                        "endColumns": "12,12",
-                        "endOffsets": "101881,102050"
-                    }
-                },
-                {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/b883efbe2df67311778a975ec5ca6b84/jetified-savedstate-1.1.0/res/values/values.xml",
                     "from": {
                         "startLines": "2",
@@ -275,6 +256,23 @@
                     }
                 },
                 {
+                    "source": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/app/generated/res/google-services/release/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,281,385,494,614,713",
+                        "endColumns": "143,81,103,108,119,98,75",
+                        "endOffsets": "194,276,380,489,609,708,784"
+                    },
+                    "to": {
+                        "startLines": "413,418,419,420,421,422,427",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "27967,28408,28490,28594,28703,28823,29417",
+                        "endColumns": "143,81,103,108,119,98,75",
+                        "endOffsets": "28106,28485,28589,28698,28818,28917,29488"
+                    }
+                },
+                {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/6596747023e47e455d7d8ef10c450188/jetified-ucrop-2.2.8/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,64,71,80,89,98,104,112",
@@ -311,6 +309,25 @@
                     }
                 },
                 {
+                    "source": "/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,807",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "465,971"
+                    },
+                    "to": {
+                        "startLines": "1542,1547",
+                        "startColumns": "4,4",
+                        "startOffsets": "101589,101886",
+                        "endLines": "1546,1549",
+                        "endColumns": "12,12",
+                        "endOffsets": "101881,102050"
+                    }
+                },
+                {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/1914dfb9ecfc3ba6ad97b1eb831c8947/jetified-startup-runtime-1.0.0/res/values/values.xml",
                     "from": {
                         "startLines": "2",
@@ -342,23 +359,6 @@
                         "startOffsets": "921,986,1056,1120",
                         "endColumns": "64,69,63,60",
                         "endOffsets": "981,1051,1115,1176"
-                    }
-                },
-                {
-                    "source": "/Users/mac/Downloads/market_vendor_app/build/app/generated/res/google-services/release/values/values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,281,385,494,614,713",
-                        "endColumns": "143,81,103,108,119,98,75",
-                        "endOffsets": "194,276,380,489,609,708,784"
-                    },
-                    "to": {
-                        "startLines": "413,418,419,420,421,422,427",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "27967,28408,28490,28594,28703,28823,29417",
-                        "endColumns": "143,81,103,108,119,98,75",
-                        "endOffsets": "28106,28485,28589,28698,28818,28917,29488"
                     }
                 },
                 {

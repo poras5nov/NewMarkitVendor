@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/flutter_plugin_android_lifecycle/intermediates/res/merged/release/values-ka/values-ka.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/flutter_plugin_android_lifecycle/intermediates/res/merged/release/values-ka/values-ka.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/res/values-ka/values-ka.xml",
@@ -16,7 +16,7 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/flutter_plugin_android_lifecycle/intermediates/incremental/mergeReleaseResources/merged.dir/values-ka/values-ka.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/flutter_plugin_android_lifecycle/intermediates/incremental/mergeReleaseResources/merged.dir/values-ka/values-ka.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/res/values-ka/values-ka.xml",

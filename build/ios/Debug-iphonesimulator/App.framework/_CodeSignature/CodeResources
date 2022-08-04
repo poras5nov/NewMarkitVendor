@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		DHx56MSEXH3qSHfB9kDf6YAIY6I=
+		HYM/9z1erIwhiVEHNsIdadB7y4M=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -55,6 +55,10 @@
 		<key>flutter_assets/assets/images/delivery.svg</key>
 		<data>
 		bWP6JJvywNUOzCu6RhUBuI1mo3g=
+		</data>
+		<key>flutter_assets/assets/images/drawer_img.svg</key>
+		<data>
+		T+oVsSyHsj2F21QwzY6Ive07zGk=
 		</data>
 		<key>flutter_assets/assets/images/dummy.png</key>
 		<data>
@@ -214,7 +218,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		Mo2GdDnU1dQAPU3t8BrnA6SONxU=
+		eBAI5n/N4rfCHC2pH2TaetQui+g=
 		</data>
 		<key>flutter_assets/packages/animated_snack_bar/assets/monochrome/check-circle.svg</key>
 		<data>
@@ -1567,11 +1571,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DHx56MSEXH3qSHfB9kDf6YAIY6I=
+			HYM/9z1erIwhiVEHNsIdadB7y4M=
 			</data>
 			<key>hash2</key>
 			<data>
-			NxtoaNZddziUk2at8Gh3qJTj+/61dlQZwNp22LpmDlg=
+			gW3DemUzuGxBtPs3i1YKcqf5sbTPP8hwF1RIYacqV2U=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -1693,6 +1697,17 @@
 			<key>hash2</key>
 			<data>
 			t8+/B+lx/xamNeweW1sISXqVfFrI9JR5Gcrwy4T82KU=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/drawer_img.svg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			T+oVsSyHsj2F21QwzY6Ive07zGk=
+			</data>
+			<key>hash2</key>
+			<data>
+			Otu+4OvkwhZNTd+jUvtVJ/N1UIZq4n6+88SboIjFORE=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/dummy.png</key>
@@ -2128,11 +2143,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Mo2GdDnU1dQAPU3t8BrnA6SONxU=
+			eBAI5n/N4rfCHC2pH2TaetQui+g=
 			</data>
 			<key>hash2</key>
 			<data>
-			0nrrgFe74xpToHYmsNXFd+MncCYHnQMfqZJHn8GMLZw=
+			fRf9/UwMwr0bgRZSbh2piYxzQspEfTr3VKL42353FiU=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/animated_snack_bar/assets/monochrome/check-circle.svg</key>

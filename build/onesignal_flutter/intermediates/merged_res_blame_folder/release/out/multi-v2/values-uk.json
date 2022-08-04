@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-uk/values-uk.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/res/merged/release/values-uk/values-uk.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/31c971d03e73e0b69aaa690404d3bda1/jetified-play-services-basement-17.6.0/res/values-uk/values.xml",
@@ -108,7 +108,7 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/values-uk/values-uk.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-uk/values-uk.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/31c971d03e73e0b69aaa690404d3bda1/jetified-play-services-basement-17.6.0/res/values-uk/values.xml",

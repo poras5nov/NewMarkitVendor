@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/b7ee0759fb8c389a22e35010f9b69add/jetified-play-services-base-17.6.0/res/values-zh-rCN/values.xml",
@@ -108,7 +108,7 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/res/merged/release/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/b7ee0759fb8c389a22e35010f9b69add/jetified-play-services-base-17.6.0/res/values-zh-rCN/values.xml",

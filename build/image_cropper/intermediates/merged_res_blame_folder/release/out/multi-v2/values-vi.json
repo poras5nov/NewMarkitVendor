@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/incremental/mergeReleaseResources/merged.dir/values-vi/values-vi.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/image_cropper/intermediates/incremental/mergeReleaseResources/merged.dir/values-vi/values-vi.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/res/values-vi/values-vi.xml",
@@ -33,7 +33,7 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/values-vi/values-vi.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/image_cropper/intermediates/res/merged/release/values-vi/values-vi.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/res/values-vi/values-vi.xml",

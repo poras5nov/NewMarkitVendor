@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/incremental/mergeReleaseResources/merged.dir/values-ru/values-ru.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/image_cropper/intermediates/incremental/mergeReleaseResources/merged.dir/values-ru/values-ru.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/6596747023e47e455d7d8ef10c450188/jetified-ucrop-2.2.8/res/values-ru/values-ru.xml",
@@ -50,7 +50,7 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Downloads/market_vendor_app/build/image_cropper/intermediates/res/merged/release/values-ru/values-ru.xml",
+            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/image_cropper/intermediates/res/merged/release/values-ru/values-ru.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/6596747023e47e455d7d8ef10c450188/jetified-ucrop-2.2.8/res/values-ru/values-ru.xml",

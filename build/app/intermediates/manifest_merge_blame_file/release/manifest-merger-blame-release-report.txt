@@ -6,22 +6,22 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="20"
-8-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml
+8-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="31" />
-9-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml
+9-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-11-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:3:5-79
-11-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:3:22-76
+11-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:3:5-79
+11-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:3:22-76
 12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-12-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:5:1-77
-12-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:5:18-74
+12-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:5:1-77
+12-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:5:18-74
 13    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-13-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:6:5-85
-13-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:6:22-82
+13-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:6:5-85
+13-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:6:22-82
 14    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Create a unique permission for your app and use it so only your app can receive your OneSignal messages. -->
-14-->[:geolocator_android] /Users/mac/Downloads/market_vendor_app/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:7:5-77
-14-->[:geolocator_android] /Users/mac/Downloads/market_vendor_app/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:7:22-74
+14-->[:geolocator_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:7:5-77
+14-->[:geolocator_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:7:22-74
 15    <permission
 15-->[com.onesignal:OneSignal:4.7.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/16d8edc9f4023e5cc0901f433dbca1b3/jetified-OneSignal-4.7.3/AndroidManifest.xml:7:5-9:47
 16        android:name="com.app.market_vendor_app.permission.C2D_MESSAGE"
@@ -122,31 +122,31 @@
 58
 59    <application
 60        android:name="io.flutter.app.FlutterMultiDexApplication"
-60-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:10:9-42
+60-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:10:9-42
 61        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 61-->[androidx.core:core:1.6.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/AndroidManifest.xml:24:18-86
 62        android:icon="@mipmap/ic_launcher"
-62-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:11:9-43
+62-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:11:9-43
 63        android:label="market_vendor_app" >
-63-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:9:9-42
+63-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:9:9-42
 64        <activity
-64-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:12:9-35:20
+64-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:12:9-35:20
 65            android:name="com.app.market_vendor_app.MainActivity"
-65-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:13:13-41
+65-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:13:13-41
 66            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-66-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:18:13-163
+66-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:18:13-163
 67            android:exported="true"
-67-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:14:13-36
+67-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:14:13-36
 68            android:hardwareAccelerated="true"
-68-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:19:13-47
+68-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:19:13-47
 69            android:launchMode="singleTop"
-69-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:15:13-43
+69-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:15:13-43
 70            android:theme="@style/LaunchTheme"
-70-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:17:13-47
+70-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:17:13-47
 71            android:usesCleartextTraffic="true"
-71-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:16:13-48
+71-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:16:13-48
 72            android:windowSoftInputMode="adjustResize" >
-72-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:20:13-55
+72-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:20:13-55
 73
 74            <!--
 75                 Specifies an Android theme to apply to this Activity as soon as
@@ -155,27 +155,27 @@
 78                 to determine the Window background behind the Flutter UI.
 79            -->
 80            <meta-data
-80-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:25:12-26:63
+80-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:25:12-26:63
 81                android:name="io.flutter.network-policy"
-81-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:25:23-63
+81-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:25:23-63
 82                android:resource="@xml/network_security_config" />
-82-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:26:14-61
+82-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:26:14-61
 83            <meta-data
-83-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:27:13-30:17
+83-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:27:13-30:17
 84                android:name="io.flutter.embedding.android.NormalTheme"
-84-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:28:15-70
+84-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:28:15-70
 85                android:resource="@style/NormalTheme" />
-85-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:29:15-52
+85-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:29:15-52
 86
 87            <intent-filter>
-87-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:31:13-34:29
+87-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:31:13-34:29
 88                <action android:name="android.intent.action.MAIN" />
-88-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:32:17-68
-88-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:32:25-66
+88-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:32:17-68
+88-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:32:25-66
 89
 90                <category android:name="android.intent.category.LAUNCHER" />
-90-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:33:17-76
-90-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:33:27-74
+90-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:33:17-76
+90-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:33:27-74
 91            </intent-filter>
 92        </activity>
 93        <!--
@@ -183,48 +183,48 @@
 95             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 96        -->
 97        <meta-data
-97-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:38:9-40:33
+97-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:38:9-40:33
 98            android:name="flutterEmbedding"
-98-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:39:13-44
+98-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:39:13-44
 99            android:value="2" />
-99-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:40:13-30
+99-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:40:13-30
 100
 101        <activity
-101-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:41:13-44:70
+101-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:41:13-44:70
 102            android:name="com.yalantis.ucrop.UCropActivity"
-102-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:42:12-59
+102-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:42:12-59
 103            android:screenOrientation="portrait"
-103-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:43:12-48
+103-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:43:12-48
 104            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-104-->/Users/mac/Downloads/market_vendor_app/android/app/src/main/AndroidManifest.xml:44:12-68
+104-->/Users/mac/Documents/GitHub/NewMarkitVendor/android/app/src/main/AndroidManifest.xml:44:12-68
 105
 106        <service
-106-->[:geolocator_android] /Users/mac/Downloads/market_vendor_app/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:10:9-14:56
+106-->[:geolocator_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:10:9-14:56
 107            android:name="com.baseflow.geolocator.GeolocatorLocationService"
-107-->[:geolocator_android] /Users/mac/Downloads/market_vendor_app/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:11:13-77
+107-->[:geolocator_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:11:13-77
 108            android:enabled="true"
-108-->[:geolocator_android] /Users/mac/Downloads/market_vendor_app/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:12:13-35
+108-->[:geolocator_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:12:13-35
 109            android:exported="false"
-109-->[:geolocator_android] /Users/mac/Downloads/market_vendor_app/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:13:13-37
+109-->[:geolocator_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:13:13-37
 110            android:foregroundServiceType="location" />
-110-->[:geolocator_android] /Users/mac/Downloads/market_vendor_app/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:14:13-53
+110-->[:geolocator_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:14:13-53
 111
 112        <provider
-112-->[:image_picker_android] /Users/mac/Downloads/market_vendor_app/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:8:9-16:20
+112-->[:image_picker_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:8:9-16:20
 113            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-113-->[:image_picker_android] /Users/mac/Downloads/market_vendor_app/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:9:13-82
+113-->[:image_picker_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:9:13-82
 114            android:authorities="com.app.market_vendor_app.flutter.image_provider"
-114-->[:image_picker_android] /Users/mac/Downloads/market_vendor_app/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:10:13-74
+114-->[:image_picker_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:10:13-74
 115            android:exported="false"
-115-->[:image_picker_android] /Users/mac/Downloads/market_vendor_app/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:11:13-37
+115-->[:image_picker_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:11:13-37
 116            android:grantUriPermissions="true" >
-116-->[:image_picker_android] /Users/mac/Downloads/market_vendor_app/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:12:13-47
+116-->[:image_picker_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:12:13-47
 117            <meta-data
-117-->[:image_picker_android] /Users/mac/Downloads/market_vendor_app/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:13:13-15:75
+117-->[:image_picker_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:13:13-15:75
 118                android:name="android.support.FILE_PROVIDER_PATHS"
-118-->[:image_picker_android] /Users/mac/Downloads/market_vendor_app/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:14:17-67
+118-->[:image_picker_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:14:17-67
 119                android:resource="@xml/flutter_image_picker_file_paths" />
-119-->[:image_picker_android] /Users/mac/Downloads/market_vendor_app/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:15:17-72
+119-->[:image_picker_android] /Users/mac/Documents/GitHub/NewMarkitVendor/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:15:17-72
 120        </provider>
 121
 122        <receiver
