@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/image_cropper/intermediates/res/merged/release/values-zh/values-zh.xml",
+            "outputFile": "/Users/mac/Documents/flutter_project/market_vendor_app/build/image_cropper/intermediates/res/merged/release/values-zh/values-zh.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/6596747023e47e455d7d8ef10c450188/jetified-ucrop-2.2.8/res/values-zh/values-zh.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/134f816fd8ac58caad769b7330f51130/jetified-ucrop-2.2.8/res/values-zh/values-zh.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/image_cropper/intermediates/incremental/mergeReleaseResources/merged.dir/values-zh/values-zh.xml",
+            "outputFile": "/Users/mac/Documents/flutter_project/market_vendor_app/build/image_cropper/intermediates/incremental/mergeReleaseResources/merged.dir/values-zh/values-zh.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/6596747023e47e455d7d8ef10c450188/jetified-ucrop-2.2.8/res/values-zh/values-zh.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/134f816fd8ac58caad769b7330f51130/jetified-ucrop-2.2.8/res/values-zh/values-zh.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

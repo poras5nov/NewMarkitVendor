@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:market_vendor_app/activities/create_business/model/BankInfoModel.dart';
 import 'package:market_vendor_app/apiservice/api_interface.dart';
 
 import '../../apiservice/api_call.dart';
@@ -45,6 +46,7 @@ class _AddBankDetailsState extends State<AddBankDetails>
   var token;
   bool isUpload = false;
   bool isLoader = false;
+  String whichApiCall = "";
   @override
   void initState() {
     super.initState();
@@ -70,6 +72,20 @@ class _AddBankDetailsState extends State<AddBankDetails>
     }
   }
 
+  showTransparentDialog(BuildContext context) async {
+    showDialog(
+        context: context,
+        //It doesnt work: barrierColor: Colors.transparent,
+        barrierColor: Color(0x00ffffff), //this works
+        builder: (_) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: AppColors.primaryColor,
+            ),
+          );
+        });
+  }
+
   getToken() {
     SharedPref.getLoginToken().then((value) {
       token = value;
@@ -79,7 +95,16 @@ class _AddBankDetailsState extends State<AddBankDetails>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        // if (bankNameController.text.isEmpty) {
+        //   if (ifscController.text.isNotEmpty) {
+        //     showTransparentDialog(context);
+        //     whichApiCall = "getBankInfo";
+        //     ApiCall.checkBankApi(ifscController.text, this, context);
+        //   }
+        // }
+      },
       child: Scaffold(
           backgroundColor: Colors.white,
           body: SafeArea(
@@ -126,14 +151,14 @@ class _AddBankDetailsState extends State<AddBankDetails>
                       Dimens.boxHeight20,
                       accountTextFormFiled(),
                       Dimens.boxHeight20,
-                      bankTextFormFiled(),
-                      Dimens.boxHeight20,
                       ifscTextFormFiled(),
+                      Dimens.boxHeight20,
+                      bankTextFormFiled(),
                       Dimens.boxHeight20,
                       bankHolderNameFormFiled(),
                       Dimens.boxHeight20,
-                      checkNumberTextFormFiled(),
-                      Dimens.boxHeight20,
+                      // checkNumberTextFormFiled(),
+                      // Dimens.boxHeight20,
                       Text(
                         NewMarkitVendorLocalizations.of(context)!
                             .find('uploadCancelledCheque'),
@@ -310,6 +335,7 @@ class _AddBankDetailsState extends State<AddBankDetails>
 
   bankTextFormFiled() {
     return TextFormField(
+      readOnly: true,
       controller: bankNameController,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: AppColors.primaryColor,
@@ -335,7 +361,21 @@ class _AddBankDetailsState extends State<AddBankDetails>
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,
       style: Styles.formFieldTextStyle,
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      onChanged: (v) {
+        ifscController.text = v.toUpperCase();
+        ifscController.selection = TextSelection.fromPosition(
+            TextPosition(offset: ifscController.text.length));
+        bankNameController.text = "";
+        if (ifscController.text.length == 11) {
+          whichApiCall = "getBankInfo";
+          //showTransparentDialog(context);
+          ApiCall.checkBankApi(v, this, context);
+          setState(() {});
+        }
+      },
+      onFieldSubmitted: (v) {},
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
         labelText: NewMarkitVendorLocalizations.of(context)!.find('IFSCCode'),
@@ -374,7 +414,7 @@ class _AddBankDetailsState extends State<AddBankDetails>
         widget.model.bankName = bankNameController.text;
         widget.model.ifscCode = ifscController.text;
         widget.model.accountHolderName = holderNameController.text;
-        widget.model.cancelledChequeNumber = checkController.text;
+        widget.model.cancelledChequeNumber = "1";
 
         widget.model.cancelledChequeImage = _imagePath;
         widget.model.cancelledDuplicateChequeImage = _imageDupilcatePath;
@@ -438,28 +478,33 @@ class _AddBankDetailsState extends State<AddBankDetails>
       var pickedFile = await picker.pickImage(source: source);
 
       var croppedFile = await ImageCropper().cropImage(
-          sourcePath: pickedFile!.path,
-          cropStyle: CropStyle.rectangle,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          androidUiSettings: AndroidUiSettings(
-            toolbarTitle:
-                NewMarkitVendorLocalizations.of(context)!.find('appName'),
-            toolbarColor: Colors.black,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
+        sourcePath: pickedFile!.path,
+        cropStyle: CropStyle.rectangle,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: AppColors.primaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
           ),
-          iosUiSettings: const IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
+          WebUiSettings(
+            context: context,
+          ),
+        ],
+      );
       debugPrint(croppedFile!.path);
       if (croppedFile.path.isNotEmpty) {
+        whichApiCall = "upload";
         Utility.dialogLoader(context);
         ApiCall.uploadBusinessImage(croppedFile.path, this, context, token);
       }
@@ -470,8 +515,12 @@ class _AddBankDetailsState extends State<AddBankDetails>
 
   @override
   void onFailure(message) {
-    Utility.errorMessage(message, context);
-    Navigator.pop(context);
+    if (whichApiCall == "getBankInfo") {
+      // Utility.errorMessage("Please enter valid IFSC code", context);
+    } else {
+      Utility.errorMessage(message, context);
+      Navigator.pop(context);
+    }
 
     setState(() {
       isLoader = false;
@@ -480,18 +529,23 @@ class _AddBankDetailsState extends State<AddBankDetails>
 
   @override
   void onSuccess(data) {
-    speed = 2;
-    c = AppColors.darkBlueColor;
-    Navigator.pop(context);
+    if (whichApiCall == "getBankInfo") {
+      BankInfoModel model = BankInfoModel.fromJson(data);
+      bankNameController.text = model.bRANCH!;
+      setState(() {});
+    } else {
+      speed = 2;
+      c = AppColors.darkBlueColor;
 
-    _imagePath = data['url'];
-    _imageDupilcatePath = data['showImageUrl'];
+      _imagePath = data['url'];
+      _imageDupilcatePath = data['showImageUrl'];
+      setState(() {
+        isLoader = false;
+      });
 
-    setState(() {
-      isLoader = false;
-    });
-
-    hundler();
+      hundler();
+      Navigator.pop(context);
+    }
   }
 
   hundler() async {

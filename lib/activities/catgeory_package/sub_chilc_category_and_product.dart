@@ -397,137 +397,137 @@ class _SubChildCategoryAndProductScreenState
                                                       if (value != null) {}
                                                     });
                                                   },
-                                                  child: Center(
-                                                    child: Container(
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: [
-                                                          CachedNetworkImage(
-                                                            imageUrl: model
-                                                                .products![
-                                                                    index]
-                                                                .default_image!,
-                                                            imageBuilder: (context,
-                                                                    imageProvider) =>
-                                                                Container(
-                                                              height: 90.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                shape: BoxShape
-                                                                    .rectangle,
+                                                  child: Container(
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        CachedNetworkImage(
+                                                          imageUrl: model
+                                                              .products![
+                                                                  index]
+                                                              .default_image!,
+                                                          imageBuilder: (context,
+                                                                  imageProvider) =>
+                                                              Container(
+                                                            height: 80.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              shape: BoxShape
+                                                                  .rectangle,
+                                                              image:
+                                                                  DecorationImage(
                                                                 image:
-                                                                    DecorationImage(
-                                                                  image:
-                                                                      imageProvider,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            placeholder:
-                                                                (context,
-                                                                        url) =>
-                                                                    Container(
-                                                              height: 90.0,
-                                                              alignment:
-                                                                  Alignment
-                                                                      .center,
-                                                              child: Container(
-                                                                width: 40,
-                                                                height: 40,
-                                                                child: const CircularProgressIndicator(
-                                                                    valueColor: AlwaysStoppedAnimation<
-                                                                            Color>(
-                                                                        AppColors
-                                                                            .primaryColor)),
-                                                              ),
-                                                            ),
-                                                            errorWidget:
-                                                                (context, url,
-                                                                        error) =>
-                                                                    Container(
-                                                              alignment:
-                                                                  Alignment
-                                                                      .center,
-                                                              height: 90,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Colors
-                                                                    .grey[200],
-                                                              ),
-                                                              child: const Icon(
-                                                                Icons.error,
-                                                                size: 40,
-                                                                color: Colors
-                                                                    .black,
+                                                                    imageProvider,
+                                                                fit: BoxFit
+                                                                    .cover,
                                                               ),
                                                             ),
                                                           ),
-                                                          Container(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Text(
-                                                                model
-                                                                    .products![
-                                                                        index]
-                                                                    .name!,
+                                                          placeholder:
+                                                              (context,
+                                                                      url) =>
+                                                                  Container(
+                                                            height: 80.0,
+                                                            alignment:
+                                                                Alignment
+                                                                    .center,
+                                                            child: Container(
+                                                              width: 40,
+                                                              height: 40,
+                                                              child: const CircularProgressIndicator(
+                                                                  valueColor: AlwaysStoppedAnimation<
+                                                                          Color>(
+                                                                      AppColors
+                                                                          .primaryColor)),
+                                                            ),
+                                                          ),
+                                                          errorWidget:
+                                                              (context, url,
+                                                                      error) =>
+                                                                  Container(
+                                                            alignment:
+                                                                Alignment
+                                                                    .center,
+                                                            height: 80,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Colors
+                                                                  .grey[200],
+                                                            ),
+                                                            child: const Icon(
+                                                              Icons.error,
+                                                              size: 40,
+                                                              color: Colors
+                                                                  .black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          alignment: Alignment
+                                                              .centerLeft,
+                                                          child: Text(
+                                                              model
+                                                                  .products![
+                                                                      index]
+                                                                  .name!,
+                                                              style: Styles
+                                                                  .boldBlack14,
+                                                              maxLines: 2),
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Text(
+                                                                AppConstants
+                                                                        .priceSign +
+                                                                    model
+                                                                        .products![
+                                                                            index]
+                                                                        .variations![
+                                                                            0]
+                                                                        .offerPrice!
+                                                                        .toString(),
                                                                 style: Styles
-                                                                    .boldBlack16),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              Text(
-                                                                  AppConstants
-                                                                          .priceSign +
-                                                                      model
-                                                                          .products![
-                                                                              index]
-                                                                          .variations![
-                                                                              0]
-                                                                          .offerPrice!
-                                                                          .toString(),
-                                                                  style: Styles
-                                                                      .boldBlack14),
-                                                              const SizedBox(
-                                                                width: 5,
-                                                              ),
-                                                              Text(
-                                                                  AppConstants
-                                                                          .priceSign +
-                                                                      model
-                                                                          .products![
-                                                                              index]
-                                                                          .variations![
-                                                                              0]
-                                                                          .basicPrice!
-                                                                          .toString(),
-                                                                  style: Styles
-                                                                      .pricestrickTitle12Grey),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              const Icon(
-                                                                Icons.star,
-                                                                color: AppColors
-                                                                    .yellowColor,
-                                                                size: 20,
-                                                              ),
-                                                              Text("4.5",
-                                                                  style: Styles
-                                                                      .yellowMedium12),
-                                                            ],
-                                                          )
-                                                        ],
-                                                      ),
+                                                                    .boldBlack14),
+                                                            const SizedBox(
+                                                              width: 5,
+                                                            ),
+                                                            Text(
+                                                                AppConstants
+                                                                        .priceSign +
+                                                                    model
+                                                                        .products![
+                                                                            index]
+                                                                        .variations![
+                                                                            0]
+                                                                        .basicPrice!
+                                                                        .toString(),
+                                                                style: Styles
+                                                                    .pricestrickTitle12Grey),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            const Icon(
+                                                              Icons.star,
+                                                              color: AppColors
+                                                                  .yellowColor,
+                                                              size: 20,
+                                                            ),
+                                                            Text(
+                                                                "${model.products![index].product_rating}",
+                                                                style: Styles
+                                                                    .yellowMedium12),
+                                                          ],
+                                                        )
+                                                      ],
                                                     ),
                                                   ),
                                                 );

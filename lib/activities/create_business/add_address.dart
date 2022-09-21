@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:market_vendor_app/activities/create_business/model/cities_model.dart';
 import 'package:market_vendor_app/activities/create_business/setup_delivery_address.dart';
+import 'package:market_vendor_app/apiservice/api_call.dart';
+import 'package:market_vendor_app/apiservice/api_interface.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../theme/app_colors.dart';
@@ -8,9 +11,11 @@ import '../../theme/dimens.dart';
 import '../../theme/styles.dart';
 import '../../utils/asset_constants.dart';
 import '../../utils/new_market_vendor_localizations.dart';
+import '../../utils/shared_preferences.dart';
 import '../../utils/utility.dart';
 import '../../widgets/form_submit_widget.dart';
 import 'model/business_model.dart';
+import 'model/state_model.dart';
 
 class AddAddressDetails extends StatefulWidget {
   BusinessModel model;
@@ -19,7 +24,8 @@ class AddAddressDetails extends StatefulWidget {
   _AddAddressDetailsState createState() => _AddAddressDetailsState();
 }
 
-class _AddAddressDetailsState extends State<AddAddressDetails> {
+class _AddAddressDetailsState extends State<AddAddressDetails>
+    implements ApiInterface {
   TextEditingController addressLine1 = TextEditingController();
   TextEditingController city = TextEditingController();
   TextEditingController state = TextEditingController();
@@ -31,10 +37,85 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
   TextEditingController postalCode2 = TextEditingController();
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   bool isChecked = false;
+  String stateId = "";
+  String stateId2 = "";
+  bool isCity1 = true;
 
+  bool isStateLoder = false;
+  bool isCitiesLoder = false;
+  StateList stateModel = StateList();
+  CitiesModel citiesModel = CitiesModel();
+  String whichApiCall = "state";
+  var token;
+  List<States> statesData = [];
+  List<States> allData = [];
+
+  List<Cities> citiesData = [];
+  List<Cities> allCitiesData = [];
   @override
   void initState() {
     super.initState();
+    getToken();
+  }
+
+  getToken() {
+    SharedPref.getLoginToken().then((value) {
+      token = value;
+      showTransparentDialog(context);
+      ApiCall.getStatesApi(token, this, context);
+    });
+  }
+
+  showTransparentDialog(BuildContext context) async {
+    showDialog(
+        context: context,
+        //It doesnt work: barrierColor: Colors.transparent,
+        barrierColor: Color(0x00ffffff), //this works
+        builder: (_) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: AppColors.primaryColor,
+            ),
+          );
+        });
+  }
+
+  void _runFilter(String enteredKeyword, StateSetter setState) {
+    List<States> results = [];
+    if (enteredKeyword.isEmpty) {
+      // if the search field is empty or only contains white-space, we'll display all users
+      results = allData;
+    } else {
+      results = statesData
+          .where((user) =>
+              user.name!.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+      // we use the toLowerCase() method to make it case-insensitive
+    }
+
+    // Refresh the UI
+    setState(() {
+      statesData = results;
+    });
+  }
+
+  void _runFilterCities(String enteredKeyword, StateSetter setState) {
+    List<Cities> results = [];
+    if (enteredKeyword.isEmpty) {
+      // if the search field is empty or only contains white-space, we'll display all users
+      results = allCitiesData;
+    } else {
+      results = citiesData
+          .where((user) =>
+              user.name!.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+      // we use the toLowerCase() method to make it case-insensitive
+    }
+
+    // Refresh the UI
+    setState(() {
+      citiesData = results;
+    });
   }
 
   @override
@@ -87,21 +168,15 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
                       Dimens.boxHeight20,
                       addressTextFormFiled(),
                       Dimens.boxHeight20,
-                      Row(
-                        children: [
-                          Expanded(child: stateTextFormFiled()),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Expanded(child: cityTextFormFiled()),
-                        ],
-                      ),
+                      stateTextFormFiled(),
+                      Dimens.boxHeight20,
+                      cityTextFormFiled(),
                       Dimens.boxHeight20,
                       postalNameFormFiled(),
                       Dimens.boxHeight20,
                       Text(
                         NewMarkitVendorLocalizations.of(context)!
-                            .find('businessAddress'),
+                            .find('businessDeliveryAddress'),
                         style: Styles.lightBlue14,
                       ),
                       Row(children: [
@@ -131,15 +206,9 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
                       ]),
                       addressTextFormFiled1(),
                       Dimens.boxHeight20,
-                      Row(
-                        children: [
-                          Expanded(child: stateTextFormFiled1()),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Expanded(child: cityTextFormFiled1()),
-                        ],
-                      ),
+                      stateTextFormFiled1(),
+                      Dimens.boxHeight20,
+                      cityTextFormFiled1(),
                       Dimens.boxHeight20,
                       postalNameFormFiled2(),
                       Dimens.boxHeight30,
@@ -207,6 +276,10 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
   stateTextFormFiled() {
     return TextFormField(
       controller: state,
+      readOnly: true,
+      onTap: () {
+        stateBottomSheet(context, state);
+      },
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,
@@ -214,31 +287,55 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
       keyboardType: TextInputType.emailAddress,
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
-        labelText: NewMarkitVendorLocalizations.of(context)!.find('state'),
-        labelStyle: Styles.lightGrey14,
-        focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryColor),
-        ),
-      ),
+          labelText: NewMarkitVendorLocalizations.of(context)!.find('state'),
+          labelStyle: Styles.lightGrey14,
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primaryColor),
+          ),
+          suffixIcon: const Icon(
+            Icons.arrow_drop_down,
+            color: AppColors.lightGreyHintText,
+          )),
     );
   }
 
   cityTextFormFiled() {
     return TextFormField(
       controller: city,
+      readOnly: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: AppColors.primaryColor,
+      onTap: () {
+        if (state.text.isEmpty) {
+          Utility.errorMessage("Please select first state", context);
+        } else {
+          for (int i = 0; i < stateModel.states!.length; i++) {
+            if (state.text == stateModel.states![i].name) {
+              stateId = stateModel.states![i].id.toString();
+              break;
+            }
+          }
+          isCity1 = true;
+          showTransparentDialog(context);
+
+          whichApiCall = "city";
+          ApiCall.getCitiesApi(stateId, token, this, context);
+        }
+      },
       textAlignVertical: TextAlignVertical.center,
       style: Styles.formFieldTextStyle,
       keyboardType: TextInputType.emailAddress,
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
-        labelText: NewMarkitVendorLocalizations.of(context)!.find('city'),
-        labelStyle: Styles.lightGrey14,
-        focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryColor),
-        ),
-      ),
+          labelText: NewMarkitVendorLocalizations.of(context)!.find('city'),
+          labelStyle: Styles.lightGrey14,
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primaryColor),
+          ),
+          suffixIcon: const Icon(
+            Icons.arrow_drop_down,
+            color: AppColors.lightGreyHintText,
+          )),
     );
   }
 
@@ -252,7 +349,7 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
       keyboardType: TextInputType.number,
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
-        labelText: NewMarkitVendorLocalizations.of(context)!.find('postalCode'),
+        labelText: "Pin Code",
         labelStyle: Styles.lightGrey14,
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.primaryColor),
@@ -271,8 +368,7 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
       keyboardType: TextInputType.emailAddress,
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
-        labelText:
-            NewMarkitVendorLocalizations.of(context)!.find('addressLine1'),
+        labelText: "Address Line-2",
         labelStyle: Styles.lightGrey14,
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.primaryColor),
@@ -284,6 +380,10 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
   stateTextFormFiled1() {
     return TextFormField(
       controller: state2,
+      readOnly: true,
+      onTap: () {
+        stateBottomSheet(context, state2);
+      },
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,
@@ -291,26 +391,69 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
       keyboardType: TextInputType.emailAddress,
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
-        labelText: NewMarkitVendorLocalizations.of(context)!.find('state'),
-        labelStyle: Styles.lightGrey14,
-        focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryColor),
-        ),
-      ),
+          labelText: NewMarkitVendorLocalizations.of(context)!.find('state'),
+          labelStyle: Styles.lightGrey14,
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primaryColor),
+          ),
+          suffixIcon: const Icon(
+            Icons.arrow_drop_down,
+            color: AppColors.lightGreyHintText,
+          )),
     );
   }
 
   cityTextFormFiled1() {
     return TextFormField(
       controller: city2,
+      readOnly: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      onTap: (() {
+        if (state2.text.isEmpty) {
+          Utility.errorMessage("Please select first state", context);
+        } else {
+          isCity1 = false;
+
+          for (int i = 0; i < stateModel.states!.length; i++) {
+            if (state2.text == stateModel.states![i].name) {
+              stateId = stateModel.states![i].id.toString();
+              break;
+            }
+          }
+          showTransparentDialog(context);
+          whichApiCall = "city";
+          ApiCall.getCitiesApi(stateId, token, this, context);
+        }
+      }),
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.emailAddress,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+          labelText: NewMarkitVendorLocalizations.of(context)!.find('city'),
+          labelStyle: Styles.lightGrey14,
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primaryColor),
+          ),
+          suffixIcon: const Icon(
+            Icons.arrow_drop_down,
+            color: AppColors.lightGreyHintText,
+          )),
+    );
+  }
+
+  postalNameFormFiled2() {
+    return TextFormField(
+      controller: postalCode2,
+      //autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,
       style: Styles.formFieldTextStyle,
       keyboardType: TextInputType.emailAddress,
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
-        labelText: NewMarkitVendorLocalizations.of(context)!.find('city'),
+        labelText: "Pin Code",
         labelStyle: Styles.lightGrey14,
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.primaryColor),
@@ -319,22 +462,234 @@ class _AddAddressDetailsState extends State<AddAddressDetails> {
     );
   }
 
-  postalNameFormFiled2() {
-    return TextFormField(
-      controller: postalCode2,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      cursorColor: AppColors.primaryColor,
-      textAlignVertical: TextAlignVertical.center,
-      style: Styles.formFieldTextStyle,
-      keyboardType: TextInputType.emailAddress,
-      validator: (v) => Utility.checkTextFiledValid(v!, context),
-      decoration: InputDecoration(
-        labelText: NewMarkitVendorLocalizations.of(context)!.find('postalCode'),
-        labelStyle: Styles.lightGrey14,
-        focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryColor),
-        ),
-      ),
-    );
+  void stateBottomSheet(BuildContext ctx, TextEditingController c) {
+    showModalBottomSheet(
+        elevation: 10,
+        isScrollControlled: true,
+        backgroundColor: Colors.white,
+        context: ctx,
+        builder: (ctx) {
+          return StatefulBuilder(builder: (BuildContext context,
+              StateSetter setState /*You can rename this!*/) {
+            return Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 2,
+                color: Colors.white54,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 40,
+                      color: AppColors.primaryColor,
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      alignment: Alignment.centerRight,
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              NewMarkitVendorLocalizations.of(context)!
+                                  .find('selectState'),
+                              style: Styles.boldWhite16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 1,
+                      color: Colors.grey[400],
+                      width: MediaQuery.of(context).size.width,
+                    ),
+                    TextFormField(
+                      onChanged: (v) {
+                        _runFilter(v, setState);
+                      },
+                      style: Styles.formFieldTextStyle,
+                      decoration: const InputDecoration(
+                          hintText: "Search State",
+                          contentPadding: EdgeInsets.all(16)),
+                    ),
+                    Expanded(
+                        flex: 1,
+                        child: ListView.builder(
+                            itemCount: statesData.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  c.text = statesData[index].name!;
+                                  stateId = statesData[index].id.toString();
+                                  _runFilter("", setState);
+                                  Navigator.pop(context);
+                                  changeState();
+                                },
+                                child: Container(
+                                  color: Colors.grey.withAlpha(2),
+                                  padding: const EdgeInsets.all(16),
+                                  alignment: Alignment.center,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          c.text = statesData[index].name!;
+                                          stateId =
+                                              statesData[index].id.toString();
+                                          _runFilter("", setState);
+
+                                          Navigator.pop(context);
+                                          changeState();
+                                        },
+                                        child: Text(
+                                          statesData[index].name!,
+                                          style: Styles.boldBlack16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }))
+                  ],
+                ),
+              ),
+            );
+          });
+        });
   }
+
+  void ciitesBottomSheet(BuildContext ctx, TextEditingController c) {
+    showModalBottomSheet(
+        elevation: 10,
+        isScrollControlled: true,
+        backgroundColor: Colors.white,
+        context: ctx,
+        builder: (ctx) {
+          return StatefulBuilder(builder: (BuildContext context,
+              StateSetter setState /*You can rename this!*/) {
+            return Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 2,
+                color: Colors.white54,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 40,
+                      color: AppColors.primaryColor,
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      alignment: Alignment.centerRight,
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              NewMarkitVendorLocalizations.of(context)!
+                                  .find('selectCities'),
+                              style: Styles.boldWhite16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 1,
+                      color: Colors.grey[400],
+                      width: MediaQuery.of(context).size.width,
+                    ),
+                    TextFormField(
+                      onChanged: (v) {
+                        _runFilterCities(v, setState);
+                      },
+                      style: Styles.formFieldTextStyle,
+                      decoration: const InputDecoration(
+                          hintText: "Search Cities",
+                          contentPadding: EdgeInsets.all(16)),
+                    ),
+                    Expanded(
+                        flex: 1,
+                        child: ListView.builder(
+                            itemCount: citiesData.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  c.text = citiesData[index].name!;
+                                  _runFilterCities("", setState);
+                                  Navigator.pop(context);
+                                  changeState();
+                                },
+                                child: Container(
+                                  color: Colors.grey.withAlpha(2),
+                                  padding: const EdgeInsets.all(16),
+                                  alignment: Alignment.center,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          c.text = citiesData[index].name!;
+                                          _runFilterCities("", setState);
+
+                                          Navigator.pop(context);
+                                          changeState();
+                                        },
+                                        child: Text(
+                                          citiesData[index].name!,
+                                          style: Styles.boldBlack16,
+                                        ),
+                                      ),
+                                      const Spacer(),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }))
+                  ],
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  changeState() {
+    setState(() {});
+  }
+
+  @override
+  void onFailure(message) {
+    Navigator.pop(context);
+
+    Utility.errorMessage(message, context);
+  }
+
+  @override
+  void onSuccess(data) {
+    if (whichApiCall == "state") {
+      stateModel = StateList.fromJson(data);
+      statesData = stateModel.states!;
+      allData = stateModel.states!;
+      Navigator.pop(context);
+    } else {
+      citiesModel = CitiesModel.fromJson(data);
+      citiesData = citiesModel.cities!;
+      allCitiesData = citiesModel.cities!;
+      Navigator.pop(context);
+      if (isCity1) {
+        ciitesBottomSheet(context, city);
+      } else {
+        ciitesBottomSheet(context, city2);
+      }
+    }
+    setState(() {});
+  }
+
+  @override
+  void onTokenExpired() {}
 }

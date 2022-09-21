@@ -7,6 +7,7 @@ import 'package:market_vendor_app/activities/create_business/adhar_card_document
 import 'package:market_vendor_app/activities/create_business/gst_document.dart';
 import 'package:market_vendor_app/activities/create_business/pan_card_document.dart';
 import 'package:market_vendor_app/activities/create_business/polic_certificate_document.dart';
+import 'package:market_vendor_app/activities/create_business/signature_documents.dart';
 import 'package:market_vendor_app/activities/create_business/working_hours.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -40,6 +41,7 @@ class _DocumentPageState extends State<DocumentPage> {
   bool isAdaharData = false;
   //bool isPoliceData = false;
   bool isCancelCheck = false;
+  bool isSignatureCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +84,8 @@ class _DocumentPageState extends State<DocumentPage> {
                     // policeView(),
                     Dimens.boxHeight20,
                     checkView(),
+                    Dimens.boxHeight20,
+                    signatureCheckView(),
                     Dimens.boxHeight30,
                     FormSubmitWidget(
                       opacity: 1,
@@ -89,7 +93,8 @@ class _DocumentPageState extends State<DocumentPage> {
                               isGstData &&
                               // isPoliceData &&
                               isAdaharData &&
-                              isCancelCheck)
+                              isCancelCheck &&
+                              isSignatureCheck)
                           ? AppColors.primaryColor
                           : AppColors.primaryColor.withOpacity(0.4),
                       padding: Dimens.edgeInsets0,
@@ -100,14 +105,16 @@ class _DocumentPageState extends State<DocumentPage> {
                               isGstData &&
                               // isPoliceData &&
                               isAdaharData &&
-                              isCancelCheck)
+                              isCancelCheck &&
+                              isSignatureCheck)
                           ? AppColors.primaryColor
                           : AppColors.primaryColor.withOpacity(0.4),
                       endColor: (isPanData &&
                               isGstData &&
                               // isPoliceData &&
                               isAdaharData &&
-                              isCancelCheck)
+                              isCancelCheck &&
+                              isSignatureCheck)
                           ? AppColors.primaryColor
                           : AppColors.primaryColor.withOpacity(0.4),
                       iconColor: Colors.white,
@@ -116,7 +123,8 @@ class _DocumentPageState extends State<DocumentPage> {
                             isGstData &&
                             // isPoliceData &&
                             isAdaharData &&
-                            isCancelCheck) {
+                            isCancelCheck &&
+                            isSignatureCheck) {
                           // widget.model.policeClearanceCertificate = "0";
                           // widget.model.policeClearanceImage = "0";
                           Navigator.push(
@@ -1159,10 +1167,10 @@ class _DocumentPageState extends State<DocumentPage> {
                                     .find('cancelledCheque'),
                                 style: Styles.lightBlue14,
                               ),
-                              Text(
-                                widget.model.cancelledChequeNumber!,
-                                style: Styles.boldBlack14,
-                              ),
+                              // Text(
+                              //   widget.model.cancelledChequeNumber!,
+                              //   style: Styles.boldBlack14,
+                              // ),
                             ],
                           ),
                         )
@@ -1271,6 +1279,235 @@ class _DocumentPageState extends State<DocumentPage> {
                             widget.model.ifscCode = "";
 
                             isCancelCheck = false;
+                            setState(() {});
+                          },
+                          child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.primaryColor,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: AppColors.primaryColor
+                                          .withOpacity(0.6),
+                                      blurRadius: 3.0, // soften the shadow
+                                      offset: const Offset(
+                                        1.0, // Move to right 10  horizontally
+                                        1.0, // Move to bottom 10 Vertically
+                                      ),
+                                    )
+                                  ]),
+                              child: const Icon(
+                                Icons.cancel,
+                                color: Colors.white,
+                                size: 20,
+                              )),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+        ],
+      ),
+    );
+  }
+
+  signatureCheckView() {
+    return Container(
+      height: 180,
+      child: Stack(
+        children: <Widget>[
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            color: Colors.white,
+            elevation: 10,
+            child: isSignatureCheck == false
+                ? Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 150,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: const EdgeInsets.only(left: 16, top: 16),
+                          child: Text(
+                            NewMarkitVendorLocalizations.of(context)!
+                                .find('signatureImage'),
+                            style: Styles.lightBlue14,
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 16, top: 16),
+                          width: MediaQuery.of(context).size.width,
+                          child: Text(
+                            NewMarkitVendorLocalizations.of(context)!
+                                .find('noDocumentAddedYetDes'),
+                            style: Styles.loginPageSubTitleGrey,
+                          ),
+                        ),
+                      ],
+                    ))
+                : Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 150,
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        CachedNetworkImage(
+                          imageUrl: widget.model.signatureDuplicateChequeImage!,
+                          imageBuilder: (context, imageProvider) => Container(
+                            width: 100,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) => Container(
+                            width: 100,
+                            height: 100.0,
+                            alignment: Alignment.center,
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              child: const CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      AppColors.primaryColor)),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            alignment: Alignment.center,
+                            width: 100,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                            ),
+                            child: const Icon(Icons.error,
+                                size: 40, color: Colors.black),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                NewMarkitVendorLocalizations.of(context)!
+                                    .find('signatureImageMsg'),
+                                style: Styles.lightBlue14,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+          ),
+          isSignatureCheck == false
+              ? Container(
+                  width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.bottomRight,
+                  margin: const EdgeInsets.only(right: 16, bottom: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.fade,
+                              child: SignatureDocument(
+                                model: widget.model,
+                              ))).then((value) {
+                        if (value != null) {
+                          isSignatureCheck = true;
+                          setState(() {});
+                        }
+                      });
+                    },
+                    child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.primaryColor,
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.primaryColor.withOpacity(0.6),
+                                blurRadius: 3.0, // soften the shadow
+                                offset: const Offset(
+                                  1.0, // Move to right 10  horizontally
+                                  1.0, // Move to bottom 10 Vertically
+                                ),
+                              )
+                            ]),
+                        child: const Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 20,
+                        )),
+                  ),
+                )
+              : Container(
+                  width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.bottomRight,
+                  margin: const EdgeInsets.only(right: 16, bottom: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.fade,
+                              child: SignatureDocument(
+                                model: widget.model,
+                              ))).then((value) {
+                        if (value != null) {
+                          isSignatureCheck = true;
+                          setState(() {});
+                        }
+                      });
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.lightBlueColor2,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppColors.lightBlueColor2
+                                        .withOpacity(0.6),
+
+                                    blurRadius: 3.0, // soften the shadow
+                                    offset: const Offset(
+                                      1.0, // Move to right 10  horizontally
+                                      1.0, // Move to bottom 10 Vertically
+                                    ),
+                                  )
+                                ]),
+                            child: const Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                              size: 20,
+                            )),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            widget.model.signatureDuplicateChequeImage = "";
+                            widget.model.signatureImage = "";
+
+                            isSignatureCheck = false;
                             setState(() {});
                           },
                           child: Container(

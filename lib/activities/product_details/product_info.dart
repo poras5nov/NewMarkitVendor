@@ -177,7 +177,7 @@ class _ProductInfoScreenState extends State<ProductInfoScreen>
                                             context,
                                             PageTransition(
                                                 type: PageTransitionType.fade,
-                                                child: ImageView(
+                                                child: ImageZoomView(
                                                   url: item,
                                                 )));
                                       },
@@ -239,7 +239,7 @@ class _ProductInfoScreenState extends State<ProductInfoScreen>
                                     context,
                                     PageTransition(
                                         type: PageTransitionType.fade,
-                                        child: ImageView(
+                                        child: ImageZoomView(
                                           url: model.variations![vPos].images!,
                                         )));
                               },
@@ -314,13 +314,13 @@ class _ProductInfoScreenState extends State<ProductInfoScreen>
                                       .find('brandKey') +
                                   ": ",
                               style: Styles.loginPageSubTitleGrey),
-                          Text(model.brand!.name!, style: Styles.boldBlack18),
+                          Text(model.brand!.name!, style: Styles.boldBlack16),
                         ],
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Text(model.name!, style: Styles.boldBlack18),
+                      child: Text(model.name!, style: Styles.boldBlack16),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
@@ -332,7 +332,8 @@ class _ProductInfoScreenState extends State<ProductInfoScreen>
                             color: AppColors.yellowColor,
                             size: 20,
                           ),
-                          Text("4.5", style: Styles.yellowMedium14),
+                          Text("${model.product_rating}",
+                              style: Styles.yellowMedium14),
                           Text(
                               " " +
                                   NewMarkitVendorLocalizations.of(context)!

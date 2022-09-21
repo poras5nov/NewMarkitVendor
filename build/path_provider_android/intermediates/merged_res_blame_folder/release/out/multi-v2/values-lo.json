@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/path_provider_android/intermediates/res/merged/release/values-lo/values-lo.xml",
+            "outputFile": "/Users/mac/Documents/flutter_project/market_vendor_app/build/path_provider_android/intermediates/res/merged/release/values-lo/values-lo.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/res/values-lo/values-lo.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/ebb54224f210686f102795ae0ce2d21f/core-1.6.0/res/values-lo/values-lo.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/path_provider_android/intermediates/incremental/mergeReleaseResources/merged.dir/values-lo/values-lo.xml",
+            "outputFile": "/Users/mac/Documents/flutter_project/market_vendor_app/build/path_provider_android/intermediates/incremental/mergeReleaseResources/merged.dir/values-lo/values-lo.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/res/values-lo/values-lo.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/ebb54224f210686f102795ae0ce2d21f/core-1.6.0/res/values-lo/values-lo.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

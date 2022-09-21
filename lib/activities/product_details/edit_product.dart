@@ -84,6 +84,7 @@ class _EditProductScreenState extends State<EditProductScreen>
   int refund = 1;
   int cashOndelivery = 1;
   int warenty = 1;
+  int hsnvalue = 1;
 
   AddProductModel addProductModel = AddProductModel();
   bool isLoader = false;
@@ -111,9 +112,14 @@ class _EditProductScreenState extends State<EditProductScreen>
     addProductModel.childCategoryId = productModel.childCategoryId.toString();
     addProductModel.hsnNo = productModel.hsnNo.toString();
     hsnController.text = addProductModel.hsnNo!;
-
+    addProductModel.hsnNo = hsnController.text;
+    // addProductModel.isPopular = isPopularController.text;
     addProductModel.isTaxable = productModel.isTaxable!;
-    hsnTypeController.text = addProductModel.isTaxable!;
+    if (addProductModel.isTaxable == "Yes") {
+      hsnvalue = 1;
+    } else {
+      hsnvalue = 0;
+    }
 
     addProductModel.taxValue = productModel.taxValue;
     howMuchController.text = addProductModel.taxValue!;
@@ -182,6 +188,7 @@ class _EditProductScreenState extends State<EditProductScreen>
 
     for (int i = 0; i < productModel.variations!.length; i++) {
       VariationsQuantity v = VariationsQuantity();
+      v.variationId = productModel.variations![i].id!;
       v.offerPrice = productModel.variations![i].offerPrice.toString();
       v.basicPrice = productModel.variations![i].basicPrice.toString();
       v.quantity = productModel.variations![i].quantity.toString();
@@ -190,6 +197,7 @@ class _EditProductScreenState extends State<EditProductScreen>
           productModel.variations![i].default_variation_image == null
               ? ""
               : productModel.variations![i].default_variation_image.toString();
+      v.isEdit = true;
 
       List<AddAttribute> attr = List.empty(growable: true);
       for (int j = 0; j < productModel.variations![i].attribute!.length; j++) {
@@ -264,6 +272,8 @@ class _EditProductScreenState extends State<EditProductScreen>
                 child: Form(
                   key: formkey,
                   child: SingleChildScrollView(
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -334,7 +344,7 @@ class _EditProductScreenState extends State<EditProductScreen>
                                 Dimens.boxHeight10,
                                 Text(
                                   NewMarkitVendorLocalizations.of(context)!
-                                      .find('uploadStorePhotos'),
+                                      .find('uploadProductPhotos'),
                                   style: Styles.boldWhite14,
                                 ),
                                 Dimens.boxHeight5,
@@ -493,9 +503,56 @@ class _EditProductScreenState extends State<EditProductScreen>
                         Dimens.boxHeight20,
                         hsnTextFormFiled(context),
                         Dimens.boxHeight20,
-                        hsnTypeTextFormFiled(),
-                        Dimens.boxHeight20,
-                        hsnTypeController.text == "Yes"
+                        Text(
+                          NewMarkitVendorLocalizations.of(context)!
+                              .find('product_taxable'),
+                          style: Styles.lightGreyHint,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Radio(
+                                  value: 1,
+                                  groupValue: hsnvalue,
+                                  activeColor: AppColors.primaryColor,
+                                  onChanged: (v) {
+                                    setState(() {
+                                      hsnvalue = int.parse(v.toString());
+                                    });
+                                  },
+                                ),
+                                Text(
+                                  NewMarkitVendorLocalizations.of(context)!
+                                      .find('yes'),
+                                  style: Styles.boldBlack12,
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Radio(
+                                  value: 0,
+                                  activeColor: AppColors.primaryColor,
+                                  groupValue: hsnvalue,
+                                  onChanged: (v) {
+                                    setState(() {
+                                      hsnvalue = int.parse(v.toString());
+                                    });
+                                  },
+                                ),
+                                Text(
+                                  NewMarkitVendorLocalizations.of(context)!
+                                      .find('no'),
+                                  style: Styles.boldBlack12,
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        hsnvalue == 1
                             ? Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
@@ -765,6 +822,7 @@ class _EditProductScreenState extends State<EditProductScreen>
                                     PageTransition(
                                         type: PageTransitionType.fade,
                                         child: AttributeScreen(
+                                          isNewProduct: false,
                                           dataModel: addProductModel,
                                         ))).then((value) {
                                   if (value != null) {
@@ -1297,9 +1355,8 @@ class _EditProductScreenState extends State<EditProductScreen>
         addProductModel.name = productTitleController.text;
         addProductModel.hsnNo = hsnController.text;
         // addProductModel.isPopular = isPopularController.text;
-        addProductModel.isTaxable = hsnTypeController.text;
-        addProductModel.taxValue =
-            hsnTypeController.text == "Yes" ? howMuchController.text : "";
+        addProductModel.isTaxable = hsnvalue == 1 ? "Yes" : "No";
+        addProductModel.taxValue = hsnvalue == 1 ? howMuchController.text : "";
 
         addProductModel.sameSayDelivery = value == 1 ? "yes" : "no";
         addProductModel.deliveryDay =
@@ -1351,7 +1408,8 @@ class _EditProductScreenState extends State<EditProductScreen>
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,
       style: Styles.formFieldTextStyle,
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
         labelText:
@@ -1366,27 +1424,28 @@ class _EditProductScreenState extends State<EditProductScreen>
 
   hsnTextFormFiled(BuildContext ctx) {
     return TextFormField(
-      readOnly: true,
+      readOnly: false,
       controller: hsnController,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,
       style: Styles.formFieldTextStyle,
       onTap: () {
-        isHsnBottomSheet(ctx);
+        // isHsnBottomSheet(ctx);
       },
       keyboardType: TextInputType.number,
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
-          labelText: NewMarkitVendorLocalizations.of(context)!.find('hsn'),
-          labelStyle: Styles.lightGrey14,
-          focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: AppColors.primaryColor),
-          ),
-          suffixIcon: const Icon(
-            Icons.arrow_drop_down,
-            color: AppColors.lightGreyHintText,
-          )),
+        labelText: NewMarkitVendorLocalizations.of(context)!.find('hsn'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+        // suffixIcon: const Icon(
+        //   Icons.arrow_drop_down,
+        //   color: AppColors.lightGreyHintText,
+        // )
+      ),
     );
   }
 
@@ -1810,26 +1869,30 @@ class _EditProductScreenState extends State<EditProductScreen>
       var pickedFile = await picker.pickImage(source: source);
 
       var croppedFile = await ImageCropper().cropImage(
-          sourcePath: pickedFile!.path,
-          cropStyle: CropStyle.rectangle,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          androidUiSettings: AndroidUiSettings(
-            toolbarTitle:
-                NewMarkitVendorLocalizations.of(context)!.find('appName'),
-            toolbarColor: Colors.black,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
+        sourcePath: pickedFile!.path,
+        cropStyle: CropStyle.rectangle,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: AppColors.primaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
           ),
-          iosUiSettings: const IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
+          WebUiSettings(
+            context: context,
+          ),
+        ],
+      );
       debugPrint(croppedFile!.path);
       if (croppedFile.path.isNotEmpty) {
         setState(() {});
@@ -1864,6 +1927,7 @@ class _EditProductScreenState extends State<EditProductScreen>
     } else if (whichApiCall == "edit_product") {
       isLoader = false;
       setState(() {});
+      Utility.successMessage(data['message'], context);
       Navigator.pop(context, true);
     } else if (whichApiCall == "upload_image") {
       Navigator.pop(context);

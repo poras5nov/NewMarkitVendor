@@ -11,7 +11,9 @@ import 'package:market_vendor_app/activities/home_page/tab/verified_screen.dart'
 import 'package:market_vendor_app/activities/login/login_view.dart';
 import 'package:market_vendor_app/activities/login_with_otp/login_with_otp_view.dart';
 import 'package:market_vendor_app/activities/splash/splash_view.dart';
+import 'package:market_vendor_app/utils/notification_receiver.dart';
 import 'package:market_vendor_app/utils/notification_show.dart';
+import 'package:market_vendor_app/utils/shared_preferences.dart';
 
 import 'activities/home_page/tab_screen.dart';
 import 'utils/new_market_vendor_localizations.dart';
@@ -37,11 +39,11 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> implements NotificationInterface {
   @override
   void initState() {
     super.initState();
-    NotificationShow.initPlatformState();
+    NotificationShow.initPlatformState(this);
   }
 
   @override
@@ -82,5 +84,17 @@ class _MyAppState extends State<MyApp> {
             },
           );
         });
+  }
+
+  @override
+  void onClick(id, type, requestId) {
+    SharedPref.setOrderID(id.toString());
+    SharedPref.setOrderType(type);
+    SharedPref.setRequestOrderId(requestId.toString());
+  }
+
+  @override
+  void onMessageReceived(id, type) {
+    SharedPref.setOrderID(id);
   }
 }

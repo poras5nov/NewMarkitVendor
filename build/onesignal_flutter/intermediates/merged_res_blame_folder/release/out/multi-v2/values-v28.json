@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/res/merged/release/values-v28/values-v28.xml",
+            "outputFile": "/Users/mac/Documents/flutter_project/market_vendor_app/build/onesignal_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/fad6a58a876fe2509aa8b6f3be316c6c/appcompat-1.3.1/res/values-v28/values-v28.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/5baca6ddf5ba77f396df5dd1e6ccf225/appcompat-1.3.1/res/values-v28/values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",
@@ -17,10 +17,10 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/incremental/mergeReleaseResources/merged.dir/values-v28/values-v28.xml",
+            "outputFile": "/Users/mac/Documents/flutter_project/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/fad6a58a876fe2509aa8b6f3be316c6c/appcompat-1.3.1/res/values-v28/values-v28.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/5baca6ddf5ba77f396df5dd1e6ccf225/appcompat-1.3.1/res/values-v28/values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",

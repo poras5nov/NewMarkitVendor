@@ -16,6 +16,10 @@ com.google.android.gms.internal.location.zzag
 com.google.common.collect.Maps$AsMapView
 com.onesignal.OSThrowable
 androidx.core.view.accessibility.AccessibilityEventCompat$ContentChangeType
+kotlin.jvm.internal.SerializedIr
+kotlin.collections.EmptyIterator:
+    public void add(java.lang.Void)
+    public void set(java.lang.Void)
 com.google.android.gms.location.LocationAvailability:
     public static boolean hasLocationAvailability(android.content.Intent)
     public static com.google.android.gms.location.LocationAvailability extractLocationAvailability(android.content.Intent)
@@ -27,7 +31,10 @@ kotlin.jvm.JvmField
 androidx.media.MediaBrowserServiceCompat$ServiceHandler
 kotlin.jvm.functions.Function12:
     public abstract java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)
+androidx.webkit.R$layout
 kotlin.ranges.UIntProgression
+com.onesignal.LocationPermissionController:
+    private static final java.lang.String PERMISSION_TYPE
 com.google.android.gms.common.api.internal.RegistrationMethods$Builder
 com.google.common.collect.ForwardingListIterator
 com.google.common.util.concurrent.Futures$2
@@ -72,12 +79,17 @@ androidx.fragment.R$styleable:
     public static final int GradientColor_android_endY
     public static final int GradientColorItem_android_color
     public static final int GradientColorItem_android_offset
+com.app.market_vendor.R$integer
 com.onesignal.OSInAppMessageDummyController:
     com.onesignal.OSInAppMessageInternal getCurrentDisplayedInAppMessage()
 kotlinx.coroutines.CompletableDeferredImpl
 com.onesignal.outcomes.data.OutcomesDbContract
 com.google.common.hash.Murmur3_128HashFunction$Murmur3_128Hasher
 com.google.android.gms.common.data.zae
+io.flutter.plugins.webviewflutter.InstanceManager:
+    public long addHostCreatedInstance(java.lang.Object)
+    private static final long MIN_HOST_CREATED_IDENTIFIER
+    private static final long CLEAR_FINALIZED_WEAK_REFERENCES_INTERVAL
 androidx.collection.SimpleArrayMap:
     private static final boolean DEBUG
     private static final java.lang.String TAG
@@ -127,6 +139,7 @@ kotlinx.coroutines.JobKt:
 com.google.android.gms.tasks.zzaf
 androidx.browser.customtabs.CustomTabsSessionToken$MockCallback
 javax.annotation.CheckReturnValue
+com.iyaffle.launchreview.R$styleable
 kotlinx.coroutines.flow.FlowKt__TransformKt$filterNotNull$$inlined$unsafeTransform$1$2
 kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$3
 com.google.common.hash.LittleEndianByteArray$JavaLittleEndianBytes$1
@@ -174,6 +187,7 @@ com.google.common.util.concurrent.ExecutionSequencer$RunningState
 kotlinx.coroutines.channels.BroadcastChannelKt
 com.google.common.collect.AbstractMapBasedMultimap$RandomAccessWrappedList
 com.google.common.reflect.Reflection
+androidx.webkit.internal.WebResourceRequestAdapter
 kotlin.collections.ArraysKt___ArraysJvmKt:
     private static final java.lang.Object elementAt(java.lang.Object[],int)
     private static final byte elementAt(byte[],int)
@@ -490,6 +504,13 @@ com.google.android.gms.maps.model.Marker:
     public final java.lang.Object getTag()
 androidx.core.view.ScrollingView
 androidx.core.graphics.BlendModeUtils$1
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$WebResourceRequestData:
+    public java.lang.String getUrl()
+    public java.lang.Boolean getIsForMainFrame()
+    public java.lang.Boolean getIsRedirect()
+    public java.lang.Boolean getHasGesture()
+    public java.lang.String getMethod()
+    public java.util.Map getRequestHeaders()
 androidx.media.MediaBrowserServiceCompat$2
 androidx.legacy.coreui.R$drawable
 okhttp3.RequestBody$1
@@ -580,6 +601,11 @@ androidx.core.content.IntentCompat
 com.google.android.gms.common.internal.zzy:
     public static com.google.android.gms.common.internal.zzz zzg(android.os.IBinder)
 kotlinx.coroutines.flow.FlowKt__BuildersKt$flowOf$$inlined$unsafeFlow$1$1
+androidx.webkit.internal.IncompatibleApkWebViewProviderFactory:
+    public org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface createWebView(android.webkit.WebView)
+    public org.chromium.support_lib_boundary.StaticsBoundaryInterface getStatics()
+    public org.chromium.support_lib_boundary.ServiceWorkerControllerBoundaryInterface getServiceWorkerController()
+    private static final java.lang.String UNSUPPORTED_EXCEPTION_EXPLANATION
 kotlin.sequences.GeneratorSequence$iterator$1
 kotlin.sequences.SequencesKt___SequencesKt$minus$4
 com.google.common.collect.TreeRangeMap$SubRangeMap$SubRangeMapAsMap$4
@@ -591,11 +617,11 @@ kotlin.NumbersKt__FloorDivModKt
 com.google.common.collect.MapMakerInternalMap$StrongKeyStrongValueEntry$Helper
 androidx.core.widget.CheckedTextViewCompat$Api16Impl
 androidx.fragment.app.FragmentStatePagerAdapter
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$JavaObjectFlutterApi$Reply
 okio.Options
 androidx.annotation.InspectableProperty$FlagEntry
 com.google.common.io.BaseEncoding$4
 com.google.common.util.concurrent.AggregateFuture
-com.app.market_vendor_app.R
 android.support.v4.media.session.MediaSessionCompat$MediaSessionImplApi21$ExtraSession
 com.google.common.html.HtmlEscapers
 androidx.legacy.v4.R$color
@@ -781,6 +807,7 @@ kotlin.sequences.SequencesKt___SequencesKt$minus$1$iterator$1
 com.google.common.collect.RegularImmutableList
 io.flutter.view.TextureRegistry:
     public abstract io.flutter.view.TextureRegistry$SurfaceTextureEntry registerSurfaceTexture(android.graphics.SurfaceTexture)
+    public void onTrimMemory(int)
 com.google.android.gms.auth.api.signin.internal.Storage:
     public com.google.android.gms.auth.api.signin.GoogleSignInOptions getSavedDefaultGoogleSignInOptions()
     public java.lang.String getSavedRefreshToken()
@@ -989,6 +1016,7 @@ com.google.common.collect.SingletonImmutableTable
 kotlin.KotlinNullPointerException
 com.google.common.collect.ImmutableAsList$SerializedForm
 com.google.common.util.concurrent.JdkFutureAdapters$ListenableFutureAdapter$1
+com.app.market_vendor.R$layout
 androidx.core.view.NestedScrollingChild2
 androidx.core.view.ViewCompat$Api23Impl:
     private void <init>()
@@ -1088,11 +1116,12 @@ androidx.appcompat.R$drawable:
     public static final int tooltip_frame_dark
     public static final int tooltip_frame_light
 android.support.v4.media.MediaBrowserCompatApi23$ItemCallback
-com.google.android.datatransport.runtime.dagger.internal.MembersInjectors$NoOpMembersInjector
 kotlinx.coroutines.SupervisorKt
+com.google.android.datatransport.runtime.dagger.internal.MembersInjectors$NoOpMembersInjector
 androidx.legacy.v4.R$integer
 androidx.interpolator.R
 com.google.common.util.concurrent.ForwardingListenableFuture$SimpleForwardingListenableFuture
+com.iyaffle.launchreview.R$dimen
 androidx.browser.browseractions.BrowserActionsIntent$BrowserActionsUrlType
 kotlin.time.DurationKt
 javax.annotation.RegEx
@@ -1107,6 +1136,7 @@ com.baseflow.geolocator.R$dimen
 com.google.android.gms.common.api.internal.DataHolderResult
 androidx.activity.result.contract.ActivityResultContracts$TakePicturePreview
 androidx.browser.trusted.TrustedWebActivityIntent
+com.app.market_vendor.R$animator
 com.google.android.gms.common.api.AvailabilityException:
     public com.google.android.gms.common.ConnectionResult getConnectionResult(com.google.android.gms.common.api.GoogleApi)
     public com.google.android.gms.common.ConnectionResult getConnectionResult(com.google.android.gms.common.api.HasApiKey)
@@ -1145,6 +1175,7 @@ com.google.firebase.components.ComponentContainer:
 com.onesignal.OneSignalPrefs$WritePrefHandlerThread:
     private static final int WRITE_CALL_DELAY_TO_BUFFER_MS
 com.google.common.hash.Striped64$Cell
+com.app.market_vendor.R$dimen
 com.google.android.gms.common.util.CollectionUtils
 com.google.android.gms.maps.internal.zzag
 com.google.common.collect.StandardTable$Row$2
@@ -1183,9 +1214,9 @@ androidx.annotation.RawRes
 kotlin.OverloadResolutionByLambdaReturnType
 androidx.fragment.R$dimen
 io.flutter.plugins.pathprovider.R$color
-androidx.work.impl.model.WorkTypeConverters$OutOfPolicyIds
 kotlinx.coroutines.internal.ExceptionsConstuctorKt:
     private static final kotlin.jvm.functions.Function1 safeCtor(kotlin.jvm.functions.Function1)
+androidx.work.impl.model.WorkTypeConverters$OutOfPolicyIds
 com.onesignal.UserStateSynchronizer$NetworkHandlerThread:
     void stopScheduledRunnable()
     private static final java.lang.String THREAD_NAME_PREFIX
@@ -1399,7 +1430,6 @@ androidx.work.impl.model.WorkSpecDao_Impl$11
 androidx.fragment.R$attr
 kotlin.jvm.functions.Function11:
     public abstract java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)
-com.app.market_vendor_app.R$style
 androidx.legacy.v4.R$style
 com.google.common.util.concurrent.Striped$SmallLazyStriped$ArrayReference
 androidx.customview.widget.ViewDragHelper:
@@ -1632,6 +1662,7 @@ androidx.work.Operation:
 kotlinx.coroutines.flow.FlowKt__TransformKt$filterNotNull$$inlined$unsafeTransform$1
 com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidatorHolder$ClassValueValidator$1
 com.google.common.collect.AbstractTable$Values
+com.app.market_vendor.R$style
 io.flutter.plugin.editing.FlutterTextUtils:
     public static final int LINE_FEED
     public static final int CARRIAGE_RETURN
@@ -1645,8 +1676,8 @@ kotlinx.coroutines.internal.MissingMainCoroutineDispatcher:
     public java.lang.Void scheduleResumeAfterDelay(long,kotlinx.coroutines.CancellableContinuation)
     public synthetic bridge void scheduleResumeAfterDelay(long,kotlinx.coroutines.CancellableContinuation)
 com.google.common.base.CharMatcher$JavaUpperCase
-androidx.media.MediaBrowserServiceCompat$3
 com.google.android.gms.common.api.internal.zacc
+androidx.media.MediaBrowserServiceCompat$3
 com.google.common.primitives.Chars$CharArrayAsList
 androidx.core.provider.SelfDestructiveThread
 com.google.common.collect.MultimapBuilder$TreeSetSupplier
@@ -1813,6 +1844,10 @@ androidx.core.os.LocaleListInterface:
     public abstract java.lang.String toLanguageTags()
     public abstract java.util.Locale getFirstMatch(java.lang.String[])
 kotlin.random.URandomKt
+io.flutter.plugins.webviewflutter.InputAwareWebView:
+    void lockInputConnection()
+    void unlockInputConnection()
+    private static final java.lang.String TAG
 kotlin.jvm.internal.LongSpreadBuilder
 com.google.android.gms.dynamic.LifecycleDelegate:
     public abstract android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
@@ -1917,6 +1952,7 @@ androidx.media.MediaBrowserServiceCompat$ServiceBinderImpl$7
 kotlinx.coroutines.flow.FlowKt__ShareKt$launchSharingDeferred$1$invokeSuspend$$inlined$collect$1
 io.flutter.embedding.engine.systemchannels.TextInputChannel:
     private static final java.lang.String TAG
+com.app.market_vendor.R$interpolator
 androidx.core.internal.package-info
 com.google.android.gms.maps.internal.zzae
 androidx.core.view.GestureDetectorCompat
@@ -2023,14 +2059,15 @@ androidx.core.R$color
 com.google.common.cache.RemovalCause$1
 com.google.firebase.messaging.R$raw
 androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler
-android.support.v4.media.session.MediaSessionCompat$MediaSessionImplBase$MediaSessionStub
 com.google.android.gms.common.zzs
+android.support.v4.media.session.MediaSessionCompat$MediaSessionImplBase$MediaSessionStub
 kotlin.concurrent.ThreadsKt$thread$thread$1
 kotlin.concurrent.TimersKt$timerTask$1
 okhttp3.internal.http.HttpCodec:
     public static final int DISCARD_STREAM_TIMEOUT_MILLIS
 kotlin.ranges.UIntProgression$Companion
 kotlin.collections.ArraysKt___ArraysJvmKt$asList$6
+com.iyaffle.launchreview.R$color
 com.google.android.gms.common.GooglePlayServicesManifestException:
     public int getActualVersion()
     public int getExpectedVersion()
@@ -2078,15 +2115,14 @@ com.onesignal.OSInAppMessageController:
     private static final java.lang.String OS_IAM_DB_ACCESS
     public static final java.lang.String IN_APP_MESSAGES_JSON_KEY
     private static final java.lang.String LIQUID_TAG_SCRIPT
-com.app.market_vendor_app.R$raw
 androidx.annotation.BoolRes
 androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23:
     private void <init>()
 com.google.common.graph.AbstractNetwork$1$1$1
 com.google.android.datatransport.runtime.BuildConfig
 android.support.v4.media.session.MediaControllerCompat$TransportControlsBase
-com.google.firebase.inject.Deferred
 androidx.lifecycle.AndroidViewModel
+com.google.firebase.inject.Deferred
 com.google.firebase.components.BuildConfig
 com.onesignal.flutter.R$color
 com.google.common.collect.Sets$5$1
@@ -2100,6 +2136,11 @@ com.onesignal.OneSignalRestClient:
     private static final int THREAD_ID
     private static final int TIMEOUT
     private static final int GET_TIMEOUT
+org.chromium.support_lib_boundary.util.BoundaryInterfaceReflectionUtil:
+    public static java.lang.reflect.Method dupeMethod(java.lang.reflect.Method,java.lang.ClassLoader)
+    public static java.lang.reflect.InvocationHandler createInvocationHandlerFor(java.lang.Object)
+    public static java.lang.Object getDelegateFromInvocationHandler(java.lang.reflect.InvocationHandler)
+    public static boolean containsFeature(java.lang.String[],java.lang.String)
 androidx.loader.app.LoaderManagerImpl$LoaderViewModel:
     void startCreatingLoader()
     boolean isCreatingLoader()
@@ -2109,6 +2150,7 @@ androidx.loader.app.LoaderManagerImpl$LoaderViewModel:
     void removeLoader(int)
     boolean hasRunningLoaders()
 com.google.android.gms.common.zzr
+com.iyaffle.launchreview.BuildConfig
 kotlinx.coroutines.sync.MutexImpl$LockSelect
 com.google.android.gms.internal.common.zzag
 com.google.firebase.heartbeatinfo.AutoValue_SdkHeartBeatResult
@@ -2166,6 +2208,7 @@ kotlin.random.Random:
     public byte[] nextBytes(int)
 android.support.v4.media.MediaBrowserCompat$MediaBrowserImpl
 kotlin.DeepRecursiveKt
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$JavaObjectFlutterApiCodec
 androidx.browser.customtabs.CustomTabsIntent$ShareState
 androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs
 kotlin.comparisons.ReversedComparator
@@ -2190,7 +2233,6 @@ com.google.common.collect.ImmutableRangeSet$AsSet
 com.google.common.collect.MutableClassToInstanceMap
 android.support.customtabs.trusted.ITrustedWebActivityService$Stub$Proxy
 com.google.common.io.BaseEncoding$StandardBaseEncoding$2
-com.app.market_vendor_app.R$color
 com.onesignal.BadgeCountUpdater:
     void <init>()
 com.google.common.collect.DenseImmutableTable$1
@@ -2253,6 +2295,7 @@ com.google.android.gms.maps.internal.zzaf
 com.google.common.collect.TreeRangeMap$SubRangeMap$1$1
 kotlin.time.MonotonicTimeSource
 com.google.common.math.StatsAccumulator
+dev.fluttercommunity.plus.packageinfo.R$drawable
 androidx.room.Fts3
 androidx.transition.Styleable$TransitionTarget
 com.google.common.util.concurrent.Striped$WeakSafeLock
@@ -2263,6 +2306,9 @@ androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl
 com.google.firebase.messaging.BuildConfig
 androidx.annotation.AnimatorRes
 androidx.versionedparcelable.ParcelField
+io.flutter.plugin.platform.PlatformViewWrapper:
+    public android.graphics.SurfaceTexture getTexture()
+    private static final java.lang.String TAG
 com.google.common.graph.Traverser$GraphTraverser
 com.google.android.gms.maps.internal.zzbi
 com.onesignal.shortcutbadger.impl.SonyHomeBadger:
@@ -2378,6 +2424,8 @@ androidx.core.view.WindowInsetsControllerCompat$Impl30:
 com.google.common.graph.MapRetrievalCache
 kotlin.sequences.SequencesKt___SequencesKt$filterIsInstance$1
 kotlinx.coroutines.flow.FlowKt__LimitKt$dropWhile$lambda-4$$inlined$collect$1$1
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$JavaObjectHostApiCodec
+io.flutter.plugins.webviewflutter.R
 android.support.v4.media.MediaBrowserCompatApi23
 com.google.android.gms.maps.internal.zzd
 androidx.room.EntityInsertionAdapter:
@@ -2509,7 +2557,6 @@ kotlin.collections.ArraysKt___ArraysKt:
     private static final java.lang.Double findLast(double[],kotlin.jvm.functions.Function1)
     private static final java.lang.Boolean findLast(boolean[],kotlin.jvm.functions.Function1)
     private static final java.lang.Character findLast(char[],kotlin.jvm.functions.Function1)
-    public static final java.lang.Object first(java.lang.Object[])
     public static final byte first(byte[])
     public static final short first(short[])
     public static final int first(int[])
@@ -4065,10 +4112,10 @@ kotlin.collections.ArraysKt___ArraysKt:
     public static final float sum(float[])
     public static final double sum(double[])
     public void <init>()
+dev.fluttercommunity.plus.packageinfo.R
 com.google.common.base.Functions$IdentityFunction
 androidx.work.impl.utils.PruneWorkRunnable
 com.google.android.gms.internal.base.zaj
-com.app.market_vendor_app.R$dimen
 com.google.errorprone.annotations.concurrent.LockMethod
 androidx.core.app.JobIntentService$JobWorkEnqueuer:
     void enqueueWork(android.content.Intent)
@@ -4577,6 +4624,7 @@ kotlin.reflect.TypeOfKt
 com.google.android.gms.location.zzi
 androidx.work.impl.background.systemalarm.package-info
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry:
+    private android.app.Activity attachedActivity()
     public void add(java.util.Set)
     public io.flutter.embedding.engine.plugins.FlutterPlugin get(java.lang.Class)
     public void attachToService(android.app.Service,androidx.lifecycle.Lifecycle,boolean)
@@ -4717,11 +4765,11 @@ androidx.appcompat.widget.ActionMenuPresenter:
     public void onRestoreInstanceState(android.os.Parcelable)
     public void onSubUiVisibilityChanged(boolean)
     private static final java.lang.String TAG
-com.onesignal.OSPermissionObserver:
-    public abstract void onOSPermissionChanged(com.onesignal.OSPermissionStateChanges)
 com.google.firebase.provider.FirebaseInitProvider:
     private static final java.lang.String TAG
     static final java.lang.String EMPTY_APPLICATION_ID_PROVIDER_AUTHORITY
+com.onesignal.OSPermissionObserver:
+    public abstract void onOSPermissionChanged(com.onesignal.OSPermissionStateChanges)
 com.google.common.collect.FluentIterable
 com.google.common.collect.NullsFirstOrdering
 android.support.v4.media.session.MediaControllerCompatApi23$TransportControls
@@ -4792,6 +4840,7 @@ kotlinx.coroutines.TimeoutCancellationException:
     public final kotlinx.coroutines.Job coroutine
 androidx.appcompat.app.ActionBar$NavigationMode
 androidx.appcompat.widget.AbsActionBarView$1
+androidx.webkit.WebViewCompat$VisualStateCallback
 kotlin.ULongArrayKt
 okhttp3.Headers$Builder:
     public okhttp3.Headers$Builder add(java.lang.String)
@@ -4950,6 +4999,8 @@ com.google.common.cache.CacheBuilderSpec$1
 io.flutter.plugins.pathprovider.R$attr
 com.onesignal.GMSLocationController$FusedLocationApiWrapper:
     void <init>()
+androidx.webkit.internal.WebViewFeatureInternal$LAZY_HOLDER:
+    private void <init>()
 com.google.common.base.Functions$ConstantFunction
 com.google.android.gms.cloudmessaging.CloudMessage$MessagePriority
 com.google.common.collect.Tables$TransposeTable$1
@@ -5041,6 +5092,7 @@ kotlin.comparisons.ComparisonsKt__ComparisonsKt$then$1
 io.flutter.view.AccessibilityBridge:
     public int getHoveredObjectId()
     public void reset()
+    public boolean externalViewRequestSendAccessibilityEvent(android.view.View,android.view.View,android.view.accessibility.AccessibilityEvent)
     private static final java.lang.String TAG
     private static final int ACTION_SHOW_ON_SCREEN
     private static final float SCROLL_EXTENT_FOR_INFINITY
@@ -5226,6 +5278,7 @@ io.flutter.embedding.engine.loader.FlutterLoader:
     private static final java.lang.String TAG
     private static final java.lang.String OLD_GEN_HEAP_SIZE_META_DATA_KEY
     private static final java.lang.String ENABLE_SKPARAGRAPH_META_DATA_KEY
+    private static final java.lang.String LEAK_VM_META_DATA_KEY
     static final java.lang.String AOT_SHARED_LIBRARY_NAME
     static final java.lang.String AOT_VMSERVICE_SHARED_LIBRARY_NAME
     static final java.lang.String SNAPSHOT_ASSET_PATH_KEY
@@ -5266,6 +5319,10 @@ androidx.asynclayoutinflater.R$dimen
 androidx.appcompat.widget.AlertDialogLayout:
     public void <init>(android.content.Context)
 androidx.media.MediaSessionManagerImplBase
+com.onesignal.UserStatePushSynchronizer:
+    boolean getSubscribed()
+    java.lang.String getExternalId(boolean)
+    void logoutChannel()
 androidx.browser.customtabs.CustomTabsIntent:
     public static int getMaxToolbarItems()
     public static android.content.Intent setAlwaysUseBrowserUI(android.content.Intent)
@@ -5313,10 +5370,6 @@ androidx.browser.customtabs.CustomTabsIntent:
     public static final java.lang.String KEY_ID
     public static final int TOOLBAR_ACTION_BUTTON_ID
     private static final int MAX_TOOLBAR_ITEMS
-com.onesignal.UserStatePushSynchronizer:
-    boolean getSubscribed()
-    java.lang.String getExternalId(boolean)
-    void logoutChannel()
 androidx.core.view.ViewCompat$FocusDirection
 androidx.appcompat.view.menu.CascadingMenuPopup$HorizPosition
 kotlinx.coroutines.flow.EmptyFlow
@@ -5395,6 +5448,8 @@ com.google.common.primitives.UnsignedBytes$LexicographicalComparatorHolder$Unsaf
 com.google.android.gms.internal.location.zzw
 androidx.transition.GhostViewPort$1
 kotlin.io.ExceptionsKt
+kotlin.ContextFunctionTypeParams
+androidx.webkit.WebViewCompat
 androidx.slidingpanelayout.widget.SlidingPaneLayout
 kotlin.text.StringsKt___StringsKt$asIterable$$inlined$Iterable$1
 com.google.android.gms.internal.base.zai
@@ -5428,6 +5483,7 @@ com.google.common.collect.Iterators$6
 com.google.common.util.concurrent.Runnables$1
 kotlin.jvm.functions.Function22:
     public abstract java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)
+com.app.market_vendor.R$color
 android.support.v4.media.MediaBrowserCompatApi26$SubscriptionCallbackProxy
 com.google.common.io.MultiInputStream
 kotlinx.coroutines.flow.FlowKt__TransformKt$runningFold$$inlined$unsafeFlow$1
@@ -5436,6 +5492,7 @@ androidx.appcompat.graphics.drawable.DrawerArrowDrawable$ArrowDirection
 kotlinx.coroutines.debug.internal.ConcurrentWeakMap$Entry
 com.google.android.gms.dynamic.IFragmentWrapper
 com.google.android.gms.common.data.zac
+androidx.webkit.WebMessagePortCompat
 com.google.android.gms.common.api.DataBufferResponse
 kotlinx.coroutines.flow.FlowKt__ZipKt$combineTransform$$inlined$combineTransformUnsafe$FlowKt__ZipKt$3$1
 com.google.android.gms.tasks.zzv
@@ -5448,9 +5505,9 @@ androidx.work.impl.OperationImpl:
     public com.google.common.util.concurrent.ListenableFuture getResult()
     public androidx.lifecycle.LiveData getState()
 com.google.common.io.ByteSource$SlicedByteSource
+androidx.fragment.app.FragmentTabHost
 android.support.v4.media.MediaBrowserCompat$ItemReceiver:
     void <init>(java.lang.String,android.support.v4.media.MediaBrowserCompat$ItemCallback,android.os.Handler)
-androidx.fragment.app.FragmentTabHost
 com.google.common.util.concurrent.Partially
 javax.annotation.ParametersAreNullableByDefault
 kotlinx.coroutines.flow.FlowKt__EmittersKt$onEmpty$lambda-5$$inlined$collect$1
@@ -5459,6 +5516,9 @@ kotlin.time.TimeMark
 kotlin.jvm.internal.Ref$FloatRef
 com.google.firebase.FirebaseAppLifecycleListener
 io.flutter.embedding.engine.renderer.FlutterRenderer:
+    private void unregisterTexture(long)
+    static synthetic void access$600(io.flutter.embedding.engine.renderer.FlutterRenderer,long)
+    void removeOnTrimMemoryListener(io.flutter.view.TextureRegistry$OnTrimMemoryListener)
     public android.graphics.Bitmap getBitmap()
     public void setAccessibilityFeatures(int)
     public void dispatchSemanticsAction(int,int,java.nio.ByteBuffer,int)
@@ -5488,7 +5548,6 @@ kotlin.collections.GroupingKt
 androidx.work.impl.utils.LiveDataUtils$1
 kotlin.internal.RequireKotlin
 com.google.common.escape.Escapers$Builder$1
-com.app.market_vendor_app.BuildConfig
 com.google.android.gms.tasks.zzd:
     public final void zzc()
 com.onesignal.OneSignalNotificationManager:
@@ -5543,6 +5602,7 @@ androidx.vectordrawable.graphics.drawable.Animatable2Compat
 com.onesignal.OneSignalDbContract$InAppMessageTable
 io.flutter.embedding.engine.renderer.FlutterRenderer$ViewportMetrics:
     public static final int unsetValue
+androidx.webkit.WebMessagePortCompat$WebMessageCallbackCompat
 com.yalantis.ucrop.view.CropImageView:
     public void <init>(android.content.Context)
     public static final int DEFAULT_MAX_BITMAP_SIZE
@@ -5568,6 +5628,7 @@ androidx.core.graphics.PaintCompat
 javax.annotation.Nonnull
 com.google.common.collect.FilteredMultimapValues
 com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList
+dev.fluttercommunity.plus.packageinfo.R$integer
 kotlin.Result$Companion:
     private final java.lang.Object success(java.lang.Object)
     private final java.lang.Object failure(java.lang.Throwable)
@@ -5633,7 +5694,6 @@ kotlin.ranges.ComparableRange
 com.google.common.collect.MapMakerInternalMap$StrongKeyDummyValueEntry$Helper
 com.google.common.collect.MultimapBuilder$ArrayListSupplier
 kotlin.collections.UShortIterator
-com.app.market_vendor_app.R$anim
 androidx.core.content.pm.ShortcutInfoCompat
 androidx.asynclayoutinflater.R$attr
 com.google.android.gms.stats.R
@@ -6056,6 +6116,7 @@ androidx.core.app.AppOpsManagerCompat:
     public static final int MODE_IGNORED
     public static final int MODE_ERRORED
     public static final int MODE_DEFAULT
+dev.fluttercommunity.plus.packageinfo.R$string
 androidx.core.app.Person$Builder
 okhttp3.internal.ws.RealWebSocket$1
 androidx.multidex.R
@@ -6077,8 +6138,8 @@ com.google.android.datatransport.TransportFactory:
 kotlin.sequences.SequencesKt___SequencesKt$minus$1
 com.onesignal.PushRegistratorFCM:
     private static final java.lang.String FCM_APP_NAME
-androidx.media.MediaBrowserServiceCompatApi26
 com.google.android.gms.common.images.zaa
+androidx.media.MediaBrowserServiceCompatApi26
 com.google.common.util.concurrent.ExecutionSequencer$4
 android.support.v4.media.session.MediaSessionCompatApi22
 com.google.common.collect.LinkedListMultimap$KeyList
@@ -6105,9 +6166,7 @@ com.google.android.datatransport.runtime.scheduling.jobscheduling.SchedulerConfi
     private static final long BACKOFF_LOG_BASE
 com.google.common.graph.AbstractValueGraph
 io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding:
-    public abstract void addOnNewIntentListener(io.flutter.plugin.common.PluginRegistry$NewIntentListener)
     public abstract void removeOnNewIntentListener(io.flutter.plugin.common.PluginRegistry$NewIntentListener)
-    public abstract void addOnUserLeaveHintListener(io.flutter.plugin.common.PluginRegistry$UserLeaveHintListener)
     public abstract void removeOnUserLeaveHintListener(io.flutter.plugin.common.PluginRegistry$UserLeaveHintListener)
     public abstract void addOnSaveStateListener(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding$OnSaveInstanceStateListener)
     public abstract void removeOnSaveStateListener(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding$OnSaveInstanceStateListener)
@@ -6141,6 +6200,7 @@ kotlinx.coroutines.scheduling.CoroutineScheduler:
     private static final long PARKED_VERSION_MASK
     private static final long PARKED_VERSION_INC
 com.google.android.gms.common.util.SharedPreferencesUtils
+com.iyaffle.launchreview.R
 kotlinx.coroutines.channels.ActorScope$DefaultImpls
 com.onesignal.shortcutbadger.util.BroadcastHelper:
     public void <init>()
@@ -6274,6 +6334,9 @@ androidx.core.internal.view.SupportMenu:
     public static final int CATEGORY_SHIFT
     public static final int SUPPORTED_MODIFIERS_MASK
     public static final int FLAG_KEEP_OPEN_ON_SUBMENU_OPENED
+io.flutter.plugin.platform.PlatformView:
+    public void onInputConnectionLocked()
+    public void onInputConnectionUnlocked()
 kotlin.streams.jdk8.StreamsKt
 com.google.common.collect.Multimaps
 kotlin.coroutines.CoroutineContextImplKt
@@ -6306,7 +6369,12 @@ com.google.common.primitives.UnsignedBytes$LexicographicalComparatorHolder$PureJ
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenBy$1
 okio.ForwardingTimeout:
     public long timeoutNanos()
+com.iyaffle.launchreview.R$integer
 kotlinx.coroutines.flow.FlowKt__TransformKt$withIndex$lambda-7$$inlined$collect$1
+androidx.webkit.internal.WebViewGlueCommunicator:
+    private void <init>()
+    private static final java.lang.String GLUE_FACTORY_PROVIDER_FETCHER_CLASS
+    private static final java.lang.String GLUE_FACTORY_PROVIDER_FETCHER_METHOD
 com.google.android.datatransport.runtime.dagger.multibindings.LongKey
 androidx.viewpager.widget.ViewPager$SimpleOnPageChangeListener
 com.google.common.eventbus.Dispatcher$LegacyAsyncDispatcher$EventWithSubscriber
@@ -6323,10 +6391,10 @@ kotlinx.coroutines.internal.LockFreeLinkedListNode$makeCondAddOp$1
 com.google.android.gms.internal.location.zzv
 com.google.common.cache.RemovalCause$3
 io.flutter.plugins.sharedpreferences.R
+com.google.android.gms.maps.zzt
 android.support.v4.media.MediaBrowserCompat$ItemCallback:
     public void <init>()
     final java.lang.Object mItemCallbackObj
-com.google.android.gms.maps.zzt
 javax.annotation.meta.TypeQualifierNickname
 kotlinx.coroutines.selects.WhileSelectKt
 com.google.common.collect.AbstractMapBasedMultimap$AsMap$AsMapIterator
@@ -6427,8 +6495,8 @@ io.flutter.view.FlutterNativeView$1
 kotlin.UByteArray$Iterator
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$nullsFirst$1
 kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1
-kotlinx.coroutines.channels.ArrayBroadcastChannel$Subscriber
 kotlinx.coroutines.sync.Mutex$DefaultImpls
+kotlinx.coroutines.channels.ArrayBroadcastChannel$Subscriber
 com.google.common.hash.MessageDigestHashFunction$MessageDigestHasher
 androidx.core.graphics.drawable.IconCompat:
     public static androidx.core.graphics.drawable.IconCompat createWithResource(android.content.Context,int)
@@ -6518,6 +6586,7 @@ io.flutter.embedding.android.FlutterActivity:
     public static io.flutter.embedding.android.FlutterActivity$NewEngineIntentBuilder withNewEngine()
     public static io.flutter.embedding.android.FlutterActivity$CachedEngineIntentBuilder withCachedEngine(java.lang.String)
     void setDelegate(io.flutter.embedding.android.FlutterActivityAndFragmentDelegate)
+    public io.flutter.embedding.android.ExclusiveAppComponent getExclusiveAppComponent()
     public void updateSystemUiOverlays()
     private static final java.lang.String TAG
 com.google.common.collect.LinkedHashMultimap$ValueEntry
@@ -6542,6 +6611,7 @@ androidx.core.internal.view.SupportMenuItem:
     public static final int SHOW_AS_ACTION_ALWAYS
     public static final int SHOW_AS_ACTION_WITH_TEXT
     public static final int SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
+dev.fluttercommunity.plus.packageinfo.R$layout
 com.google.common.base.Optional
 com.google.common.primitives.ImmutableIntArray$AsList
 okhttp3.CacheControl$Builder:
@@ -6576,7 +6646,9 @@ com.google.common.collect.ImmutableSortedMap$1
 kotlinx.coroutines.flow.FlowKt__EmittersKt$onEmpty$$inlined$unsafeFlow$1$1
 com.google.common.util.concurrent.AbstractCatchingFuture$CatchingFuture
 androidx.asynclayoutinflater.R$styleable
+androidx.webkit.WebSettingsCompat
 com.google.android.gms.common.data.DataBufferRef
+com.iyaffle.launchreview.R$style
 android.support.v4.media.MediaBrowserCompat$MediaBrowserImplBase
 kotlin.sequences.SequencesKt___SequencesKt$runningFold$1
 com.google.common.collect.TreeRangeSet$ComplementRangesByLowerBound
@@ -6645,6 +6717,8 @@ io.flutter.embedding.engine.FlutterShellArgs:
     public static final java.lang.String ARG_OBSERVATORY_PORT
     public static final java.lang.String ARG_KEY_DART_FLAGS
     public static final java.lang.String ARG_DART_FLAGS
+    public static final java.lang.String ARG_KEY_MSAA_SAMPLES
+    public static final java.lang.String ARG_MSAA_SAMPLES
 com.google.firebase.messaging.FcmExecutors:
     static java.util.concurrent.Executor newRpcTasksExecutor()
     static java.util.concurrent.ExecutorService newFileExecutor()
@@ -6937,6 +7011,7 @@ com.google.common.collect.Synchronized$SynchronizedSortedMap
 com.google.common.collect.ObjectArrays
 androidx.vectordrawable.R
 com.google.errorprone.annotations.CompatibleWith
+androidx.webkit.internal.ServiceWorkerClientAdapter
 com.google.common.io.FileBackedOutputStream$1
 com.google.common.io.BaseEncoding$StandardBaseEncoding
 com.onesignal.HMSLocationController:
@@ -7046,6 +7121,9 @@ kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenDescending$1
 androidx.asynclayoutinflater.view.AsyncLayoutInflater$1
 androidx.core.content.pm.PackageInfoCompat$Api28Impl
 com.google.android.gms.location.zzg
+io.flutter.plugins.webviewflutter.WebViewHostApiImpl$InputAwareWebViewPlatformView:
+    public void onInputConnectionLocked()
+    public void onInputConnectionUnlocked()
 com.google.common.collect.ImmutableSortedSet$Builder
 com.google.common.util.concurrent.Service$State$5
 kotlin.time.ExperimentalTime
@@ -7138,8 +7216,6 @@ com.google.android.datatransport.runtime.dagger.internal.Preconditions:
     public static java.lang.Object checkNotNull(java.lang.Object,java.lang.String,java.lang.Object)
     private void <init>()
 com.google.common.net.HostAndPort
-io.flutter.plugin.platform.SingleViewPresentation$WindowManagerHandler:
-    private static final java.lang.String TAG
 com.google.firebase.messaging.FirebaseMessaging:
     public static synchronized com.google.firebase.messaging.FirebaseMessaging getInstance()
     static synchronized void clearStoreForTest()
@@ -7398,6 +7474,7 @@ androidx.transition.Transition$EpicenterCallback:
 com.google.android.gms.common.api.internal.zab
 com.google.common.collect.Lists$TransformingRandomAccessList
 com.google.common.collect.DiscreteDomain$1
+androidx.webkit.internal.WebMessagePortImpl
 androidx.sqlite.db.SupportSQLiteProgram:
     public abstract void clearBindings()
 kotlin.sequences.SequencesKt__SequencesKt:
@@ -7530,6 +7607,7 @@ io.flutter.embedding.engine.plugins.PluginRegistry:
     public abstract void removeAll()
 androidx.appcompat.widget.AppCompatImageHelper:
     void setInternalImageTint(android.content.res.ColorStateList)
+androidx.webkit.R$integer
 kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineFromSuspendFunction$1
 com.google.android.gms.maps.model.CircleOptions:
     public final com.google.android.gms.maps.model.CircleOptions strokePattern(java.util.List)
@@ -7548,6 +7626,8 @@ androidx.cardview.R$attr:
     public static final int contentPaddingLeft
     public static final int contentPaddingRight
     public static final int contentPaddingTop
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$CookieManagerHostApi$1:
+    public void error(java.lang.Throwable)
 com.google.common.io.FileBackedOutputStream
 android.support.v4.media.session.MediaSessionCompatApi21
 com.google.common.io.LineProcessor
@@ -7858,6 +7938,7 @@ com.google.android.gms.common.api.BatchResultToken
 kotlin.properties.Delegates$observable$1
 androidx.core.R$string
 com.google.firebase.installations.R
+androidx.fragment.app.FragmentResultOwner
 android.support.v4.media.MediaBrowserCompat$MediaItem:
     public static android.support.v4.media.MediaBrowserCompat$MediaItem fromMediaItem(java.lang.Object)
     public static java.util.List fromMediaItemList(java.util.List)
@@ -7869,7 +7950,6 @@ android.support.v4.media.MediaBrowserCompat$MediaItem:
     public java.lang.String getMediaId()
     public static final int FLAG_BROWSABLE
     public static final int FLAG_PLAYABLE
-androidx.fragment.app.FragmentResultOwner
 com.google.android.gms.maps.internal.zzx
 com.google.android.gms.common.server.response.FastJsonResponse
 com.onesignal.shortcutbadger.impl.NovaHomeBadger:
@@ -8099,6 +8179,7 @@ kotlin.io.ByteStreamsKt$iterator$1
 kotlin.coroutines.jvm.internal.RunSuspend
 com.tekartik.sqflite.Database:
     public boolean enableWriteAheadLogging()
+androidx.webkit.WebViewClientCompat$SafeBrowsingThreat
 androidx.coordinatorlayout.widget.CoordinatorLayout$SavedState
 kotlinx.coroutines.flow.FlowKt__ReduceKt$first$$inlined$collectWhile$2
 androidx.localbroadcastmanager.content.LocalBroadcastManager$ReceiverRecord
@@ -8107,6 +8188,7 @@ com.google.android.gms.common.internal.service.zah
 androidx.transition.R$layout
 kotlin.collections.ArrayDeque$Companion
 kotlinx.coroutines.flow.FlowKt__TransformKt$filterIsInstance$$inlined$filter$1$2
+androidx.webkit.internal.ServiceWorkerControllerImpl
 com.google.firebase.installations.internal.FidListenerHandle
 com.google.common.util.concurrent.ServiceManager$2
 androidx.documentfile.provider.RawDocumentFile
@@ -8187,6 +8269,10 @@ vn.hunghd.flutter.plugins.imagecropper.ImageCropperPlugin:
     private static final java.lang.String CHANNEL
 com.google.common.collect.Sets$PowerSet
 com.google.common.collect.StandardTable$RowMap$EntrySet
+io.flutter.plugins.webviewflutter.R$color
+androidx.webkit.internal.SafeBrowsingResponseImpl:
+    public void proceed(boolean)
+    public void backToSafety(boolean)
 com.google.common.collect.ArrayTable$2
 androidx.core.widget.PopupWindowCompat:
     private void <init>()
@@ -8195,6 +8281,7 @@ androidx.core.widget.PopupWindowCompat:
     private static final java.lang.String TAG
     private static java.lang.reflect.Method sGetWindowLayoutTypeMethod
     private static boolean sGetWindowLayoutTypeMethodAttempted
+androidx.webkit.ServiceWorkerWebSettingsCompat
 io.flutter.app.FlutterActivityDelegate
 androidx.core.content.pm.PermissionInfoCompat
 com.google.common.graph.Graphs$NodeVisitState
@@ -8445,6 +8532,7 @@ androidx.lifecycle.AbstractSavedStateViewModelFactory
 androidx.transition.GhostView
 com.google.common.collect.Comparators
 com.google.common.collect.ImmutableSet$SerializedForm
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$JavaObjectHostApi
 androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback
 androidx.lifecycle.Lifecycling$1:
     void <init>(androidx.lifecycle.LifecycleEventObserver)
@@ -8494,6 +8582,7 @@ kotlin.reflect.KType:
     public abstract java.util.List getArguments()
     public abstract boolean isMarkedNullable()
 com.google.common.collect.LinkedHashMultimap
+com.app.market_vendor.R$string
 kotlinx.coroutines.flow.FlowKt__ErrorsKt$onErrorCollect$2
 com.google.common.collect.Lists$StringAsImmutableList
 androidx.transition.Slide$1
@@ -8607,6 +8696,7 @@ kotlin.jvm.internal.Intrinsics:
 com.google.common.primitives.Booleans
 com.google.android.datatransport.runtime.dagger.internal.AbstractMapFactory
 com.google.common.collect.FilteredKeySetMultimap$EntrySet
+androidx.annotation.OpenForTesting
 kotlinx.coroutines.flow.FlowKt__CollectKt$collect$3
 okhttp3.internal.Version:
     private void <init>()
@@ -9140,6 +9230,7 @@ kotlinx.coroutines.flow.SubscribedFlowCollector$onSubscription$1
 com.google.common.io.CountingInputStream
 kotlin.sequences.SequencesKt___SequencesKt$runningReduce$1
 kotlinx.coroutines.internal.ConcurrentLinkedListKt
+androidx.webkit.WebSettingsCompat$MenuItemFlags
 com.google.common.util.concurrent.Striped$PaddedLock
 vn.hunghd.flutter.plugins.imagecropper.R$drawable
 androidx.fragment.app.DialogFragment:
@@ -9176,6 +9267,7 @@ com.google.android.gms.location.Geofence
 kotlinx.coroutines.CancellableContinuation$DefaultImpls:
     public static synthetic boolean cancel$default(kotlinx.coroutines.CancellableContinuation,java.lang.Throwable,int,java.lang.Object)
 com.google.android.datatransport.runtime.dagger.multibindings.ClassKey
+org.chromium.support_lib_boundary.util.BoundaryInterfaceReflectionUtil$InvocationHandlerWithDelegateGetter
 androidx.browser.trusted.Token
 kotlinx.coroutines.flow.FlowKt__LimitKt$transformWhile$1$invokeSuspend$$inlined$collectWhile$1$1
 com.google.common.reflect.TypeToken$TypeCollector
@@ -9447,7 +9539,10 @@ kotlin.jvm.internal.MutablePropertyReference0Impl
 com.google.common.collect.StandardTable$CellIterator
 kotlin.collections.EmptyList:
     private final java.lang.Object readResolve()
+    public boolean add(java.lang.Void)
+    public void add(int,java.lang.Void)
     public java.lang.Void remove(int)
+    public java.lang.Void set(int,java.lang.Void)
     private static final long serialVersionUID
 com.google.common.hash.MessageDigestHashFunction$SerializedForm
 com.google.android.gms.maps.internal.ILocationSourceDelegate$zza
@@ -9517,6 +9612,7 @@ androidx.work.impl.workers.ConstraintTrackingWorker:
     public androidx.work.ListenableWorker getDelegate()
     public static final java.lang.String ARGUMENT_CLASS_NAME
 kotlin.collections.AbstractMutableSet
+io.flutter.plugins.webviewflutter.R$attr
 org.jetbrains.annotations.Nls
 com.google.common.cache.LongAddables
 kotlinx.coroutines.flow.StartedLazily
@@ -9528,6 +9624,8 @@ android.support.v4.media.session.PlaybackStateCompat$CustomAction$Builder
 androidx.appcompat.widget.ButtonBarLayout:
     private static final int PEEK_BUTTON_DP
 com.google.common.cache.LocalCache$WriteQueue
+androidx.appcompat.widget.RtlSpacingHelper:
+    public static final int UNDEFINED
 androidx.browser.customtabs.CustomTabsIntent$Builder:
     public void <init>()
     public androidx.browser.customtabs.CustomTabsIntent$Builder setPendingSession(androidx.browser.customtabs.CustomTabsSession$PendingSession)
@@ -9553,8 +9651,6 @@ androidx.browser.customtabs.CustomTabsIntent$Builder:
     public androidx.browser.customtabs.CustomTabsIntent$Builder setColorScheme(int)
     public androidx.browser.customtabs.CustomTabsIntent$Builder setColorSchemeParams(int,androidx.browser.customtabs.CustomTabColorSchemeParams)
     public androidx.browser.customtabs.CustomTabsIntent$Builder setDefaultColorSchemeParams(androidx.browser.customtabs.CustomTabColorSchemeParams)
-androidx.appcompat.widget.RtlSpacingHelper:
-    public static final int UNDEFINED
 com.onesignal.UserStateEmail:
     boolean isSubscribed()
     private static final java.lang.String EMAIL
@@ -9627,8 +9723,8 @@ androidx.core.app.NotificationManagerCompat:
     public static final int IMPORTANCE_HIGH
     public static final int IMPORTANCE_MAX
 com.google.common.base.FunctionalEquivalence
-android.support.customtabs.IPostMessageService
 androidx.appcompat.app.NavItemSelectedListener
+android.support.customtabs.IPostMessageService
 androidx.core.app.NotificationManagerCompat$CancelTask:
     void <init>(java.lang.String)
 androidx.core.view.WindowInsetsAnimationControllerCompat
@@ -9754,6 +9850,7 @@ kotlin.coroutines.ContinuationKt$Continuation$1
 kotlinx.coroutines.flow.FlowKt__MergeKt$flatMapConcat$$inlined$map$1$2
 com.google.common.base.CharMatcher$1
 com.google.common.util.concurrent.ExecutionList
+io.flutter.plugins.webviewflutter.JavaObjectHostApiImpl
 com.google.android.gms.common.api.internal.TaskApiCall$Builder:
     private void <init>()
     public com.google.android.gms.common.api.internal.TaskApiCall$Builder execute(com.google.android.gms.common.util.BiConsumer)
@@ -9803,7 +9900,6 @@ android.support.v4.media.MediaMetadataCompat$LongKey
 com.google.android.gms.location.ActivityRecognition$zza
 com.google.common.util.concurrent.Striped$CompactStriped
 io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets:
-    public abstract java.lang.String getAssetFilePathByName(java.lang.String)
     public abstract java.lang.String getAssetFilePathByName(java.lang.String,java.lang.String)
     public abstract java.lang.String getAssetFilePathBySubpath(java.lang.String)
     public abstract java.lang.String getAssetFilePathBySubpath(java.lang.String,java.lang.String)
@@ -9817,6 +9913,7 @@ com.google.common.graph.MutableNetwork
 com.google.android.gms.cloudmessaging.R
 kotlinx.coroutines.flow.StateFlowSlot
 androidx.annotation.experimental.Experimental$Level
+dev.fluttercommunity.plus.packageinfo.R$attr
 com.google.common.hash.AbstractNonStreamingHashFunction
 kotlin.ranges.URangesKt
 com.google.common.collect.Sets$SetView
@@ -9853,9 +9950,11 @@ javax.annotation.Nonnull$Checker
 kotlin.NumbersKt__BigDecimalsKt
 kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask
 kotlin.UInt$Companion
+androidx.webkit.internal.WebMessageCallbackAdapter
 com.google.common.collect.ArrayTable$3
 com.google.common.graph.Graphs$TransposedGraph
 kotlinx.coroutines.flow.internal.SafeCollector_commonKt$unsafeFlow$1
+com.app.market_vendor.R$xml
 com.google.common.hash.LittleEndianByteArray$UnsafeByteArray$3
 okhttp3.internal.http2.Http2Connection$Builder:
     public okhttp3.internal.http2.Http2Connection$Builder socket(java.net.Socket)
@@ -9895,6 +9994,7 @@ androidx.media.MediaBrowserServiceCompat$ServiceCallbacks
 okhttp3.internal.cache.DiskLruCache$1
 androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener
 io.flutter.plugins.googlemaps.R$attr
+androidx.webkit.ServiceWorkerControllerCompat$LAZY_HOLDER
 com.google.android.datatransport.runtime.dagger.internal.MapProviderFactory$Builder
 androidx.customview.widget.FocusStrategy$SequentialComparator
 android.support.v4.media.session.IMediaSession$Stub:
@@ -10123,6 +10223,8 @@ androidx.room.RoomMasterTable:
     public static final java.lang.String DEFAULT_ID
     public static final java.lang.String CREATE_QUERY
     public static final java.lang.String READ_QUERY
+io.flutter.view.TextureRegistry$SurfaceTextureEntry:
+    public abstract void release()
 kotlinx.coroutines.ResumeAwaitOnCompletion
 androidx.core.graphics.BlendModeCompat
 kotlin.sequences.SequencesKt__SequencesKt$flatten$2
@@ -10609,6 +10711,7 @@ androidx.core.view.WindowInsetsCompat$BuilderImpl29:
 com.google.common.util.concurrent.ServiceManager$ServiceManagerState$StoppedGuard
 com.google.common.collect.Iterators$2
 androidx.room.Query
+androidx.annotation.Discouraged
 kotlin.collections.ArraysKt:
     private void <init>()
 kotlinx.coroutines.channels.BroadcastKt
@@ -10881,12 +10984,15 @@ kotlinx.coroutines.channels.TickerChannelsKt
 androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs
 com.google.common.cache.LongAdder
 okhttp3.internal.ws.RealWebSocket$CancelRunnable
+io.flutter.plugins.webviewflutter.DisplayListenerProxy:
+    private static final java.lang.String TAG
 kotlinx.coroutines.SupervisorJobImpl
 io.flutter.plugin.common.JSONUtil:
     private void <init>()
     public static java.lang.Object unwrap(java.lang.Object)
 kotlin.jvm.internal.TypeParameterReference$Companion
 com.google.android.gms.location.GeofenceStatusCodes
+androidx.webkit.ServiceWorkerControllerCompat
 com.google.android.gms.common.internal.safeparcel.SafeParcelWriter:
     private void <init>()
     public static void writeBigDecimal(android.os.Parcel,int,java.math.BigDecimal,boolean)
@@ -11129,13 +11235,17 @@ androidx.core.widget.AutoSizeableTextView:
     public abstract int getAutoSizeMinTextSize()
     public abstract int getAutoSizeMaxTextSize()
     public abstract int[] getAutoSizeTextAvailableSizes()
-androidx.browser.browseractions.BrowserActionsIntent
+androidx.webkit.internal.WebViewProviderFactory:
+    public abstract org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface createWebView(android.webkit.WebView)
+    public abstract org.chromium.support_lib_boundary.StaticsBoundaryInterface getStatics()
+    public abstract org.chromium.support_lib_boundary.ServiceWorkerControllerBoundaryInterface getServiceWorkerController()
 androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter:
     public androidx.appcompat.view.menu.MenuView getMenuView(android.view.ViewGroup)
     public void setCallback(androidx.appcompat.view.menu.MenuPresenter$Callback)
     public int getId()
     public android.os.Parcelable onSaveInstanceState()
     public void onRestoreInstanceState(android.os.Parcelable)
+androidx.browser.browseractions.BrowserActionsIntent
 com.google.common.collect.ImmutableRangeMap
 kotlinx.coroutines.channels.AbstractChannel$onReceiveCatching$1
 androidx.appcompat.view.menu.MenuHelper
@@ -11365,7 +11475,6 @@ com.google.common.util.concurrent.AggregateFutureState$SynchronizedAtomicHelper
 com.onesignal.R$integer
 com.google.android.gms.internal.common.zzab
 androidx.core.telephony.TelephonyManagerCompat$Api30Impl
-com.app.market_vendor_app.R$integer
 com.onesignal.flutter.R$style
 androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter
 com.google.common.collect.Maps$3
@@ -11385,6 +11494,7 @@ androidx.room.Fts4
 androidx.versionedparcelable.ParcelImpl:
     public void <init>(androidx.versionedparcelable.VersionedParcelable)
     public androidx.versionedparcelable.VersionedParcelable getVersionedParcel()
+io.flutter.plugins.webviewflutter.R$id
 com.google.common.util.concurrent.CombinedFuture
 com.google.common.collect.AbstractMapBasedMultiset$2
 androidx.appcompat.app.AppCompatDialog:
@@ -11396,6 +11506,7 @@ kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$combineUnsafe$FlowKt__Zip
 androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs
 io.flutter.view.AccessibilityBridge$SemanticsNode:
     private void log(java.lang.String,boolean)
+androidx.webkit.internal.WebMessagePortImpl$2
 androidx.work.impl.WorkRequestHolder
 androidx.lifecycle.runtime.R
 androidx.core.os.ExecutorCompat:
@@ -11457,6 +11568,7 @@ androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState:
     boolean wasLastOpen
     android.os.Bundle frozenMenuState
 androidx.core.app.DialogCompat
+androidx.webkit.WebViewFeature$WebViewSupportFeature
 com.onesignal.RootToolsInternalMethods:
     void <init>()
 androidx.core.content.pm.ShortcutManagerCompat$ShortcutMatchFlags
@@ -11470,6 +11582,8 @@ kotlin.sequences.TakeWhileSequence$iterator$1
 kotlin.jvm.internal.CollectionToArray:
     private static final java.lang.Object[] toArrayImpl(java.util.Collection,kotlin.jvm.functions.Function0,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function2)
     private static final int MAX_SIZE
+dev.fluttercommunity.plus.packageinfo.PackageInfoPlugin:
+    private static final java.lang.String CHANNEL_NAME
 kotlin.reflect.KProperty0$Getter
 com.google.common.base.ExtraObjectsMethodsForWeb
 kotlin.text.StringsKt__StringsJVMKt:
@@ -11585,6 +11699,7 @@ androidx.core.os.HandlerCompat$Api28Impl:
     private void <init>()
     public static android.os.Handler createAsync(android.os.Looper,android.os.Handler$Callback)
     public static boolean postDelayed(android.os.Handler,java.lang.Runnable,java.lang.Object,long)
+com.iyaffle.launchreview.R$attr
 com.google.common.hash.ChecksumHashFunction$1
 io.flutter.plugins.flutter_plugin_android_lifecycle.R$style
 io.flutter.plugin.common.MethodCall:
@@ -11787,9 +11902,10 @@ io.flutter.plugins.pathprovider.R$dimen
 com.google.android.gms.actions.SearchIntents
 android.support.v4.media.MediaBrowserCompat$ConnectionCallback
 com.google.common.collect.Multiset$Entry
+com.app.market_vendor.R$anim
 kotlin.jvm.internal.Ref$BooleanRef
-com.google.android.gms.common.api.internal.OptionalPendingResultImpl
 android.support.v4.media.MediaBrowserCompat$MediaBrowserImplApi26
+com.google.android.gms.common.api.internal.OptionalPendingResultImpl
 io.flutter.embedding.android.FlutterSplashView:
     public void <init>(android.content.Context,android.util.AttributeSet)
 com.google.common.math.LongMath$1
@@ -11915,6 +12031,8 @@ okhttp3.Request$Builder:
     public okhttp3.Request$Builder tag(java.lang.Object)
     public okhttp3.Request$Builder tag(java.lang.Class,java.lang.Object)
 com.google.firebase.annotations.DeferredApi
+androidx.webkit.internal.WebViewGlueCommunicator$LAZY_FACTORY_HOLDER:
+    private void <init>()
 androidx.annotation.RequiresOptIn
 com.google.android.gms.common.api.Batch$Builder
 com.google.common.io.ByteArrayDataInput
@@ -12012,6 +12130,7 @@ com.google.common.io.ByteSink$1
 com.onesignal.NotificationPayloadProcessorHMS:
     void <init>()
     public static void processDataMessageReceived(android.content.Context,java.lang.String)
+androidx.webkit.WebViewCompat$1
 com.google.common.io.Closer$SuppressingSuppressor
 com.google.common.reflect.Types$JavaVersion$4
 kotlinx.coroutines.TimeoutCoroutine
@@ -12211,6 +12330,7 @@ androidx.appcompat.widget.SuggestionsAdapter:
     static final int REFINE_ALL
     static final int INVALID_INDEX
 com.google.android.gms.common.data.FreezableUtils
+androidx.webkit.R$style
 kotlin.UseExperimental
 com.google.common.collect.ImmutableClassToInstanceMap$1
 com.google.common.collect.Iterables$10
@@ -12241,6 +12361,7 @@ com.google.common.collect.ImmutableSetMultimap$Builder
 okhttp3.WebSocket$Factory
 com.google.common.collect.Maps$ViewCachingAbstractMap
 kotlinx.coroutines.flow.FlowKt__BuildersKt$flowOf$$inlined$unsafeFlow$1
+io.flutter.plugins.webviewflutter.FlutterAssetManager$RegistrarFlutterAssetManager
 com.google.common.collect.AbstractTable$CellSet
 kotlin.internal.RequireKotlin$Container
 androidx.legacy.coreutils.R$dimen
@@ -12258,7 +12379,6 @@ okhttp3.internal.http1.Http1Codec$ChunkedSource:
     private static final long NO_CHUNK_YET
 okhttp3.Cache$1
 com.google.common.collect.ConcurrentHashMultiset$2
-com.app.market_vendor_app.R$xml
 com.google.common.collect.TreeRangeMap$SubRangeMap$SubRangeMapAsMap$1
 kotlinx.coroutines.flow.FlowKt__ZipKt$combine$6$2
 androidx.activity.R$string
@@ -12590,6 +12710,8 @@ kotlin.SafePublicationLazyImpl
 kotlin.time.DurationUnitKt__DurationUnitJvmKt
 com.google.common.io.ByteProcessor
 kotlin.coroutines.jvm.internal.RestrictedSuspendLambda
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView:
+    public void <init>()
 androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$4
 okio.package-info
 com.google.common.collect.Tables$TransposeTable
@@ -12656,6 +12778,7 @@ kotlinx.coroutines.flow.FlowKt__EmittersKt$unsafeTransform$lambda-1$$inlined$col
 kotlin.annotation.MustBeDocumented
 com.google.firebase.encoders.proto.AtProtobuf:
     public com.google.firebase.encoders.proto.AtProtobuf intEncoding(com.google.firebase.encoders.proto.Protobuf$IntEncoding)
+androidx.webkit.internal.WebSettingsAdapter
 kotlin.reflect.KFunction$DefaultImpls
 kotlinx.coroutines.flow.internal.NopCollector
 com.google.common.collect.CompoundOrdering
@@ -12830,6 +12953,7 @@ kotlin.text.StringsKt__StringsKt:
 androidx.core.telephony.TelephonyManagerCompat
 com.google.common.reflect.ClassPath$ClassInfo
 com.google.common.collect.FluentIterable$3$1
+androidx.webkit.internal.WebMessagePortImpl$1
 com.google.android.gms.location.zzd
 androidx.swiperefreshlayout.widget.SwipeRefreshLayout$OnChildScrollUpCallback
 androidx.appcompat.view.menu.BaseMenuPresenter:
@@ -12848,7 +12972,38 @@ okhttp3.internal.platform.Platform:
     public static final int WARN
 androidx.browser.customtabs.CustomTabsService$1
 com.google.android.gms.common.internal.zam
-io.flutter.view.FlutterNativeView
+io.flutter.view.FlutterNativeView:
+    public void <init>(android.content.Context)
+    public void <init>(android.content.Context,boolean)
+    public static java.lang.String getObservatoryUri()
+    private void attach(io.flutter.view.FlutterNativeView)
+    static synthetic io.flutter.view.FlutterView access$000(io.flutter.view.FlutterNativeView)
+    static synthetic io.flutter.app.FlutterPluginRegistry access$200(io.flutter.view.FlutterNativeView)
+    public void detachFromFlutterView()
+    public void destroy()
+    public io.flutter.embedding.engine.dart.DartExecutor getDartExecutor()
+    public io.flutter.app.FlutterPluginRegistry getPluginRegistry()
+    public void attachViewAndActivity(io.flutter.view.FlutterView,android.app.Activity)
+    public boolean isAttached()
+    public void assertAttached()
+    public void runFromBundle(io.flutter.view.FlutterRunArguments)
+    public boolean isApplicationRunning()
+    public io.flutter.plugin.common.BinaryMessenger$TaskQueue makeBackgroundTaskQueue(io.flutter.plugin.common.BinaryMessenger$TaskQueueOptions)
+    public void send(java.lang.String,java.nio.ByteBuffer)
+    public void send(java.lang.String,java.nio.ByteBuffer,io.flutter.plugin.common.BinaryMessenger$BinaryReply)
+    public void setMessageHandler(java.lang.String,io.flutter.plugin.common.BinaryMessenger$BinaryMessageHandler)
+    public void setMessageHandler(java.lang.String,io.flutter.plugin.common.BinaryMessenger$BinaryMessageHandler,io.flutter.plugin.common.BinaryMessenger$TaskQueue)
+    public void enableBufferingIncomingMessages()
+    public void disableBufferingIncomingMessages()
+    io.flutter.embedding.engine.FlutterJNI getFlutterJNI()
+    private final io.flutter.app.FlutterPluginRegistry mPluginRegistry
+    private final io.flutter.embedding.engine.dart.DartExecutor dartExecutor
+    private io.flutter.view.FlutterView mFlutterView
+    private final io.flutter.embedding.engine.FlutterJNI mFlutterJNI
+    private final android.content.Context mContext
+    private boolean applicationIsRunning
+    private final io.flutter.embedding.engine.renderer.FlutterUiDisplayListener flutterUiDisplayListener
+    private static final java.lang.String TAG
 androidx.transition.GhostViewUtils
 kotlinx.coroutines.flow.FlowKt__ZipKt$combineTransform$7$1
 com.google.common.collect.LinkedListMultimap$1ValuesImpl$1
@@ -13542,6 +13697,7 @@ com.google.android.gms.maps.StreetViewPanoramaFragment
 kotlinx.coroutines.flow.FlowKt__ZipKt$combineTransform$$inlined$combineTransformUnsafe$FlowKt__ZipKt$4$1
 com.google.android.gms.common.ProGuardCanary
 androidx.slidingpanelayout.R$style
+androidx.annotation.NonUiContext
 com.google.android.gms.maps.LocationSource$OnLocationChangedListener
 com.google.common.reflect.Types$ClassOwnership$1LocalClass
 androidx.work.impl.model.WorkTypeConverters$BackoffPolicyIds
@@ -13576,10 +13732,12 @@ io.flutter.plugins.googlemaps.GoogleMapsPlugin:
 kotlinx.coroutines.flow.FlowKt__ReduceKt$reduce$$inlined$collect$1
 io.flutter.plugin.editing.ListenableEditingState:
     private static final java.lang.String TAG
+com.app.market_vendor.R$bool
+androidx.annotation.DisplayContext
 androidx.core.text.util.LinkifyCompat$LinkifyMask
 androidx.media.MediaBrowserServiceCompatApi21$ResultWrapper
 com.google.android.gms.common.images.ImageManager
-com.app.market_vendor_app.R$bool
+com.app.market_vendor.R$menu
 com.google.common.base.Ascii
 androidx.appcompat.widget.PopupMenu$OnDismissListener
 android.support.v4.media.MediaBrowserCompat$MediaBrowserImplApi21$3
@@ -13590,7 +13748,6 @@ com.google.android.gms.common.internal.GmsClientSupervisor:
     public void unbindService(java.lang.String,android.content.ServiceConnection,java.lang.String)
     public boolean bindService(android.content.ComponentName,android.content.ServiceConnection,java.lang.String)
     public boolean bindService(java.lang.String,android.content.ServiceConnection,java.lang.String)
-com.app.market_vendor_app.R$menu
 com.google.common.math.LongMath$MillerRabinTester$1
 androidx.core.location.LocationManagerCompat$GnssStatusTransport
 com.google.common.math.DoubleMath$1
@@ -13614,7 +13771,6 @@ kotlinx.coroutines.scheduling.TasksKt:
     public static final int TASK_PROBABLY_BLOCKING
 kotlin.coroutines.CombinedContext$Serialized
 com.google.common.base.CharMatcher$Any
-com.app.market_vendor_app.R$mipmap
 com.google.common.cache.LocalCache$Segment$1
 kotlin.jvm.JvmMultifileClass
 kotlin.internal.ProgressionUtilKt:
@@ -13904,9 +14060,9 @@ kotlinx.coroutines.Job:
     public abstract kotlinx.coroutines.DisposableHandle invokeOnCompletion(kotlin.jvm.functions.Function1)
     public abstract kotlinx.coroutines.Job plus(kotlinx.coroutines.Job)
 com.google.common.util.concurrent.CycleDetectingLockFactory$Policies$3
-androidx.media.MediaBrowserServiceCompat$ServiceBinderImpl
 com.google.android.gms.tasks.zzp:
     public final void zzc()
+androidx.media.MediaBrowserServiceCompat$ServiceBinderImpl
 com.google.common.eventbus.EventBus$LoggingHandler
 kotlin.text.CharCategory$Companion
 kotlinx.coroutines.flow.FlowKt__TransformKt$filter$$inlined$unsafeTransform$1$2$1
@@ -13932,7 +14088,6 @@ kotlin.collections.AbstractMutableMap
 io.flutter.embedding.android.KeyboardManager:
     private static final java.lang.String TAG
 kotlin.ranges.ClosedFloatingPointRange$DefaultImpls
-com.app.market_vendor_app.R$id
 com.google.common.base.CharMatcher$Invisible
 io.flutter.plugins.imagepicker.BuildConfig
 androidx.core.net.DatagramSocketWrapper
@@ -14327,6 +14482,9 @@ androidx.appcompat.R$id:
 kotlin.comparisons.ComparisonsKt:
     private void <init>()
 com.google.android.gms.common.Scopes
+androidx.webkit.SafeBrowsingResponseCompat:
+    public abstract void proceed(boolean)
+    public abstract void backToSafety(boolean)
 kotlinx.coroutines.channels.ChannelsKt__DeprecatedKt$firstOrNull$1
 com.google.android.gms.maps.model.TileOverlayOptions:
     public final com.google.android.gms.maps.model.TileProvider getTileProvider()
@@ -14346,6 +14504,7 @@ com.google.common.base.Splitter$1
 com.google.android.gms.common.api.internal.zaaf:
     public void <init>(com.google.android.gms.common.api.internal.ApiKey)
 com.google.common.util.concurrent.SmoothRateLimiter
+androidx.webkit.R$id
 kotlinx.coroutines.scheduling.CoroutineScheduler$Worker:
     public final kotlinx.coroutines.scheduling.CoroutineScheduler getScheduler()
 kotlin.Metadata
@@ -14359,6 +14518,9 @@ androidx.core.util.DebugUtils:
 com.google.android.datatransport.runtime.scheduling.persistence.EventStoreModule_DbNameFactory$InstanceHolder:
     private void <init>()
 com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher$1
+io.flutter.plugins.webviewflutter.ThreadedInputConnectionProxyAdapterView:
+    boolean isTriggerDelayed()
+    void setLocked(boolean)
 androidx.room.RoomTrackingLiveData$3
 com.google.common.eventbus.EventBus
 kotlin.ranges.LongProgressionIterator
@@ -14366,7 +14528,6 @@ com.google.common.collect.Lists$RandomAccessReverseList
 io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding:
     public io.flutter.embedding.engine.FlutterEngine getFlutterEngine()
     public io.flutter.view.TextureRegistry getTextureRegistry()
-    public io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets getFlutterAssets()
 com.google.common.reflect.TypeVisitor
 okio.GzipSource:
     private static final byte FHCRC
@@ -14389,6 +14550,7 @@ kotlinx.coroutines.flow.FlowKt__DelayKt$debounceInternal$1$3$1
 androidx.media.MediaSessionManagerImplApi21
 com.google.firebase.analytics.connector.AnalyticsConnector$AnalyticsConnectorHandle
 androidx.drawerlayout.widget.DrawerLayout$DrawerListener
+dev.fluttercommunity.plus.packageinfo.R$color
 com.google.firebase.analytics.connector.R
 com.onesignal.OSReceiveReceiptController:
     private static final java.lang.String OS_NOTIFICATION_ID
@@ -14476,6 +14638,9 @@ kotlin.TypeAliasesKt
 com.google.android.gms.cloudmessaging.CloudMessagingReceiver$IntentKeys
 com.google.common.collect.StandardTable$ColumnMap$ColumnMapEntrySet$1
 kotlinx.coroutines.DefaultExecutorKt
+io.flutter.embedding.engine.renderer.FlutterRenderer$SurfaceTextureRegistryEntry:
+    private void removeListener()
+    public void release()
 kotlinx.coroutines.channels.BroadcastKt$broadcast$1
 kotlin.reflect.KMutableProperty0$Setter
 com.google.android.gms.common.api.internal.zabi:
@@ -14517,6 +14682,7 @@ com.google.android.gms.maps.internal.zzk:
     public final void onEnterAmbient(android.os.Bundle)
     public final void onExitAmbient()
 com.google.common.collect.ImmutableEnumSet$1
+dev.fluttercommunity.plus.packageinfo.R$styleable
 kotlinx.coroutines.selects.SelectBuilderImpl
 kotlinx.coroutines.channels.TickerChannelsKt$fixedDelayTicker$1
 com.google.common.cache.LocalCache$ValueIterator
@@ -14614,6 +14780,7 @@ com.onesignal.OSSMSSubscriptionState:
     private static final java.lang.String SMS_USER_ID
     private static final java.lang.String SMS_NUMBER
     private static final java.lang.String SUBSCRIBED
+io.flutter.plugins.webviewflutter.R$styleable
 androidx.core.app.ActivityCompat$PermissionCompatDelegate:
     public abstract boolean onActivityResult(android.app.Activity,int,int,android.content.Intent)
 kotlin.jvm.internal.CharSpreadBuilder
@@ -14790,6 +14957,7 @@ vn.hunghd.flutter.plugins.imagecropper.R$anim
 com.google.android.gms.common.internal.PendingResultUtil:
     public static com.google.android.gms.tasks.Task toVoidTask(com.google.android.gms.common.api.PendingResult)
     public void <init>()
+androidx.annotation.ReturnThis
 com.google.common.collect.ImmutableMapValues$1
 kotlinx.coroutines.channels.ChannelsKt__DeprecatedKt$lastOrNull$1
 androidx.customview.R$style
@@ -14800,6 +14968,7 @@ com.google.common.collect.Maps$ValueDifferenceImpl
 com.google.common.collect.ImmutableRangeSet$ComplementRanges
 androidx.appcompat.app.ActionBarDrawerToggle
 com.google.firebase.installations.R$styleable
+io.flutter.plugins.webviewflutter.R$string
 com.onesignal.outcomes.data.OSOutcomeEventsClient:
     public abstract void sendOutcomeEvent(org.json.JSONObject,com.onesignal.OneSignalApiResponseHandler)
 kotlinx.coroutines.YieldKt
@@ -14817,6 +14986,7 @@ androidx.collection.ContainerHelpers:
 com.onesignal.OSInAppMessageRepository:
     static final java.lang.String IAM_DATA_RESPONSE_RETRY_KEY
     static final long IAM_CACHE_DATA_LIFETIME
+androidx.webkit.WebResourceErrorCompat$NetErrorCode
 com.onesignal.shortcutbadger.ShortcutBadger:
     public static boolean applyCount(android.content.Context,int)
     public static boolean removeCount(android.content.Context)
@@ -14881,6 +15051,7 @@ com.google.common.cache.LongAddable
 com.google.common.eventbus.Dispatcher$ImmediateDispatcher
 kotlin.sequences.SequencesKt__SequencesKt$flatten$3
 androidx.annotation.LayoutRes
+androidx.webkit.R$dimen
 com.google.firebase.installations.R$drawable
 com.google.common.collect.TreeTraverser$2
 kotlin.reflect.KCallable:
@@ -14974,7 +15145,6 @@ com.google.firebase.components.Component:
     public boolean isLazy()
 com.google.android.gms.common.zaa
 kotlinx.coroutines.flow.FlowKt__CountKt$count$1
-com.app.market_vendor_app.R$interpolator
 androidx.work.impl.utils.IdGenerator:
     public static final int INITIAL_ID
     public static final java.lang.String PREFERENCE_FILE_KEY
@@ -14986,6 +15156,7 @@ com.google.firebase.heartbeatinfo.HeartBeatConsumerComponent:
 kotlin.jvm.internal.LocalVariableReferencesKt
 com.google.common.collect.TreeMultimap
 com.google.common.hash.HashCode$BytesHashCode
+androidx.webkit.R$styleable
 com.google.common.collect.ForwardingNavigableMap$StandardNavigableKeySet
 com.google.android.gms.dynamic.zza
 kotlinx.coroutines.channels.ChannelCoroutine
@@ -15031,11 +15202,11 @@ kotlin.sequences.TakeSequence
 android.support.v4.media.session.MediaSessionCompat$MediaSessionImplApi18
 com.google.common.collect.Collections2$TransformedCollection
 androidx.room.SkipQueryVerification
+android.support.v4.media.MediaBrowserCompat$MediaBrowserImplApi21$2
 com.google.android.gms.common.util.Clock:
     public abstract long currentThreadTimeMillis()
     public abstract long currentTimeMillis()
     public abstract long nanoTime()
-android.support.v4.media.MediaBrowserCompat$MediaBrowserImplApi21$2
 com.google.common.collect.Synchronized$SynchronizedCollection
 kotlin.concurrent.LocksKt
 kotlin.ULong
@@ -15108,6 +15279,7 @@ androidx.core.app.Person:
     private static final java.lang.String KEY_KEY
     private static final java.lang.String IS_BOT_KEY
     private static final java.lang.String IS_IMPORTANT_KEY
+androidx.webkit.R
 com.google.android.datatransport.Transport:
     public abstract void schedule(com.google.android.datatransport.Event,com.google.android.datatransport.TransportScheduleCallback)
 com.google.common.collect.ForwardingNavigableMap$StandardDescendingMap$1
@@ -15173,6 +15345,7 @@ kotlinx.coroutines.channels.ChannelIterator$next0$1
 com.google.common.collect.Maps$TransformedEntriesNavigableMap
 kotlin.collections.unsigned.UArraysKt
 kotlinx.coroutines.flow.FlowKt__BuildersKt$asFlow$$inlined$unsafeFlow$6
+androidx.webkit.internal.WebViewProviderAdapter
 javax.annotation.concurrent.NotThreadSafe
 okio.Pipe$PipeSink
 com.google.android.gms.common.api.BooleanResult
@@ -15351,6 +15524,7 @@ com.google.common.util.concurrent.ForwardingListenableFuture
 androidx.core.text.util.LinkifyCompat$1
 com.google.common.base.CharMatcher$Negated
 androidx.inspection.work.runtime.ProguardDetection
+androidx.webkit.R$color
 com.google.common.base.Splitter$2
 com.google.android.gms.common.internal.zag:
     public static com.google.android.gms.common.internal.zag zac(androidx.fragment.app.Fragment,android.content.Intent,int)
@@ -15432,8 +15606,8 @@ com.onesignal.BundleCompat:
     public abstract boolean getBoolean(java.lang.String)
     public abstract void setBundle(android.os.Parcelable)
 com.google.common.base.Equivalence
-kotlinx.coroutines.flow.FlowKt__ZipKt$combineTransform$6
 kotlinx.coroutines.channels.ChannelsKt__DeprecatedKt$filterIndexed$1
+kotlinx.coroutines.flow.FlowKt__ZipKt$combineTransform$6
 com.google.android.gms.internal.common.zzn
 com.google.common.collect.ClassToInstanceMap
 com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidatorHolder$WeakSetValidator
@@ -15475,6 +15649,7 @@ androidx.transition.FloatArrayEvaluator
 com.onesignal.flutter.R$layout
 kotlinx.coroutines.AwaitAll$AwaitAllNode
 javax.annotation.Nonnegative$Checker
+com.iyaffle.launchreview.R$id
 kotlinx.coroutines.flow.FlowKt__TransformKt$mapNotNull$$inlined$unsafeTransform$1$1
 com.onesignal.OneSignalRestClientWrapper$3
 androidx.loader.R$styleable
@@ -15521,6 +15696,7 @@ com.google.common.base.CaseFormat$2
 androidx.activity.result.contract.ActivityResultContracts$TakePicture
 com.google.common.collect.Maps$EntrySet
 com.google.firebase.encoders.annotations.Encodable$Field
+kotlin.jvm.internal.FunInterfaceConstructorReference
 com.google.firebase.R$attr
 com.google.android.gms.common.server.response.zaj
 com.google.firebase.installations.interop.R$drawable
@@ -15565,6 +15741,7 @@ androidx.appcompat.widget.ActionBarContextView:
     public synthetic bridge void postShowOverflowMenu()
     public synthetic bridge void animateToVisibility(int)
 io.flutter.plugins.sharedpreferences.R$id
+dev.fluttercommunity.plus.packageinfo.R$id
 androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2
 kotlin.reflect.KMutableProperty1$Setter
 androidx.fragment.app.FragmentHostCallback:
@@ -15639,16 +15816,17 @@ androidx.appcompat.R$integer
 com.google.common.reflect.TypeToken$1
 kotlinx.coroutines.flow.FlowKt__ContextKt
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineActivityPluginBinding:
-    public void addOnNewIntentListener(io.flutter.plugin.common.PluginRegistry$NewIntentListener)
     public void removeOnNewIntentListener(io.flutter.plugin.common.PluginRegistry$NewIntentListener)
-    public void addOnUserLeaveHintListener(io.flutter.plugin.common.PluginRegistry$UserLeaveHintListener)
     public void removeOnUserLeaveHintListener(io.flutter.plugin.common.PluginRegistry$UserLeaveHintListener)
     public void addOnSaveStateListener(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding$OnSaveInstanceStateListener)
     public void removeOnSaveStateListener(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding$OnSaveInstanceStateListener)
 com.onesignal.PermissionsActivity:
     private static final int DELAY_TIME_CALLBACK_CALL
-    private static final int REQUEST_LOCATION
+    private static final int ONESIGNAL_PERMISSION_REQUEST_CODE
     private static final int REQUEST_SETTINGS
+    private static final java.lang.String INTENT_EXTRA_PERMISSION_TYPE
+    private static final java.lang.String INTENT_EXTRA_ANDROID_PERMISSION_STRING
+    private static final java.lang.String INTENT_EXTRA_CALLBACK_CLASS
 androidx.drawerlayout.widget.DrawerLayout
 androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper:
     void <init>(android.content.Context,java.lang.String,androidx.sqlite.db.SupportSQLiteOpenHelper$Callback)
@@ -15923,7 +16101,6 @@ androidx.browser.customtabs.CustomTabsSession:
     public boolean receiveFile(android.net.Uri,int,android.os.Bundle)
     private static final java.lang.String TAG
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry$DefaultFlutterAssets:
-    public java.lang.String getAssetFilePathByName(java.lang.String)
     public java.lang.String getAssetFilePathByName(java.lang.String,java.lang.String)
     public java.lang.String getAssetFilePathBySubpath(java.lang.String)
     public java.lang.String getAssetFilePathBySubpath(java.lang.String,java.lang.String)
@@ -16060,6 +16237,7 @@ kotlin.collections.MapsKt__MapsKt:
     private static final void minusAssign(java.util.Map,kotlin.sequences.Sequence)
     public void <init>()
 kotlin.NotImplementedError
+dev.fluttercommunity.plus.packageinfo.R$dimen
 com.google.android.gms.common.internal.safeparcel.SafeParcelable$Indicator
 kotlin.jvm.JvmName
 com.google.android.gms.maps.internal.zzbp
@@ -16100,7 +16278,10 @@ kotlinx.coroutines.internal.LockFreeTaskQueue:
     public final java.util.List map(kotlin.jvm.functions.Function1)
     public final boolean isClosed()
 com.google.android.gms.common.api.zac
-io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry
+io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry:
+    public boolean hasPlugin(java.lang.String)
+    public java.lang.Object valuePublishedByPlugin(java.lang.String)
+    private static final java.lang.String TAG
 okhttp3.internal.http2.Hpack:
     private void <init>()
     private static final int PREFIX_4_BITS
@@ -16112,6 +16293,7 @@ androidx.viewpager.widget.PagerTitleStrip$SingleLineAllCapsTransform
 androidx.appcompat.app.AlertController$AlertParams:
     public boolean mForceInverseBackground
 com.google.common.util.concurrent.CycleDetectingLockFactory$Policies$1
+androidx.webkit.WebResourceRequestCompat
 kotlinx.coroutines.flow.FlowKt__MigrationKt
 kotlin.collections.AbstractMap$values$1$iterator$1
 androidx.appcompat.widget.ActivityChooserModel
@@ -16230,6 +16412,7 @@ io.flutter.embedding.android.FlutterFragmentActivity$NewEngineIntentBuilder
 com.google.common.collect.RegularImmutableSortedSet
 androidx.transition.Slide$CalculateSlideVertical
 androidx.core.hardware.fingerprint.FingerprintManagerCompat
+io.flutter.plugins.webviewflutter.R$style
 com.google.common.collect.Lists$CharSequenceAsList
 androidx.lifecycle.livedata.R
 com.google.android.gms.maps.internal.zzm
@@ -16321,6 +16504,7 @@ kotlin.concurrent.TimersKt
 com.google.common.collect.TreeTraverser$PostOrderIterator
 com.baseflow.geolocator.R$attr
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareByDescending$2
+dev.fluttercommunity.plus.packageinfo.R$style
 vn.hunghd.flutter.plugins.imagecropper.R$id
 com.tekartik.sqflite.R$id
 okio.Pipe$PipeSource
@@ -16375,6 +16559,7 @@ com.onesignal.OSInAppMessageLocationPrompt:
     static final java.lang.String LOCATION_PROMPT_KEY
 com.google.common.cache.LocalCache$WeakAccessWriteEntry
 kotlin.ranges.UIntRange$Companion
+com.app.market_vendor.R$styleable
 androidx.room.IMultiInstanceInvalidationCallback$Stub:
     private static final java.lang.String DESCRIPTOR
     static final int TRANSACTION_onInvalidation
@@ -16534,6 +16719,9 @@ com.google.android.gms.base.R$string:
 androidx.lifecycle.ViewTreeViewModelStoreOwner:
     private void <init>()
     public static androidx.lifecycle.ViewModelStoreOwner get(android.view.View)
+androidx.webkit.WebMessageCompat
+androidx.webkit.internal.WebViewFeatureInternal:
+    public static java.lang.String[] getWebViewApkFeaturesForTesting()
 com.google.android.gms.internal.common.zzo
 kotlin.jvm.internal.MutablePropertyReference2
 okhttp3.MultipartBody
@@ -16667,13 +16855,14 @@ androidx.appcompat.widget.ViewUtils:
     private void <init>()
     private static final java.lang.String TAG
 io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$Host:
+    public abstract io.flutter.embedding.android.ExclusiveAppComponent getExclusiveAppComponent()
     public abstract void updateSystemUiOverlays()
+kotlinx.coroutines.test.TestCoroutineContextKt
 io.flutter.embedding.android.AndroidTouchProcessor:
     private static final int POINTER_DATA_FIELD_COUNT
     private static final int BYTES_PER_FIELD
     private static final int POINTER_DATA_FLAG_BATCHED
     private static final int _POINTER_BUTTON_PRIMARY
-kotlinx.coroutines.test.TestCoroutineContextKt
 com.google.android.gms.common.providers.zza
 com.google.common.collect.Maps$FilteredEntryBiMap
 com.google.android.datatransport.runtime.EventInternal:
@@ -16742,6 +16931,7 @@ androidx.transition.R$color
 com.google.errorprone.annotations.InlineMeValidationDisabled
 com.google.common.collect.ImmutableEnumMap
 com.google.common.primitives.Doubles$LexicographicalComparator
+androidx.webkit.ServiceWorkerClientCompat
 com.google.android.gms.location.ActivityRecognitionClient
 kotlin.text.Regex$findAll$2
 com.google.firebase.installations.interop.R$style
@@ -17394,6 +17584,7 @@ com.google.common.cache.LongAddables$2
 com.google.common.collect.Lists$TwoPlusArrayList
 androidx.vectordrawable.graphics.drawable.VectorDrawableCommon:
     protected void onBoundsChange(android.graphics.Rect)
+io.flutter.plugins.webviewflutter.R$drawable
 com.google.common.hash.Hashing$Sha384Holder
 androidx.work.impl.WorkDatabase:
     public abstract androidx.work.impl.model.RawWorkInfoDao rawWorkInfoDao()
@@ -17442,9 +17633,11 @@ com.google.common.graph.AbstractBaseGraph$1
 com.google.android.gms.common.zzy
 androidx.core.location.LocationManagerCompat$2
 kotlin.collections.builders.SerializedCollection$Companion
+androidx.annotation.EmptySuper
 androidx.core.view.WindowInsetsAnimationCompat$Impl30
 com.google.common.util.concurrent.ForwardingBlockingDeque
 okhttp3.FormBody
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$JavaObjectFlutterApi
 androidx.viewpager.R$layout
 androidx.legacy.coreutils.R
 androidx.concurrent.futures.AbstractResolvableFuture$SynchronizedHelper
@@ -17465,6 +17658,7 @@ com.google.common.collect.TreeBasedTable$2
 kotlin.jvm.internal.MutablePropertyReference
 androidx.viewpager.R$string
 com.google.common.collect.MapMakerInternalMap$KeyIterator
+io.flutter.plugins.webviewflutter.BuildConfig
 androidx.core.app.ActivityRecreator:
     private void <init>()
     private static final java.lang.String LOG_TAG
@@ -17514,6 +17708,7 @@ kotlin.experimental.ExperimentalTypeInference
 com.google.common.util.concurrent.AbstractService$IsStoppableGuard
 com.google.common.util.concurrent.Service$State
 androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask
+com.app.market_vendor.R
 com.google.common.util.concurrent.Service$Listener
 com.google.common.collect.MapMakerInternalMap$WeakKeyDummyValueEntry$Helper
 com.google.android.gms.auth.api.signin.zac
@@ -17545,6 +17740,7 @@ android.support.v4.media.MediaBrowserCompat$SearchResultReceiver:
     void <init>(java.lang.String,android.os.Bundle,android.support.v4.media.MediaBrowserCompat$SearchCallback,android.os.Handler)
 androidx.browser.trusted.TrustedWebActivityDisplayMode$DefaultMode
 kotlin.collections.unsigned.UArraysKt___UArraysKt
+com.app.market_vendor.BuildConfig
 kotlin.sequences.DropWhileSequence
 androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder
 androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -17579,7 +17775,6 @@ okhttp3.Cookie:
     public boolean matches(okhttp3.HttpUrl)
 com.google.common.primitives.ImmutableLongArray$AsList
 kotlin.jvm.internal.PropertyReference2
-com.app.market_vendor_app.R$attr
 androidx.browser.trusted.TokenStore
 kotlin.time.Duration
 com.google.common.collect.Range$1
@@ -17679,6 +17874,7 @@ com.google.android.gms.maps.MapView$zza:
 io.flutter.plugins.imagepicker.R$integer
 androidx.appcompat.widget.AppCompatSpinner$SpinnerPopup:
     public abstract int getHorizontalOriginalOffset()
+dev.fluttercommunity.plus.packageinfo.BuildConfig
 kotlinx.coroutines.flow.FlowKt__TransformKt$onEach$$inlined$unsafeTransform$1
 com.google.common.util.concurrent.AbstractCatchingFuture$AsyncCatchingFuture
 kotlinx.coroutines.channels.ChannelsKt__Channels_commonKt
@@ -17729,6 +17925,7 @@ kotlin.ExtensionFunctionType
 androidx.work.impl.model.RawWorkInfoDao
 com.google.firebase.FirebaseNetworkException
 com.google.common.collect.TreeMultiset$Aggregate$2
+androidx.webkit.internal.package-info
 com.google.common.escape.Escapers$Builder
 okhttp3.internal.cache.DiskLruCache$3
 com.google.common.collect.LinkedListMultimap
@@ -17755,9 +17952,9 @@ com.google.common.collect.Range$RangeLexOrdering
 androidx.core.R$drawable
 com.google.common.util.concurrent.ServiceManager$ServiceManagerState$AwaitHealthGuard
 androidx.print.PrintHelper$1
-androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplBase$1
 com.google.android.gms.tasks.zzl:
     public final void zzc()
+androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplBase$1
 com.google.common.collect.ImmutableClassToInstanceMap
 com.google.common.collect.Maps$6
 kotlin.SuspendKt
@@ -17779,6 +17976,7 @@ kotlinx.coroutines.flow.FlowKt__TransformKt$filterIsInstance$$inlined$filter$1$1
 androidx.savedstate.ViewTreeSavedStateRegistryOwner:
     private void <init>()
     public static androidx.savedstate.SavedStateRegistryOwner get(android.view.View)
+androidx.webkit.internal.WebMessageAdapter
 com.google.common.collect.ObjectCountHashMap
 androidx.media.MediaSessionManager$RemoteUserInfo
 androidx.core.graphics.TypefaceCompatApi28Impl:
@@ -17862,7 +18060,6 @@ com.onesignal.UserStateSynchronizer:
 com.google.common.collect.RegularImmutableMap$EntrySet$1
 com.google.common.collect.CompactHashSet$1
 androidx.lifecycle.ViewModelProvider$NewInstanceFactory
-io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry$1
 androidx.lifecycle.ViewModelProvider:
     public void <init>(androidx.lifecycle.ViewModelStoreOwner)
     public void <init>(androidx.lifecycle.ViewModelStoreOwner,androidx.lifecycle.ViewModelProvider$Factory)
@@ -17927,7 +18124,6 @@ com.yalantis.ucrop.UCropFragment$4
 androidx.core.view.accessibility.AccessibilityViewCommand$MoveAtGranularityArguments:
     public int getGranularity()
     public boolean getExtendSelection()
-com.app.market_vendor_app.R$styleable
 com.yalantis.ucrop.util.BitmapLoadUtils:
     public void <init>()
     private static final java.lang.String CONTENT_SCHEME
@@ -18002,6 +18198,8 @@ com.google.android.gms.location.zzq
 okio.HashingSink
 androidx.transition.GhostViewHolder
 com.google.common.io.CharSource$ConcatenatedCharSource
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$WebViewHostApi$1:
+    public void error(java.lang.Throwable)
 com.google.common.collect.ForwardingSortedMultiset
 com.google.common.collect.ConsumingQueueIterator
 com.google.common.hash.Striped64$1
@@ -18012,6 +18210,7 @@ androidx.core.provider.FontRequestWorker:
     static void resetTypefaceCache()
 com.google.common.collect.Iterables$6
 androidx.swiperefreshlayout.R
+androidx.annotation.DeprecatedSinceApi
 com.google.android.gms.common.util.zzc
 com.baseflow.geolocator.location.FusedLocationClient:
     private static final java.lang.String TAG
@@ -18129,9 +18328,11 @@ com.google.firebase.BuildConfig
 androidx.browser.R$styleable
 kotlinx.coroutines.flow.FlowKt__MergeKt$flatMapMerge$$inlined$map$1
 kotlinx.coroutines.flow.StartedWhileSubscribed
+androidx.annotation.UiContext
 io.flutter.embedding.android.FlutterFragmentActivity
 kotlin.collections.EmptySet:
     private final java.lang.Object readResolve()
+    public boolean add(java.lang.Void)
     private static final long serialVersionUID
 com.google.android.datatransport.runtime.dagger.multibindings.IntoSet
 com.google.common.collect.HashMultimapGwtSerializationDependencies
@@ -18168,6 +18369,8 @@ androidx.appcompat.view.menu.StandardMenuPopup:
 kotlinx.coroutines.internal.LockFreeTaskQueueKt
 com.google.common.base.Predicates$ObjectPredicate$2
 androidx.viewpager.widget.ViewPager$1
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$Result:
+    public abstract void error(java.lang.Throwable)
 com.google.firebase.analytics.connector.AnalyticsConnector$ConditionalUserProperty
 io.flutter.plugin.common.ErrorLogResult
 com.google.android.gms.common.internal.zzr:
@@ -18324,9 +18527,9 @@ kotlin.jvm.Transient
 androidx.room.Junction
 okhttp3.internal.ws.WebSocketWriter
 com.google.common.reflect.Types$NativeTypeVariableEquals
-androidx.media.MediaBrowserServiceCompatApi26$MediaBrowserServiceAdaptor
-android.support.v4.media.session.MediaSessionCompat$MediaSessionImplBase
 kotlinx.coroutines.debug.internal.ConcurrentWeakMap$Core
+android.support.v4.media.session.MediaSessionCompat$MediaSessionImplBase
+androidx.media.MediaBrowserServiceCompatApi26$MediaBrowserServiceAdaptor
 androidx.lifecycle.Lifecycle$Event:
     public static androidx.lifecycle.Lifecycle$Event downTo(androidx.lifecycle.Lifecycle$State)
     public static androidx.lifecycle.Lifecycle$Event upTo(androidx.lifecycle.Lifecycle$State)
@@ -18480,6 +18683,7 @@ androidx.core.widget.TextViewOnReceiveContentListener$ApiImpl:
     private void <init>()
 kotlin.Lazy:
     public abstract boolean isInitialized()
+androidx.webkit.R$string
 androidx.core.app.NotificationChannelCompat$Builder
 com.google.common.collect.Sets$3$1
 com.google.android.gms.maps.internal.IGoogleMapDelegate:
@@ -18530,6 +18734,7 @@ androidx.core.widget.PopupMenuCompat
 com.google.common.reflect.TypeToken$TypeCollector$ForwardingTypeCollector
 com.google.common.base.Splitter$5
 com.google.common.util.concurrent.CycleDetectingLockFactory$1
+com.app.market_vendor.R$id
 kotlin.reflect.KTypeProjection$Companion
 com.google.common.util.concurrent.InterruptibleTask$1
 androidx.media.VolumeProviderCompat$ControlType
@@ -18721,6 +18926,8 @@ com.google.common.reflect.ClassPath$DefaultScanner
 com.google.common.eventbus.SubscriberRegistry$MethodIdentifier
 kotlin.sequences.USequencesKt___USequencesKt
 com.google.common.collect.MapMakerInternalMap$WeakKeyStrongValueEntry
+com.onesignal.OSInAppMessagePushPrompt:
+    static final java.lang.String PUSH_PROMPT_KEY
 com.google.common.collect.Multimap
 androidx.asynclayoutinflater.R$string
 com.google.android.gms.internal.cloudmessaging.zzd:
@@ -18808,6 +19015,7 @@ kotlinx.coroutines.flow.FlowKt__ReduceKt$first$1
 com.google.common.collect.ForwardingDeque
 com.google.common.escape.Escaper
 kotlinx.coroutines.flow.FlowKt__TransformKt$filterIsInstance$$inlined$filter$1
+com.iyaffle.launchreview.R$drawable
 com.google.common.hash.LongAddables$PureJavaLongAddable
 kotlinx.coroutines.channels.ChannelsKt__DeprecatedKt$singleOrNull$1
 androidx.annotation.NonNull
@@ -18836,6 +19044,7 @@ com.google.android.gms.internal.stats.zza:
     public void close()
     public synchronized void finalize()
 com.google.common.collect.AbstractMapBasedMultiset
+androidx.webkit.R$drawable
 androidx.work.multiprocess.IWorkManagerImpl$Default
 androidx.fragment.app.FragmentAnim:
     private void <init>()
@@ -18959,7 +19168,19 @@ androidx.appcompat.app.AlertDialog:
     static final int LAYOUT_HINT_NONE
     static final int LAYOUT_HINT_SIDE
 com.google.common.cache.LoadingCache
-io.flutter.embedding.engine.plugins.shim.ShimRegistrar
+io.flutter.embedding.engine.plugins.shim.ShimRegistrar:
+    public android.content.Context context()
+    public android.content.Context activeContext()
+    public io.flutter.view.TextureRegistry textures()
+    public io.flutter.plugin.platform.PlatformViewRegistry platformViewRegistry()
+    public io.flutter.view.FlutterView view()
+    public java.lang.String lookupKeyForAsset(java.lang.String)
+    public java.lang.String lookupKeyForAsset(java.lang.String,java.lang.String)
+    public io.flutter.plugin.common.PluginRegistry$Registrar publish(java.lang.Object)
+    public io.flutter.plugin.common.PluginRegistry$Registrar addNewIntentListener(io.flutter.plugin.common.PluginRegistry$NewIntentListener)
+    public io.flutter.plugin.common.PluginRegistry$Registrar addUserLeaveHintListener(io.flutter.plugin.common.PluginRegistry$UserLeaveHintListener)
+    public io.flutter.plugin.common.PluginRegistry$Registrar addViewDestroyListener(io.flutter.plugin.common.PluginRegistry$ViewDestroyListener)
+    private static final java.lang.String TAG
 com.google.android.gms.maps.zzw
 androidx.work.impl.utils.ForceStopRunnable:
     static final java.lang.String ACTION_FORCE_STOP_RESCHEDULE
@@ -19014,10 +19235,10 @@ androidx.work.impl.WorkDatabaseMigrations:
     private static final java.lang.String CREATE_PREFERENCE
     private static final java.lang.String CREATE_OUT_OF_QUOTA_POLICY
 com.google.android.gms.maps.StreetViewPanorama$OnStreetViewPanoramaChangeListener
-androidx.appcompat.widget.ActivityChooserView$5
 androidx.work.ListenableWorker$Result:
     public static androidx.work.ListenableWorker$Result failure(androidx.work.Data)
     public abstract androidx.work.Data getOutputData()
+androidx.appcompat.widget.ActivityChooserView$5
 androidx.lifecycle.ReportFragment:
     static androidx.lifecycle.ReportFragment get(android.app.Activity)
     void setProcessListener(androidx.lifecycle.ReportFragment$ActivityInitializationListener)
@@ -19098,6 +19319,7 @@ kotlin.LazyKt__LazyJVMKt$WhenMappings
 com.google.android.gms.maps.internal.zzbn
 kotlin.jvm.functions.Function4:
     public abstract java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)
+androidx.webkit.internal.ServiceWorkerWebSettingsImpl
 com.google.common.graph.AbstractGraph
 com.google.firebase.messaging.WithinAppServiceConnection:
     private static final int REQUEST_TIMEOUT_MS
@@ -19125,6 +19347,37 @@ androidx.appcompat.view.menu.CascadingMenuPopup:
 kotlin.text.Typography
 androidx.work.impl.model.WorkTagDao_Impl:
     public java.util.List getWorkSpecIdsWithTag(java.lang.String)
+androidx.webkit.WebViewFeature:
+    private void <init>()
+    public static final java.lang.String VISUAL_STATE_CALLBACK
+    public static final java.lang.String OFF_SCREEN_PRERASTER
+    public static final java.lang.String SAFE_BROWSING_ENABLE
+    public static final java.lang.String DISABLED_ACTION_MODE_MENU_ITEMS
+    public static final java.lang.String START_SAFE_BROWSING
+    public static final java.lang.String SAFE_BROWSING_WHITELIST
+    public static final java.lang.String SAFE_BROWSING_PRIVACY_POLICY_URL
+    public static final java.lang.String SERVICE_WORKER_BASIC_USAGE
+    public static final java.lang.String SERVICE_WORKER_CACHE_MODE
+    public static final java.lang.String SERVICE_WORKER_CONTENT_ACCESS
+    public static final java.lang.String SERVICE_WORKER_FILE_ACCESS
+    public static final java.lang.String SERVICE_WORKER_BLOCK_NETWORK_LOADS
+    public static final java.lang.String SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST
+    public static final java.lang.String RECEIVE_WEB_RESOURCE_ERROR
+    public static final java.lang.String RECEIVE_HTTP_ERROR
+    public static final java.lang.String SHOULD_OVERRIDE_WITH_REDIRECTS
+    public static final java.lang.String SAFE_BROWSING_HIT
+    public static final java.lang.String WEB_RESOURCE_REQUEST_IS_REDIRECT
+    public static final java.lang.String WEB_RESOURCE_ERROR_GET_DESCRIPTION
+    public static final java.lang.String WEB_RESOURCE_ERROR_GET_CODE
+    public static final java.lang.String SAFE_BROWSING_RESPONSE_BACK_TO_SAFETY
+    public static final java.lang.String SAFE_BROWSING_RESPONSE_PROCEED
+    public static final java.lang.String SAFE_BROWSING_RESPONSE_SHOW_INTERSTITIAL
+    public static final java.lang.String WEB_MESSAGE_PORT_POST_MESSAGE
+    public static final java.lang.String WEB_MESSAGE_PORT_CLOSE
+    public static final java.lang.String WEB_MESSAGE_PORT_SET_MESSAGE_CALLBACK
+    public static final java.lang.String CREATE_WEB_MESSAGE_CHANNEL
+    public static final java.lang.String POST_WEB_MESSAGE
+    public static final java.lang.String WEB_MESSAGE_CALLBACK_ON_MESSAGE
 androidx.appcompat.content.res.AppCompatResources:
     private void <init>()
     private static final java.lang.String LOG_TAG
@@ -19138,6 +19391,11 @@ com.google.common.base.FinalizableReferenceQueue
 com.google.common.util.concurrent.AbstractTransformFuture$AsyncTransformFuture
 kotlinx.coroutines.flow.FlowKt__TransformKt$runningFold$$inlined$unsafeFlow$1$1
 com.google.common.graph.ValueGraph
+com.onesignal.NotificationPermissionController:
+    public static final synthetic boolean access$getAwaitingForReturnFromSystemSettings$p(com.onesignal.NotificationPermissionController)
+    public final boolean getSupportsNativePrompt()
+    private static final java.lang.String PERMISSION_TYPE
+    private static final java.lang.String ANDROID_PERMISSION_STRING
 okhttp3.internal.Util:
     private void <init>()
     public static void closeQuietly(java.net.ServerSocket)
@@ -19164,6 +19422,8 @@ androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams:
 android.support.v4.media.MediaBrowserCompat$SubscriptionCallback
 kotlinx.coroutines.flow.FlowKt__ZipKt$combineTransform$$inlined$combineTransformUnsafe$FlowKt__ZipKt$2$1
 kotlinx.coroutines.channels.ProduceKt$awaitClose$1
+androidx.webkit.WebViewClientCompat:
+    public boolean shouldOverrideUrlLoading(android.webkit.WebView,android.webkit.WebResourceRequest)
 androidx.appcompat.view.menu.MenuView$ItemView:
     public abstract void setTitle(java.lang.CharSequence)
     public abstract void setEnabled(boolean)
@@ -19183,6 +19443,8 @@ androidx.activity.result.contract.ActivityResultContracts$TakeVideo
 kotlinx.coroutines.flow.FlowKt__ZipKt$combineTransform$6$2
 com.google.common.collect.MultimapBuilder$4
 io.flutter.plugins.googlemaps.GoogleMapController:
+    public void onInputConnectionLocked()
+    public void onInputConnectionUnlocked()
     private static final java.lang.String TAG
 io.flutter.embedding.engine.deferredcomponents.PlayStoreDeferredComponentManager$FeatureInstallStateUpdatedListener
 androidx.loader.content.ModernAsyncTask$AsyncTaskResult
@@ -19277,9 +19539,6 @@ kotlinx.coroutines.flow.FlowKt__TransformKt$runningFold$lambda-10$$inlined$colle
 kotlin.io.FileTreeWalk$WalkState
 com.google.common.collect.LinkedListMultimap$DistinctKeyIterator
 com.google.android.gms.maps.model.IndoorLevel
-com.onesignal.TrackAmazonPurchase$1:
-    static void <clinit>()
-    static final synthetic int[] $SwitchMap$com$amazon$device$iap$model$ProductDataResponse$RequestStatus
 android.support.v4.media.MediaBrowserCompatApi26
 android.support.customtabs.ICustomTabsCallback$Stub$Proxy
 com.google.common.collect.ImmutableMultiset$EntrySet
@@ -19326,6 +19585,7 @@ kotlin.collections.SetsKt___SetsKt:
     private static final java.util.Set plusElement(java.util.Set,java.lang.Object)
     public void <init>()
 com.google.common.collect.package-info
+androidx.webkit.ServiceWorkerWebSettingsCompat$CacheMode
 okhttp3.WebSocket
 androidx.activity.result.contract.ActivityResultContracts$OpenMultipleDocuments
 com.google.common.util.concurrent.ExecutionSequencer$2
@@ -19357,6 +19617,7 @@ io.flutter.embedding.engine.systemchannels.SettingsChannel:
     private static final java.lang.String TAG
     public static final java.lang.String CHANNEL_NAME
     private static final java.lang.String TEXT_SCALE_FACTOR
+    private static final java.lang.String BRIEFLY_SHOW_PASSWORD
     private static final java.lang.String ALWAYS_USE_24_HOUR_FORMAT
     private static final java.lang.String PLATFORM_BRIGHTNESS
 okhttp3.internal.http2.Hpack$Reader:
@@ -19815,7 +20076,6 @@ kotlinx.coroutines.EventLoopKt:
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareByDescending$1
 com.google.android.datatransport.runtime.dagger.internal.ComponentDefinitionType
 com.google.common.util.concurrent.ListenerCallQueue
-io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry$ShimRegistrarAggregate
 com.google.common.collect.CompactLinkedHashSet
 androidx.vectordrawable.animated.R$style
 kotlin.io.FilesKt
@@ -19829,6 +20089,7 @@ com.tekartik.sqflite.LogLevel:
 com.google.common.escape.CharEscaperBuilder$CharArrayDecorator
 com.google.common.reflect.TypeResolver$TypeVariableKey
 kotlin.time.AdjustedTimeMark
+io.flutter.plugins.webviewflutter.R$integer
 com.google.common.base.Equivalence$Identity
 com.google.common.collect.MultimapBuilder$MultimapBuilderWithKeys$6
 androidx.appcompat.R$styleable:
@@ -20106,7 +20367,8 @@ androidx.core.widget.TintableCompoundButton:
 com.google.firebase.messaging.EnhancedIntentService:
     private static final java.lang.String TAG
 androidx.core.widget.CheckedTextViewCompat$Api14Impl
-com.app.market_vendor_app.R$layout
+vn.hunghd.flutter.plugins.imagecropper.ImageCropperDelegate:
+    static final java.lang.String FILENAME_CACHE_KEY
 com.onesignal.UserState:
     abstract boolean isSubscribed()
     void removeFromDependValues(java.util.List)
@@ -20126,13 +20388,14 @@ com.onesignal.UserState:
     static final int PUSH_STATUS_INVALID_FCM_SENDER_ID
     static final int PUSH_STATUS_OUTDATED_GOOGLE_PLAY_SERVICES_APP
     static final int PUSH_STATUS_FIREBASE_FCM_INIT_ERROR
-    static final int PUSH_STATUS_FIREBASE_FCM_ERROR_SERVICE_NOT_AVAILABLE
-    static final int PUSH_STATUS_FIREBASE_FCM_ERROR_IOEXCEPTION
+    static final int PUSH_STATUS_FIREBASE_FCM_ERROR_IOEXCEPTION_SERVICE_NOT_AVAILABLE
+    static final int PUSH_STATUS_FIREBASE_FCM_ERROR_IOEXCEPTION_OTHER
     static final int PUSH_STATUS_FIREBASE_FCM_ERROR_MISC_EXCEPTION
     public static final int PUSH_STATUS_HMS_TOKEN_TIMEOUT
     public static final int PUSH_STATUS_HMS_ARGUMENTS_INVALID
     public static final int PUSH_STATUS_HMS_API_EXCEPTION_OTHER
     public static final int PUSH_STATUS_MISSING_HMS_PUSHKIT_LIBRARY
+    public static final int PUSH_STATUS_FIREBASE_FCM_ERROR_IOEXCEPTION_AUTHENTICATION_FAILED
 com.google.common.reflect.TypeParameter
 com.google.firebase.encoders.json.R
 com.google.common.primitives.Booleans$LexicographicalComparator
@@ -20145,6 +20408,7 @@ io.flutter.plugin.mouse.MouseCursorPlugin$2:
 androidx.core.view.WindowInsetsAnimationCompat$Impl21$Impl21OnApplyWindowInsetsListener$1
 com.google.firebase.messaging.R$drawable
 io.flutter.embedding.engine.dart.DartExecutor:
+    public void executeDartEntrypoint(io.flutter.embedding.engine.dart.DartExecutor$DartEntrypoint)
     public void executeDartCallback(io.flutter.embedding.engine.dart.DartExecutor$DartCallback)
     public io.flutter.plugin.common.BinaryMessenger getBinaryMessenger()
     public io.flutter.plugin.common.BinaryMessenger$TaskQueue makeBackgroundTaskQueue(io.flutter.plugin.common.BinaryMessenger$TaskQueueOptions)
@@ -20276,8 +20540,9 @@ kotlinx.coroutines.flow.FlowKt__CountKt$count$$inlined$collect$1
 kotlinx.coroutines.flow.FlowKt__ReduceKt$reduce$1
 com.google.common.eventbus.Subscriber$SynchronizedSubscriber
 com.google.common.collect.AbstractSequentialIterator
-io.flutter.plugin.common.PluginRegistry$ViewDestroyListener
 com.google.common.primitives.Primitives
+androidx.webkit.internal.WebViewGlueCommunicator$LAZY_COMPAT_CONVERTER_HOLDER:
+    private void <init>()
 com.google.common.collect.TreeMultiset
 com.google.common.collect.StandardRowSortedTable
 com.google.android.gms.common.api.OptionalPendingResult
@@ -20888,6 +21153,7 @@ okhttp3.Dispatcher:
     public synchronized int queuedCallsCount()
 com.google.common.eventbus.Dispatcher$LegacyAsyncDispatcher
 com.google.common.graph.MapIteratorCache$1$1
+com.onesignal.TrackAmazonPurchase$2
 androidx.annotation.IntDef
 androidx.documentfile.provider.SingleDocumentFile
 com.google.common.collect.AbstractMapBasedMultimap$1
@@ -21010,6 +21276,7 @@ androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi23
 com.google.firebase.R
 com.google.common.collect.Multisets$MultisetIteratorImpl
 com.google.android.gms.maps.internal.zzbm
+androidx.webkit.R$attr
 androidx.drawerlayout.widget.DrawerLayout$ChildAccessibilityDelegate
 kotlin.internal.Exact
 com.google.common.collect.FilteredKeyMultimap$Entries
@@ -21120,6 +21387,7 @@ kotlinx.coroutines.sync.MutexImpl$lockSuspend$2$1$1
 com.google.android.gms.maps.model.Cap:
     final com.google.android.gms.maps.model.Cap zzh()
 com.google.android.gms.maps.model.zzd
+com.app.market_vendor.R$mipmap
 androidx.work.ListenableWorker$Result$Retry:
     public androidx.work.Data getOutputData()
 kotlin.collections.unsigned.UArraysKt___UArraysJvmKt$asList$2
@@ -21303,6 +21571,8 @@ kotlinx.coroutines.channels.RendezvousChannel:
     protected final boolean isBufferAlwaysFull()
     protected final boolean isBufferFull()
 com.google.common.collect.SortedLists$KeyPresentBehavior$5
+io.flutter.util.TraceSection:
+    public void <init>()
 kotlinx.coroutines.flow.FlowKt__ZipKt$combineTransform$$inlined$combineTransformUnsafe$FlowKt__ZipKt$5$1
 okio.Buffer$2
 com.google.common.collect.TreeMultiset$2
@@ -21344,10 +21614,8 @@ com.google.android.gms.common.api.GoogleApi:
     public com.google.android.gms.tasks.Task doWrite(com.google.android.gms.common.api.internal.TaskApiCall)
     protected java.lang.String getContextFeatureId()
 io.flutter.plugin.common.PluginRegistry$Registrar:
-    public abstract android.app.Activity activity()
     public abstract android.content.Context context()
     public abstract android.content.Context activeContext()
-    public abstract io.flutter.plugin.common.BinaryMessenger messenger()
     public abstract io.flutter.view.TextureRegistry textures()
     public abstract io.flutter.plugin.platform.PlatformViewRegistry platformViewRegistry()
     public abstract io.flutter.view.FlutterView view()
@@ -21378,6 +21646,7 @@ androidx.appcompat.R$layout:
     public static final int select_dialog_item_material
     public static final int select_dialog_multichoice_material
     public static final int select_dialog_singlechoice_material
+androidx.webkit.internal.FrameworkServiceWorkerClient
 androidx.media.MediaBrowserServiceCompatApi23
 androidx.swiperefreshlayout.widget.CircularProgressDrawable$Ring
 com.google.common.collect.CompactHashMap$EntrySetView
@@ -21444,6 +21713,7 @@ com.google.common.collect.ArrayTable$Row
 com.google.android.gms.common.util.HttpUtils
 com.google.common.collect.HashBiMap$EntryForKey
 kotlinx.coroutines.sync.MutexImpl$TryLockDesc
+com.app.market_vendor.R$drawable
 kotlinx.coroutines.flow.FlowKt__MergeKt$flatMapConcat$$inlined$map$1$2$1
 kotlinx.coroutines.flow.FlowKt__MigrationKt$delayEach$1
 com.google.android.gms.common.stats.StatsEvent
@@ -21567,8 +21837,8 @@ io.flutter.embedding.engine.dart.DartExecutor$DefaultBinaryMessenger:
     public void enableBufferingIncomingMessages()
     public void disableBufferingIncomingMessages()
 kotlinx.coroutines.flow.FlowKt__BuildersKt$asFlow$$inlined$unsafeFlow$5
-kotlinx.coroutines.flow.FlowKt__ZipKt$combineUnsafe$$inlined$unsafeFlow$1
 kotlinx.coroutines.flow.FlowKt__ReduceKt$first$3
+kotlinx.coroutines.flow.FlowKt__ZipKt$combineUnsafe$$inlined$unsafeFlow$1
 vn.hunghd.flutter.plugins.imagecropper.R$string:
     private void <init>()
     public static final int abc_action_bar_home_description
@@ -21800,6 +22070,7 @@ okhttp3.CertificatePinner$Pin:
 com.google.android.gms.common.internal.zae
 io.flutter.embedding.engine.loader.ResourceExtractor$1
 androidx.legacy.coreui.R$dimen
+io.flutter.plugins.webviewflutter.R$dimen
 com.google.android.gms.stats.CodePackage
 com.google.common.collect.FilteredKeyMultimap$AddRejectingList
 kotlin.jvm.internal.PropertyReference2Impl
@@ -22009,7 +22280,6 @@ com.google.common.collect.DenseImmutableTable
 com.google.firebase.messaging.R
 androidx.media.MediaBrowserProtocol
 androidx.swiperefreshlayout.widget.SwipeRefreshLayout$OnRefreshListener
-com.app.market_vendor_app.R$string
 com.google.firebase.messaging.Constants$ScionAnalytics
 androidx.work.PeriodicWorkRequest
 kotlinx.coroutines.internal.MainDispatcherFactory$DefaultImpls
@@ -22032,6 +22302,7 @@ com.google.common.util.concurrent.AbstractFuture$SetFuture:
     void <init>(com.google.common.util.concurrent.AbstractFuture,com.google.common.util.concurrent.ListenableFuture)
 kotlin.collections.EmptyMap:
     private final java.lang.Object readResolve()
+    public java.lang.Void put(java.lang.Object,java.lang.Void)
     private static final long serialVersionUID
 kotlin.sequences.SequencesKt___SequencesKt$minus$4$iterator$1
 kotlinx.coroutines.selects.SelectUnbiasedKt
@@ -22174,6 +22445,7 @@ com.google.firebase.FirebaseOptions:
     private static final java.lang.String STORAGE_BUCKET_RESOURCE_NAME
     private static final java.lang.String PROJECT_ID_RESOURCE_NAME
 androidx.transition.Styleable$Slide
+io.flutter.plugins.webviewflutter.R$layout
 com.google.common.cache.Cache
 kotlin.io.FileTreeWalk$FileTreeWalkIterator$BottomUpDirectoryState
 kotlin.DslMarker
@@ -22331,7 +22603,8 @@ com.google.common.graph.AbstractDirectedNetworkConnections$1
 androidx.appcompat.widget.LinearLayoutCompat$DividerMode
 io.flutter.embedding.engine.dart.DartExecutor$DartEntrypoint:
     public static io.flutter.embedding.engine.dart.DartExecutor$DartEntrypoint createDefault()
-    public void <init>(java.lang.String,java.lang.String,java.lang.String)
+io.flutter.plugin.platform.AccessibilityEventsDelegate:
+    public boolean requestSendAccessibilityEvent(android.view.View,android.view.View,android.view.accessibility.AccessibilityEvent)
 kotlinx.coroutines.FlowPreview
 androidx.fragment.app.ListFragment$1
 kotlin.ArrayIntrinsicsKt
@@ -22422,7 +22695,9 @@ kotlinx.coroutines.flow.FlowKt__ZipKt$combineTransformUnsafe$1$1
 kotlin.collections.GroupingKt__GroupingJVMKt
 kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$4
 kotlinx.coroutines.debug.internal.DebugProbesImpl$dumpCoroutinesSynchronized$lambda-21$$inlined$sortedBy$1
+androidx.annotation.GravityInt
 com.google.common.net.HttpHeaders$ReferrerPolicyValues
+com.iyaffle.launchreview.R$layout
 com.google.android.gms.location.GeofencingEvent
 com.google.android.gms.common.util.Predicate
 androidx.core.view.WindowInsetsAnimationCompat$Impl21$Impl21OnApplyWindowInsetsListener$3
@@ -22493,6 +22768,7 @@ kotlinx.coroutines.flow.FlowKt__CountKt$count$3
 javax.annotation.Nullable
 kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$7
 okio.Buffer$1
+org.chromium.support_lib_boundary.util.Features
 javax.annotation.CheckForSigned
 kotlin.sequences.SequencesKt___SequencesKt$distinct$1
 androidx.sqlite.db.SupportSQLiteDatabase:
@@ -22556,6 +22832,8 @@ kotlinx.coroutines.scheduling.LimitingDispatcher:
     public java.util.concurrent.Executor getExecutor()
     public void dispatchYield(kotlin.coroutines.CoroutineContext,java.lang.Runnable)
 com.google.common.collect.TreeMultiset$3
+io.flutter.plugins.webviewflutter.WebViewFlutterPlugin:
+    public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
 com.google.common.collect.RangeSet
 androidx.appcompat.widget.PopupMenu$3
 androidx.core.view.WindowInsetsAnimationCompat$Impl21
@@ -22657,9 +22935,7 @@ com.google.common.collect.DenseImmutableTable$Column
 org.checkerframework.checker.nullness.compatqual.NonNullType
 androidx.viewpager.R$dimen
 androidx.coordinatorlayout.widget.CoordinatorLayout$AttachedBehavior
-io.flutter.app.FlutterApplication:
-    public android.app.Activity getCurrentActivity()
-    public void setCurrentActivity(android.app.Activity)
+io.flutter.app.FlutterApplication
 okhttp3.internal.http.HttpDate:
     private void <init>()
     public static final long MAX_DATE
@@ -22706,6 +22982,7 @@ kotlin.sequences.SequencesKt___SequencesKt$filterNotNull$1
 androidx.work.impl.utils.WorkProgressUpdater$1
 com.google.android.gms.internal.common.zzaj
 com.google.android.gms.common.zzu
+com.iyaffle.launchreview.R$string
 kotlin.jvm.internal.SpreadBuilder
 androidx.work.impl.utils.StatusRunnable$3
 kotlin.UByte
@@ -22799,7 +23076,6 @@ com.google.android.gms.common.api.Api$BaseClientBuilder:
     public static final int API_PRIORITY_PLUS
     public static final int API_PRIORITY_OTHER
 io.flutter.embedding.android.FlutterActivityAndFragmentDelegate:
-    void onLowMemory()
     private static final java.lang.String TAG
     private static final java.lang.String FRAMEWORK_RESTORATION_BUNDLE_KEY
     private static final java.lang.String PLUGINS_RESTORATION_BUNDLE_KEY
@@ -22830,7 +23106,6 @@ okio.BufferedSink:
     public abstract okio.BufferedSink writeDecimalLong(long)
     public abstract okio.BufferedSink emit()
     public abstract java.io.OutputStream outputStream()
-com.app.market_vendor_app.R$drawable
 kotlin.collections.unsigned.UArraysKt___UArraysJvmKt$asList$1
 com.google.common.cache.CacheBuilder
 com.google.common.collect.MapMakerInternalMap$DummyInternalEntry
@@ -22872,6 +23147,7 @@ kotlinx.coroutines.flow.FlowKt__DelayKt$sample$2$values$1
 kotlinx.coroutines.scheduling.Task:
     public final int getMode()
 android.support.v4.media.session.MediaSessionCompat$Callback$StubApi24
+kotlin.jvm.JvmDefaultWithCompatibility
 com.google.common.collect.Maps$EntryTransformer
 com.google.common.collect.Sets$CartesianSet$1
 androidx.appcompat.view.menu.MenuView:
@@ -22943,8 +23219,8 @@ androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm
 androidx.work.impl.constraints.WorkConstraintsTracker:
     void <init>(androidx.work.impl.constraints.WorkConstraintsCallback,androidx.work.impl.constraints.controllers.ConstraintController[])
 kotlinx.coroutines.android.HandlerContext$invokeOnTimeout$$inlined$DisposableHandle$1
-android.support.v4.media.session.MediaControllerCompat
 androidx.activity.result.contract.ActivityResultContracts$GetContent
+android.support.v4.media.session.MediaControllerCompat
 kotlin.sequences.TransformingSequence$iterator$1:
     public final java.util.Iterator getIterator()
 com.google.android.datatransport.runtime.dagger.multibindings.IntoMap
@@ -23166,6 +23442,7 @@ android.support.customtabs.ICustomTabsCallback$Stub:
     static final int TRANSACTION_onPostMessage
     static final int TRANSACTION_onRelationshipValidationResult
     static final int TRANSACTION_extraCallbackWithResult
+androidx.webkit.internal.VisualStateCallbackAdapter
 com.google.common.collect.Maps$FilteredEntryMap$EntrySet$1$1
 com.onesignal.OSDynamicTriggerTimer:
     void <init>()
@@ -23448,6 +23725,7 @@ com.google.firebase.messaging.Constants:
     public static final java.lang.String IPC_BUNDLE_KEY_SEND_ERROR
 kotlin.jvm.internal.ArrayFloatIterator
 androidx.room.FtsOptions$MatchInfo
+com.app.market_vendor.R$raw
 io.flutter.plugins.googlemaps.GoogleMapOptionsSink:
     public abstract void setInitialMarkers(java.lang.Object)
     public abstract void setInitialPolygons(java.lang.Object)
@@ -23547,7 +23825,6 @@ com.onesignal.shortcutbadger.util.CloseHelper:
     public void <init>()
     public static void closeQuietly(java.io.Closeable)
 io.flutter.embedding.engine.dart.DartMessenger$ConcurrentTaskQueue
-com.app.market_vendor_app.R$animator
 com.google.android.datatransport.runtime.backends.MetadataBackendRegistry:
     private static final java.lang.String TAG
     private static final java.lang.String BACKEND_KEY_PREFIX
@@ -23623,6 +23900,9 @@ androidx.core.view.ViewCompat$3:
 androidx.arch.core.executor.TaskExecutor:
     public void executeOnMainThread(java.lang.Runnable)
 com.google.common.io.ByteArrayDataOutput
+io.flutter.plugins.webviewflutter.GeneratedAndroidWebView$WebResourceErrorData:
+    public java.lang.Long getErrorCode()
+    public java.lang.String getDescription()
 androidx.vectordrawable.animated.R$layout
 com.google.common.net.MediaType$2
 com.google.android.gms.common.util.DeviceProperties:
@@ -23649,6 +23929,7 @@ kotlinx.coroutines.flow.internal.ChannelFlowMerge$collectTo$$inlined$collect$1$1
 io.flutter.plugins.flutter_plugin_android_lifecycle.FlutterAndroidLifecyclePlugin:
     public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
 androidx.core.graphics.drawable.RoundedBitmapDrawable
+com.app.market_vendor.R$attr
 com.google.android.gms.internal.maps.zzm
 com.google.common.collect.Synchronized$SynchronizedDeque
 com.onesignal.OneSignal:
@@ -23675,6 +23956,8 @@ com.onesignal.OneSignal:
     public static void deleteTags(java.lang.String)
     public static void deleteTags(java.lang.String,com.onesignal.OneSignal$ChangeTagsUpdateHandler)
     public static void disableGMSMissingPrompt(boolean)
+    public static void promptForPushNotifications()
+    public static void promptForPushNotifications(boolean)
     public static void removeGroupedNotifications(java.lang.String)
     public static void addTrigger(java.lang.String,java.lang.Object)
     public static java.util.Map getTriggers()
@@ -23828,9 +24111,9 @@ com.yalantis.ucrop.R$drawable:
 com.onesignal.ActivityLifecycleHandler:
     private static final java.lang.String FOCUS_LOST_WORKER_TAG
     private static final int SYNC_AFTER_BG_DELAY_MS
+androidx.fragment.app.ListFragment$2
 android.support.v4.media.MediaBrowserCompat$CustomActionCallback:
     public void <init>()
-androidx.fragment.app.ListFragment$2
 kotlin.jvm.internal.markers.KMappedMarker
 com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture
 kotlin.collections.ReversedList
@@ -23888,6 +24171,13 @@ io.flutter.embedding.engine.plugins.util.GeneratedPluginRegister:
     public void <init>()
     private static final java.lang.String TAG
 kotlinx.coroutines.flow.FlowKt__ErrorsKt$retry$1
+androidx.webkit.internal.WebkitToCompatConverter:
+    public androidx.webkit.internal.WebSettingsAdapter convertSettings(android.webkit.WebSettings)
+    public androidx.webkit.internal.WebResourceRequestAdapter convertWebResourceRequest(android.webkit.WebResourceRequest)
+    public java.lang.reflect.InvocationHandler convertServiceWorkerSettings(android.webkit.ServiceWorkerWebSettings)
+    public android.webkit.ServiceWorkerWebSettings convertServiceWorkerSettings(java.lang.reflect.InvocationHandler)
+    java.lang.reflect.InvocationHandler convertWebMessagePort(android.webkit.WebMessagePort)
+    android.webkit.WebMessagePort convertWebMessagePort(java.lang.reflect.InvocationHandler)
 kotlin.jvm.functions.Function5:
     public abstract java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)
 android.support.customtabs.IPostMessageService$Default
@@ -23901,8 +24191,8 @@ android.support.v4.media.session.MediaControllerCompat$Callback:
 com.google.common.hash.AbstractByteHasher
 com.google.android.gms.common.server.response.zah
 com.google.common.io.AppendableWriter
-android.support.v4.media.session.MediaControllerCompat$TransportControlsApi24
 com.google.android.gms.maps.zzak
+android.support.v4.media.session.MediaControllerCompat$TransportControlsApi24
 androidx.appcompat.widget.FitWindowsFrameLayout:
     public void <init>(android.content.Context)
 com.google.common.collect.Maps
@@ -23942,6 +24232,10 @@ androidx.appcompat.view.StandaloneActionMode:
 androidx.core.os.MessageCompat
 io.flutter.plugin.common.PluginRegistry
 com.google.common.collect.Synchronized$SynchronizedMultiset
+androidx.webkit.internal.WebViewProviderFactoryAdapter:
+    public org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface createWebView(android.webkit.WebView)
+    public org.chromium.support_lib_boundary.StaticsBoundaryInterface getStatics()
+    public org.chromium.support_lib_boundary.ServiceWorkerControllerBoundaryInterface getServiceWorkerController()
 com.google.firebase.messaging.-$$Lambda$FirebaseMessaging$Uyx38-Jmg4xvTvNieX_4Y_cQnyc:
     public final void onNewToken(java.lang.String)
 kotlinx.coroutines.scheduling.ExperimentalCoroutineDispatcher:
@@ -23957,6 +24251,8 @@ androidx.fragment.R$styleable:
     public static final int[] GradientColorItem
 com.onesignal.GooglePlayServicesUpgradePrompt$1$2:
     final synthetic com.onesignal.GooglePlayServicesUpgradePrompt$1 this$0
+io.flutter.plugins.webviewflutter.InstanceManager:
+    private long nextIdentifier
 androidx.appcompat.app.AlertController$2:
     final synthetic androidx.appcompat.app.AlertController this$0
 androidx.appcompat.widget.DrawableUtils:
@@ -23977,6 +24273,7 @@ androidx.work.impl.foreground.SystemForegroundService:
     private static androidx.work.impl.foreground.SystemForegroundService sForegroundService
 kotlinx.coroutines.internal.LockFreeLinkedListKt:
     private static final java.lang.Object LIST_EMPTY
+dev.fluttercommunity.plus.packageinfo.PackageInfoPlugin$Companion
 androidx.core.app.NotificationCompatJellybean:
     private static final java.lang.Object sActionsLock
 androidx.core.app.JobIntentService:
@@ -24355,8 +24652,6 @@ androidx.appcompat.widget.ListPopupWindow:
     private java.lang.Runnable mShowDropDownRunnable
 androidx.appcompat.view.menu.ActionMenuItem:
     private android.view.MenuItem$OnMenuItemClickListener mClickListener
-io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$1$1:
-    final synthetic io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$1 this$1
 androidx.core.view.ActionProvider:
     private final android.content.Context mContext
     private androidx.core.view.ActionProvider$SubUiVisibilityListener mSubUiVisibilityListener
@@ -24421,6 +24716,8 @@ androidx.lifecycle.SavedStateHandleController$1:
     void <init>(androidx.lifecycle.Lifecycle,androidx.savedstate.SavedStateRegistry)
 com.onesignal.flutter.FlutterRegistrarResponder$2:
     final synthetic com.onesignal.flutter.FlutterRegistrarResponder this$0
+dev.fluttercommunity.plus.packageinfo.PackageInfoPlugin:
+    public static final dev.fluttercommunity.plus.packageinfo.PackageInfoPlugin$Companion Companion
 com.google.firebase.encoders.Encoder
 androidx.work.impl.model.WorkProgressDao_Impl$1:
     final synthetic androidx.work.impl.model.WorkProgressDao_Impl this$0
@@ -24464,6 +24761,8 @@ com.google.android.gms.internal.common.zzc:
 androidx.appcompat.view.menu.BaseMenuPresenter:
     protected android.view.LayoutInflater mInflater
     private int mId
+io.flutter.view.FlutterNativeView:
+    public synthetic void setMessageHandler(java.lang.String,io.flutter.plugin.common.BinaryMessenger$BinaryMessageHandler,io.flutter.plugin.common.BinaryMessenger$TaskQueue)
 androidx.sqlite.db.framework.FrameworkSQLiteDatabase$2:
     final synthetic androidx.sqlite.db.framework.FrameworkSQLiteDatabase this$0
 com.yalantis.ucrop.R$styleable:
@@ -24532,10 +24831,12 @@ androidx.fragment.app.DefaultSpecialEffectsController$4:
     final synthetic androidx.fragment.app.DefaultSpecialEffectsController this$0
 androidx.work.impl.WorkManagerImpl:
     private static final java.lang.String TAG
+io.flutter.plugins.webviewflutter.ThreadedInputConnectionProxyAdapterView:
+    final android.view.View containerView
+    private boolean triggerDelayed
 io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding:
     private final io.flutter.embedding.engine.FlutterEngine flutterEngine
     private final io.flutter.view.TextureRegistry textureRegistry
-    private final io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets flutterAssets
 com.google.android.gms.dynamite.zzh
 kotlin.jvm.internal.PackageReference:
     private final java.lang.String moduleName
@@ -24549,6 +24850,8 @@ com.google.android.gms.internal.base.zac:
     private static final java.lang.ClassLoader zaa
 com.onesignal.OSInAppMessageRepository$3:
     final synthetic com.onesignal.OSInAppMessageRepository this$0
+io.flutter.plugins.webviewflutter.DisplayListenerProxy$1:
+    final synthetic io.flutter.plugins.webviewflutter.DisplayListenerProxy this$0
 com.onesignal.OneSignalRestClientWrapper$2:
     final synthetic com.onesignal.OneSignalRestClientWrapper this$0
 okhttp3.internal.http1.Http1Codec$UnknownLengthSource:
@@ -24602,8 +24905,6 @@ androidx.room.RoomDatabase:
 androidx.browser.customtabs.CustomTabsSession:
     private final java.lang.Object mLock
 androidx.arch.core.executor.ArchTaskExecutor$1
-io.flutter.embedding.engine.FlutterEngineConnectionRegistry$DefaultFlutterAssets:
-    final io.flutter.embedding.engine.loader.FlutterLoader flutterLoader
 androidx.work.WorkerParameters$RuntimeExtras:
     public java.util.List triggeredContentAuthorities
     public java.util.List triggeredContentUris
@@ -24752,8 +25053,6 @@ com.onesignal.OSReceiveReceiptController$ReceiveReceiptWorker$1:
     final synthetic com.onesignal.OSReceiveReceiptController$ReceiveReceiptWorker this$0
 com.google.android.datatransport.runtime.firebase.transport.LogSourceMetrics:
     private static final com.google.android.datatransport.runtime.firebase.transport.LogSourceMetrics DEFAULT_INSTANCE
-com.onesignal.PermissionsActivity$2:
-    final synthetic com.onesignal.PermissionsActivity this$0
 kotlin.text.CharsKt
 androidx.core.provider.RequestExecutor$ReplyRunnable$1:
     final synthetic androidx.core.provider.RequestExecutor$ReplyRunnable this$0
@@ -24782,6 +25081,9 @@ androidx.fragment.app.Fragment:
     java.lang.Runnable mPostponedDurationRunnable
     androidx.lifecycle.ViewModelProvider$Factory mDefaultFactory
     private final java.util.concurrent.atomic.AtomicInteger mNextLocalRequestCode
+io.flutter.embedding.engine.plugins.shim.ShimRegistrar:
+    private final java.util.Map globalRegistrarMap
+    private final java.lang.String pluginId
 androidx.appcompat.widget.ActionBarContextView$1:
     final synthetic androidx.appcompat.widget.ActionBarContextView this$0
 com.onesignal.OSObservable$1:
@@ -24947,10 +25249,10 @@ androidx.fragment.app.FragmentManager$7:
     final synthetic androidx.fragment.app.FragmentManager this$0
 androidx.transition.Fade$1:
     final synthetic androidx.transition.Fade this$0
-io.flutter.plugin.platform.VirtualDisplayController$1:
-    final synthetic io.flutter.plugin.platform.VirtualDisplayController this$0
 okio.Base64:
     private static final byte[] URL_MAP
+io.flutter.plugin.platform.AccessibilityEventsDelegate:
+    private io.flutter.view.AccessibilityBridge accessibilityBridge
 androidx.work.impl.model.PreferenceDao_Impl$1:
     final synthetic androidx.work.impl.model.PreferenceDao_Impl this$0
 io.flutter.embedding.engine.dart.DartMessenger$DefaultTaskQueueFactory:
@@ -24967,8 +25269,6 @@ com.onesignal.UserStateSynchronizer$1:
     final synthetic com.onesignal.UserStateSynchronizer this$0
 com.onesignal.JobIntentService:
     boolean mStopped
-io.flutter.app.FlutterApplication:
-    private android.app.Activity mCurrentActivity
 io.flutter.FlutterInjector$Builder$NamedThreadFactory:
     final synthetic io.flutter.FlutterInjector$Builder this$0
 com.google.android.gms.common.internal.zzag:
@@ -24996,8 +25296,6 @@ kotlin.KotlinVersion:
     public static final kotlin.KotlinVersion$Companion Companion
 androidx.appcompat.view.StandaloneActionMode:
     private boolean mFocusable
-io.flutter.plugin.common.BinaryMessenger$-CC
 androidx.lifecycle.DefaultLifecycleObserver$-CC
-io.flutter.plugin.platform.PlatformView$-CC:
-    public static void $default$onInputConnectionLocked(io.flutter.plugin.platform.PlatformView)
-    public static void $default$onInputConnectionUnlocked(io.flutter.plugin.platform.PlatformView)
+io.flutter.view.TextureRegistry$SurfaceTextureEntry$-CC
+io.flutter.plugin.common.BinaryMessenger$-CC

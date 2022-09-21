@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/res/merged/release/layout-watch-v20/abc_alert_dialog_button_bar_material.xml",
-        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/fad6a58a876fe2509aa8b6f3be316c6c/appcompat-1.3.1/res/layout-watch-v20/abc_alert_dialog_button_bar_material.xml"
+        "merged": "/Users/mac/Documents/flutter_project/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/layout-watch-v20/abc_alert_dialog_title_material.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/5baca6ddf5ba77f396df5dd1e6ccf225/appcompat-1.3.1/res/layout-watch-v20/abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/onesignal_flutter/intermediates/res/merged/release/layout-watch-v20/abc_alert_dialog_title_material.xml",
-        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/fad6a58a876fe2509aa8b6f3be316c6c/appcompat-1.3.1/res/layout-watch-v20/abc_alert_dialog_title_material.xml"
+        "merged": "/Users/mac/Documents/flutter_project/market_vendor_app/build/onesignal_flutter/intermediates/res/merged/release/layout-watch-v20/abc_alert_dialog_button_bar_material.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/5baca6ddf5ba77f396df5dd1e6ccf225/appcompat-1.3.1/res/layout-watch-v20/abc_alert_dialog_button_bar_material.xml"
     }
 ]

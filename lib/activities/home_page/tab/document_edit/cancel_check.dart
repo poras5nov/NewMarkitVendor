@@ -23,10 +23,8 @@ import '../../../../widgets/material_viewer.dart';
 
 class CheckDocument extends StatefulWidget {
   int v;
-  String token;
   String id;
-  CheckDocument(
-      {Key? key, required this.v, required this.token, required this.id})
+  CheckDocument({Key? key, required this.v, required this.id})
       : super(key: key);
 
   @override
@@ -264,7 +262,7 @@ class _CheckDocumentState extends State<CheckDocument> implements ApiInterface {
         whichApiCall = "update";
 
         ApiCall.editDocument(widget.id, panCardController.text, _imagePath,
-            widget.token, this, context);
+            token, this, context);
         // widget.model.panImage = _imagePath;
         // widget.model.panNumber = panCardController.text;
         // Navigator.pop(context, widget.model);
@@ -327,26 +325,30 @@ class _CheckDocumentState extends State<CheckDocument> implements ApiInterface {
       var pickedFile = await picker.pickImage(source: source);
 
       var croppedFile = await ImageCropper().cropImage(
-          sourcePath: pickedFile!.path,
-          cropStyle: CropStyle.rectangle,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          androidUiSettings: AndroidUiSettings(
-            toolbarTitle:
-                NewMarkitVendorLocalizations.of(context)!.find('appName'),
-            toolbarColor: Colors.black,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
+        sourcePath: pickedFile!.path,
+        cropStyle: CropStyle.rectangle,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: AppColors.primaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
           ),
-          iosUiSettings: const IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
+          WebUiSettings(
+            context: context,
+          ),
+        ],
+      );
       debugPrint(croppedFile!.path);
       if (croppedFile.path.isNotEmpty) {
         Utility.dialogLoader(context);

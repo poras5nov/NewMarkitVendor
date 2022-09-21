@@ -53,23 +53,27 @@ class _ViewAllProductAccToCategoryScreenState
   }
 
   void pagination() {
-    if ((scrollcontroller.position.pixels ==
-            scrollcontroller.position.maxScrollExtent) &&
-        (dataModel.length < model.products!.total!)) {
-      setState(() {
-        isBottomLoader = true;
-        page += 1;
-        ApiCall.allProductwithCaterory(
-            widget.categoryId!,
-            widget.subCategoryId!,
-            widget.childCategoryId == null ? "" : widget.childCategoryId!,
-            searchController.text,
-            page.toString(),
-            token,
-            this,
-            context);
-        //add api for load the more data according to new page
-      });
+    if (isBottomLoader == false) {
+      if (scrollcontroller.position.pixels ==
+          scrollcontroller.position.maxScrollExtent) {
+        print(dataModel.length);
+        if (dataModel.length < model.products!.total!) {
+          setState(() {
+            isBottomLoader = true;
+            page = page + 1;
+            ApiCall.allProductwithCaterory(
+                widget.categoryId!,
+                widget.subCategoryId!,
+                widget.childCategoryId == null ? "" : widget.childCategoryId!,
+                searchController.text,
+                page.toString(),
+                token,
+                this,
+                context);
+            //add api for load the more data according to new page
+          });
+        }
+      }
     }
   }
 
@@ -178,179 +182,143 @@ class _ViewAllProductAccToCategoryScreenState
                                   ? Container(
                                       margin: const EdgeInsets.only(
                                           left: 16, right: 16),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          GridView.count(
-                                            shrinkWrap: true,
-                                            physics:
-                                                const NeverScrollableScrollPhysics(),
-                                            // Create a grid with 2 columns. If you change the scrollDirection to
-                                            // horizontal, this produces 2 rows.
-                                            crossAxisCount: 2,
-                                            crossAxisSpacing: 20,
-                                            mainAxisSpacing: 10,
-                                            // Generate 100 widgets that display their index in the List.
-                                            children: List.generate(
-                                                dataModel.length, (index) {
-                                              return Center(
-                                                child: GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        PageTransition(
-                                                            type:
-                                                                PageTransitionType
-                                                                    .fade,
-                                                            child:
-                                                                ProductInfoScreen(
-                                                              data: dataModel[
-                                                                  index],
-                                                            ))).then((value) {
-                                                      if (value != null) {}
-                                                    });
-                                                  },
-                                                  child: Container(
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      children: [
-                                                        CachedNetworkImage(
-                                                          imageUrl: dataModel[
-                                                                  index]
-                                                              .default_image!,
-                                                          imageBuilder: (context,
-                                                                  imageProvider) =>
-                                                              Container(
-                                                            height: 90.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10),
-                                                              shape: BoxShape
-                                                                  .rectangle,
-                                                              image:
-                                                                  DecorationImage(
-                                                                image:
-                                                                    imageProvider,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          placeholder:
-                                                              (context, url) =>
-                                                                  Container(
-                                                            height: 90.0,
-                                                            alignment: Alignment
-                                                                .center,
-                                                            child: Container(
-                                                              width: 40,
-                                                              height: 40,
-                                                              child: const CircularProgressIndicator(
-                                                                  valueColor: AlwaysStoppedAnimation<
-                                                                          Color>(
-                                                                      AppColors
-                                                                          .primaryColor)),
-                                                            ),
-                                                          ),
-                                                          errorWidget: (context,
-                                                                  url, error) =>
-                                                              Container(
-                                                            alignment: Alignment
-                                                                .center,
-                                                            height: 90,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Colors
-                                                                  .grey[200],
-                                                            ),
-                                                            child: const Icon(
-                                                              Icons.error,
-                                                              size: 40,
-                                                              color:
-                                                                  Colors.black,
-                                                            ),
-                                                          ),
-                                                        ),
+                                      child: GridView.count(
+                                        controller: scrollcontroller,
+
+                                        // Create a grid with 2 columns. If you change the scrollDirection to
+                                        // horizontal, this produces 2 rows.
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 20,
+                                        mainAxisSpacing: 10,
+                                        // Generate 100 widgets that display their index in the List.
+                                        children: List.generate(
+                                            dataModel.length, (index) {
+                                          return GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                      type: PageTransitionType
+                                                          .fade,
+                                                      child: ProductInfoScreen(
+                                                        data: dataModel[index],
+                                                      ))).then((value) {
+                                                if (value != null) {}
+                                              });
+                                            },
+                                            child: Container(
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  CachedNetworkImage(
+                                                    imageUrl: dataModel[index]
+                                                        .default_image!,
+                                                    imageBuilder: (context,
+                                                            imageProvider) =>
                                                         Container(
-                                                          alignment: Alignment
-                                                              .centerLeft,
-                                                          child: Text(
-                                                              dataModel[index]
-                                                                  .name!,
-                                                              style: Styles
-                                                                  .boldBlack16),
+                                                      height: 80.0,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        shape:
+                                                            BoxShape.rectangle,
+                                                        image: DecorationImage(
+                                                          image: imageProvider,
+                                                          fit: BoxFit.cover,
                                                         ),
-                                                        Row(
-                                                          children: [
-                                                            Text(
-                                                                AppConstants
-                                                                        .priceSign +
-                                                                    dataModel[
-                                                                            index]
-                                                                        .variations![
-                                                                            0]
-                                                                        .offerPrice!
-                                                                        .toString(),
-                                                                style: Styles
-                                                                    .boldBlack14),
-                                                            const SizedBox(
-                                                              width: 5,
-                                                            ),
-                                                            Text(
-                                                                AppConstants
-                                                                        .priceSign +
-                                                                    dataModel[
-                                                                            index]
-                                                                        .variations![
-                                                                            0]
-                                                                        .basicPrice!
-                                                                        .toString(),
-                                                                style: Styles
-                                                                    .pricestrickTitle12Grey),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            const Icon(
-                                                              Icons.star,
-                                                              color: AppColors
-                                                                  .yellowColor,
-                                                              size: 20,
-                                                            ),
-                                                            Text("4.5",
-                                                                style: Styles
-                                                                    .yellowMedium12),
-                                                          ],
-                                                        )
-                                                      ],
+                                                      ),
+                                                    ),
+                                                    placeholder:
+                                                        (context, url) =>
+                                                            Container(
+                                                      height: 80.0,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Container(
+                                                        width: 40,
+                                                        height: 40,
+                                                        child: const CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                    AppColors
+                                                                        .primaryColor)),
+                                                      ),
+                                                    ),
+                                                    errorWidget:
+                                                        (context, url, error) =>
+                                                            Container(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      height: 80,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.grey[200],
+                                                      ),
+                                                      child: const Icon(
+                                                        Icons.error,
+                                                        size: 40,
+                                                        color: Colors.black,
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              );
-                                            }),
-                                          ),
-                                          isBottomLoader
-                                              ? Container(
-                                                  width: MediaQuery.of(context)
-                                                      .size
-                                                      .width,
-                                                  height: 50,
-                                                  alignment: Alignment.center,
-                                                  child:
-                                                      const CircularProgressIndicator(
-                                                    color:
-                                                        AppColors.primaryColor,
+                                                  Container(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Text(
+                                                        dataModel[index].name!,
+                                                        style:
+                                                            Styles.boldBlack14,
+                                                        maxLines: 2),
                                                   ),
-                                                )
-                                              : Container()
-                                        ],
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                          AppConstants
+                                                                  .priceSign +
+                                                              dataModel[index]
+                                                                  .variations![
+                                                                      0]
+                                                                  .offerPrice!
+                                                                  .toString(),
+                                                          style: Styles
+                                                              .boldBlack14),
+                                                      const SizedBox(
+                                                        width: 5,
+                                                      ),
+                                                      Text(
+                                                          AppConstants
+                                                                  .priceSign +
+                                                              dataModel[index]
+                                                                  .variations![
+                                                                      0]
+                                                                  .basicPrice!
+                                                                  .toString(),
+                                                          style: Styles
+                                                              .pricestrickTitle12Grey),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.star,
+                                                        color: AppColors
+                                                            .yellowColor,
+                                                        size: 20,
+                                                      ),
+                                                      Text(
+                                                          "${dataModel[index].product_rating}",
+                                                          style: Styles
+                                                              .yellowMedium12),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        }),
                                       ),
                                     )
                                   : Container(
@@ -366,7 +334,17 @@ class _ViewAllProductAccToCategoryScreenState
                                           style: Styles.boldBlack16,
                                         ),
                                       )),
-                        )
+                        ),
+                        isBottomLoader
+                            ? Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 50,
+                                alignment: Alignment.center,
+                                child: const CircularProgressIndicator(
+                                  color: AppColors.primaryColor,
+                                ),
+                              )
+                            : Container()
                       ],
                     ),
                   ),
@@ -417,6 +395,7 @@ class _ViewAllProductAccToCategoryScreenState
   void onFailure(message) {
     setState(() {
       isLoader = false;
+      isBottomLoader = false;
     });
   }
 

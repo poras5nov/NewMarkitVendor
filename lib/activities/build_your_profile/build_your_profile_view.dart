@@ -12,6 +12,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:market_vendor_app/apiservice/api_call.dart';
 import 'package:market_vendor_app/apiservice/api_interface.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../apiservice/key_string.dart';
@@ -53,6 +54,19 @@ class _BuildYourProfileView extends State<BuildYourProfileView>
       TextEditingController(text: "");
 
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  String version = "";
+  @override
+  void initState() {
+    super.initState();
+    versionName();
+  }
+
+  versionName() async {
+    await PackageInfo.fromPlatform().then((value) {
+      version = value.version;
+      print(version);
+    });
+  }
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -66,9 +80,9 @@ class _BuildYourProfileView extends State<BuildYourProfileView>
                     padding: Dimens.edgeInsets20,
                     child: Form(
                       key: formkey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: ListView(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         children: [
                           // Container(
                           //   alignment: Alignment.centerLeft,
@@ -374,6 +388,7 @@ class _BuildYourProfileView extends State<BuildYourProfileView>
                   ? "Female"
                   : "Other",
           filePath,
+          version,
           this,
           context);
     }
@@ -462,26 +477,30 @@ class _BuildYourProfileView extends State<BuildYourProfileView>
       var pickedFile = await picker.pickImage(source: source);
 
       var croppedFile = await ImageCropper().cropImage(
-          sourcePath: pickedFile!.path,
-          cropStyle: CropStyle.circle,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          androidUiSettings: AndroidUiSettings(
-            toolbarTitle:
-                NewMarkitVendorLocalizations.of(context)!.find('appName'),
-            toolbarColor: Colors.black,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
+        sourcePath: pickedFile!.path,
+        cropStyle: CropStyle.circle,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: AppColors.primaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
           ),
-          iosUiSettings: const IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
+          WebUiSettings(
+            context: context,
+          ),
+        ],
+      );
       debugPrint(croppedFile!.path);
       if (croppedFile.path.isNotEmpty) {
         filePath = croppedFile.path;

@@ -54,4 +54,22 @@ abstract class AssetConstants {
   static const String progress = 'assets/images/progress.svg';
   static const String delivery = 'assets/images/delivery.svg';
   static const String drawerImg = 'assets/images/drawer_img.svg';
+  static const String userDummy = 'assets/images/ic_user.svg';
+  static const String rateus = 'assets/images/rateus.svg';
+  static const String privacy = 'assets/images/privacy.svg';
+  static const String term = 'assets/images/term.svg';
+  static const String about = 'assets/images/about.svg';
+  static const String help = 'assets/images/help.svg';
+  static const String address = 'assets/images/address.svg';
+  static const String rating = 'assets/images/rating.svg';
+  static const String earning = 'assets/images/earning.svg';
+  static const String order = 'assets/images/order.svg';
+  static const String product = 'assets/images/product.svg';
+  static const String userRed = 'assets/images/user_red.svg';
+  static const String hours = 'assets/images/hours.svg';
+  static const String document = 'assets/images/document.svg';
+  static const String change = 'assets/images/change.svg';
+  static const String business = 'assets/images/business.svg';
+  static const String dummy = 'assets/images/dummy.png';
+  static const String error = 'assets/images/error.png';
 }

@@ -32,23 +32,23 @@ class Data {
   String? name;
   String? email;
   String? phone;
-  Null? emailVerifiedAt;
-  Null? phoneVerifiedAt;
+  dynamic emailVerifiedAt;
+  dynamic phoneVerifiedAt;
   String? gender;
-  Null? referralCode;
-  Null? addressLine;
-  Null? address;
+  dynamic referralCode;
+  dynamic addressLine;
+  dynamic address;
   String? longitude;
   String? latitude;
-  Null? province;
-  Null? city;
-  Null? postalCode;
+  dynamic province;
+  dynamic city;
+  dynamic postalCode;
   String? status;
   String? riderVerifyStatus;
   int? riderJobStatus;
-  Null? appVersion;
-  Null? deviceType;
-  Null? oneSignalId;
+  String? appVersion;
+  String? deviceType;
+  String? oneSignalId;
   String? createdAt;
   String? updatedAt;
   int? businessesCount;
@@ -90,7 +90,7 @@ class Data {
     profile = json['profile'];
     role = json['role'];
     name = json['name'];
-    email = json['email'];
+    email = json['email'].toString();
     phone = json['phone'];
     emailVerifiedAt = json['email_verified_at'];
     phoneVerifiedAt = json['phone_verified_at'];
@@ -106,9 +106,9 @@ class Data {
     status = json['status'];
     riderVerifyStatus = json['rider_verify_status'];
     riderJobStatus = json['rider_job_status'];
-    appVersion = json['app_version'];
-    deviceType = json['device_type'];
-    oneSignalId = json['one_signal_id'];
+    appVersion = json['app_version'].toString();
+    deviceType = json['device_type'].toString();
+    oneSignalId = json['one_signal_id'].toString();
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     businessesCount = json['businesses_count'];
@@ -182,12 +182,12 @@ class Businesses {
   String? panNumber;
   String? gstNumber;
   String? aadhaarNumber;
-  // Null? policeClearanceCertificate;
+  // dynamic policeClearanceCertificate;
   String? cancelledChequeNumber;
   String? cancelledChequeImage;
   String? panImage;
   String? aadhaarImage;
-  // Null? policeClearanceImage;
+  // dynamic policeClearanceImage;
   String? gstImage;
   String? latitude;
   String? longitude;
@@ -201,6 +201,7 @@ class Businesses {
   String? freeDelivery;
   String? createdAt;
   String? updatedAt;
+  List<WorkingHoursDays>? workingDays;
 
   Businesses(
       {this.id,
@@ -241,7 +242,8 @@ class Businesses {
       this.sharedDelivery,
       this.freeDelivery,
       this.createdAt,
-      this.updatedAt});
+      this.updatedAt,
+      this.workingDays});
 
   Businesses.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -249,15 +251,15 @@ class Businesses {
     name = json['name'];
     type = json['type'];
     categoryId = json['category_id'];
-    storeImages = json['store_images'];
+    storeImages = json['store_images'].toString();
     address = json['address'];
     state = json['state'];
     city = json['city'];
     postalCode = json['postal_code'];
     phone = json['phone'];
-    website = json['website'];
+    website = json['website'].toString();
     bussinessEmail = json['bussiness_email'];
-    addressLine = json['address_line'];
+    addressLine = json['address_line'].toString();
     pickupState = json['pickup_state'];
     pickupCity = json['pickup_city'];
     pickupPostalCode = json['pickup_postal_code'];
@@ -283,6 +285,12 @@ class Businesses {
     freeDelivery = json['free_delivery'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    if (json['working_days'] != null) {
+      workingDays = <WorkingHoursDays>[];
+      json['working_days'].forEach((v) {
+        workingDays!.add(new WorkingHoursDays.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -326,6 +334,9 @@ class Businesses {
     data['free_delivery'] = this.freeDelivery;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
+    if (this.workingDays != null) {
+      data['working_days'] = this.workingDays!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
@@ -377,6 +388,59 @@ class Documents {
     data['business_id'] = this.businessId;
     data['image'] = this.image;
     data['reject_reason'] = this.rejectReason;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    return data;
+  }
+}
+
+class WorkingHoursDays {
+  int? id;
+  int? businessId;
+  String? from;
+  String? fromType;
+  String? to;
+  String? toType;
+  String? day;
+  String? open;
+  String? createdAt;
+  String? updatedAt;
+
+  WorkingHoursDays(
+      {this.id,
+      this.businessId,
+      this.from,
+      this.fromType,
+      this.to,
+      this.toType,
+      this.day,
+      this.open,
+      this.createdAt,
+      this.updatedAt});
+
+  WorkingHoursDays.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    businessId = json['business_id'];
+    from = json['from'];
+    fromType = json['from_type'];
+    to = json['to'];
+    toType = json['to_type'];
+    day = json['day'];
+    open = json['open'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['business_id'] = this.businessId;
+    data['from'] = this.from;
+    data['from_type'] = this.fromType;
+    data['to'] = this.to;
+    data['to_type'] = this.toType;
+    data['day'] = this.day;
+    data['open'] = this.open;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     return data;

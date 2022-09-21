@@ -1,5 +1,8 @@
 class UrlConstant {
-  static const String baseUrl = "https://nmk.techvosys.com/api/";
+  // static const String baseUrl = "https://nmk.techvosys.com/api/";
+
+  // static const String baseUrl = "https://staging.newmarketkart.com/api/";
+  static const String baseUrl = "https://newmarketkart.com/api/";
 
   static const String sendOtp = baseUrl + "send-otp";
   static const String verifyUserOtp = baseUrl + "verify-user-otp";
@@ -26,7 +29,7 @@ class UrlConstant {
   static const String homePage = baseUrl + "homePage";
   static const String productDelete = baseUrl + "product-delete";
   static const String productUpdate = baseUrl + "product-update";
-  static const String products = baseUrl + "products";
+  static const String products = baseUrl + "products?page=";
   static const String vendorChildSubCategory =
       baseUrl + "vendorChildSubCategory";
 
@@ -44,4 +47,46 @@ class UrlConstant {
       baseUrl + "updateBusinessDocument";
 
   static const String hsnNumber = baseUrl + "hsnNumber?category_id=";
+  static const String vendorUpdate = baseUrl + "vendor-update";
+  static const String vendorDetails = baseUrl + "vendor-detail";
+  static const String updateWorkingHours = baseUrl + "updateWorkingHours";
+  static const String vendorUpdatePassword = baseUrl + "vendor-updatePassword";
+  static const String updateBusinessAddress = baseUrl + "updateBusinessAddress";
+
+  static const String declineReason = baseUrl + "returnReason";
+
+  static const String changeStatus = baseUrl + "vendor/orders/change-status";
+  static const String allRecentOrder = baseUrl + "allRecentOrder?page=";
+  static const String details = baseUrl + "vendor/orders/details";
+  static const String ordersStatus = baseUrl + "vendor/orders?status=";
+
+  static const String businessUpdate = baseUrl + "business-update";
+
+  static const String statusList = baseUrl + "statusList?order_id=";
+
+  static const String aboutPage = "https://newmarketkart.com/app-about";
+  static const String termAndConditions =
+      "https://newmarketkart.com/app-terms-and-conditions";
+
+  static const String privacyPolicy =
+      "https://newmarketkart.com/app-privacy-policy";
+  static const String helpSupport = "https://newmarketkart.com/app-help";
+
+  static const String uploadImage = baseUrl + "upload-image";
+
+  static const String returnOrders = baseUrl + "returnOrders?page=";
+  static const String returnOrdersDetails =
+      baseUrl + "vendor/orders/returnOrderDetail";
+
+  static const String changeReturnOrderStatus =
+      baseUrl + "changeReturnOrderStatus";
+  static const String allReturnOrder = baseUrl + "allReturnOrder?page=";
+
+  static const String vendorRating = baseUrl + "vendor-rating";
+  static const String states = baseUrl + "states";
+  static const String cities = baseUrl + "cities?state_id=";
+
+  static const String bankAddress = "https://ifsc.razorpay.com/";
+
+  static const String updateBankDetail = baseUrl + "updateBankDetail";
 }

@@ -128,63 +128,63 @@ class _AddProductAndServiceScreenState
                   ),
                 ),
                 Dimens.boxHeight20,
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            width: 1, color: AppColors.addNewServiceColor),
-                        color: AppColors.addNewServiceColor,
-                        borderRadius: BorderRadius.circular(16)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: Dimens.seventyEight,
-                          height: Dimens.seventyEight,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.2),
-                              shape: BoxShape.circle),
-                          child: Container(
-                            width: Dimens.sixty,
-                            height: Dimens.sixty,
-                            alignment: Alignment.center,
-                            decoration: const BoxDecoration(
-                                color: Colors.white, shape: BoxShape.circle),
-                            child: SizedBox(
-                              width: Dimens.fourtyFive,
-                              height: Dimens.fourtyFive,
-                              child: SvgPicture.asset(
-                                AssetConstants.addService,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              NewMarkitVendorLocalizations.of(context)!
-                                  .find('add_no_service'),
-                              style: Styles.serviceTitle,
-                            ),
-                            Dimens.boxHeight5,
-                            Text(
-                                NewMarkitVendorLocalizations.of(context)!
-                                    .find('give_a_minute_to_add_service'),
-                                style: Styles.black12),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () {},
+                //   child: Container(
+                //     height: 100,
+                //     width: MediaQuery.of(context).size.width,
+                //     decoration: BoxDecoration(
+                //         border: Border.all(
+                //             width: 1, color: AppColors.addNewServiceColor),
+                //         color: AppColors.addNewServiceColor,
+                //         borderRadius: BorderRadius.circular(16)),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //       children: [
+                //         Container(
+                //           width: Dimens.seventyEight,
+                //           height: Dimens.seventyEight,
+                //           alignment: Alignment.center,
+                //           decoration: BoxDecoration(
+                //               color: Colors.white.withOpacity(0.2),
+                //               shape: BoxShape.circle),
+                //           child: Container(
+                //             width: Dimens.sixty,
+                //             height: Dimens.sixty,
+                //             alignment: Alignment.center,
+                //             decoration: const BoxDecoration(
+                //                 color: Colors.white, shape: BoxShape.circle),
+                //             child: SizedBox(
+                //               width: Dimens.fourtyFive,
+                //               height: Dimens.fourtyFive,
+                //               child: SvgPicture.asset(
+                //                 AssetConstants.addService,
+                //                 fit: BoxFit.contain,
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //         Column(
+                //           mainAxisSize: MainAxisSize.min,
+                //           mainAxisAlignment: MainAxisAlignment.start,
+                //           crossAxisAlignment: CrossAxisAlignment.start,
+                //           children: [
+                //             Text(
+                //               NewMarkitVendorLocalizations.of(context)!
+                //                   .find('add_no_service'),
+                //               style: Styles.serviceTitle,
+                //             ),
+                //             Dimens.boxHeight5,
+                //             Text(
+                //                 NewMarkitVendorLocalizations.of(context)!
+                //                     .find('give_a_minute_to_add_service'),
+                //                 style: Styles.black12),
+                //           ],
+                //         )
+                //       ],
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

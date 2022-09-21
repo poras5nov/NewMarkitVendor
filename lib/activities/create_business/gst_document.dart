@@ -238,8 +238,13 @@ class _GSTDocumentState extends State<GSTDocument> implements ApiInterface {
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,
       style: Styles.formFieldTextStyle,
-      keyboardType: TextInputType.emailAddress,
-      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      keyboardType: TextInputType.text,
+      onChanged: (v) {
+        panCardController.text = v.toUpperCase();
+        panCardController.selection = TextSelection.fromPosition(
+            TextPosition(offset: panCardController.text.length));
+      },
+      validator: (v) => Utility.checkGSTValid(v!, context),
       decoration: InputDecoration(
         labelText: NewMarkitVendorLocalizations.of(context)!.find('gstNumber'),
         labelStyle: Styles.lightGrey14,
@@ -316,26 +321,30 @@ class _GSTDocumentState extends State<GSTDocument> implements ApiInterface {
       var pickedFile = await picker.pickImage(source: source);
 
       var croppedFile = await ImageCropper().cropImage(
-          sourcePath: pickedFile!.path,
-          cropStyle: CropStyle.rectangle,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          androidUiSettings: AndroidUiSettings(
-            toolbarTitle:
-                NewMarkitVendorLocalizations.of(context)!.find('appName'),
-            toolbarColor: Colors.black,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
+        sourcePath: pickedFile!.path,
+        cropStyle: CropStyle.rectangle,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: AppColors.primaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
           ),
-          iosUiSettings: const IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
+          WebUiSettings(
+            context: context,
+          ),
+        ],
+      );
       debugPrint(croppedFile!.path);
       if (croppedFile.path.isNotEmpty) {
         Utility.dialogLoader(context);

@@ -12,7 +12,7 @@
 -keep class androidx.work.impl.diagnostics.DiagnosticsReceiver { <init>(); }
 -keep class androidx.work.impl.foreground.SystemForegroundService { <init>(); }
 -keep class androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver { <init>(); }
--keep class com.app.market_vendor_app.MainActivity { <init>(); }
+-keep class com.app.market_vendor.MainActivity { <init>(); }
 -keep class com.baseflow.geolocator.GeolocatorLocationService { <init>(); }
 -keep class com.google.android.datatransport.runtime.backends.TransportBackendDiscovery { <init>(); }
 -keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver { <init>(); }

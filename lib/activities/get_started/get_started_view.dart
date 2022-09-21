@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:market_vendor_app/activities/login/login_view.dart';
+import 'package:market_vendor_app/utils/notification_receiver.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../theme/app_colors.dart';
@@ -21,11 +22,12 @@ class GetStartedView extends StatefulWidget {
   }
 }
 
-class _GetStartedView extends State<GetStartedView> {
+class _GetStartedView extends State<GetStartedView>
+    implements NotificationInterface {
   @override
   void initState() {
     super.initState();
-    NotificationShow.initPlatformState();
+    NotificationShow.initPlatformState(this);
   }
 
   @override
@@ -137,4 +139,14 @@ class _GetStartedView extends State<GetStartedView> {
           ),
         ),
       ));
+
+  @override
+  void onClick(id, type, requestId) {
+    // TODO: implement onClick
+  }
+
+  @override
+  void onMessageReceived(id, type) {
+    // TODO: implement onMessageReceived
+  }
 }

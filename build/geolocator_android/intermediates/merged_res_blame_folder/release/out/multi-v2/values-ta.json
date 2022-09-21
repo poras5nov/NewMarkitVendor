@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/incremental/mergeReleaseResources/merged.dir/values-ta/values-ta.xml",
+            "outputFile": "/Users/mac/Documents/flutter_project/market_vendor_app/build/geolocator_android/intermediates/res/merged/release/values-ta/values-ta.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/c0796fceb309906e303a50d662a24f10/jetified-play-services-basement-17.0.0/res/values-ta/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "224",
-                        "endOffsets": "471"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1247",
-                        "endColumns": "224",
-                        "endOffsets": "1467"
-                    }
-                },
-                {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/res/values-ta/values-ta.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/ebb54224f210686f102795ae0ce2d21f/core-1.6.0/res/values-ta/values-ta.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/d56a7874b3ac402dfab610041aab47b2/jetified-play-services-base-17.0.0/res/values-ta/values.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/d2d588ae11f373040529df715a10b0a5/jetified-play-services-basement-17.0.0/res/values-ta/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "224",
+                        "endOffsets": "471"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1247",
+                        "endColumns": "224",
+                        "endOffsets": "1467"
+                    }
+                },
+                {
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/70b4efcb6adb356717eb927ec9e5739e/jetified-play-services-base-17.0.0/res/values-ta/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -57,27 +57,10 @@
             ]
         },
         {
-            "outputFile": "/Users/mac/Documents/GitHub/NewMarkitVendor/build/geolocator_android/intermediates/res/merged/release/values-ta/values-ta.xml",
+            "outputFile": "/Users/mac/Documents/flutter_project/market_vendor_app/build/geolocator_android/intermediates/incremental/mergeReleaseResources/merged.dir/values-ta/values-ta.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/c0796fceb309906e303a50d662a24f10/jetified-play-services-basement-17.0.0/res/values-ta/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "224",
-                        "endOffsets": "471"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1247",
-                        "endColumns": "224",
-                        "endOffsets": "1467"
-                    }
-                },
-                {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/0fdfce79129b99dbbd303db61537cd02/core-1.6.0/res/values-ta/values-ta.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/ebb54224f210686f102795ae0ce2d21f/core-1.6.0/res/values-ta/values-ta.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -94,7 +77,24 @@
                     }
                 },
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/d56a7874b3ac402dfab610041aab47b2/jetified-play-services-base-17.0.0/res/values-ta/values.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/d2d588ae11f373040529df715a10b0a5/jetified-play-services-basement-17.0.0/res/values-ta/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "224",
+                        "endOffsets": "471"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1247",
+                        "endColumns": "224",
+                        "endOffsets": "1467"
+                    }
+                },
+                {
+                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/70b4efcb6adb356717eb927ec9e5739e/jetified-play-services-base-17.0.0/res/values-ta/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:market_vendor_app/apiservice/api_interface.dart';
 import 'package:market_vendor_app/apiservice/url_string.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -37,6 +38,19 @@ class _OTPVerificationView extends State<OTPVerificationView>
   bool isResend = false;
 
   String otp = "";
+  String version = "";
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  versionName() async {
+    await PackageInfo.fromPlatform().then((value) {
+      version = value.version;
+      print(version);
+    });
+  }
+
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -145,6 +159,7 @@ class _OTPVerificationView extends State<OTPVerificationView>
                           endColor: AppColors.primaryColor,
                           iconColor: Colors.white,
                           onTap: () {
+                            FocusScope.of(context).unfocus();
                             validateInput();
                           },
                         ),
@@ -189,7 +204,7 @@ class _OTPVerificationView extends State<OTPVerificationView>
       setState(() {
         isLoader = true;
       });
-      ApiCall.loginOtpApi(widget.phone!, otp, this, context);
+      ApiCall.loginOtpApi(widget.phone!, otp, version, this, context);
     }
   }
 
@@ -226,8 +241,9 @@ class _OTPVerificationView extends State<OTPVerificationView>
             PageTransition(
                 type: PageTransitionType.fade, child: SetUpBusinessProfile()));
       } else {
+        SharedPref.setLoginStatus(KeyConstant.LOGINSTATUS, true);
+
         if (data['data']['businesses']['is_verified'].toString() == "Yes") {
-          SharedPref.setLoginStatus(KeyConstant.LOGINSTATUS, true);
           Navigator.of(context).pushNamedAndRemoveUntil(
               '/TabScreen', (Route<dynamic> route) => false);
         } else {

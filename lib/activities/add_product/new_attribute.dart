@@ -1,11 +1,8 @@
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:market_vendor_app/activities/add_product/model/addproduct.dart';
@@ -26,10 +23,11 @@ import '../../widgets/material_viewer.dart';
 import 'model/attributes_model.dart';
 
 class NewAttributeScreen extends StatefulWidget {
-  VariationsQuantity variation;
+  bool? isNewProduct;
+  VariationsQuantityCopy variation;
   var attributes;
   Function(int)? deleteCallBack;
-  Function(VariationsQuantity, int)? saveCallBack;
+  Function(VariationsQuantityCopy, int)? saveCallBack;
 
   int p;
   NewAttributeScreen(
@@ -38,7 +36,8 @@ class NewAttributeScreen extends StatefulWidget {
       required this.attributes,
       required this.deleteCallBack,
       required this.saveCallBack,
-      required this.p})
+      required this.p,
+      required this.isNewProduct})
       : super(key: key);
   @override
   _NewAttributeScreenState createState() => _NewAttributeScreenState();
@@ -51,21 +50,20 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
 
   List<String> imageList = [];
   List<bool> imageListType = [];
-  VariationsQuantity data = VariationsQuantity();
+  VariationsQuantityCopy data = VariationsQuantityCopy();
 
   List<String> imageListAws = [];
   int p = 0;
   String whichApiCall = "";
   List<Data>? dataModel = [];
 
-  TextEditingController offerPriceController = TextEditingController();
-  TextEditingController basePriceController = TextEditingController();
-  TextEditingController qtyController = TextEditingController();
-
   List<Color> currentColors = [Colors.yellow, Colors.green];
   List<Color> colorHistory = [];
 
   Color? currentColor;
+  TextEditingController baseController = TextEditingController();
+  TextEditingController offerController = TextEditingController();
+  TextEditingController qtyController = TextEditingController();
 
   void changeColor(Color color) => setState(() => currentColor = color);
   void changeColors(List<Color> colors) =>
@@ -106,333 +104,316 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                  width: data.isEdit! ? 3 : 1,
-                  color: data.isEdit! ? Colors.green : Colors.grey)),
-          child: Form(
-              key: formkey,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    child: Column(mainAxisSize: MainAxisSize.min, children: [
-                      Wrap(
+    return Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+                width: data.isEdit! ? 3 : 1,
+                color: data.isEdit! ? Colors.green : Colors.grey)),
+        child: Form(
+            key: formkey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Wrap(
+                  children: [
+                    for (int i = 0; i < data.attributes!.length; i++)
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          for (int i = 0; i < data.attributes!.length; i++)
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  children: [
-                                    Expanded(
-                                        flex: 1,
-                                        child: attributeValueTextFormFiled(data
-                                            .attributes![i].attributeName!)),
-                                    const SizedBox(
+                          Row(
+                            children: [
+                              Expanded(
+                                  flex: 1,
+                                  child: attributeValueTextFormFiled(
+                                      data.attributes![i].attributeName!)),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              data.attributes![i].attributeName! == "COLOR"
+                                  ? Container()
+                                  : Expanded(
+                                      flex: 1,
+                                      child: valueTextFormFiled(
+                                          data.attributes![i].attributeValue ==
+                                                  null
+                                              ? ""
+                                              : data.attributes![i]
+                                                  .attributeValue!,
+                                          i)),
+                              widget.attributes![i].units!.isNotEmpty
+                                  ? const SizedBox(
                                       width: 5,
-                                    ),
-                                    data.attributes![i].attributeName! ==
-                                            "COLOR"
-                                        ? Container()
-                                        : Expanded(
-                                            flex: 1,
-                                            child: valueTextFormFiled(
-                                                data.attributes![i]
-                                                            .attributeValue ==
-                                                        null
-                                                    ? ""
-                                                    : data.attributes![i]
-                                                        .attributeValue!,
-                                                i)),
-                                    widget.attributes![i].units!.isNotEmpty
-                                        ? const SizedBox(
-                                            width: 5,
-                                          )
-                                        : Container(),
-                                    widget.attributes![i].units!.isEmpty
-                                        ? Container()
-                                        : Expanded(
-                                            flex: 1,
-                                            child: data.attributes![i]
-                                                        .attributeName! ==
-                                                    "COLOR"
-                                                ? colorTextFormFiled(
-                                                    data.attributes![i]
-                                                                .unit_name ==
-                                                            null
-                                                        ? ""
-                                                        : data.attributes![i]
-                                                            .unit_name!,
-                                                    i,
-                                                  )
-                                                : unitTextFormFiled(
-                                                    data.attributes![i]
-                                                                .unit_name ==
-                                                            null
-                                                        ? ""
-                                                        : data.attributes![i]
-                                                            .unit_name!,
-                                                    i),
-                                          )
-                                  ],
-                                ),
-                                Dimens.boxHeight10,
-                              ],
-                            )
+                                    )
+                                  : Container(),
+                              widget.attributes![i].units!.isEmpty
+                                  ? Container()
+                                  : Expanded(
+                                      flex: 1,
+                                      child: data.attributes![i]
+                                                  .attributeName! ==
+                                              "COLOR"
+                                          ? colorTextFormFiled(
+                                              data.attributes![i].unit_name ==
+                                                      null
+                                                  ? ""
+                                                  : data.attributes![i]
+                                                      .unit_name!,
+                                              i,
+                                            )
+                                          : unitTextFormFiled(
+                                              data.attributes![i].unit_name ==
+                                                      null
+                                                  ? ""
+                                                  : data.attributes![i]
+                                                      .unit_name!,
+                                              i),
+                                    )
+                            ],
+                          ),
+                          Dimens.boxHeight10,
                         ],
-                      ),
-                      Dimens.boxHeight10,
-                      Column(mainAxisSize: MainAxisSize.min, children: [
-                        Row(children: [
-                          Expanded(
-                            flex: 1,
-                            child: basePriceTextFormFiled(
-                                data.basicPrice == null
-                                    ? ""
-                                    : data.basicPrice!),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Expanded(
-                              flex: 1,
-                              child: offerPriceTextFormFiled(
-                                  data.offerPrice == null
-                                      ? ""
-                                      : data.offerPrice!)),
-                        ]),
-                        Dimens.boxHeight10,
-                        qtyTextFormFiled(
-                            data.quantity == null ? "" : data.quantity!),
-                        Dimens.boxHeight10,
-                        Row(
-                          children: [
-                            for (int i = 0; i < imageListAws.length; i++)
+                      )
+                  ],
+                ),
+                Dimens.boxHeight10,
+                Row(children: [
+                  Flexible(
+                    flex: 1,
+                    child: basePriceTextFormFiled(
+                        data.basicPrice == null ? "" : data.basicPrice!),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Flexible(
+                      flex: 1,
+                      child: offerPriceTextFormFiled(
+                          data.offerPrice == null ? "" : data.offerPrice!)),
+                ]),
+                Dimens.boxHeight10,
+                qtyTextFormFiled(data.quantity == null ? "" : data.quantity!),
+                Dimens.boxHeight10,
+                Row(
+                  children: [
+                    for (int i = 0; i < imageListAws.length; i++)
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: 80,
+                          height: 80,
+                          child: Stack(
+                            children: [
                               GestureDetector(
                                 onTap: () {},
                                 child: Container(
-                                  alignment: Alignment.center,
                                   width: 80,
                                   height: 80,
-                                  child: Stack(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {},
-                                        child: Container(
-                                          width: 80,
-                                          height: 80,
-                                          alignment: Alignment.center,
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              for (int i = 0;
-                                                  i < imageListType.length;
-                                                  i++) {
-                                                imageListType[i] = false;
-                                              }
-                                              imageListType[i] = true;
-                                              data.default_variation_image =
-                                                  imageListAws[i];
-                                              setState(() {});
-                                            },
-                                            child: Container(
-                                              width: 60,
-                                              height: 60.0,
-                                              decoration: BoxDecoration(
-                                                  border: imageListType[i] ==
-                                                          false
-                                                      ? null
-                                                      : Border.all(
-                                                          width: 3,
-                                                          color: Colors.green),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          16)),
-                                              child: CachedNetworkImage(
-                                                imageUrl: imageListAws[i],
-                                                imageBuilder:
-                                                    (context, imageProvider) =>
-                                                        Container(
-                                                  width: 60,
-                                                  height: 60.0,
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        width: 1,
-                                                        color: Colors.grey),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            16),
-                                                    shape: BoxShape.rectangle,
-                                                    image: DecorationImage(
-                                                      image: imageProvider,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                placeholder: (context, url) =>
-                                                    Container(
-                                                  width: 60,
-                                                  height: 60.0,
-                                                  alignment: Alignment.center,
-                                                  child: Container(
-                                                    width: 40,
-                                                    height: 40,
-                                                    child: const CircularProgressIndicator(
-                                                        valueColor:
-                                                            AlwaysStoppedAnimation<
-                                                                    Color>(
-                                                                AppColors
-                                                                    .primaryColor)),
-                                                  ),
-                                                ),
-                                                errorWidget:
-                                                    (context, url, error) =>
-                                                        Container(
-                                                  alignment: Alignment.center,
-                                                  width: 60,
-                                                  height: 60,
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.grey[200],
-                                                  ),
-                                                  child: const Icon(
-                                                    Icons.error,
-                                                    size: 30,
-                                                    color: Colors.black,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                          alignment: Alignment.topRight,
-                                          width: 80,
-                                          height: 80,
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              imageList.removeAt(i);
-                                              imageListType.removeAt(i);
-                                              imageListAws.removeAt(i);
-                                              p = p - 1;
-                                              setState(() {});
-                                            },
-                                            child: const Icon(
-                                              Icons.cancel,
-                                              color: AppColors.primaryColor,
-                                              size: 20,
-                                            ),
-                                          ))
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            p == 7
-                                ? Container()
-                                : GestureDetector(
+                                  alignment: Alignment.center,
+                                  child: GestureDetector(
                                     onTap: () {
-                                      getUploadBottomSheet(context, 1);
+                                      for (int i = 0;
+                                          i < imageListType.length;
+                                          i++) {
+                                        imageListType[i] = false;
+                                      }
+                                      imageListType[i] = true;
+                                      data.default_variation_image =
+                                          imageListAws[i];
+                                      setState(() {});
                                     },
                                     child: Container(
                                       width: 60,
-                                      height: 60,
+                                      height: 60.0,
                                       decoration: BoxDecoration(
-                                          color: AppColors.darkBlueColor,
+                                          border: imageListType[i] == false
+                                              ? null
+                                              : Border.all(
+                                                  width: 3,
+                                                  color: Colors.green),
                                           borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: const Icon(
-                                        Icons.camera_alt,
-                                        size: 30,
-                                        color: Colors.white,
+                                              BorderRadius.circular(16)),
+                                      child: CachedNetworkImage(
+                                        imageUrl: imageListAws[i],
+                                        imageBuilder:
+                                            (context, imageProvider) =>
+                                                Container(
+                                          width: 60,
+                                          height: 60.0,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: 1, color: Colors.grey),
+                                            borderRadius:
+                                                BorderRadius.circular(16),
+                                            shape: BoxShape.rectangle,
+                                            image: DecorationImage(
+                                              image: imageProvider,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        placeholder: (context, url) =>
+                                            Container(
+                                          width: 60,
+                                          height: 60.0,
+                                          alignment: Alignment.center,
+                                          child: Container(
+                                            width: 40,
+                                            height: 40,
+                                            child:
+                                                const CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                                Color>(
+                                                            AppColors
+                                                                .primaryColor)),
+                                          ),
+                                        ),
+                                        errorWidget: (context, url, error) =>
+                                            Container(
+                                          alignment: Alignment.center,
+                                          width: 60,
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey[200],
+                                          ),
+                                          child: const Icon(
+                                            Icons.error,
+                                            size: 30,
+                                            color: Colors.black,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                          ],
-                        )
-                      ]),
-                    ]),
-                  ),
-                  Dimens.boxHeight20,
-                  Container(
-                    alignment: Alignment.centerRight,
-                    height: 30,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            widget.deleteCallBack!(widget.p);
-                          },
-                          child: Text(
-                            "Delete",
-                            style: TextStyle(
-                              fontFamily: AppConstants.appMediumFontFamily,
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.primaryColor,
-                              fontSize: Dimens.sixTeen,
-                            ),
+                                ),
+                              ),
+                              Container(
+                                  alignment: Alignment.topRight,
+                                  width: 80,
+                                  height: 80,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      imageList.removeAt(i);
+                                      imageListType.removeAt(i);
+                                      imageListAws.removeAt(i);
+                                      p = p - 1;
+                                      setState(() {});
+                                    },
+                                    child: const Icon(
+                                      Icons.cancel,
+                                      color: AppColors.primaryColor,
+                                      size: 20,
+                                    ),
+                                  ))
+                            ],
                           ),
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            if (formkey.currentState!.validate()) {
-                              if (imageListAws.isNotEmpty) {
-                                data.isEdit = true;
-                                var image = "";
-                                for (int i = 0; i < imageListAws.length; i++) {
-                                  if (image == "") {
-                                    image = imageListAws[i];
-                                  } else {
-                                    image = image + "," + imageListAws[i];
-                                  }
-                                }
-                                for (int i = 0; i < imageListType.length; i++) {
-                                  if (imageListType[i] == true) {
-                                    data.default_variation_image =
-                                        imageListAws[i];
-                                    break;
-                                  }
-                                }
-                                data.images = image;
-                                widget.saveCallBack!(data, widget.p);
-
-                                setState(() {});
-                              } else {
-                                Utility.errorMessage(
-                                    "Please add atleast one image", context);
-                              }
-                            }
-                          },
-                          child: Text(
-                            "Save",
-                            style: TextStyle(
-                              fontFamily: AppConstants.appMediumFontFamily,
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.primaryColor,
-                              fontSize: Dimens.sixTeen,
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
+                    const SizedBox(
+                      width: 10,
                     ),
-                  )
-                ],
-              ))),
-    );
+                    p == 7
+                        ? Container()
+                        : GestureDetector(
+                            onTap: () {
+                              getUploadBottomSheet(context, 1);
+                            },
+                            child: Container(
+                              width: 60,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  color: AppColors.darkBlueColor,
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: const Icon(
+                                Icons.camera_alt,
+                                size: 30,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                  ],
+                ),
+                Dimens.boxHeight20,
+                Container(
+                  alignment: Alignment.centerRight,
+                  height: 30,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      widget.isNewProduct!
+                          ? GestureDetector(
+                              onTap: () {
+                                print("delete pos ${widget.p}");
+                                widget.deleteCallBack!(widget.p);
+                              },
+                              child: Text(
+                                "Delete",
+                                style: TextStyle(
+                                  fontFamily: AppConstants.appMediumFontFamily,
+                                  fontWeight: FontWeight.normal,
+                                  color: AppColors.primaryColor,
+                                  fontSize: Dimens.sixTeen,
+                                ),
+                              ),
+                            )
+                          : Container(),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          if (formkey.currentState!.validate()) {
+                            if (imageListAws.isNotEmpty) {
+                              data.isEdit = true;
+                              var image = "";
+                              for (int i = 0; i < imageListAws.length; i++) {
+                                if (image == "") {
+                                  image = imageListAws[i];
+                                } else {
+                                  image = image + "," + imageListAws[i];
+                                }
+                              }
+                              for (int i = 0; i < imageListType.length; i++) {
+                                if (imageListType[i] == true) {
+                                  data.default_variation_image =
+                                      imageListAws[i];
+                                  break;
+                                }
+                              }
+                              data.basicPrice = baseController.text;
+                              data.offerPrice = offerController.text;
+                              data.quantity = qtyController.text;
+                              data.images = image;
+                              widget.saveCallBack!(data, widget.p);
+
+                              setState(() {});
+                            } else {
+                              Utility.errorMessage(
+                                  "Please add atleast one image", context);
+                            }
+                          }
+                        },
+                        child: Text(
+                          "Save",
+                          style: TextStyle(
+                            fontFamily: AppConstants.appMediumFontFamily,
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.primaryColor,
+                            fontSize: Dimens.sixTeen,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            )));
   }
 
   void getUploadBottomSheet(BuildContext context, int index) async {
@@ -486,26 +467,30 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
       var pickedFile = await picker.pickImage(source: source);
 
       var croppedFile = await ImageCropper().cropImage(
-          sourcePath: pickedFile!.path,
-          cropStyle: CropStyle.rectangle,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          androidUiSettings: AndroidUiSettings(
-            toolbarTitle:
-                NewMarkitVendorLocalizations.of(context)!.find('appName'),
-            toolbarColor: Colors.black,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
+        sourcePath: pickedFile!.path,
+        cropStyle: CropStyle.rectangle,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: AppColors.primaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
           ),
-          iosUiSettings: const IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
+          WebUiSettings(
+            context: context,
+          ),
+        ],
+      );
       debugPrint(croppedFile!.path);
       if (croppedFile.path.isNotEmpty) {
         imageList.add(croppedFile.path);
@@ -624,7 +609,7 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
         color: AppColors.blackColor,
         fontSize: Dimens.sixTeen,
       ),
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.text,
       onTap: () {
         isColorsBottomSheet(context, attributePos);
       },
@@ -650,7 +635,7 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
       readOnly: true,
       cursorColor: AppColors.primaryColor,
       style: Styles.formFieldTextStyle,
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.number,
       onTap: () {
         isUnitBottomSheet(context, attributePos);
       },
@@ -860,15 +845,17 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
   }
 
   basePriceTextFormFiled(var t) {
+    baseController.text = t;
     return TextFormField(
+      keyboardType: TextInputType.text,
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      controller: TextEditingController(text: t),
+      controller: baseController,
       cursorColor: AppColors.primaryColor,
       style: Styles.formFieldTextStyle,
-      keyboardType: const TextInputType.numberWithOptions(decimal: true),
       onChanged: (v) {
-        data.basicPrice = v;
         data.isEdit = false;
+        data.basicPrice = v;
       },
       validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
@@ -882,17 +869,20 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
   }
 
   offerPriceTextFormFiled(var t) {
+    offerController.text = t;
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      controller: TextEditingController(text: t),
+      controller: offerController,
       cursorColor: AppColors.primaryColor,
       style: Styles.formFieldTextStyle,
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.text,
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       onChanged: (v) {
         data.offerPrice = v;
         data.isEdit = false;
       },
-      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      validator: (v) =>
+          Utility.checkOfferTextFiledValid(baseController.text, v!, context),
       decoration: InputDecoration(
         labelText: NewMarkitVendorLocalizations.of(context)!.find('offerPrice'),
         labelStyle: Styles.lightGrey14,
@@ -904,17 +894,19 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
   }
 
   qtyTextFormFiled(var t) {
+    qtyController.text = t;
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      controller: TextEditingController(text: t),
+      controller: qtyController,
       cursorColor: AppColors.primaryColor,
       style: Styles.formFieldTextStyle,
-      keyboardType: TextInputType.number,
-      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      keyboardType: TextInputType.text,
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       onChanged: (v) {
         data.quantity = v;
         data.isEdit = false;
       },
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
         labelText: NewMarkitVendorLocalizations.of(context)!.find('qty'),
         labelStyle: Styles.lightGrey14,
@@ -925,41 +917,41 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
     );
   }
 
-  void showColorPicker(int p) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Pick a color"),
-            content: SingleChildScrollView(
-              child: MaterialPicker(
-                pickerColor:
-                    currentColor == null ? Colors.amber : currentColor!,
-                onColorChanged: (Color color) {
-                  String c = color.value.toRadixString(16);
-                  c = "#" +
-                      color.value.toRadixString(16).substring(2, c.length);
-                  print(c);
+  // void showColorPicker(int p) {
+  //   showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return AlertDialog(
+  //           title: Text("Pick a color"),
+  //           content: SingleChildScrollView(
+  //             child: MaterialPicker(
+  //               pickerColor:
+  //                   currentColor == null ? Colors.amber : currentColor!,
+  //               onColorChanged: (Color color) {
+  //                 String c = color.value.toRadixString(16);
+  //                 c = "#" +
+  //                     color.value.toRadixString(16).substring(2, c.length);
+  //                 print(c);
 
-                  currentColor = color;
-                  data.attributes![p].attributeValue = c;
-                  data.attributes![p].unit_id = "0";
-                },
-              ),
-            ),
-            actions: <Widget>[
-              ElevatedButton(
-                child: const Text('Got it'),
-                onPressed: () {
-                  data.isEdit = false;
+  //                 currentColor = color;
+  //                 data.attributes![p].attributeValue = c;
+  //                 data.attributes![p].unit_id = "0";
+  //               },
+  //             ),
+  //           ),
+  //           actions: <Widget>[
+  //             ElevatedButton(
+  //               child: const Text('Got it'),
+  //               onPressed: () {
+  //                 data.isEdit = false;
 
-                  setUnitView();
+  //                 setUnitView();
 
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        });
-  }
+  //                 Navigator.of(context).pop();
+  //               },
+  //             ),
+  //           ],
+  //         );
+  //       });
+  // }
 }

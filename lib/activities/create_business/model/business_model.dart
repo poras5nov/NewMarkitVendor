@@ -31,6 +31,9 @@ class BusinessModel {
   String? gstDuplicateImage = "";
   // String? policeClearanceImage = "";
   String? cancelledDuplicateChequeImage = "";
+  String? signatureImage = "";
+  // String? policeClearanceImage = "";
+  String? signatureDuplicateChequeImage = "";
   String? bankAccount;
   String? bankName;
   String? ifscCode;
@@ -72,6 +75,8 @@ class BusinessModel {
       this.gstDuplicateImage,
       //  this.policeClearanceImage,
       this.cancelledDuplicateChequeImage,
+      this.signatureImage,
+      this.signatureDuplicateChequeImage,
       this.bankAccount,
       this.bankName,
       this.ifscCode,
@@ -108,6 +113,8 @@ class BusinessModel {
     gstImage = json['gst_image'];
     // policeClearanceImage = json['police_Clearance_image'];
     cancelledChequeImage = json['cancelled_cheque_image'];
+    signatureImage = json['signature_image'];
+
     bankAccount = json['bank_account'];
     bankName = json['bank_name'];
     ifscCode = json['ifsc_code'];
@@ -151,6 +158,8 @@ class BusinessModel {
     data['gst_image'] = this.gstImage;
     //  data['police_Clearance_image'] = this.policeClearanceImage;
     data['cancelled_cheque_image'] = this.cancelledChequeImage;
+    data['signature_image'] = this.signatureImage;
+
     data['bank_account'] = this.bankAccount;
     data['bank_name'] = this.bankName;
     data['ifsc_code'] = this.ifscCode;

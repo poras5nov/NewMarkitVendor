@@ -1,4 +1,4 @@
-com.app.market_vendor_app
+com.app.market_vendor
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -1223,10 +1223,16 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
-string location_not_available_message
-string location_not_available_open_settings_message
-string location_not_available_open_settings_option
-string location_not_available_title
+string location_permission_missing_message
+string location_permission_missing_title
+string location_permission_name_for_title
+string location_permission_settings_message
+string notification_permission_name_for_title
+string notification_permission_settings_message
+string onesignal_notification_accent_color
+string permission_not_available_message
+string permission_not_available_open_settings_option
+string permission_not_available_title
 string project_id
 string search_menu_title
 string status_bar_notification_info_overflow

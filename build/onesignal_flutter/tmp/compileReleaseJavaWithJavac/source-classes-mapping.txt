@@ -20,6 +20,7 @@ com/onesignal/flutter/OneSignalPlugin.java
  com.onesignal.flutter.OneSignalPlugin$OSFlutterExternalUserIdHandler
  com.onesignal.flutter.OneSignalPlugin$OSFlutterHandler
  com.onesignal.flutter.OneSignalPlugin$OSFlutterPostNotificationHandler
+ com.onesignal.flutter.OneSignalPlugin$OSFlutterPromptForPushNotificationPermissionResponseHandler
  com.onesignal.flutter.OneSignalPlugin$OSFlutterSMSHandler
  com.onesignal.flutter.OneSignalPlugin$OSFlutterSetLanguageHandler
 com/onesignal/flutter/OneSignalOutcomeEventsController.java

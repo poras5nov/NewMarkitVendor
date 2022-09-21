@@ -141,8 +141,7 @@ class _ForgotPasswordView extends State<ForgotPasswordView>
       setState(() {
         isLoader = true;
       });
-      ApiCall.sendOtpApi(
-          "+91" + phoneController.text.replaceAll("-", ""), this, context);
+      ApiCall.sendOtpApi(phoneController.text, this, context);
     }
   }
 
@@ -195,7 +194,7 @@ class _ForgotPasswordView extends State<ForgotPasswordView>
         PageTransition(
             type: PageTransitionType.fade,
             child: ForgotOTPVerificationView(
-              phone: "+91" + phoneController.text.replaceAll("-", ""),
+              phone: phoneController.text,
             )));
   }
 

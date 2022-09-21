@@ -23,10 +23,8 @@ import '../../../../widgets/material_viewer.dart';
 
 class AdharCardCardDocument extends StatefulWidget {
   int v;
-  String token;
   String id;
-  AdharCardCardDocument(
-      {Key? key, required this.v, required this.token, required this.id})
+  AdharCardCardDocument({Key? key, required this.v, required this.id})
       : super(key: key);
   @override
   _AdharCardCardDocumentState createState() => _AdharCardCardDocumentState();
@@ -242,7 +240,7 @@ class _AdharCardCardDocumentState extends State<AdharCardCardDocument>
       textAlignVertical: TextAlignVertical.center,
       style: Styles.formFieldTextStyle,
       keyboardType: TextInputType.emailAddress,
-      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      validator: (v) => Utility.checkAdharNumberValid(v!, context),
       decoration: InputDecoration(
         labelText:
             NewMarkitVendorLocalizations.of(context)!.find('aadhaarCardNumber'),
@@ -263,7 +261,7 @@ class _AdharCardCardDocumentState extends State<AdharCardCardDocument>
         whichApiCall = "update";
 
         ApiCall.editDocument(widget.id, panCardController.text, _imagePath,
-            widget.token, this, context);
+            token, this, context);
         // widget.model.panImage = _imagePath;
         // widget.model.panNumber = panCardController.text;
         // Navigator.pop(context, widget.model);
@@ -326,26 +324,30 @@ class _AdharCardCardDocumentState extends State<AdharCardCardDocument>
       var pickedFile = await picker.pickImage(source: source);
 
       var croppedFile = await ImageCropper().cropImage(
-          sourcePath: pickedFile!.path,
-          cropStyle: CropStyle.rectangle,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          androidUiSettings: AndroidUiSettings(
-            toolbarTitle:
-                NewMarkitVendorLocalizations.of(context)!.find('appName'),
-            toolbarColor: Colors.black,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
+        sourcePath: pickedFile!.path,
+        cropStyle: CropStyle.rectangle,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: AppColors.primaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
           ),
-          iosUiSettings: const IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
+          WebUiSettings(
+            context: context,
+          ),
+        ],
+      );
       debugPrint(croppedFile!.path);
       if (croppedFile.path.isNotEmpty) {
         // _imagePath = croppedFile.path;

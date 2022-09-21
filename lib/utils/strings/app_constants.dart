@@ -22,8 +22,20 @@ abstract class AppConstants {
   static String docTypePoliceClearance = 'policeClearance';
   static String docTypeCancelledCheque = 'cancelledCheque';
   static String priceSign = '\u{20B9}';
+  static String oneSingnalAppId = 'afd8edf4-4460-4d30-8c09-d5128ed21b7f';
+  static String oneSignal = 'one_signal';
+  static String packed = 'packed';
+  static String readyToPick = 'ready to pick';
+  static String pickedUp = 'picked up';
+  static String inProgress = 'in progress';
+  static String accept = 'accept';
+  static String declined = 'declined';
+  static String delivered = 'delivered';
 
-  // static String? userName() {
-  //   return json.decode(SharedPref.getProfileData())['name']!;
-  // }
+  static String completed = "completed";
+  static String order_id = 'order_id';
+
+  static String type = "type";
+
+  static String requestId = "requestId";
 }

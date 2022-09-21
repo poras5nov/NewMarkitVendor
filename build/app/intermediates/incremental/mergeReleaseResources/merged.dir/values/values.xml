@@ -411,21 +411,27 @@
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="copy_toast_msg">Link copied to clipboard</string>
-    <string name="default_web_client_id" translatable="false">272120694071-l7ceqcchpjg8l97f58prg25liu0olts4.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">188743217978-5km8ahtcl3lujvujd9f1nq7dcqb3rf22.apps.googleusercontent.com</string>
     <string name="fallback_menu_item_copy_link">Copy link</string>
     <string name="fallback_menu_item_open_in_browser">Open in browser</string>
     <string name="fallback_menu_item_share_link">Share link</string>
     <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
-    <string name="gcm_defaultSenderId" translatable="false">272120694071</string>
-    <string name="google_api_key" translatable="false">AIzaSyDxkyZaRC6maReA-qXUw3_CNQaL6h5QwKc</string>
-    <string name="google_app_id" translatable="false">1:272120694071:android:c93a9852cadaceb0cd86b2</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDxkyZaRC6maReA-qXUw3_CNQaL6h5QwKc</string>
-    <string name="google_storage_bucket" translatable="false">newmarkit-7ca3b.appspot.com</string>
-    <string name="location_not_available_message">Looks like this app doesn\'t have location services configured. Please see OneSignal docs for more information.</string>
-    <string name="location_not_available_open_settings_message">You have previously denied sharing your device location. Please go to settings to enable.</string>
-    <string name="location_not_available_open_settings_option">Settings</string>
-    <string name="location_not_available_title">Location Not Available</string>
-    <string name="project_id" translatable="false">newmarkit-7ca3b</string>
+    <string name="gcm_defaultSenderId" translatable="false">188743217978</string>
+    <string name="google_api_key" translatable="false">AIzaSyBPzhHJLneRUa_J6QYQn8hwNkHJnKjLn0U</string>
+    <string name="google_app_id" translatable="false">1:188743217978:android:5d3d9c464373d81ce7d603</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBPzhHJLneRUa_J6QYQn8hwNkHJnKjLn0U</string>
+    <string name="google_storage_bucket" translatable="false">newmarket-seller.appspot.com</string>
+    <string name="location_permission_missing_message">Looks like this app doesn\'t have location services configured. Please see OneSignal docs for more information.</string>
+    <string name="location_permission_missing_title">App Missing Permission</string>
+    <string name="location_permission_name_for_title">Location</string>
+    <string name="location_permission_settings_message">sharing your device location</string>
+    <string name="notification_permission_name_for_title">Notifications</string>
+    <string name="notification_permission_settings_message">Notifications</string>
+    <string name="onesignal_notification_accent_color">FFC11239</string>
+    <string name="permission_not_available_message">You have previously denied %s. Please go to settings to enable.</string>
+    <string name="permission_not_available_open_settings_option">Settings</string>
+    <string name="permission_not_available_title">%s Not Available</string>
+    <string name="project_id" translatable="false">newmarket-seller</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="ucrop_crop">Crop</string>

@@ -13,6 +13,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:logger/logger.dart';
 import 'package:market_vendor_app/apiservice/key_string.dart';
 import 'package:market_vendor_app/utils/shared_preferences.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../theme/app_colors.dart';
 import '../widgets/cupertino_viewer.dart';
@@ -207,6 +208,60 @@ abstract class Utility {
     if (phone.isEmpty) {
       return NewMarkitVendorLocalizations.of(context)!
           .find('thisFieldIsRequired');
+    } else {
+      return null;
+    }
+  }
+
+  static checkGSTValid(String phone, BuildContext context) {
+    if (phone.isEmpty) {
+      return NewMarkitVendorLocalizations.of(context)!
+          .find('thisFieldIsRequired');
+    }
+    if (phone.length != 15) {
+      return NewMarkitVendorLocalizations.of(context)!
+          .find('adharCardValidations');
+    } else {
+      return null;
+    }
+  }
+
+  static checkPanValid(String phone, BuildContext context) {
+    if (phone.isEmpty) {
+      return NewMarkitVendorLocalizations.of(context)!
+          .find('thisFieldIsRequired');
+    }
+    if (phone.length != 10) {
+      return NewMarkitVendorLocalizations.of(context)!
+          .find('adharCardValidations');
+    } else {
+      return null;
+    }
+  }
+
+  static checkAdharNumberValid(String phone, BuildContext context) {
+    if (phone.isEmpty) {
+      return NewMarkitVendorLocalizations.of(context)!
+          .find('thisFieldIsRequired');
+    }
+    if (phone.length != 12) {
+      return NewMarkitVendorLocalizations.of(context)!
+          .find('adharCardValidations');
+    } else {
+      return null;
+    }
+  }
+
+  static checkOfferTextFiledValid(
+      String bPrice, String oPrice, BuildContext context) {
+    if (oPrice.isEmpty) {
+      return NewMarkitVendorLocalizations.of(context)!
+          .find('thisFieldIsRequired');
+    } else if (bPrice.isNotEmpty) {
+      if (int.parse(oPrice) > int.parse(bPrice)) {
+        return NewMarkitVendorLocalizations.of(context)!
+            .find('offerPriceError');
+      }
     } else {
       return null;
     }

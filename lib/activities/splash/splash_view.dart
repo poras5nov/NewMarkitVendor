@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,6 +31,7 @@ class _SplashScreen extends State<SplashView> {
   var timer;
   bool isLogin = false;
   LatLng? currentPostion;
+  var profileData;
 
   @override
   void initState() {
@@ -41,6 +43,12 @@ class _SplashScreen extends State<SplashView> {
       } else {
         isLogin = false;
       }
+    });
+
+    SharedPref.getProfileData().then((value) {
+      profileData = json.decode(value);
+
+      setState(() {});
     });
 
     timer = Timer(const Duration(milliseconds: 2000), _navigateToLogin);
@@ -57,8 +65,14 @@ class _SplashScreen extends State<SplashView> {
 
   _navigateToLogin() {
     if (isLogin == true) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-          '/TabScreen', (Route<dynamic> route) => false);
+      if (profileData['data']['businesses']['is_verified'].toString() ==
+          "Yes") {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            '/TabScreen', (Route<dynamic> route) => false);
+      } else {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            '/VerifiedScreen', (Route<dynamic> route) => false);
+      }
     } else {
       Navigator.pushReplacement(
           context,

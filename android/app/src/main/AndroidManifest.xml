@@ -1,18 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.market_vendor_app">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    package="com.app.market_vendor">
+    
 
    <application
         android:label="market_vendor_app"
         android:name="${applicationName}"
+        android:allowBackup="true"
+
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
-            android:exported="true"
             android:launchMode="singleTop"
+                        android:exported="true"
             android:usesCleartextTraffic="true"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

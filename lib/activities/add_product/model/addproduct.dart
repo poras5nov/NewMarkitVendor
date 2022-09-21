@@ -139,6 +139,7 @@ class AddProductModel {
 }
 
 class VariationsQuantity {
+  int? variationId;
   String? basicPrice = "";
   String? offerPrice = "";
   String? quantity = "";
@@ -150,7 +151,8 @@ class VariationsQuantity {
   List<AddAttribute>? attributes;
 
   VariationsQuantity(
-      {this.basicPrice,
+      {this.variationId,
+      this.basicPrice,
       this.offerPrice,
       this.quantity,
       this.attributes,
@@ -158,6 +160,7 @@ class VariationsQuantity {
       this.default_variation_image});
 
   VariationsQuantity.fromJson(Map<String, dynamic> json) {
+    variationId = json['variationId'];
     basicPrice = json['basic_price'];
     offerPrice = json['offer_price'];
     quantity = json['quantity'];
@@ -171,6 +174,7 @@ class VariationsQuantity {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['variationId'] = this.variationId;
     data['basic_price'] = this.basicPrice;
     data['offer_price'] = this.offerPrice;
     data['quantity'] = this.quantity;
@@ -224,6 +228,77 @@ class Specifactions {
     data['title'] = this.title;
     data['specifaction_value'] = this.specifactionValue;
     data['for_filter'] = this.forFilter;
+    return data;
+  }
+}
+
+class SpecifactionsCopy {
+  String? title;
+  String? specifactionValue;
+  int? forFilter;
+
+  SpecifactionsCopy({this.title, this.specifactionValue, this.forFilter});
+
+  SpecifactionsCopy.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    specifactionValue = json['specifaction_value'];
+    forFilter = json['for_filter'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['title'] = this.title;
+    data['specifaction_value'] = this.specifactionValue;
+    data['for_filter'] = this.forFilter;
+    return data;
+  }
+}
+
+class VariationsQuantityCopy {
+  int? variationId;
+  String? basicPrice = "";
+  String? offerPrice = "";
+  String? quantity = "";
+  String? attributeName = "";
+  String? images = "";
+  String? default_variation_image = "";
+  bool? isEdit = false;
+
+  List<AddAttribute>? attributes;
+
+  VariationsQuantityCopy(
+      {this.variationId,
+      this.basicPrice,
+      this.offerPrice,
+      this.quantity,
+      this.attributes,
+      this.images,
+      this.default_variation_image});
+
+  VariationsQuantityCopy.fromJson(Map<String, dynamic> json) {
+    variationId = json['variationId'];
+    basicPrice = json['basic_price'];
+    offerPrice = json['offer_price'];
+    quantity = json['quantity'];
+    if (json['attributes'] != null) {
+      attributes = <AddAttribute>[];
+      json['attributes'].forEach((v) {
+        attributes!.add(new AddAttribute.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['variationId'] = this.variationId;
+    data['basic_price'] = this.basicPrice;
+    data['offer_price'] = this.offerPrice;
+    data['quantity'] = this.quantity;
+    data['images'] = this.images;
+    data['default_variation_image'] = this.default_variation_image;
+    if (this.attributes != null) {
+      data['attributes'] = this.attributes!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }

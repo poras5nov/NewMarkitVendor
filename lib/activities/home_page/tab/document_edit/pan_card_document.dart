@@ -24,10 +24,8 @@ import '../../../create_business/model/business_model.dart';
 
 class PanCardDocument extends StatefulWidget {
   int v;
-  String token;
   String id;
-  PanCardDocument(
-      {Key? key, required this.v, required this.token, required this.id})
+  PanCardDocument({Key? key, required this.v, required this.id})
       : super(key: key);
   @override
   _PanCardDocumentState createState() => _PanCardDocumentState();
@@ -242,8 +240,13 @@ class _PanCardDocumentState extends State<PanCardDocument>
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,
       style: Styles.formFieldTextStyle,
-      keyboardType: TextInputType.emailAddress,
-      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      keyboardType: TextInputType.text,
+      onChanged: (v) {
+        panCardController.text = v.toUpperCase();
+        panCardController.selection = TextSelection.fromPosition(
+            TextPosition(offset: panCardController.text.length));
+      },
+      validator: (v) => Utility.checkPanValid(v!, context),
       decoration: InputDecoration(
         labelText:
             NewMarkitVendorLocalizations.of(context)!.find('panCardNumber'),
@@ -264,7 +267,7 @@ class _PanCardDocumentState extends State<PanCardDocument>
         whichApiCall = "update";
 
         ApiCall.editDocument(widget.id, panCardController.text, _imagePath,
-            widget.token, this, context);
+            token, this, context);
         // widget.model.panImage = _imagePath;
         // widget.model.panNumber = panCardController.text;
         // Navigator.pop(context, widget.model);
@@ -327,26 +330,30 @@ class _PanCardDocumentState extends State<PanCardDocument>
       var pickedFile = await picker.pickImage(source: source);
 
       var croppedFile = await ImageCropper().cropImage(
-          sourcePath: pickedFile!.path,
-          cropStyle: CropStyle.rectangle,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          androidUiSettings: AndroidUiSettings(
-            toolbarTitle:
-                NewMarkitVendorLocalizations.of(context)!.find('appName'),
-            toolbarColor: Colors.black,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
+        sourcePath: pickedFile!.path,
+        cropStyle: CropStyle.rectangle,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: AppColors.primaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
           ),
-          iosUiSettings: const IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
+          WebUiSettings(
+            context: context,
+          ),
+        ],
+      );
       debugPrint(croppedFile!.path);
       if (croppedFile.path.isNotEmpty) {
         Utility.dialogLoader(context);

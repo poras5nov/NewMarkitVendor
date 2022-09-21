@@ -4,7 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -28,8 +27,11 @@ import '../../widgets/material_viewer.dart';
 import 'model/attributes_model.dart';
 
 class AttributeScreen extends StatefulWidget {
+  bool? isNewProduct;
   AddProductModel? dataModel;
-  AttributeScreen({Key? key, required this.dataModel}) : super(key: key);
+  AttributeScreen(
+      {Key? key, required this.dataModel, required this.isNewProduct})
+      : super(key: key);
   @override
   _AttributeScreenState createState() => _AttributeScreenState();
 }
@@ -44,7 +46,7 @@ class _AttributeScreenState extends State<AttributeScreen>
   int p = 0;
   String whichApiCall = "";
 
-  List<VariationsQuantity> variationsQuantity = [];
+  List<VariationsQuantityCopy> variationsQuantity = [];
   AddProductModel productmodel = AddProductModel();
   var tempmodel;
 
@@ -63,13 +65,65 @@ class _AttributeScreenState extends State<AttributeScreen>
     super.initState();
 
     productmodel = widget.dataModel!;
-    print(productmodel.variationsQuantity == null
-        ? "0"
-        : productmodel.variationsQuantity![0].attributes!.length);
-
+    if (variationsQuantity.isNotEmpty) {
+      variationsQuantity.clear();
+    }
+    makeVariationData();
     setState(() {});
 
     getToken();
+  }
+
+  makeVariationData() {
+    if (productmodel.variationsQuantity != null) {
+      List<VariationsQuantityCopy>? variations = List.empty(growable: true);
+
+      for (int i = 0; i < productmodel.variationsQuantity!.length; i++) {
+        VariationsQuantityCopy v = VariationsQuantityCopy();
+        v.variationId = productmodel.variationsQuantity![i].variationId!;
+        v.offerPrice =
+            productmodel.variationsQuantity![i].offerPrice.toString();
+        v.basicPrice =
+            productmodel.variationsQuantity![i].basicPrice.toString();
+        v.quantity = productmodel.variationsQuantity![i].quantity.toString();
+        v.images = productmodel.variationsQuantity![i].images.toString();
+        v.default_variation_image =
+            productmodel.variationsQuantity![i].default_variation_image == null
+                ? ""
+                : productmodel.variationsQuantity![i].default_variation_image
+                    .toString();
+        v.isEdit = true;
+
+        List<AddAttribute> attr = List.empty(growable: true);
+        for (int j = 0;
+            j < productmodel.variationsQuantity![i].attributes!.length;
+            j++) {
+          AddAttribute a = AddAttribute();
+          a.attributeId = productmodel
+              .variationsQuantity![i].attributes![j].attributeId
+              .toString();
+          a.attributeValue =
+              productmodel.variationsQuantity![i].attributes![j].attributeValue;
+          a.attributeName =
+              productmodel.variationsQuantity![i].attributes![j].attributeName;
+          a.unit_id =
+              productmodel.variationsQuantity![i].attributes![j].unit_id == null
+                  ? "0"
+                  : productmodel.variationsQuantity![i].attributes![j].unit_id
+                      .toString();
+          a.unit_name =
+              productmodel.variationsQuantity![i].attributes![j].unit_name ==
+                      null
+                  ? ""
+                  : productmodel.variationsQuantity![i].attributes![j].unit_name
+                      .toString();
+          attr.add(a);
+        }
+        v.attributes = attr;
+        variations.add(v);
+      }
+      variationsQuantity = variations;
+    }
   }
 
   getToken() {
@@ -86,7 +140,7 @@ class _AttributeScreenState extends State<AttributeScreen>
     return Scaffold(
       body: GestureDetector(
           onTap: () {
-            FocusScope.of(context).unfocus();
+            //FocusScope.of(context).unfocus();
           },
           child: Stack(
             children: [
@@ -109,6 +163,8 @@ class _AttributeScreenState extends State<AttributeScreen>
                   child: Padding(
                     padding: Dimens.edgeInsets20,
                     child: ListView(
+                      keyboardDismissBehavior:
+                          ScrollViewKeyboardDismissBehavior.onDrag,
                       padding: EdgeInsets.zero,
                       children: [
                         Row(
@@ -118,24 +174,9 @@ class _AttributeScreenState extends State<AttributeScreen>
                               alignment: Alignment.centerLeft,
                               child: GestureDetector(
                                 onTap: () {
-                                  bool isSaveValueExist = false;
-                                  for (int i = 0;
-                                      i <
-                                          productmodel
-                                              .variationsQuantity!.length;
-                                      i++) {
-                                    if (productmodel
-                                            .variationsQuantity![i].isEdit ==
-                                        true) {
-                                      isSaveValueExist = true;
-                                      break;
-                                    }
-                                  }
-                                  if (isSaveValueExist) {
-                                    showAlertDialog(context);
-                                  } else {
-                                    Navigator.pop(context);
-                                  }
+                                  Navigator.pop(context);
+
+                                  // }
                                 },
                                 child: Icon(
                                   Icons.arrow_back_rounded,
@@ -205,39 +246,37 @@ class _AttributeScreenState extends State<AttributeScreen>
                         Dimens.boxHeight10,
                         model.data == null
                             ? Container()
-                            : productmodel.variationsQuantity == null
+                            : variationsQuantity.isEmpty
                                 ? Container()
                                 : ListView.builder(
                                     shrinkWrap: true,
                                     physics:
                                         const NeverScrollableScrollPhysics(),
-                                    itemCount:
-                                        productmodel.variationsQuantity!.length,
+                                    itemCount: variationsQuantity.length,
                                     itemBuilder: (context, index) {
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.min,
+                                      return Wrap(
                                         children: [
                                           NewAttributeScreen(
-                                              variation: productmodel
-                                                  .variationsQuantity![index],
+                                              isNewProduct: widget.isNewProduct,
+                                              variation:
+                                                  variationsQuantity[index],
                                               attributes: dataModel,
                                               deleteCallBack: (v) {
-                                                productmodel.variationsQuantity!
-                                                    .removeAt(v);
+                                                print("selected $v");
+                                                variationsQuantity.removeAt(v);
                                                 setState(() {});
                                               },
                                               saveCallBack: (variation, p) {
-                                                productmodel
-                                                        .variationsQuantity![
-                                                    p] = variation;
+                                                variationsQuantity[p] =
+                                                    variation;
                                                 setState(() {});
                                               },
                                               p: index),
-                                          Dimens.boxHeight10,
                                         ],
                                       );
                                     },
                                   ),
+                        Dimens.boxHeight10,
                         dataModel!.isNotEmpty
                             ? FormSubmitWidget(
                                 opacity: 1,
@@ -270,13 +309,9 @@ class _AttributeScreenState extends State<AttributeScreen>
                                 onTap: () {
                                   bool isAnyEdit = false;
                                   for (int i = 0;
-                                      i <
-                                          productmodel
-                                              .variationsQuantity!.length;
+                                      i < variationsQuantity.length;
                                       i++) {
-                                    if (productmodel
-                                            .variationsQuantity![i].isEdit ==
-                                        false) {
+                                    if (variationsQuantity[i].isEdit == false) {
                                       isAnyEdit = true;
                                       break;
                                     }
@@ -285,6 +320,9 @@ class _AttributeScreenState extends State<AttributeScreen>
                                     Utility.errorMessage(
                                         "Please Save variations", context);
                                   } else {
+                                    createVariationData();
+
+                                    productmodel.attribute_ids = attributrIDs;
                                     Navigator.pop(context, productmodel);
                                   }
                                 },
@@ -322,11 +360,12 @@ class _AttributeScreenState extends State<AttributeScreen>
     );
   }
 
+  var attributrIDs = "";
+
   update(int p) {
     if (dataModel!.isNotEmpty) {
       dataModel!.clear();
     }
-    var attributrIDs = "";
 
     for (int i = 0; i < model.data!.length; i++) {
       if (model.data![i].isSelected) {
@@ -338,25 +377,22 @@ class _AttributeScreenState extends State<AttributeScreen>
         }
       }
     }
-    for (int k = 0; k < productmodel.variationsQuantity!.length; k++) {
-      for (int i = 0;
-          i < productmodel.variationsQuantity![k].attributes!.length;
-          i++) {
+    for (int k = 0; k < variationsQuantity.length; k++) {
+      for (int i = 0; i < variationsQuantity[k].attributes!.length; i++) {
         bool isDelete = true;
         for (int d = 0; d < dataModel!.length; d++) {
-          if (productmodel
-                  .variationsQuantity![k].attributes![i].attributeName ==
+          if (variationsQuantity[k].attributes![i].attributeName ==
               dataModel![d].name) {
             isDelete = false;
           }
         }
         if (isDelete) {
-          productmodel.variationsQuantity![k].attributes!.removeAt(i);
+          variationsQuantity[k].attributes!.removeAt(i);
         }
       }
-      productmodel.variationsQuantity![k].isEdit = false;
+      variationsQuantity[k].isEdit = false;
     }
-    productmodel.attribute_ids = attributrIDs;
+    // productmodel.attribute_ids = attributrIDs;
     setState(() {});
   }
 
@@ -368,17 +404,16 @@ class _AttributeScreenState extends State<AttributeScreen>
       v.attributeId = dataModel![i].id.toString();
       a.add(v);
     }
-    VariationsQuantity q = VariationsQuantity();
+    VariationsQuantityCopy q = VariationsQuantityCopy();
     q.attributes = a;
-    productmodel.variationsQuantity!.add(q);
+    q.variationId = 0;
+    variationsQuantity.add(q);
 
     setState(() {});
   }
 
   changeState() {
     dataModel = [];
-    variationsQuantity = [];
-    var attributrIDs = "";
 
     for (int i = 0; i < model.data!.length; i++) {
       if (model.data![i].isSelected) {
@@ -390,44 +425,45 @@ class _AttributeScreenState extends State<AttributeScreen>
         }
       }
     }
-    if (productmodel.variationsQuantity != null &&
-        productmodel.variationsQuantity!.isNotEmpty) {
+    if (variationsQuantity != null && variationsQuantity.isNotEmpty) {
+      //  variationsQuantity = productmodel.variationsQuantity!;
       print("variation availble" + dataModel!.length.toString());
-      for (int k = 0; k < productmodel.variationsQuantity!.length; k++) {
+      for (int k = 0; k < variationsQuantity.length; k++) {
         List<AddAttribute>? a = List.empty(growable: true);
-
+        bool isNewAttribut = false;
         for (int i = 0; i < dataModel!.length; i++) {
           print("data availble" + dataModel![i].name!);
-          if (i < productmodel.variationsQuantity![k].attributes!.length) {
+          if (i < variationsQuantity[k].attributes!.length) {
             print("variation availble" +
-                productmodel.variationsQuantity![k].attributes!.length
-                    .toString());
+                variationsQuantity[k].attributes!.length.toString());
 
             AddAttribute v = AddAttribute();
-            v.attributeName = productmodel
-                .variationsQuantity![k].attributes![i].attributeName;
-            v.attributeValue = productmodel
-                .variationsQuantity![k].attributes![i].attributeValue;
-            v.attributeId =
-                productmodel.variationsQuantity![k].attributes![i].attributeId;
-            v.unit_id =
-                productmodel.variationsQuantity![k].attributes![i].unit_id;
-            v.unit_name =
-                productmodel.variationsQuantity![k].attributes![i].unit_name;
+            v.attributeName =
+                variationsQuantity[k].attributes![i].attributeName;
+            v.attributeValue =
+                variationsQuantity[k].attributes![i].attributeValue;
+            v.attributeId = variationsQuantity[k].attributes![i].attributeId;
+            v.unit_id = variationsQuantity[k].attributes![i].unit_id;
+            v.unit_name = variationsQuantity[k].attributes![i].unit_name;
 
             a.add(v);
           } else {
             AddAttribute v = AddAttribute();
             v.attributeName = dataModel![i].name!;
             v.attributeId = dataModel![i].id.toString();
+            isNewAttribut = true;
             a.add(v);
           }
         }
         print("${a.length}");
-        productmodel.variationsQuantity![k].attributes = a;
-        productmodel.variationsQuantity![k].isEdit = false;
+        if (isNewAttribut) {
+          variationsQuantity[k].isEdit = false;
+        } else {
+          variationsQuantity[k].isEdit = true;
+        }
+        variationsQuantity[k].attributes = a;
       }
-      productmodel.attribute_ids = attributrIDs;
+      //productmodel.attribute_ids = attributrIDs;
     } else {
       print("variation not availble");
 
@@ -439,13 +475,14 @@ class _AttributeScreenState extends State<AttributeScreen>
 
         a.add(v);
       }
-      VariationsQuantity q = VariationsQuantity();
+      VariationsQuantityCopy q = VariationsQuantityCopy();
       q.attributes = a;
       q.isEdit = false;
+      q.variationId = 0;
 
-      productmodel.attribute_ids = attributrIDs;
+      //productmodel.attribute_ids = attributrIDs;
       variationsQuantity.add(q);
-      productmodel.variationsQuantity = variationsQuantity;
+      //productmodel.variationsQuantity = variationsQuantity;
     }
 
     setState(() {});
@@ -484,7 +521,16 @@ class _AttributeScreenState extends State<AttributeScreen>
                         ),
                         GestureDetector(
                           onTap: () {
-                            changeState();
+                            bool isSelected = false;
+                            for (int i = 0; i < model.data!.length; i++) {
+                              if (model.data![i].isSelected == true) {
+                                isSelected = true;
+                                break;
+                              }
+                            }
+                            if (isSelected) {
+                              changeState();
+                            }
 
                             Navigator.pop(context);
                           },
@@ -588,7 +634,7 @@ class _AttributeScreenState extends State<AttributeScreen>
           }
         }
       }
-      // changeState();
+      changeState();
       print(productmodel.attribute_ids);
     }
 
@@ -622,5 +668,47 @@ class _AttributeScreenState extends State<AttributeScreen>
         return alert;
       },
     );
+  }
+
+  createVariationData() {
+    if (variationsQuantity != null || variationsQuantity.isNotEmpty) {
+      List<VariationsQuantity>? variations = List.empty(growable: true);
+
+      for (int i = 0; i < variationsQuantity.length; i++) {
+        VariationsQuantity v = VariationsQuantity();
+        v.variationId = variationsQuantity[i].variationId == null
+            ? 0
+            : variationsQuantity[i].variationId!;
+        v.offerPrice = variationsQuantity[i].offerPrice.toString();
+        v.basicPrice = variationsQuantity[i].basicPrice.toString();
+        v.quantity = variationsQuantity[i].quantity.toString();
+        v.images = variationsQuantity[i].images.toString();
+        v.default_variation_image =
+            variationsQuantity[i].default_variation_image == null
+                ? ""
+                : variationsQuantity[i].default_variation_image.toString();
+        v.isEdit = true;
+
+        List<AddAttribute> attr = List.empty(growable: true);
+        for (int j = 0; j < variationsQuantity[i].attributes!.length; j++) {
+          AddAttribute a = AddAttribute();
+          a.attributeId =
+              variationsQuantity[i].attributes![j].attributeId.toString();
+          a.attributeValue =
+              variationsQuantity[i].attributes![j].attributeValue;
+          a.attributeName = variationsQuantity[i].attributes![j].attributeName;
+          a.unit_id = variationsQuantity[i].attributes![j].unit_id == null
+              ? "0"
+              : variationsQuantity[i].attributes![j].unit_id.toString();
+          a.unit_name = variationsQuantity[i].attributes![j].unit_name == null
+              ? ""
+              : variationsQuantity[i].attributes![j].unit_name.toString();
+          attr.add(a);
+        }
+        v.attributes = attr;
+        variations.add(v);
+      }
+      productmodel.variationsQuantity = variations;
+    }
   }
 }

@@ -121,4 +121,12 @@ abstract class AppColors {
   static const Color yellowColor = Color(
     0xFFE9B020,
   );
+
+  static const Color menuTextColor = Color(
+    0xFF3E444F,
+  );
+
+  static const Color upgradeBoxColor = Color(
+    0xFFC9D3E2,
+  );
 }

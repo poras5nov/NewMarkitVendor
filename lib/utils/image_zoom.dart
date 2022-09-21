@@ -18,17 +18,17 @@ import '../../theme/app_colors.dart';
 import '../../theme/dimens.dart';
 import '../../utils/asset_constants.dart';
 
-class ImageView extends StatefulWidget {
+class ImageZoomView extends StatefulWidget {
   String? url;
-  ImageView({Key? key, this.url}) : super(key: key);
+  ImageZoomView({Key? key, this.url}) : super(key: key);
 
   @override
-  State<ImageView> createState() {
+  State<ImageZoomView> createState() {
     return _ImageViewScreen();
   }
 }
 
-class _ImageViewScreen extends State<ImageView> {
+class _ImageViewScreen extends State<ImageZoomView> {
   @override
   void initState() {
     super.initState();
@@ -67,7 +67,7 @@ class _ImageViewScreen extends State<ImageView> {
                       imageUrl: widget.url!,
                       placeholder: (context, url) => Container(
                         width: MediaQuery.of(context).size.width,
-                        height:MediaQuery.of(context).size.height ,
+                        height: MediaQuery.of(context).size.height,
                         alignment: Alignment.center,
                         child: Container(
                           width: 30,

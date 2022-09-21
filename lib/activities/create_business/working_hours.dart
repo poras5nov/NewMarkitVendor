@@ -349,21 +349,8 @@ class _WorkingHoursPageState extends State<WorkingHoursPage> {
 
   validateInput() {
     if (formkey.currentState!.validate()) {
-      if (selectAll == true) {
-        for (int i = 0; i < days.length; i++) {
-          WorkingDays hoursModle = WorkingDays();
-          hoursModle.day = days[i];
-          hoursModle.from = openTimeController.text.split(" ")[0].toString();
-          hoursModle.fromType =
-              openTimeController.text.split(" ")[1].toString();
-          hoursModle.to = closeTimeController.text.split(" ")[0].toString();
-          hoursModle.toType = closeTimeController.text.split(" ")[1].toString();
-          hoursModle.open = "yes";
-          workingHours!.add(hoursModle);
-        }
-      } else {
-        selectWorkingHours();
-      }
+      selectWorkingHours();
+
       widget.model.workingDays = workingHours;
       //if (compareTimeOfDay()) {
       Navigator.push(

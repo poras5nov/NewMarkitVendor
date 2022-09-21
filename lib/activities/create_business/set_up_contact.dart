@@ -27,7 +27,7 @@ class SetUpContact extends StatefulWidget {
 
 class _SetUpContactState extends State<SetUpContact> {
   TextEditingController emailController = TextEditingController();
-  TextEditingController webSiteController = TextEditingController();
+  TextEditingController webSiteController = TextEditingController(text: "");
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   List<TextEditingController> controller = List.empty(growable: true);
 
@@ -49,94 +49,99 @@ class _SetUpContactState extends State<SetUpContact> {
               bottom: false,
               child: Padding(
                 padding: Dimens.edgeInsets20,
-                child: Form(
-                  key: formkey,
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    children: <Widget>[
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Icon(
-                            Icons.arrow_back_rounded,
-                            color: AppColors.blackColor,
-                            size: Dimens.twentyEight,
-                          ),
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back_rounded,
+                          color: AppColors.blackColor,
+                          size: Dimens.twentyEight,
                         ),
                       ),
-                      Dimens.boxHeight10,
-                      Text(
-                        NewMarkitVendorLocalizations.of(context)!
-                            .find('setUpContactDetails'),
-                        style: Styles.loginPageTitleBlack,
-                      ),
-                      Dimens.boxHeight15,
-                      Text(
-                        NewMarkitVendorLocalizations.of(context)!
-                            .find('fillBusinessInfo'),
-                        style: Styles.loginPageSubTitleGrey,
-                      ),
-                      Dimens.boxHeight20,
-                      Row(
-                        children: [
-                          Text(
-                            NewMarkitVendorLocalizations.of(context)!
-                                .find('businessContact'),
-                            style: Styles.lightGrey14,
+                    ),
+                    Dimens.boxHeight10,
+                    Text(
+                      NewMarkitVendorLocalizations.of(context)!
+                          .find('setUpContactDetails'),
+                      style: Styles.loginPageTitleBlack,
+                    ),
+                    Dimens.boxHeight15,
+                    Text(
+                      NewMarkitVendorLocalizations.of(context)!
+                          .find('fillBusinessInfo'),
+                      style: Styles.loginPageSubTitleGrey,
+                    ),
+                    Dimens.boxHeight20,
+                    Row(
+                      children: [
+                        Text(
+                          NewMarkitVendorLocalizations.of(context)!
+                              .find('businessContact'),
+                          style: Styles.lightGrey14,
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () {
+                            controller.add(TextEditingController(text: ""));
+                            setState(() {});
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.add,
+                                color: AppColors.primaryColor,
+                              ),
+                              Text(
+                                NewMarkitVendorLocalizations.of(context)!
+                                    .find('addMore'),
+                                style: Styles.redMedium14,
+                              ),
+                            ],
                           ),
-                          const Spacer(),
-                          GestureDetector(
-                            onTap: () {
-                              controller.add(TextEditingController(text: ""));
-                              setState(() {});
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const Icon(
-                                  Icons.add,
-                                  color: AppColors.primaryColor,
-                                ),
-                                Text(
-                                  NewMarkitVendorLocalizations.of(context)!
-                                      .find('addMore'),
-                                  style: Styles.redMedium14,
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      Wrap(
+                        )
+                      ],
+                    ),
+                    Form(
+                      key: formkey,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          for (int i = 0; i < controller.length; i++)
-                            setUpPhoneNumber(controller[i])
+                          Wrap(
+                            children: [
+                              for (int i = 0; i < controller.length; i++)
+                                setUpPhoneNumber(controller[i])
+                            ],
+                          ),
+                          Dimens.boxHeight20,
+                          emailTextFormFiled(),
+                          Dimens.boxHeight20,
                         ],
                       ),
-                      Dimens.boxHeight20,
-                      emailTextFormFiled(),
-                      Dimens.boxHeight20,
-                      webSiteTextFormFiled(),
-                      Dimens.boxHeight30,
-                      FormSubmitWidget(
-                        opacity: 1,
-                        disableColor: AppColors.primaryColor,
-                        padding: Dimens.edgeInsets0,
-                        text: NewMarkitVendorLocalizations.of(context)!
-                            .find('continueLabel'),
-                        textStyle: Styles.buttonWhiteTextStyle,
-                        startColor: AppColors.primaryColor,
-                        endColor: AppColors.primaryColor,
-                        iconColor: Colors.white,
-                        onTap: () {
-                          validateInput();
-                        },
-                      )
-                    ],
-                  ),
+                    ),
+                    webSiteTextFormFiled(),
+                    Dimens.boxHeight30,
+                    FormSubmitWidget(
+                      opacity: 1,
+                      disableColor: AppColors.primaryColor,
+                      padding: Dimens.edgeInsets0,
+                      text: NewMarkitVendorLocalizations.of(context)!
+                          .find('continueLabel'),
+                      textStyle: Styles.buttonWhiteTextStyle,
+                      startColor: AppColors.primaryColor,
+                      endColor: AppColors.primaryColor,
+                      iconColor: Colors.white,
+                      onTap: () {
+                        validateInput();
+                      },
+                    )
+                  ],
                 ),
               ))),
     );
@@ -148,12 +153,9 @@ class _SetUpContactState extends State<SetUpContact> {
       widget.model.website = webSiteController.text;
       for (int i = 0; i < controller.length; i++) {
         if (widget.model.phone != null) {
-          widget.model.phone = widget.model.phone! +
-              "," +
-              "+91" +
-              controller[i].text.replaceAll("-", "");
+          widget.model.phone = widget.model.phone! + "," + controller[i].text;
         } else {
-          widget.model.phone = "+91" + controller[i].text.replaceAll("-", "");
+          widget.model.phone = controller[i].text;
         }
       }
       Navigator.push(
@@ -189,12 +191,10 @@ class _SetUpContactState extends State<SetUpContact> {
   webSiteTextFormFiled() {
     return TextFormField(
       controller: webSiteController,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,
       style: Styles.formFieldTextStyle,
       keyboardType: TextInputType.emailAddress,
-      validator: (v) => Utility.checkTextFiledValid(v!, context),
       decoration: InputDecoration(
         labelText:
             NewMarkitVendorLocalizations.of(context)!.find('businessWebsite'),
@@ -214,7 +214,7 @@ class _SetUpContactState extends State<SetUpContact> {
         Column(
           children: [
             SizedBox(
-              height: Dimens.fiftynne,
+              height: Dimens.fiftyFive,
               child: CountryCodePicker(
                 onChanged: (val) {},
                 countryList: [

@@ -26,11 +26,22 @@ class _ViewAllProductScreenState extends State<ViewAllProductScreen>
     implements ApiInterface {
   var token;
   AllprodcutModel model = AllprodcutModel();
+  List<ProductData> dataModel = [];
+
   bool isLoader = true;
+
+  String searchTxt = "";
+  int page = 1;
+  var scrollcontroller = ScrollController();
+  TextEditingController searchController = TextEditingController();
+
+  bool isBottomLoader = false;
 
   @override
   void initState() {
     getToken();
+    scrollcontroller.addListener(pagination);
+
     super.initState();
   }
 
@@ -38,8 +49,27 @@ class _ViewAllProductScreenState extends State<ViewAllProductScreen>
     SharedPref.getLoginToken().then((value) {
       token = value;
 
-      ApiCall.getProductsApi(token, this, context);
+      ApiCall.getProductsApi(page.toString(), searchTxt, token, this, context);
     });
+  }
+
+  void pagination() {
+    if (isBottomLoader == false) {
+      if (scrollcontroller.position.pixels ==
+          scrollcontroller.position.maxScrollExtent) {
+        print(dataModel.length);
+        if (dataModel.length < model.data!.total!) {
+          setState(() {
+            isBottomLoader = true;
+            page = page + 1;
+            ApiCall.getProductsApi(
+                page.toString(), searchTxt, token, this, context);
+
+            //add api for load the more data according to new page
+          });
+        }
+      }
+    }
   }
 
   @override
@@ -79,7 +109,18 @@ class _ViewAllProductScreenState extends State<ViewAllProductScreen>
                               border: Border.all(width: 1, color: Colors.black),
                               borderRadius: BorderRadius.circular(10)),
                           child: TextField(
-                            onChanged: (v) {},
+                            controller: searchController,
+                            onChanged: (v) {
+                              print(v);
+                              searchTxt = v;
+                              page = 1;
+                              if (dataModel.isNotEmpty) {
+                                dataModel.clear();
+                              }
+
+                              ApiCall.getProductsApi(page.toString(), searchTxt,
+                                  token, this, context);
+                            },
                             decoration: const InputDecoration(
                                 prefixIcon: Icon(
                                   Icons.search,
@@ -108,145 +149,188 @@ class _ViewAllProductScreenState extends State<ViewAllProductScreen>
                                     color: AppColors.primaryColor,
                                   ),
                                 )
-                              : Container(
-                                  margin: const EdgeInsets.only(
-                                      left: 16, right: 16),
-                                  child: GridView.count(
-                                    // Create a grid with 2 columns. If you change the scrollDirection to
-                                    // horizontal, this produces 2 rows.
-                                    crossAxisCount: 2,
-                                    crossAxisSpacing: 20,
-                                    mainAxisSpacing: 10,
-                                    // Generate 100 widgets that display their index in the List.
-                                    children: List.generate(
-                                        model.data!.length > 4
-                                            ? 4
-                                            : model.data!.length, (index) {
-                                      return Center(
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                    type:
-                                                        PageTransitionType.fade,
-                                                    child: ProductInfoScreen(
-                                                      data: model.data![index],
-                                                    ))).then((value) {
-                                              if (value != null) {
-                                                Navigator.pop(context, true);
-                                              }
-                                            });
-                                          },
-                                          child: Container(
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                CachedNetworkImage(
-                                                  imageUrl: model.data![index]
-                                                      .default_image!,
-                                                  imageBuilder: (context,
-                                                          imageProvider) =>
-                                                      Container(
-                                                    height: 90.0,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      shape: BoxShape.rectangle,
-                                                      image: DecorationImage(
-                                                        image: imageProvider,
-                                                        fit: BoxFit.cover,
+                              : dataModel.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        NewMarkitVendorLocalizations.of(
+                                                context)!
+                                            .find('noDataFound'),
+                                        style: Styles.boldBlack16,
+                                      ),
+                                    )
+                                  : Container(
+                                      margin: const EdgeInsets.only(
+                                          left: 16, right: 16),
+                                      child: GridView.count(
+                                        // Create a grid with 2 columns. If you change the scrollDirection to
+                                        // horizontal, this produces 2 rows.
+                                        controller: scrollcontroller,
+
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 20,
+                                        mainAxisSpacing: 10,
+                                        // Generate 100 widgets that display their index in the List.
+                                        children: List.generate(
+                                            dataModel.length, (index) {
+                                          return GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    PageTransition(
+                                                        type: PageTransitionType
+                                                            .fade,
+                                                        child:
+                                                            ProductInfoScreen(
+                                                          data:
+                                                              dataModel[index],
+                                                        ))).then((value) {
+                                                  if (value != null) {
+                                                    page = 1;
+                                                    if (dataModel.isNotEmpty) {
+                                                      dataModel.clear();
+                                                    }
+
+                                                    ApiCall.getProductsApi(
+                                                        page.toString(),
+                                                        searchTxt,
+                                                        token,
+                                                        this,
+                                                        context);
+                                                  }
+                                                });
+                                              },
+                                              child: Container(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    CachedNetworkImage(
+                                                      imageUrl: dataModel[index]
+                                                          .default_image!,
+                                                      imageBuilder: (context,
+                                                              imageProvider) =>
+                                                          Container(
+                                                        height: 80.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          shape: BoxShape
+                                                              .rectangle,
+                                                          image:
+                                                              DecorationImage(
+                                                            image:
+                                                                imageProvider,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      placeholder:
+                                                          (context, url) =>
+                                                              Container(
+                                                        height: 80.0,
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Container(
+                                                          width: 40,
+                                                          height: 40,
+                                                          child: const CircularProgressIndicator(
+                                                              valueColor:
+                                                                  AlwaysStoppedAnimation<
+                                                                          Color>(
+                                                                      AppColors
+                                                                          .primaryColor)),
+                                                        ),
+                                                      ),
+                                                      errorWidget: (context,
+                                                              url, error) =>
+                                                          Container(
+                                                        alignment:
+                                                            Alignment.center,
+                                                        height: 80,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Colors.grey[200],
+                                                        ),
+                                                        child: const Icon(
+                                                          Icons.error,
+                                                          color: Colors.black,
+                                                          size: 40,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  placeholder: (context, url) =>
-                                                      Container(
-                                                    height: 90.0,
-                                                    alignment: Alignment.center,
-                                                    child: Container(
-                                                      width: 40,
-                                                      height: 40,
-                                                      child: const CircularProgressIndicator(
-                                                          valueColor:
-                                                              AlwaysStoppedAnimation<
-                                                                      Color>(
-                                                                  AppColors
-                                                                      .primaryColor)),
+                                                    Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Text(
+                                                          dataModel[index]
+                                                              .name!,
+                                                          style: Styles
+                                                              .boldBlack14,
+                                                          maxLines: 2),
                                                     ),
-                                                  ),
-                                                  errorWidget:
-                                                      (context, url, error) =>
-                                                          Container(
-                                                    alignment: Alignment.center,
-                                                    height: 90,
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.grey[200],
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                            AppConstants
+                                                                    .priceSign +
+                                                                dataModel[index]
+                                                                    .variations![
+                                                                        0]
+                                                                    .offerPrice!
+                                                                    .toString(),
+                                                            style: Styles
+                                                                .boldBlack14),
+                                                        const SizedBox(
+                                                          width: 5,
+                                                        ),
+                                                        Text(
+                                                            AppConstants
+                                                                    .priceSign +
+                                                                dataModel[index]
+                                                                    .variations![
+                                                                        0]
+                                                                    .basicPrice!
+                                                                    .toString(),
+                                                            style: Styles
+                                                                .pricestrickTitle12Grey),
+                                                      ],
                                                     ),
-                                                    child: const Icon(
-                                                      Icons.error,
-                                                      color: Colors.black,
-                                                      size: 40,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  alignment:
-                                                      Alignment.centerLeft,
-                                                  child: Text(
-                                                      model.data![index].name!,
-                                                      style:
-                                                          Styles.boldBlack16),
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                        AppConstants.priceSign +
-                                                            model
-                                                                .data![index]
-                                                                .variations![0]
-                                                                .offerPrice!
-                                                                .toString(),
-                                                        style:
-                                                            Styles.boldBlack14),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    Text(
-                                                        AppConstants.priceSign +
-                                                            model
-                                                                .data![index]
-                                                                .variations![0]
-                                                                .basicPrice!
-                                                                .toString(),
-                                                        style: Styles
-                                                            .pricestrickTitle12Grey),
+                                                    Row(
+                                                      children: [
+                                                        const Icon(
+                                                          Icons.star,
+                                                          color: AppColors
+                                                              .yellowColor,
+                                                          size: 20,
+                                                        ),
+                                                        Text(
+                                                            "${dataModel[index].product_rating}",
+                                                            style: Styles
+                                                                .yellowMedium12),
+                                                      ],
+                                                    )
                                                   ],
                                                 ),
-                                                Row(
-                                                  children: [
-                                                    const Icon(
-                                                      Icons.star,
-                                                      color:
-                                                          AppColors.yellowColor,
-                                                      size: 20,
-                                                    ),
-                                                    Text("4.5",
-                                                        style: Styles
-                                                            .yellowMedium12),
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }),
-                                  ),
+                                              ));
+                                        }),
+                                      ),
+                                    ),
+                        ),
+                        isBottomLoader
+                            ? Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 50,
+                                alignment: Alignment.center,
+                                child: const CircularProgressIndicator(
+                                  color: AppColors.primaryColor,
                                 ),
-                        )
+                              )
+                            : Container()
                       ],
                     ),
                   ),
@@ -297,17 +381,22 @@ class _ViewAllProductScreenState extends State<ViewAllProductScreen>
   void onFailure(message) {
     setState(() {
       isLoader = false;
+      isBottomLoader = false;
     });
   }
 
   @override
   void onSuccess(data) {
     model = AllprodcutModel.fromJson(data);
-    print(model.data!.length);
-    print(model.data![0].default_image!);
+    if (isBottomLoader) {
+      dataModel.addAll(model.data!.data!);
+    } else {
+      dataModel = model.data!.data!;
+    }
 
     setState(() {
       isLoader = false;
+      isBottomLoader = false;
     });
   }
 

@@ -1,4 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/formatters/masked_input_formatter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,6 +10,7 @@ import 'package:market_vendor_app/apiservice/api_call.dart';
 import 'package:market_vendor_app/apiservice/api_interface.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../../apiservice/url_string.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/dimens.dart';
 import '../../theme/styles.dart';
@@ -17,6 +19,7 @@ import '../../utils/new_market_vendor_localizations.dart';
 import '../../utils/utility.dart';
 import '../../widgets/form_submit_widget.dart';
 import '../build_your_profile/build_your_profile_view.dart';
+import '../home_page/drawer_screen/common_page_screen.dart';
 
 class RegisterWithOTPView extends StatefulWidget {
   @override
@@ -139,6 +142,7 @@ class _RegisterWithOTPView extends State<RegisterWithOTPView>
                                 endColor: AppColors.primaryColor,
                                 iconColor: Colors.white,
                                 onTap: () {
+                                  FocusScope.of(context).unfocus();
                                   validateInput();
                                 },
                               ),
@@ -190,6 +194,20 @@ class _RegisterWithOTPView extends State<RegisterWithOTPView>
                             text: NewMarkitVendorLocalizations.of(context)!
                                 .find('privacyPolicy'),
                             style: Styles.black12BoldUnderline,
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: CommonViewScreen(
+                                          title:
+                                              NewMarkitVendorLocalizations.of(
+                                                      context)!
+                                                  .find('privacyPolicy'),
+                                          url: UrlConstant.privacyPolicy,
+                                        ))).then((value) {});
+                              },
                           ),
                           TextSpan(
                             text: NewMarkitVendorLocalizations.of(context)!
@@ -200,6 +218,20 @@ class _RegisterWithOTPView extends State<RegisterWithOTPView>
                             text: NewMarkitVendorLocalizations.of(context)!
                                 .find('termsAndConditions'),
                             style: Styles.black12BoldUnderline,
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: CommonViewScreen(
+                                          title:
+                                              NewMarkitVendorLocalizations.of(
+                                                      context)!
+                                                  .find('termsAndConditions'),
+                                          url: UrlConstant.termAndConditions,
+                                        ))).then((value) {});
+                              },
                           ),
                         ]),
                       ),
@@ -218,8 +250,7 @@ class _RegisterWithOTPView extends State<RegisterWithOTPView>
       setState(() {
         isLoader = true;
       });
-      ApiCall.sendOtpApi(
-          "+91" + phoneController.text.replaceAll("-", ""), this, context);
+      ApiCall.sendOtpApi(phoneController.text, this, context);
     }
   }
 
@@ -273,7 +304,7 @@ class _RegisterWithOTPView extends State<RegisterWithOTPView>
         PageTransition(
             type: PageTransitionType.fade,
             child: OTPVerificationView(
-              phone: "+91" + phoneController.text.replaceAll("-", ""),
+              phone: phoneController.text,
             )));
   }
 

@@ -226,7 +226,7 @@ class _PreviewScreenState extends State<PreviewScreen> {
                             color: AppColors.yellowColor,
                             size: 20,
                           ),
-                          Text("4.5", style: Styles.yellowMedium14),
+                          Text("0", style: Styles.yellowMedium14),
                           Text(
                               " " +
                                   NewMarkitVendorLocalizations.of(context)!

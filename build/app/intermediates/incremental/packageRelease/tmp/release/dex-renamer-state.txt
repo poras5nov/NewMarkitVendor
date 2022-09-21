@@ -1,4 +1,4 @@
-#Thu Aug 04 22:12:26 IST 2022
-base.0=/Users/mac/Documents/GitHub/NewMarkitVendor/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+#Wed Sep 21 22:23:06 IST 2022
+base.0=/Users/mac/Documents/flutter_project/market_vendor_app/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

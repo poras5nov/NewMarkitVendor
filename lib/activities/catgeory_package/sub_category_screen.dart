@@ -48,16 +48,19 @@ class _SubCategoryScreenState extends State<SubCategoryScreen>
   }
 
   void pagination() {
-    if (scrollcontroller.position.pixels ==
-        scrollcontroller.position.maxScrollExtent) {
-      if ((dataModel.length < model.data!.total!)) {
-        setState(() {
-          isBottomLoader = true;
-          page += 1;
-          ApiCall.getSubCategoryWithPageList(
-              widget.id!, searchTxt, page.toString(), token, this, context);
-          //add api for load the more data according to new page
-        });
+    if (isBottomLoader == false) {
+      if (scrollcontroller.position.pixels ==
+          scrollcontroller.position.maxScrollExtent) {
+        print(dataModel.length);
+        if (dataModel.length < model.data!.total!) {
+          setState(() {
+            isBottomLoader = true;
+            page = page + 1;
+            ApiCall.getSubCategoryWithPageList(
+                widget.id!, searchTxt, page.toString(), token, this, context);
+            //add api for load the more data according to new page
+          });
+        }
       }
     }
   }

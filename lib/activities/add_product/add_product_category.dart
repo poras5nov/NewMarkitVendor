@@ -156,10 +156,15 @@ class _AddProductCategoryScreenState extends State<AddProductCategoryScreen>
   _validateInput() {
     if (formkey.currentState!.validate()) {
       Navigator.push(
-          context,
-          PageTransition(
-              type: PageTransitionType.fade,
-              child: ProductInformationsScreen(model: addProductModel)));
+              context,
+              PageTransition(
+                  type: PageTransitionType.fade,
+                  child: ProductInformationsScreen(model: addProductModel)))
+          .then((value) {
+        if (value != null) {
+          Navigator.pop(context);
+        }
+      });
     }
   }
 

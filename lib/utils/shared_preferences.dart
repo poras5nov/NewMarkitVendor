@@ -1,4 +1,5 @@
 import 'package:market_vendor_app/apiservice/key_string.dart';
+import 'package:market_vendor_app/utils/strings/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {
@@ -28,6 +29,42 @@ class SharedPref {
   static Future<void> saveStringInPrefs(String key, String value) async {
     prefs = await SharedPreferences.getInstance();
     prefs!.setString(key, value);
+  }
+
+  static Future<void> setOrderID(String value) async {
+    prefs = await SharedPreferences.getInstance();
+    prefs!.setString(AppConstants.order_id, value);
+  }
+
+  static getOrderId() {
+    return prefs!.getString(AppConstants.order_id) ?? "";
+  }
+
+  static Future<void> setOrderType(String value) async {
+    prefs = await SharedPreferences.getInstance();
+    prefs!.setString(AppConstants.type, value);
+  }
+
+  static getOrderType() {
+    return prefs!.getString(AppConstants.type) ?? "";
+  }
+
+  static Future<void> setRequestOrderId(String value) async {
+    prefs = await SharedPreferences.getInstance();
+    prefs!.setString(AppConstants.requestId, value);
+  }
+
+  static getRequestOrderId() {
+    return prefs!.getString(AppConstants.requestId) ?? "";
+  }
+
+  static Future<void> savePlayerId(String value) async {
+    prefs = await SharedPreferences.getInstance();
+    prefs!.setString(AppConstants.oneSignal, value);
+  }
+
+  static getPlayerID() {
+    return prefs!.getString(AppConstants.oneSignal) ?? "";
   }
 
 //get value from shared preferences

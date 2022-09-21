@@ -25,4 +25,29 @@ class KeyConstant {
   static const String businessesCount = "businesses_count";
 
   static const String number = "number";
+  static const String appVersion = "app_version";
+
+  static const String deviceType = 'device_type';
+  static const String oneSignalId = 'one_signal_id';
+  static const String status = 'status';
+  static const String orderId = 'order_id';
+  static const String reasonId = 'reason_id';
+
+  static const String declinedReason = 'declined_reason';
+  static const String rejectReason = 'reject_reason';
+
+  static const String order_id = "order_id";
+
+  static const String images = "images";
+
+  static const String request_id = "request_id";
+
+  static const String delivery_image = "delivery_image";
+
+  static const String business_id = "business_id";
+  static const String cancelled_cheque_image = "cancelled_cheque_image";
+  static const String bank_account = "bank_account";
+  static const String bank_name = "bank_name";
+  static const String ifsc_code = "ifsc_code";
+  static const String account_holder_name = "account_holder_name";
 }

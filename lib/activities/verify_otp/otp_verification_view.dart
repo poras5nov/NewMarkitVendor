@@ -142,6 +142,7 @@ class _OTPVerificationView extends State<OTPVerificationView>
                           endColor: AppColors.primaryColor,
                           iconColor: Colors.white,
                           onTap: () {
+                            FocusScope.of(context).unfocus();
                             validateInput();
                           },
                         ),

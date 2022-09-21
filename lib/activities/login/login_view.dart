@@ -14,7 +14,9 @@ import 'package:market_vendor_app/activities/login_with_otp/login_with_otp_view.
 import 'package:market_vendor_app/apiservice/api_interface.dart';
 import 'package:market_vendor_app/apiservice/key_string.dart';
 import 'package:market_vendor_app/utils/new_market_vendor_localizations.dart';
+import 'package:market_vendor_app/utils/notification_receiver.dart';
 import 'package:market_vendor_app/utils/utility.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../apiservice/api_call.dart';
@@ -22,6 +24,7 @@ import '../../theme/app_colors.dart';
 import '../../theme/dimens.dart';
 import '../../theme/styles.dart';
 import '../../utils/asset_constants.dart';
+import '../../utils/notification_show.dart';
 import '../../utils/shared_preferences.dart';
 import '../../widgets/form_submit_widget.dart';
 import '../build_your_profile/build_your_profile_view.dart';
@@ -36,18 +39,30 @@ class LoginView extends StatefulWidget {
   }
 }
 
-class _LoginViewScreen extends State<LoginView> implements ApiInterface {
+class _LoginViewScreen extends State<LoginView>
+    implements ApiInterface, NotificationInterface {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   TextEditingController phoneController = TextEditingController(text: "");
   TextEditingController passwordController = TextEditingController(text: "");
   bool isLoader = false;
   bool isPasswordVisible = true;
   LatLng? currentPostion;
+  String version = "";
 
   @override
   void initState() {
     super.initState();
+    NotificationShow.initPlatformState(this);
+
+    versionName();
     // _getUserLocation();
+  }
+
+  versionName() async {
+    await PackageInfo.fromPlatform().then((value) {
+      version = value.version;
+      print(version);
+    });
   }
 
   void _getUserLocation() async {
@@ -77,11 +92,11 @@ class _LoginViewScreen extends State<LoginView> implements ApiInterface {
                     children: [
                       Container(
                         alignment: Alignment.centerRight,
-                        child: Text(
-                            NewMarkitVendorLocalizations.of(context)!
-                                .find('skip'),
-                            textAlign: TextAlign.start,
-                            style: Styles.boldBlack16),
+                        // child: Text(
+                        //     NewMarkitVendorLocalizations.of(context)!
+                        //         .find('skip'),
+                        //     textAlign: TextAlign.start,
+                        //     style: Styles.boldBlack16),
                       ),
                       SizedBox(
                         width: Dimens.percentWidth(0.5),
@@ -184,6 +199,7 @@ class _LoginViewScreen extends State<LoginView> implements ApiInterface {
                               endColor: AppColors.primaryColor,
                               iconColor: Colors.white,
                               onTap: () {
+                                FocusScope.of(context).unfocus();
                                 validateInput();
                               },
                             ),
@@ -241,11 +257,8 @@ class _LoginViewScreen extends State<LoginView> implements ApiInterface {
       setState(() {
         isLoader = true;
       });
-      ApiCall.loginWithPasswordApi(
-          "+91" + phoneController.text.replaceAll("-", ""),
-          passwordController.text,
-          this,
-          context);
+      ApiCall.loginWithPasswordApi(phoneController.text,
+          passwordController.text, version, this, context);
     }
   }
 
@@ -336,8 +349,9 @@ class _LoginViewScreen extends State<LoginView> implements ApiInterface {
           PageTransition(
               type: PageTransitionType.fade, child: SetUpBusinessProfile()));
     } else {
+      SharedPref.setLoginStatus(KeyConstant.LOGINSTATUS, true);
+
       if (data['data']['businesses']['is_verified'].toString() == "Yes") {
-        SharedPref.setLoginStatus(KeyConstant.LOGINSTATUS, true);
         Navigator.of(context).pushNamedAndRemoveUntil(
             '/TabScreen', (Route<dynamic> route) => false);
       } else {
@@ -350,4 +364,14 @@ class _LoginViewScreen extends State<LoginView> implements ApiInterface {
 
   @override
   void onTokenExpired() {}
+
+  @override
+  void onClick(id, type, requestId) {
+    // TODO: implement onClick
+  }
+
+  @override
+  void onMessageReceived(id, type) {
+    // TODO: implement onMessageReceived
+  }
 }

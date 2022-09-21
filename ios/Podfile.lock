@@ -18,19 +18,14 @@ PODS:
     - TOCropViewController (~> 2.6.1)
   - image_picker_ios (0.0.1):
     - Flutter
-  - onesignal_flutter (3.3.2):
+  - launch_review (0.0.1):
     - Flutter
-    - OneSignalXCFramework (= 3.11.2)
-  - OneSignalXCFramework (3.11.2):
-    - OneSignalXCFramework/OneSignalCore (= 3.11.2)
-    - OneSignalXCFramework/OneSignalExtension (= 3.11.2)
-    - OneSignalXCFramework/OneSignalOutcomes (= 3.11.2)
-  - OneSignalXCFramework/OneSignalCore (3.11.2)
-  - OneSignalXCFramework/OneSignalExtension (3.11.2):
-    - OneSignalXCFramework/OneSignalCore
-    - OneSignalXCFramework/OneSignalOutcomes
-  - OneSignalXCFramework/OneSignalOutcomes (3.11.2):
-    - OneSignalXCFramework/OneSignalCore
+  - OneSignal (2.16.5)
+  - onesignal_flutter (2.6.4):
+    - Flutter
+    - OneSignal (= 2.16.5)
+  - package_info_plus (0.4.5):
+    - Flutter
   - path_provider_ios (0.0.1):
     - Flutter
   - shared_preferences_ios (0.0.1):
@@ -39,6 +34,8 @@ PODS:
     - Flutter
     - FMDB (>= 2.7.5)
   - TOCropViewController (2.6.1)
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -46,16 +43,19 @@ DEPENDENCIES:
   - google_maps_flutter (from `.symlinks/plugins/google_maps_flutter/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - launch_review (from `.symlinks/plugins/launch_review/ios`)
   - onesignal_flutter (from `.symlinks/plugins/onesignal_flutter/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
 SPEC REPOS:
   trunk:
     - FMDB
     - GoogleMaps
-    - OneSignalXCFramework
+    - OneSignal
     - TOCropViewController
 
 EXTERNAL SOURCES:
@@ -69,14 +69,20 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/image_cropper/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
+  launch_review:
+    :path: ".symlinks/plugins/launch_review/ios"
   onesignal_flutter:
     :path: ".symlinks/plugins/onesignal_flutter/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
   shared_preferences_ios:
     :path: ".symlinks/plugins/shared_preferences_ios/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
@@ -86,13 +92,16 @@ SPEC CHECKSUMS:
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   image_cropper: 60c2789d1f1a78c873235d4319ca0c34a69f2d98
   image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
-  onesignal_flutter: f3ff66c97498f9131481441a362ef5f0e6cb6d16
-  OneSignalXCFramework: 81ceac017a290f23793443323090cfbe888f74ea
+  launch_review: 75d5a956ba8eaa493e9c9d4bf4c05e505e8d5ed0
+  OneSignal: b72068b06b359f22e27404edee87338f4b68e783
+  onesignal_flutter: 48eddd9a4eddc7ed5052eef8a6ab6f9ed73e6ebc
+  package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
+  webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: ef3879a55dde23eee1b3dbd492f7b4ee9cda334c
 
 COCOAPODS: 1.11.3

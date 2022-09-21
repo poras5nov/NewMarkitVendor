@@ -26,14 +26,26 @@ class _SpecificationScreenState extends State<SpecificationScreen> {
   TextEditingController valueController = TextEditingController();
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   bool isSelected = false;
-  List<Specifactions> dataModel = List.empty(growable: true);
+  List<SpecifactionsCopy> dataModel = List.empty(growable: true);
+  List<Specifactions> newDataModel = List.empty(growable: true);
+
   AutovalidateMode _autoValidate = AutovalidateMode.disabled;
 
   @override
   void initState() {
     super.initState();
+    makeSpecification();
+  }
+
+  makeSpecification() {
     if (widget.data != null) {
-      dataModel = widget.data!;
+      for (int i = 0; i < widget.data!.length; i++) {
+        SpecifactionsCopy specification = SpecifactionsCopy();
+        specification.specifactionValue = widget.data![i].specifactionValue!;
+        specification.forFilter = widget.data![i].forFilter!;
+        specification.title = widget.data![i].title;
+        dataModel.add(specification);
+      }
     }
   }
 
@@ -241,7 +253,8 @@ class _SpecificationScreenState extends State<SpecificationScreen> {
                             iconColor: Colors.white,
                             onTap: () {
                               if (formkey.currentState!.validate()) {
-                                Specifactions specification = Specifactions();
+                                SpecifactionsCopy specification =
+                                    SpecifactionsCopy();
                                 specification.title = titleController.text;
                                 specification.specifactionValue =
                                     valueController.text;
@@ -271,7 +284,20 @@ class _SpecificationScreenState extends State<SpecificationScreen> {
                             endColor: AppColors.primaryColor,
                             iconColor: Colors.white,
                             onTap: () {
-                              Navigator.pop(context, dataModel);
+                              if (formkey.currentState!.validate()) {
+                                SpecifactionsCopy specification =
+                                    SpecifactionsCopy();
+                                specification.title = titleController.text;
+                                specification.specifactionValue =
+                                    valueController.text;
+                                specification.forFilter = isSelected ? 1 : 0;
+                                dataModel.add(specification);
+                                createSpecification();
+                                Navigator.pop(context, newDataModel);
+                              } else {
+                                createSpecification();
+                                Navigator.pop(context, newDataModel);
+                              }
                             },
                           ),
                         ],
@@ -319,5 +345,15 @@ class _SpecificationScreenState extends State<SpecificationScreen> {
         ),
       ),
     );
+  }
+
+  createSpecification() {
+    for (int i = 0; i < dataModel.length; i++) {
+      Specifactions specification = Specifactions();
+      specification.specifactionValue = dataModel[i].specifactionValue!;
+      specification.forFilter = dataModel[i].forFilter!;
+      specification.title = dataModel[i].title;
+      newDataModel.add(specification);
+    }
   }
 }

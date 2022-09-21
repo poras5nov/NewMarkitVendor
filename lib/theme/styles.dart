@@ -125,6 +125,12 @@ abstract class Styles {
     color: Colors.white,
     fontWeight: FontWeight.normal,
   );
+  static TextStyle whiteLight10 = TextStyle(
+    fontFamily: AppConstants.appLightFontFamily,
+    fontSize: Dimens.ten,
+    color: Colors.white,
+    fontWeight: FontWeight.normal,
+  );
 
   // Different style used in the application
   // light
@@ -229,6 +235,17 @@ abstract class Styles {
     color: Colors.black,
   );
 
+  static TextStyle unsSelectedText12 = TextStyle(
+    fontFamily: AppConstants.appMediumFontFamily,
+    fontSize: Dimens.twelve,
+    color: AppColors.greyColor,
+  );
+  static TextStyle selectedText12 = TextStyle(
+      fontFamily: AppConstants.appMediumFontFamily,
+      fontSize: Dimens.twelve,
+      color: Colors.white,
+      fontWeight: FontWeight.bold);
+
   static TextStyle daysTitleBlack = TextStyle(
     fontFamily: AppConstants.appBoldFontFamily,
     fontSize: Dimens.fourteen,
@@ -301,11 +318,26 @@ abstract class Styles {
     fontSize: Dimens.sixTeen,
     color: Colors.white,
   );
+  static TextStyle boldBlack30 = TextStyle(
+    fontFamily: AppConstants.appBoldFontFamily,
+    fontSize: Dimens.thirty,
+    color: Colors.black,
+  );
 
   static TextStyle boldBlack16 = TextStyle(
     fontFamily: AppConstants.appBoldFontFamily,
     fontSize: Dimens.sixTeen,
     color: Colors.black,
+  );
+  static TextStyle boldMenuText16 = TextStyle(
+    fontFamily: AppConstants.appMediumFontFamily,
+    fontSize: Dimens.sixTeen,
+    color: AppColors.menuTextColor,
+  );
+  static TextStyle boldMenuText14 = TextStyle(
+    fontFamily: AppConstants.appMediumFontFamily,
+    fontSize: Dimens.sixTeen,
+    color: AppColors.menuTextColor,
   );
 
   static TextStyle boldDarkGreen14 = TextStyle(
@@ -352,6 +384,11 @@ abstract class Styles {
   );
   static TextStyle redMedium14 = TextStyle(
     fontFamily: AppConstants.appMediumFontFamily,
+    fontSize: Dimens.fourteen,
+    color: AppColors.redColor,
+  );
+  static TextStyle redLight14 = TextStyle(
+    fontFamily: AppConstants.appLightFontFamily,
     fontSize: Dimens.fourteen,
     color: AppColors.redColor,
   );
@@ -438,6 +475,12 @@ abstract class Styles {
     fontWeight: FontWeight.normal,
   );
 
+  static TextStyle grey16Regular = TextStyle(
+    fontFamily: AppConstants.appRegularFontFamily,
+    color: AppColors.greyColor,
+    fontSize: Dimens.sixTeen,
+    fontWeight: FontWeight.normal,
+  );
   static TextStyle grey14Regular = TextStyle(
     fontFamily: AppConstants.appRegularFontFamily,
     color: AppColors.greyColor,
@@ -477,6 +520,12 @@ abstract class Styles {
     fontSize: Dimens.twelve,
     fontWeight: FontWeight.normal,
     decoration: TextDecoration.underline,
+  );
+  static TextStyle blackMedium16 = TextStyle(
+    fontFamily: AppConstants.appMediumFontFamily,
+    color: AppColors.blackColor,
+    fontSize: Dimens.sixTeen,
+    fontWeight: FontWeight.w100,
   );
   static TextStyle blackMedium14 = TextStyle(
     fontFamily: AppConstants.appMediumFontFamily,
@@ -543,6 +592,12 @@ abstract class Styles {
     color: AppColors.lightBlueColor2,
     fontSize: Dimens.fourteen,
     fontWeight: FontWeight.normal,
+  );
+  static TextStyle boldBlue16 = TextStyle(
+    fontFamily: AppConstants.appRegularFontFamily,
+    color: AppColors.lightBlueColor2,
+    fontSize: Dimens.sixTeen,
+    fontWeight: FontWeight.bold,
   );
 
   static TextStyle lightGreen14 = TextStyle(
