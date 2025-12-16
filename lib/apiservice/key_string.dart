@@ -50,4 +50,6 @@ class KeyConstant {
   static const String bank_name = "bank_name";
   static const String ifsc_code = "ifsc_code";
   static const String account_holder_name = "account_holder_name";
+
+  static const String role = "role";
 }

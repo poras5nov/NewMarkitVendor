@@ -22,14 +22,14 @@ class _ColorPickerState extends State<ColorPicker> {
   initState() {
     super.initState();
     _currentColor = _calculateSelectedColor(_colorSliderPosition);
-    _shadeSliderPosition = widget.width / 2; //center the shader selector
+    _shadeSliderPosition = MediaQuery.of(context).size.width / 2; //center the shader selector
     _shadedColor = _calculateShadedColor(_shadeSliderPosition!);
   }
 
   _colorChangeHandler(double position) {
     //handle out of bounds positions
-    if (position > widget.width) {
-      position = widget.width;
+    if (position > MediaQuery.of(context).size.width) {
+      position = MediaQuery.of(context).size.width;
     }
     if (position < 0) {
       position = 0;
@@ -44,7 +44,7 @@ class _ColorPickerState extends State<ColorPicker> {
 
   _shadeChangeHandler(double position) {
     //handle out of bounds gestures
-    if (position > widget.width) position = widget.width;
+    if (position > MediaQuery.of(context).size.width) position = MediaQuery.of(context).size.width;
     if (position < 0) position = 0;
     setState(() {
       _shadeSliderPosition = position;
@@ -55,7 +55,7 @@ class _ColorPickerState extends State<ColorPicker> {
   }
 
   Color _calculateShadedColor(double position) {
-    double ratio = position / widget.width;
+    double ratio = position / MediaQuery.of(context).size.width;
     if (ratio > 0.5) {
       //Calculate new color (values converge to 255 to make the color lighter)
       int redVal = _currentColor!.red != 255
@@ -95,7 +95,7 @@ class _ColorPickerState extends State<ColorPicker> {
   Color _calculateSelectedColor(double position) {
     //determine color
     double positionInColorArray =
-        (position / widget.width * (_colors.length - 1));
+        (position / MediaQuery.of(context).size.width * (_colors.length - 1));
     print(positionInColorArray);
     int index = positionInColorArray.truncate();
     print(index);
@@ -146,7 +146,7 @@ class _ColorPickerState extends State<ColorPicker> {
             child: Padding(
               padding: EdgeInsets.all(15),
               child: Container(
-                width: widget.width,
+                width: MediaQuery.of(context).size.width,
                 height: 15,
                 decoration: BoxDecoration(
                   border: Border.all(width: 2, color: Colors.grey),

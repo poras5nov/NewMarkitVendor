@@ -15,6 +15,7 @@ import '../../../utils/new_market_vendor_localizations.dart';
 import '../../../utils/notification_receiver.dart';
 import '../../../utils/notification_show.dart';
 import '../../../utils/shared_preferences.dart';
+import '../../../utils/utility.dart';
 import '../../order_package/my_orders_details.dart';
 import '../../order_package/return_order_details.dart';
 import '../model/order_data.dart';
@@ -49,6 +50,7 @@ class _MyOrderScreenState extends State<MyOrderScreen>
   void initState() {
     super.initState();
     NotificationShow.initPlatformState(this);
+    Utility.facebookEvent("my_order_screen");
 
     Status s = Status();
     s.id = 0;
@@ -115,7 +117,7 @@ class _MyOrderScreenState extends State<MyOrderScreen>
             child: Column(children: [
               Container(
                 margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
-                width: Get.width,
+                width: MediaQuery.of(context).size.width,
                 height: 50,
                 alignment: Alignment.centerLeft,
                 child: Row(
@@ -343,7 +345,7 @@ class _MyOrderScreenState extends State<MyOrderScreen>
                                                                 ),
                                                                 SizedBox(
                                                                   height: Dimens
-                                                                      .sixTeen,
+                                                                      .five,
                                                                 ),
                                                                 Row(
                                                                   children: [
@@ -560,7 +562,7 @@ class _MyOrderScreenState extends State<MyOrderScreen>
                                                           const EdgeInsets.only(
                                                               top: 10, left: 6),
                                                       child: Container(
-                                                        height: 20,
+                                                        height: 30,
                                                         width: 110,
                                                         alignment:
                                                             Alignment.center,

@@ -21,6 +21,7 @@ import '../../../utils/new_market_vendor_localizations.dart';
 import '../../../utils/notification_receiver.dart';
 import '../../../utils/notification_show.dart';
 import '../../../utils/shared_preferences.dart';
+import '../../../utils/utility.dart';
 import '../../order_package/my_orders_details.dart';
 import '../../order_package/return_order_details.dart';
 
@@ -42,6 +43,8 @@ class _RatingScreenState extends State<RatingScreen>
   @override
   void initState() {
     super.initState();
+    Utility.facebookEvent("rating_screen");
+
     NotificationShow.initPlatformState(this);
 
     getToken();
@@ -81,7 +84,7 @@ class _RatingScreenState extends State<RatingScreen>
                 children: [
                   Container(
                     margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
-                    width: Get.width,
+                    width: MediaQuery.of(context).size.width,
                     height: 50,
                     alignment: Alignment.centerLeft,
                     child: Row(
@@ -583,7 +586,7 @@ class _RatingScreenState extends State<RatingScreen>
                                         ],
                                       )),
                                 ),
-                                model.rating!.ratings!.length == 0
+                                model.rating!.ratings!.isEmpty
                                     ? Text(
                                         "${NewMarkitVendorLocalizations.of(context)!.find('noRatingAvaliable')}",
                                         style: Styles.grey14Medium,
@@ -766,7 +769,7 @@ class _RatingScreenState extends State<RatingScreen>
                                                 color: Colors.grey
                                                     .withOpacity(0.3),
                                                 height: 1,
-                                                width: Get.width,
+                                                width: MediaQuery.of(context).size.width,
                                               )
                                             ],
                                           ),
@@ -791,7 +794,9 @@ class _RatingScreenState extends State<RatingScreen>
 
   @override
   void onSuccess(data) {
+    print(data);
     model = VendorRatingModel.fromJson(data);
+    print("rating length${model.rating!.ratings!.length}");
     ratingArr.add(double.parse(model.rating!.fiveStarRating == "null"
         ? "0"
         : model.rating!.fiveStarRating!));

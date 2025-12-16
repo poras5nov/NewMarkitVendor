@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -132,7 +130,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                                       MainAxisSize.min,
                                                   children: [
                                                     Container(
-                                                      height: 20,
+                                                      height: 25,
                                                       width: 110,
                                                       alignment:
                                                           Alignment.center,
@@ -291,7 +289,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                           height: Dimens.ten,
                                         ),
                                         Text(
-                                          "${model!.cancel_reason!.text!}",
+                                          model!.cancel_reason == null
+                                              ? "No reason"
+                                              : "${model!.cancel_reason!.text!}",
                                           style: Styles.grey14Regular,
                                           maxLines: 3,
                                         ),
@@ -301,9 +301,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                         model!.cancel_description == "null" ||
                                                 model!.cancel_description == ""
                                             ? Text(
-                                                "Descriptions:- " +
-                                                    model!.declinedReason
-                                                        .toString(),
+                                                "Descriptions:- ${model!.declinedReason}",
                                                 style: Styles.redMedium14,
                                                 maxLines: 3,
                                               )
@@ -526,32 +524,12 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                     maxLines: 2,
                                   ),
                                   Text(
-                                    "${AppConstants.priceSign}${double.parse(model!.subTotal!).round()}",
+                                    "${AppConstants.priceSign}${subTotalCalculate().round()}",
                                     style: Styles.grey14Regular,
                                     maxLines: 2,
                                   ),
                                 ],
                               ),
-                              // SizedBox(
-                              //   height: Dimens.ten,
-                              // ),
-                              // Row(
-                              //   mainAxisAlignment:
-                              //       MainAxisAlignment.spaceBetween,
-                              //   children: [
-                              //     Text(
-                              //       NewMarkitVendorLocalizations.of(context)!
-                              //           .find('deliveryCharges'),
-                              //       style: Styles.grey14Regular,
-                              //       maxLines: 2,
-                              //     ),
-                              //     Text(
-                              //       "${AppConstants.priceSign}${double.parse(model!.deliveryCharge!).round()}",
-                              //       style: Styles.grey14Regular,
-                              //       maxLines: 2,
-                              //     ),
-                              //   ],
-                              // ),
                               SizedBox(
                                 height: Dimens.ten,
                               ),
@@ -567,6 +545,26 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                   ),
                                   Text(
                                     "${AppConstants.priceSign}${double.parse(model!.tax!).round()}",
+                                    style: Styles.grey14Regular,
+                                    maxLines: 2,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: Dimens.ten,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    NewMarkitVendorLocalizations.of(context)!
+                                        .find('deliveryCharges'),
+                                    style: Styles.grey14Regular,
+                                    maxLines: 2,
+                                  ),
+                                  Text(
+                                    "${AppConstants.priceSign}${double.parse(model!.deliveryCharge!).round()}",
                                     style: Styles.grey14Regular,
                                     maxLines: 2,
                                   ),
@@ -593,7 +591,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                     maxLines: 2,
                                   ),
                                   Text(
-                                    "${AppConstants.priceSign}${double.parse(model!.totalAmount!).round() - double.parse(model!.deliveryCharge!).round()}",
+                                    "${AppConstants.priceSign}${double.parse(model!.totalAmount!).round()}",
                                     style: Styles.redMedium16,
                                     maxLines: 2,
                                   ),
@@ -602,18 +600,18 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                               SizedBox(
                                 height: Dimens.sixTeen,
                               ),
-                              Text(
-                                NewMarkitVendorLocalizations.of(context)!
-                                    .find('paymentStatus'),
-                                style: Styles.blackMedium14,
-                              ),
-                              SizedBox(
-                                height: Dimens.ten,
-                              ),
-                              Text(
-                                model!.paymentType!,
-                                style: Styles.grey16Regular,
-                              ),
+                              // Text(
+                              //   NewMarkitVendorLocalizations.of(context)!
+                              //       .find('paymentStatus'),
+                              //   style: Styles.blackMedium14,
+                              // ),
+                              // SizedBox(
+                              //   height: Dimens.ten,
+                              // ),
+                              // Text(
+                              //   model!.paymentType!,
+                              //   style: Styles.grey16Regular,
+                              // ),
                               (model!.picked_image == "null" ||
                                       model!.picked_image == "")
                                   ? Container()
@@ -761,6 +759,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                                                 ImageZoomView(
                                                               url: model!
                                                                   .picked_image!,
+                                                              type: 'image',
                                                             )));
                                                   },
                                                   child: CachedNetworkImage(
@@ -881,6 +880,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                                                         .delivery_image!
                                                                         .split(
                                                                             ",")[i],
+                                                                    type:
+                                                                        'image',
                                                                   )));
                                                         },
                                                         child:
@@ -975,11 +976,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                                             type:
                                                                 PageTransitionType
                                                                     .fade,
-                                                            child:
-                                                                ImageZoomView(
-                                                              url: model!
-                                                                  .delivery_image!,
-                                                            )));
+                                                            child: ImageZoomView(
+                                                                url: model!
+                                                                    .delivery_image!,
+                                                                type:
+                                                                    'image')));
                                                   },
                                                   child: CachedNetworkImage(
                                                     imageUrl:
@@ -1151,7 +1152,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
-                    width: Get.width,
+                    width: MediaQuery.of(context).size.width,
                     height: 50,
                     alignment: Alignment.centerLeft,
                     child: Row(
@@ -1350,6 +1351,22 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
             );
           });
         });
+  }
+
+  subTotalCalculate() {
+    double subTotalPrice = 0.0;
+    for (int i = 0; i < model!.products!.length; i++) {
+      if (i == 0) {
+        subTotalPrice = (model!.products![i].amount! + 0.0) *
+            (double.parse(model!.products![i].quantity.toString()));
+      } else {
+        subTotalPrice = subTotalPrice +
+            (model!.products![i].amount! + 0.0) *
+                (double.parse(model!.products![i].quantity.toString()));
+      }
+    }
+    print(subTotalPrice);
+    return subTotalPrice;
   }
 
   changeState(String name) {

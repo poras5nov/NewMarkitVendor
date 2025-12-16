@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:market_vendor_app/activities/create_business/set_up_business_profile.dart';
 import 'package:market_vendor_app/activities/login/login_view.dart';
 import 'package:market_vendor_app/apiservice/key_string.dart';
@@ -30,7 +29,7 @@ class SplashView extends StatefulWidget {
 class _SplashScreen extends State<SplashView> {
   var timer;
   bool isLogin = false;
-  LatLng? currentPostion;
+  // LatLng? currentPostion;
   var profileData;
 
   @override
@@ -46,21 +45,14 @@ class _SplashScreen extends State<SplashView> {
     });
 
     SharedPref.getProfileData().then((value) {
+      if(value.isNotEmpty){
       profileData = json.decode(value);
 
       setState(() {});
+      }
     });
 
     timer = Timer(const Duration(milliseconds: 2000), _navigateToLogin);
-  }
-
-  void _getUserLocation() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-
-    setState(() {
-      currentPostion = LatLng(position.latitude, position.longitude);
-    });
   }
 
   _navigateToLogin() {
@@ -87,8 +79,8 @@ class _SplashScreen extends State<SplashView> {
       body: Stack(
         children: [
           SizedBox(
-            width: Get.width,
-            height: Get.height,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: SvgPicture.asset(
               AssetConstants.splashBg,
               alignment: Alignment.center,

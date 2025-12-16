@@ -1,7 +1,7 @@
 class Brand {
   int? status;
   String? message;
-  List<Data>? data;
+  List<BData>? data;
 
   Brand({this.status, this.message, this.data});
 
@@ -9,9 +9,9 @@ class Brand {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <BData>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(new BData.fromJson(v));
       });
     }
   }
@@ -27,15 +27,15 @@ class Brand {
   }
 }
 
-class Data {
+class BData {
   int? id;
   String? name;
   String? createdAt;
   String? updatedAt;
 
-  Data({this.id, this.name, this.createdAt, this.updatedAt});
+  BData({this.id, this.name, this.createdAt, this.updatedAt});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  BData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     createdAt = json['created_at'];

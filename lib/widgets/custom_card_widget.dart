@@ -45,7 +45,7 @@ class CustomCardWidget extends StatelessWidget {
             ),
           ],
         ),
-        width: cardWidth ?? Get.width,
+        width: cardWidth ?? MediaQuery.of(context).size.width,
         padding: padding ?? Dimens.edgeInsets0,
         margin: margin ?? Dimens.edgeInsets0,
         child: child ?? Container(),

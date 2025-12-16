@@ -257,7 +257,7 @@ class _RegisterWithOTPView extends State<RegisterWithOTPView>
   phoneTextFormFiled() {
     return SizedBox(
       height: Dimens.sixty,
-      width: Get.width,
+      width: MediaQuery.of(context).size.width,
       child: TextFormField(
         controller: phoneController,
         autovalidateMode: AutovalidateMode.onUserInteraction,

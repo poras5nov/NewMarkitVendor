@@ -51,6 +51,10 @@ class Data {
   String? oneSignalId;
   String? createdAt;
   String? updatedAt;
+  String? facebook_id;
+  String? apple_id;
+  String? google_id;
+
   int? businessesCount;
   Businesses? businesses;
   List<Documents>? documents;
@@ -83,7 +87,10 @@ class Data {
       this.updatedAt,
       this.businessesCount,
       this.businesses,
-      this.documents});
+      this.documents,
+      this.facebook_id,
+      this.google_id,
+      this.apple_id});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -121,6 +128,10 @@ class Data {
         documents!.add(new Documents.fromJson(v));
       });
     }
+    apple_id = json['apple_id'];
+    google_id = json['google_id'];
+
+    facebook_id = json['facebook_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -150,6 +161,11 @@ class Data {
     data['one_signal_id'] = this.oneSignalId;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
+    data['apple_id'] = this.apple_id;
+
+    data['google_id'] = this.google_id;
+    data['facebook_id'] = this.facebook_id;
+
     data['businesses_count'] = this.businessesCount;
     if (this.businesses != null) {
       data['businesses'] = this.businesses!.toJson();

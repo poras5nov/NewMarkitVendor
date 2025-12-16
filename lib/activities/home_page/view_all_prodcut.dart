@@ -18,6 +18,7 @@ import '../../utils/strings/app_constants.dart';
 import '../product_details/product_info.dart';
 
 class ViewAllProductScreen extends StatefulWidget {
+  
   @override
   _ViewAllProductScreenState createState() => _ViewAllProductScreenState();
 }
@@ -167,7 +168,7 @@ class _ViewAllProductScreenState extends State<ViewAllProductScreen>
                                         controller: scrollcontroller,
 
                                         crossAxisCount: 2,
-                                        crossAxisSpacing: 20,
+                                        crossAxisSpacing: 18,
                                         mainAxisSpacing: 10,
                                         // Generate 100 widgets that display their index in the List.
                                         children: List.generate(
@@ -336,7 +337,7 @@ class _ViewAllProductScreenState extends State<ViewAllProductScreen>
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
-                    width: Get.width,
+                    width: MediaQuery.of(context).size.width,
                     height: 50,
                     alignment: Alignment.centerLeft,
                     child: Row(

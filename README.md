@@ -1,6 +1,7 @@
 # market_vendor_app
 
 A new Flutter project.
+flutter version 3.22.3
 
 ## Getting Started
 

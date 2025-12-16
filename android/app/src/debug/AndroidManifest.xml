@@ -3,5 +3,13 @@
     <!-- Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->
+    <queries>
+                <package android:name="com.facebook.katana" />
+
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="image/jpeg" />
+        </intent>
+    </queries>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

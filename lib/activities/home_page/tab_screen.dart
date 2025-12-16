@@ -10,6 +10,7 @@ import '../../theme/styles.dart';
 import '../../utils/globals.dart' as globals;
 import '../../utils/notification_show.dart';
 import '../../utils/shared_preferences.dart';
+import '../../utils/utility.dart';
 import '../add_services/add_product_and_service_view.dart';
 
 import 'drawer_screen/rating_screen.dart';
@@ -36,15 +37,6 @@ class _TabScreenState extends State<TabScreen>
   ];
   var profileData;
   ProfileModel model = ProfileModel();
-  bool isReject = false;
-
-  @override
-  void initState() {
-    super.initState();
-    NotificationShow.initPlatformState(this);
-    getData();
-  }
-
   getData() {
     SharedPref.getProfileData().then((value) {
       profileData = json.decode(value);
@@ -53,6 +45,24 @@ class _TabScreenState extends State<TabScreen>
       print(model.data!.documents!.length);
 
       setState(() {});
+    });
+  }
+
+  bool isReject = false;
+  var token;
+  @override
+  void initState() {
+    super.initState();
+    Utility.facebookEvent("home_screen");
+
+    NotificationShow.initPlatformState(this);
+    getToken();
+    getData();
+  }
+
+  getToken() {
+    SharedPref.getLoginToken().then((value) {
+      token = value;
     });
   }
 
@@ -66,6 +76,7 @@ class _TabScreenState extends State<TabScreen>
     return Scaffold(
       drawer: DrawerViewScreen(
         model: model,
+        token: token,
         totalOrder: totalorder,
         totalRevenue: totalRevenue,
         callBack: (v) {

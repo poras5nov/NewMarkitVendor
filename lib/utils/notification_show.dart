@@ -52,9 +52,9 @@ class NotificationShow {
     final status = await OneSignal.shared.getDeviceState();
     String? osUserID = status?.userId;
     print("One Signal Player ID == > $osUserID ");
-    SharedPref.savePlayerId(osUserID!);
+    SharedPref.savePlayerId(osUserID??'');
     await OneSignal.shared.promptUserForPushNotificationPermission(
-      fallbackToSettings: true,
+      fallbackToSettings: false,
     );
 
     OneSignal.shared

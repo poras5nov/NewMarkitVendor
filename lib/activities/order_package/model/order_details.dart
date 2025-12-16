@@ -131,7 +131,11 @@ class OrdersData {
         ? new AddressJson.fromJson(json['address_json'])
         : null;
     status = json['status'];
-    declinedReason = json['declined_reason'].toString();
+    if (json['declined_reason'] == null) {
+      declinedReason = "";
+    } else {
+      declinedReason = json['declined_reason'].toString();
+    }
     reasonId = json['reason_id'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];

@@ -4,6 +4,8 @@ import 'dart:async';
 
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:facebook_app_events/facebook_app_events.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -404,23 +406,25 @@ abstract class Utility {
   }
 
   static successMessage(String message, BuildContext context) {
-    AnimatedSnackBar.material(message,
-            type: AnimatedSnackBarType.success,
-            mobileSnackBarPosition: MobileSnackBarPosition.bottom,
-            duration: Duration(milliseconds: 200))
-        .show(
-      context,
-    );
+   ScaffoldMessenger.of(context).showSnackBar(
+  SnackBar(
+    content: Text(message),
+    backgroundColor: Colors.green,   // optional
+    duration: Duration(seconds: 2),  // how long it stays visible
+    behavior: SnackBarBehavior.floating, // makes it float above bottom nav
+  ),
+);
   }
 
   static errorMessage(String message, BuildContext context) {
-    AnimatedSnackBar.material(message,
-            type: AnimatedSnackBarType.error,
-            mobileSnackBarPosition: MobileSnackBarPosition.bottom,
-            duration: Duration(milliseconds: 200))
-        .show(
-      context,
-    );
+   ScaffoldMessenger.of(context).showSnackBar(
+  SnackBar(
+    content: Text(message),
+    backgroundColor: Colors.red,   // red for error
+    duration: Duration(seconds: 2),
+    behavior: SnackBarBehavior.floating,
+  ),
+);
   }
 
   // static String? userName() {
@@ -459,5 +463,30 @@ abstract class Utility {
   static String getPrettyJSONString(jsonObject) {
     var encoder = const JsonEncoder.withIndent("     ");
     return encoder.convert(jsonObject);
+  }
+
+  static facebookEvent(var eventName) {
+    final facebookAppEvents = FacebookAppEvents();
+    facebookAppEvents.logEvent(
+      name: eventName,
+    );
+    FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+    analytics.logEvent(
+      name: eventName,
+    );
+  }
+
+  static facebookEventWithParametter(
+      var eventName, Map<String, dynamic> param) {
+    final facebookAppEvents = FacebookAppEvents();
+    facebookAppEvents.logEvent(
+      name: eventName,
+      parameters: param,
+    );
+    FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+    analytics.logEvent(
+      name: eventName,
+      parameters: param,
+    );
   }
 }

@@ -11,6 +11,7 @@ import '../../theme/styles.dart';
 import 'package:market_vendor_app/utils/new_market_vendor_localizations.dart';
 
 import '../../utils/asset_constants.dart';
+import '../../utils/utility.dart';
 
 class AddProductAndServiceScreen extends StatefulWidget {
   bool isProductScreen = false;
@@ -26,6 +27,8 @@ class _AddProductAndServiceScreenState
     extends State<AddProductAndServiceScreen> {
   @override
   void initState() {
+    Utility.facebookEvent("add_product_screen");
+
     super.initState();
   }
 

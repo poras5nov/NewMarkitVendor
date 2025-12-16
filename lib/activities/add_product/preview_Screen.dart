@@ -568,6 +568,135 @@ class _PreviewScreenState extends State<PreviewScreen> {
                       ),
                     ),
                     Dimens.boxHeight20,
+                    Container(
+                      height: 5,
+                      color: AppColors.greyColor.withOpacity(0.1),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Text(
+                        NewMarkitVendorLocalizations.of(context)!
+                            .find('pinCodeAvailbility'),
+                        style: Styles.boldBlack16,
+                      ),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Wrap(
+                        children: [
+                          for (int i = 0;
+                              i <
+                                  widget.model!.available_pin_code!
+                                      .split(",")
+                                      .length;
+                              i++)
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: AppColors.primaryColor,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  padding: const EdgeInsets.only(
+                                      left: 8, right: 8, top: 4, bottom: 4),
+                                  child: Text(
+                                    widget.model!.available_pin_code!
+                                        .split(",")[i],
+                                    style: Styles.whiteLight14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Dimens.boxHeight20,
+                    Container(
+                      height: 5,
+                      color: AppColors.greyColor.withOpacity(0.1),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        children: [
+                          Text(
+                            NewMarkitVendorLocalizations.of(context)!
+                                .find('videoUrl'),
+                            style: Styles.boldBlack16,
+                          ),
+                          Text(
+                            ":- ${widget.model!.video_url}",
+                            style: Styles.lightBlue14,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Dimens.boxHeight20,
+                    Container(
+                      height: 5,
+                      color: AppColors.greyColor.withOpacity(0.1),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        children: [
+                          Text(
+                            NewMarkitVendorLocalizations.of(context)!
+                                .find('seoProductTitle'),
+                            style: Styles.boldBlack16,
+                          ),
+                          Text(
+                            ":- ${widget.model!.seo_product_title}",
+                            style: Styles.mediumBlack16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        children: [
+                          Text(
+                            NewMarkitVendorLocalizations.of(context)!
+                                .find('seoMeta'),
+                            style: Styles.boldBlack16,
+                          ),
+                          Text(
+                            ":- ${widget.model!.seo_product_meta}",
+                            style: Styles.mediumBlack16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        children: [
+                          Text(
+                            NewMarkitVendorLocalizations.of(context)!
+                                .find('targettedKeyword'),
+                            style: Styles.boldBlack16,
+                          ),
+                          Text(
+                            ":- ${widget.model!.targetted_keywords}",
+                            style: Styles.mediumBlack16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Dimens.boxHeight20,
                   ],
                 ),
               ),

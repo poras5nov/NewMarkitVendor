@@ -635,7 +635,7 @@ class _NewAttributeScreenState extends State<NewAttributeScreen>
       readOnly: true,
       cursorColor: AppColors.primaryColor,
       style: Styles.formFieldTextStyle,
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.text,
       onTap: () {
         isUnitBottomSheet(context, attributePos);
       },

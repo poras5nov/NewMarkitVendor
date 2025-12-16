@@ -39,7 +39,7 @@ class EditProfileView extends StatefulWidget {
 
 class _EditProfileView extends State<EditProfileView> implements ApiInterface {
   bool _value = false;
-  int val = -1;
+  int val = 1;
   bool isLoader = false;
   bool isPasswordVisible = true;
   bool isConfirmPasswordVisible = true;
@@ -111,7 +111,7 @@ class _EditProfileView extends State<EditProfileView> implements ApiInterface {
                     child: ListView(
                       children: [
                         Container(
-                          width: Get.width,
+                          width: MediaQuery.of(context).size.width,
                           height: 50,
                           alignment: Alignment.centerLeft,
                           child: Row(
@@ -294,78 +294,78 @@ class _EditProfileView extends State<EditProfileView> implements ApiInterface {
                         nameTextFormFiled(),
                         Dimens.boxHeight20,
                         emailTextFormFiled(),
-                        Dimens.boxHeight20,
-                        Text(
-                          NewMarkitVendorLocalizations.of(context)!
-                              .find('gender'),
-                          style: Styles.lightGreyHint,
-                        ),
-                        Dimens.boxHeight5,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Radio(
-                                  value: 1,
-                                  groupValue: val,
-                                  activeColor: AppColors.primaryColor,
-                                  onChanged: (v) {
-                                    setState(() {
-                                      val = int.parse(v.toString());
-                                    });
-                                  },
-                                ),
-                                Text(
-                                  NewMarkitVendorLocalizations.of(context)!
-                                      .find('male'),
-                                  style: Styles.boldBlack14,
-                                )
-                              ],
-                            ),
-                            Dimens.boxWidth10,
-                            Row(
-                              children: [
-                                Radio(
-                                  value: 2,
-                                  activeColor: AppColors.primaryColor,
-                                  groupValue: val,
-                                  onChanged: (v) {
-                                    setState(() {
-                                      val = int.parse(v.toString());
-                                    });
-                                  },
-                                ),
-                                Text(
-                                  NewMarkitVendorLocalizations.of(context)!
-                                      .find('female'),
-                                  style: Styles.boldBlack14,
-                                )
-                              ],
-                            ),
-                            Dimens.boxWidth10,
-                            Row(
-                              children: [
-                                Radio(
-                                  value: 3,
-                                  activeColor: AppColors.primaryColor,
-                                  groupValue: val,
-                                  onChanged: (v) {
-                                    setState(() {
-                                      val = int.parse(v.toString());
-                                    });
-                                  },
-                                ),
-                                Text(
-                                  NewMarkitVendorLocalizations.of(context)!
-                                      .find('others'),
-                                  style: Styles.boldBlack14,
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
+                        // Dimens.boxHeight20,
+                        // Text(
+                        //   NewMarkitVendorLocalizations.of(context)!
+                        //       .find('gender'),
+                        //   style: Styles.lightGreyHint,
+                        // ),
+                        // Dimens.boxHeight5,
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.start,
+                        //   crossAxisAlignment: CrossAxisAlignment.start,
+                        //   children: [
+                        //     Row(
+                        //       children: [
+                        //         Radio(
+                        //           value: 1,
+                        //           groupValue: val,
+                        //           activeColor: AppColors.primaryColor,
+                        //           onChanged: (v) {
+                        //             setState(() {
+                        //               val = int.parse(v.toString());
+                        //             });
+                        //           },
+                        //         ),
+                        //         Text(
+                        //           NewMarkitVendorLocalizations.of(context)!
+                        //               .find('male'),
+                        //           style: Styles.boldBlack14,
+                        //         )
+                        //       ],
+                        //     ),
+                        //     Dimens.boxWidth10,
+                        //     Row(
+                        //       children: [
+                        //         Radio(
+                        //           value: 2,
+                        //           activeColor: AppColors.primaryColor,
+                        //           groupValue: val,
+                        //           onChanged: (v) {
+                        //             setState(() {
+                        //               val = int.parse(v.toString());
+                        //             });
+                        //           },
+                        //         ),
+                        //         Text(
+                        //           NewMarkitVendorLocalizations.of(context)!
+                        //               .find('female'),
+                        //           style: Styles.boldBlack14,
+                        //         )
+                        //       ],
+                        //     ),
+                        //     Dimens.boxWidth10,
+                        //     Row(
+                        //       children: [
+                        //         Radio(
+                        //           value: 3,
+                        //           activeColor: AppColors.primaryColor,
+                        //           groupValue: val,
+                        //           onChanged: (v) {
+                        //             setState(() {
+                        //               val = int.parse(v.toString());
+                        //             });
+                        //           },
+                        //         ),
+                        //         Text(
+                        //           NewMarkitVendorLocalizations.of(context)!
+                        //               .find('others'),
+                        //           style: Styles.boldBlack14,
+                        //         )
+                        //       ],
+                        //     ),
+                        //   ],
+                        // ),
                         Dimens.boxHeight40,
                         isLoader
                             ? Container(
@@ -402,7 +402,7 @@ class _EditProfileView extends State<EditProfileView> implements ApiInterface {
   phoneTextFormFiled() {
     return SizedBox(
       height: Dimens.sixty,
-      width: Get.width,
+      width: MediaQuery.of(context).size.width,
       child: TextFormField(
         controller: phoneController,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -498,6 +498,7 @@ class _EditProfileView extends State<EditProfileView> implements ApiInterface {
 
   @override
   void onSuccess(data) {
+    print(data);
     Utility.successMessage(data['message'], context);
     var d = jsonEncode(data);
     SharedPref.saveProfileData(d);

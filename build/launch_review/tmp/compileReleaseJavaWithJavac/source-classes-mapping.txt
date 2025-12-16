@@ -1,4 +1,0 @@
-com/iyaffle/launchreview/BuildConfig.java
- com.iyaffle.launchreview.BuildConfig
-com/iyaffle/launchreview/LaunchReviewPlugin.java
- com.iyaffle.launchreview.LaunchReviewPlugin

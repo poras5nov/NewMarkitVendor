@@ -1,5 +1,11 @@
-import 'dart:io';
+// File: modal_scroll_controller.dart
 
+// Adjusting the language version to Dart 2.19
+// This specifies that the code is compatible with Dart 2.19 or earlier.
+// If you've used features only available in later versions, you may need to refactor your code.
+// See the Dart documentation for more details on language versions.
+import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -27,9 +33,11 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   HttpOverrides.global = MyHttpOverrides();
+  await Firebase.initializeApp();
 
   runApp(MyApp());
 }
@@ -54,9 +62,10 @@ class _MyAppState extends State<MyApp> implements NotificationInterface {
     ]);
     return ScreenUtilInit(
         designSize: const Size(375, 812),
-        builder: (_) {
+        builder: (conext, child) {
           // ignore: prefer_const_constructors
-          return MaterialApp(
+          return 
+           MaterialApp(
             title: "New Market",
             debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.system,

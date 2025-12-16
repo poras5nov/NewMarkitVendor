@@ -140,7 +140,7 @@ class _EditBankDetailsState extends State<EditBankDetails>
                         padding: EdgeInsets.zero,
                         children: <Widget>[
                           Container(
-                            width: Get.width,
+                            width: MediaQuery.of(context).size.width,
                             height: 50,
                             alignment: Alignment.centerLeft,
                             child: Row(
@@ -362,6 +362,7 @@ class _EditBankDetailsState extends State<EditBankDetails>
   accountTextFormFiled() {
     return TextFormField(
       controller: accountController,
+      obscureText: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,

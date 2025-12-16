@@ -73,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen>
   getToken() {
     SharedPref.getLoginToken().then((value) {
       token = value;
+      print(token);
       ApiCall.getVendorDetails(token, this, context);
     });
   }
@@ -1243,7 +1244,7 @@ class _HomeScreenState extends State<HomeScreen>
                                                 // Create a grid with 2 columns. If you change the scrollDirection to
                                                 // horizontal, this produces 2 rows.
                                                 crossAxisCount: 2,
-                                                crossAxisSpacing: 20,
+                                                crossAxisSpacing: 18,
                                                 mainAxisSpacing: 4,
                                                 // Generate 100 widgets that display their index in the List.
                                                 children: List.generate(
@@ -1352,45 +1353,37 @@ class _HomeScreenState extends State<HomeScreen>
                                                               style: Styles
                                                                   .boldBlack14,
                                                               maxLines: 2,
-                                                              textScaleFactor:
-                                                                  1.0,
                                                             ),
                                                           ),
                                                           Row(
                                                             children: [
                                                               Text(
-                                                                AppConstants
-                                                                        .priceSign +
-                                                                    model
-                                                                        .data![
-                                                                            index]
-                                                                        .variations![
-                                                                            0]
-                                                                        .offerPrice!
-                                                                        .toString(),
-                                                                style: Styles
-                                                                    .boldBlack14,
-                                                                textScaleFactor:
-                                                                    1.0,
-                                                              ),
+                                                                  AppConstants
+                                                                          .priceSign +
+                                                                      model
+                                                                          .data![
+                                                                              index]
+                                                                          .variations![
+                                                                              0]
+                                                                          .offerPrice!
+                                                                          .toString(),
+                                                                  style: Styles
+                                                                      .boldBlack14),
                                                               const SizedBox(
                                                                 width: 5,
                                                               ),
                                                               Text(
-                                                                AppConstants
-                                                                        .priceSign +
-                                                                    model
-                                                                        .data![
-                                                                            index]
-                                                                        .variations![
-                                                                            0]
-                                                                        .basicPrice!
-                                                                        .toString(),
-                                                                style: Styles
-                                                                    .pricestrickTitle12Grey,
-                                                                textScaleFactor:
-                                                                    1.0,
-                                                              ),
+                                                                  AppConstants
+                                                                          .priceSign +
+                                                                      model
+                                                                          .data![
+                                                                              index]
+                                                                          .variations![
+                                                                              0]
+                                                                          .basicPrice!
+                                                                          .toString(),
+                                                                  style: Styles
+                                                                      .pricestrickTitle12Grey),
                                                             ],
                                                           ),
                                                           Row(
@@ -1402,12 +1395,9 @@ class _HomeScreenState extends State<HomeScreen>
                                                                 size: 20,
                                                               ),
                                                               Text(
-                                                                "${model.data![index].product_rating}",
-                                                                style: Styles
-                                                                    .yellowMedium12,
-                                                                textScaleFactor:
-                                                                    1.0,
-                                                              ),
+                                                                  "${model.data![index].product_rating}",
+                                                                  style: Styles
+                                                                      .yellowMedium12),
                                                             ],
                                                           )
                                                         ],
@@ -1508,7 +1498,7 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 16, right: 16, top: 20),
-                    width: Get.width,
+                    width: MediaQuery.of(context).size.width,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

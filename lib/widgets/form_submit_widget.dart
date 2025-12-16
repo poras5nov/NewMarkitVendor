@@ -54,7 +54,7 @@ class FormSubmitWidget extends StatelessWidget {
       opacity: opacity,
       child: Container(
         height: buttonHeight ?? Dimens.fourtyEight,
-        // width: buttonWidth ?? Get.width,
+        // width: buttonWidth ?? MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
            boxShadow: [
               const BoxShadow(

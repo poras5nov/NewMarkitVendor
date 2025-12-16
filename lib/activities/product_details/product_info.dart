@@ -5,6 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:market_vendor_app/activities/login/login_view.dart';
+import 'package:market_vendor_app/activities/product_details/product_rating_screen.dart';
 import 'package:market_vendor_app/apiservice/api_interface.dart';
 import 'package:market_vendor_app/utils/image_zoom.dart';
 import 'package:market_vendor_app/utils/shared_preferences.dart';
@@ -119,13 +120,13 @@ class _ProductInfoScreenState extends State<ProductInfoScreen>
                             PopupMenuButton(
                               icon: const Icon(Icons
                                   .more_vert), //don't specify icon if you want 3 dot menu
-                              color: Colors.white,
+                              color: Colors.black,
                               itemBuilder: (context) => [
                                 const PopupMenuItem<int>(
                                   value: 0,
                                   child: Text(
                                     "Edit",
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                 ),
                                 const PopupMenuItem<int>(
@@ -178,8 +179,7 @@ class _ProductInfoScreenState extends State<ProductInfoScreen>
                                             PageTransition(
                                                 type: PageTransitionType.fade,
                                                 child: ImageZoomView(
-                                                  url: item,
-                                                )));
+                                                    url: item, type: 'image')));
                                       },
                                       child: CachedNetworkImage(
                                         imageUrl: item,
@@ -240,8 +240,9 @@ class _ProductInfoScreenState extends State<ProductInfoScreen>
                                     PageTransition(
                                         type: PageTransitionType.fade,
                                         child: ImageZoomView(
-                                          url: model.variations![vPos].images!,
-                                        )));
+                                            url:
+                                                model.variations![vPos].images!,
+                                            type: 'image')));
                               },
                               child: CachedNetworkImage(
                                 imageUrl: model.variations![vPos].images!,
@@ -334,11 +335,26 @@ class _ProductInfoScreenState extends State<ProductInfoScreen>
                           ),
                           Text("${model.product_rating}",
                               style: Styles.yellowMedium14),
-                          Text(
-                              " " +
-                                  NewMarkitVendorLocalizations.of(context)!
-                                      .find('review'),
-                              style: Styles.yellowMedium14),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: ProductRatingScreen(
+                                          productId: model.id.toString(),
+                                        )));
+                              },
+                              child: Text("Review",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline,
+                                    decorationColor: Colors.blue,
+                                  ))),
                         ],
                       ),
                     ),
@@ -664,6 +680,167 @@ class _ProductInfoScreenState extends State<ProductInfoScreen>
                                 ),
                               ],
                             )
+                        ],
+                      ),
+                    ),
+                    Dimens.boxHeight20,
+                    (model.available_pin_code == 'null' ||
+                            model.available_pin_code == '')
+                        ? Container()
+                        : Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                height: 5,
+                                color: AppColors.greyColor.withOpacity(0.1),
+                              ),
+                              Dimens.boxHeight20,
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 20, right: 20),
+                                child: Text(
+                                  NewMarkitVendorLocalizations.of(context)!
+                                      .find('pinCodeAvailbility'),
+                                  style: Styles.boldBlack16,
+                                ),
+                              ),
+                              Dimens.boxHeight20,
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 20, right: 20),
+                                child: Wrap(
+                                  children: [
+                                    for (int i = 0;
+                                        i <
+                                            model.available_pin_code!
+                                                .split(",")
+                                                .length;
+                                        i++)
+                                      Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                color: AppColors.primaryColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            padding: const EdgeInsets.only(
+                                                left: 8,
+                                                right: 8,
+                                                top: 4,
+                                                bottom: 4),
+                                            child: Text(
+                                              model.available_pin_code!
+                                                  .split(",")[i],
+                                              style: Styles.whiteLight14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                    Dimens.boxHeight20,
+                    Container(
+                      height: 5,
+                      color: AppColors.greyColor.withOpacity(0.1),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        children: [
+                          Text(
+                            NewMarkitVendorLocalizations.of(context)!
+                                .find('videoUrl'),
+                            style: Styles.boldBlack16,
+                          ),
+                          Text(
+                            ":- ${model.video_url}",
+                            style: Styles.lightBlue14,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Dimens.boxHeight20,
+                    Container(
+                      height: 5,
+                      color: AppColors.greyColor.withOpacity(0.1),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 100,
+                            child: Text(
+                              '${NewMarkitVendorLocalizations.of(context)!.find('seoProductTitle')}:-',
+                              style: Styles.boldBlack16,
+                            ),
+                          ),
+                          Flexible(
+                            child: Text(
+                              "${model.seo_product_title}",
+                              style: Styles.blackMedium14,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 100,
+                            child: Text(
+                              '${NewMarkitVendorLocalizations.of(context)!.find('seoMeta')}:-',
+                              style: Styles.boldBlack16,
+                            ),
+                          ),
+                          Flexible(
+                            child: Text(
+                              "${model.seo_product_meta}",
+                              style: Styles.blackMedium14,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Dimens.boxHeight20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 100,
+                            child: Text(
+                              '${NewMarkitVendorLocalizations.of(context)!.find('targettedKeyword')}:-',
+                              style: Styles.boldBlack16,
+                            ),
+                          ),
+                          Flexible(
+                            child: Text(
+                              "${model.targetted_keywords}",
+                              style: Styles.blackMedium14,
+                            ),
+                          ),
                         ],
                       ),
                     ),

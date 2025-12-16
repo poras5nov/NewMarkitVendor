@@ -224,6 +224,7 @@ class _SetUpdeliveryAddressState extends State<SetUpdeliveryAddress>
       isLoader = false;
     });
     Utility.successMessage(data['message'], context);
+    Utility.facebookEvent("vendor_business");
 
     Navigator.push(context,
         PageTransition(type: PageTransitionType.fade, child: SuccessScreen()));

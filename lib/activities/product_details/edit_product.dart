@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:convert' show jsonDecode, json;
 
+import 'package:flutter_tags_x/flutter_tags_x.dart';
 import 'package:http/http.dart' as http;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -93,6 +94,34 @@ class _EditProductScreenState extends State<EditProductScreen>
   Hsnata data = Hsnata();
 
   TextEditingController isWarrentyController = TextEditingController(text: "");
+  List<BData>? acData;
+  List<BData>? sData;
+  List<BData> allBData = [];
+
+  TextEditingController billingController = TextEditingController(text: "");
+  TextEditingController heightController = TextEditingController(text: "");
+  TextEditingController lenghtController = TextEditingController(text: "");
+  TextEditingController breadthController = TextEditingController(text: "");
+  TextEditingController weightController = TextEditingController(text: "");
+  TextEditingController deliveryHeavyController =
+      TextEditingController(text: "");
+  TextEditingController statusOfShipmentController =
+      TextEditingController(text: "");
+  TextEditingController maximumShipingCostController =
+      TextEditingController(text: "");
+  TextEditingController videoUrlController = TextEditingController(text: "");
+  TextEditingController seoProductTitle = TextEditingController(text: "");
+  TextEditingController seoMetaDescription = TextEditingController(text: "");
+  TextEditingController targettedkeywords = TextEditingController(text: "");
+
+  List<String> _items = [];
+  String selectedValue = "Surface";
+  List<String> ibillingModeList = ["Surface", "Express"];
+  String selectedShipmentValue = "DTO";
+
+  List<String> statusOfShipmentModeList = ["DTO", "RTO", 'Delivered'];
+  final GlobalKey<TagsState> _tagStateKey = GlobalKey<TagsState>();
+// Allows you to get a list of all the ItemTags
 
   @override
   void initState() {
@@ -117,11 +146,12 @@ class _EditProductScreenState extends State<EditProductScreen>
     addProductModel.isTaxable = productModel.isTaxable!;
     if (addProductModel.isTaxable == "Yes") {
       hsnvalue = 1;
+      addProductModel.taxValue = productModel.taxValue;
     } else {
       hsnvalue = 0;
+      addProductModel.taxValue = "0";
     }
 
-    addProductModel.taxValue = productModel.taxValue;
     howMuchController.text = addProductModel.taxValue!;
     addProductModel.sameSayDelivery = productModel.sameSayDelivery;
     print(productModel.sameSayDelivery);
@@ -165,7 +195,7 @@ class _EditProductScreenState extends State<EditProductScreen>
         ? ""
         : productModel.warranty_month;
     howMuchDaysWarrentyController.text = addProductModel.warranty_month!;
-    addProductModel.warranty_type = productModel.warranty_type!;
+    addProductModel.warranty_type = productModel.warranty_type ?? '';
     isWarrentyController.text = addProductModel.warranty_type!;
     addProductModel.refundable = productModel.refundable;
     if (addProductModel.refundable == "yes") {
@@ -232,6 +262,38 @@ class _EditProductScreenState extends State<EditProductScreen>
       spec.add(s);
     }
     addProductModel.specifactions = spec;
+
+    addProductModel.length_in_cm = productModel.length_in_cm;
+    addProductModel.breadth_in_cm = productModel.breadth_in_cm;
+    addProductModel.height_in_cm = productModel.height_in_cm;
+    addProductModel.weight_in_grams = productModel.weight_in_grams;
+    addProductModel.billing_mode_of_shipment =
+        productModel.billing_mode_of_shipment;
+    addProductModel.status_of_shipment = productModel.status_of_shipment;
+    addProductModel.delivery_charges_for_above_30kg_items =
+        productModel.delivery_charges_for_above_30kg_items;
+    addProductModel.available_pin_code = productModel.available_pin_code;
+    addProductModel.seo_product_title = productModel.seo_product_title;
+    addProductModel.seo_product_meta = productModel.seo_product_meta;
+    addProductModel.targetted_keywords = productModel.targetted_keywords;
+    addProductModel.video_url = productModel.video_url;
+
+    addProductModel.maximum_shipping_cost = productModel.maximum_shipping_cost;
+    lenghtController.text = addProductModel.length_in_cm!;
+    breadthController.text = addProductModel.breadth_in_cm!;
+    heightController.text = addProductModel.height_in_cm!;
+    weightController.text = addProductModel.weight_in_grams!;
+    billingController.text = addProductModel.billing_mode_of_shipment!;
+    statusOfShipmentController.text = addProductModel.status_of_shipment!;
+    _items = addProductModel.available_pin_code!.split(',');
+    seoProductTitle.text = addProductModel.seo_product_title!;
+    seoMetaDescription.text = addProductModel.seo_product_meta!;
+    targettedkeywords.text = addProductModel.targetted_keywords!;
+    deliveryHeavyController.text =
+        addProductModel.delivery_charges_for_above_30kg_items!;
+    videoUrlController.text = addProductModel.video_url!;
+    maximumShipingCostController.text = addProductModel.maximum_shipping_cost!;
+
     setState(() {});
   }
 
@@ -805,7 +867,33 @@ class _EditProductScreenState extends State<EditProductScreen>
                           ],
                         ),
                         Dimens.boxHeight20,
+                        billingTypeTypeTextFormFiled(),
+                        Dimens.boxHeight20,
+                        heightTextFormFiled(),
+                        Dimens.boxHeight20,
+                        lenghtTextFormFiled(),
+                        Dimens.boxHeight20,
+                        breadthTextFormFiled(),
+                        Dimens.boxHeight20,
+                        weightTextFormFiled(),
+                        Dimens.boxHeight20,
+                        deliveryHeavyTextFormFiled(),
+                        Dimens.boxHeight20,
+                        statusShipmentTextFormFiled(),
+                        Dimens.boxHeight20,
+                        maximumShipingTextFormFiled(),
+                        Dimens.boxHeight20,
+                        videoUrlTextFormFiled(),
+                        Dimens.boxHeight20,
                         descirptionTextFormFiled(),
+                        Dimens.boxHeight20,
+                        seoProductTextFormFiled(),
+                        Dimens.boxHeight20,
+                        seoMetaTextFormFiled(),
+                        Dimens.boxHeight20,
+                        targettedTextFormFiled(),
+                        Dimens.boxHeight20,
+                        pinCodeTextFormFiled(),
                         Dimens.boxHeight20,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1321,6 +1409,21 @@ class _EditProductScreenState extends State<EditProductScreen>
         }
       }
       addProductModel.images = image;
+      addProductModel.length_in_cm = lenghtController.text;
+      addProductModel.breadth_in_cm = breadthController.text;
+      addProductModel.height_in_cm = heightController.text;
+      addProductModel.weight_in_grams = weightController.text;
+      addProductModel.status_of_shipment = statusOfShipmentController.text;
+      addProductModel.delivery_charges_for_above_30kg_items =
+          deliveryHeavyController.text;
+      addProductModel.video_url = videoUrlController.text;
+      String commaSeparatedString = _items.join(',');
+      addProductModel.available_pin_code = commaSeparatedString;
+      addProductModel.seo_product_title = seoProductTitle.text;
+
+      addProductModel.seo_product_meta = seoMetaDescription.text;
+      addProductModel.targetted_keywords = targettedkeywords.text;
+
       Navigator.push(
           context,
           PageTransition(
@@ -1356,7 +1459,7 @@ class _EditProductScreenState extends State<EditProductScreen>
         addProductModel.hsnNo = hsnController.text;
         // addProductModel.isPopular = isPopularController.text;
         addProductModel.isTaxable = hsnvalue == 1 ? "Yes" : "No";
-        addProductModel.taxValue = hsnvalue == 1 ? howMuchController.text : "";
+        addProductModel.taxValue = hsnvalue == 1 ? howMuchController.text : "0";
 
         addProductModel.sameSayDelivery = value == 1 ? "yes" : "no";
         addProductModel.deliveryDay =
@@ -1393,6 +1496,23 @@ class _EditProductScreenState extends State<EditProductScreen>
             break;
           }
         }
+        addProductModel.length_in_cm = lenghtController.text;
+        addProductModel.breadth_in_cm = breadthController.text;
+        addProductModel.height_in_cm = heightController.text;
+        addProductModel.weight_in_grams = weightController.text;
+        addProductModel.status_of_shipment = statusOfShipmentController.text;
+        addProductModel.delivery_charges_for_above_30kg_items =
+            deliveryHeavyController.text;
+        addProductModel.video_url = videoUrlController.text;
+        String commaSeparatedString = _items.join(',');
+        addProductModel.available_pin_code = commaSeparatedString;
+        addProductModel.seo_product_title = seoProductTitle.text;
+
+        addProductModel.seo_product_meta = seoMetaDescription.text;
+        addProductModel.targetted_keywords = targettedkeywords.text;
+        addProductModel.maximum_shipping_cost =
+            maximumShipingCostController.text;
+
         isLoader = true;
         setState(() {});
         whichApiCall = "edit_product";
@@ -1587,7 +1707,7 @@ class _EditProductScreenState extends State<EditProductScreen>
       keyboardType: TextInputType.emailAddress,
       validator: (v) => Utility.brandCategoryFiledValid(v!, context),
       onTap: () {
-        brandBottomSheet(context);
+        brandBottomSheet(context, brandController);
       },
       decoration: InputDecoration(
           labelText: NewMarkitVendorLocalizations.of(context)!.find('brand'),
@@ -1603,91 +1723,214 @@ class _EditProductScreenState extends State<EditProductScreen>
     );
   }
 
-  addInBrandView(int i) {
-    brandPostion = i;
-    brandController.text = model.data![brandPostion].name!;
-    addProductModel.brandId = model.data![brandPostion].id.toString();
-    addProductModel.bransName = model.data![brandPostion].name;
+  addInBrandView() {
     setState(() {});
   }
 
-  void brandBottomSheet(BuildContext ctx) {
+  void _runFilterBrand(String enteredKeyword, StateSetter setState) {
+    List<BData> results = [];
+    if (enteredKeyword.isEmpty) {
+      // if the search field is empty or only contains white-space, we'll display all users
+      results = allBData;
+    } else {
+      results = acData!
+          .where((user) =>
+              user.name!.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+      // we use the toLowerCase() method to make it case-insensitive
+    }
+
+    // Refresh the UI
+    setState(() {
+      acData = results;
+    });
+  }
+
+  void brandBottomSheet(BuildContext ctx, TextEditingController c) {
     showModalBottomSheet(
         elevation: 10,
+        isScrollControlled: true,
         backgroundColor: Colors.white,
         context: ctx,
         builder: (ctx) {
           return StatefulBuilder(builder: (BuildContext context,
               StateSetter setState /*You can rename this!*/) {
-            return Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 2 - 100,
-              color: Colors.white54,
-              child: Column(
-                children: [
-                  Container(
-                    height: 40,
-                    color: AppColors.primaryColor,
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    alignment: Alignment.centerRight,
-                    width: MediaQuery.of(context).size.width,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            NewMarkitVendorLocalizations.of(context)!
-                                .find('brand'),
-                            style: Styles.boldWhite16,
+            return Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 2,
+                color: Colors.white54,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 40,
+                      color: AppColors.primaryColor,
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      alignment: Alignment.centerRight,
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              NewMarkitVendorLocalizations.of(context)!
+                                  .find('brand'),
+                              style: Styles.boldWhite16,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: 1,
-                    color: Colors.grey[400],
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: ListView.builder(
-                          itemCount: model.data!.length,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                addInBrandView(index);
-                                Navigator.pop(context);
-                              },
-                              child: Container(
-                                color: Colors.grey.withAlpha(2),
-                                padding: const EdgeInsets.all(16),
-                                alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width,
-                                child: Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        addInBrandView(index);
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        model.data![index].name!,
-                                        style: Styles.boldBlack16,
+                    Container(
+                      height: 1,
+                      color: Colors.grey[400],
+                      width: MediaQuery.of(context).size.width,
+                    ),
+                    TextFormField(
+                      onChanged: (v) {
+                        _runFilterBrand(v, setState);
+                      },
+                      style: Styles.formFieldTextStyle,
+                      decoration: const InputDecoration(
+                          hintText: "Search brand",
+                          contentPadding: EdgeInsets.all(16)),
+                    ),
+                    Expanded(
+                        flex: 1,
+                        child: ListView.builder(
+                            itemCount: acData!.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  c.text = acData![index].name!;
+                                  _runFilterBrand("", setState);
+                                  addProductModel.brandId =
+                                      acData![index].id.toString();
+                                  addProductModel.bransName =
+                                      acData![index].name;
+                                  Navigator.pop(context);
+                                  addInBrandView();
+                                },
+                                child: Container(
+                                  color: Colors.grey.withAlpha(2),
+                                  padding: const EdgeInsets.all(16),
+                                  alignment: Alignment.center,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          c.text = acData![index].name!;
+                                          _runFilterBrand("", setState);
+                                          addProductModel.brandId =
+                                              acData![index].id.toString();
+                                          addProductModel.bransName =
+                                              acData![index].name;
+                                          Navigator.pop(context);
+                                          addInBrandView();
+                                        },
+                                        child: Text(
+                                          acData![index].name!,
+                                          style: Styles.boldBlack16,
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                      const Spacer(),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          }))
-                ],
+                              );
+                            }))
+                  ],
+                ),
               ),
             );
           });
         });
   }
+
+  changeState() {
+    setState(() {});
+  }
+
+  // void brandBottomSheet(BuildContext ctx) {
+  //   showModalBottomSheet(
+  //       elevation: 10,
+  //       backgroundColor: Colors.white,
+  //       context: ctx,
+  //       builder: (ctx) {
+  //         return StatefulBuilder(builder: (BuildContext context,
+  //             StateSetter setState /*You can rename this!*/) {
+  //           return Container(
+  //             width: MediaQuery.of(context).size.width,
+  //             height: MediaQuery.of(context).size.height / 2 - 100,
+  //             color: Colors.white54,
+  //             child: Column(
+  //               children: [
+  //                 Container(
+  //                   height: 40,
+  //                   color: AppColors.primaryColor,
+  //                   padding: const EdgeInsets.only(left: 16, right: 16),
+  //                   alignment: Alignment.centerRight,
+  //                   width: MediaQuery.of(context).size.width,
+  //                   child: Row(
+  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                     children: [
+  //                       GestureDetector(
+  //                         onTap: () {},
+  //                         child: Text(
+  //                           NewMarkitVendorLocalizations.of(context)!
+  //                               .find('brand'),
+  //                           style: Styles.boldWhite16,
+  //                         ),
+  //                       ),
+  //                     ],
+  //                   ),
+  //                 ),
+  //                 Container(
+  //                   height: 1,
+  //                   color: Colors.grey[400],
+  //                   width: MediaQuery.of(context).size.width,
+  //                 ),
+  //                 Expanded(
+  //                     flex: 1,
+  //                     child: ListView.builder(
+  //                         itemCount: model.data!.length,
+  //                         itemBuilder: (context, index) {
+  //                           return GestureDetector(
+  //                             onTap: () {
+  //                               addInBrandView(index);
+  //                               Navigator.pop(context);
+  //                             },
+  //                             child: Container(
+  //                               color: Colors.grey.withAlpha(2),
+  //                               padding: const EdgeInsets.all(16),
+  //                               alignment: Alignment.center,
+  //                               width: MediaQuery.of(context).size.width,
+  //                               child: Row(
+  //                                 children: [
+  //                                   GestureDetector(
+  //                                     onTap: () {
+  //                                       addInBrandView(index);
+  //                                       Navigator.pop(context);
+  //                                     },
+  //                                     child: Text(
+  //                                       model.data![index].name!,
+  //                                       style: Styles.boldBlack16,
+  //                                     ),
+  //                                   ),
+  //                                 ],
+  //                               ),
+  //                             ),
+  //                           );
+  //                         }))
+  //               ],
+  //             ),
+  //           );
+  //         });
+  //       });
+  // }
 
   howMuchWarrentyTypeTextFormFiled() {
     return TextFormField(
@@ -1818,6 +2061,514 @@ class _EditProductScreenState extends State<EditProductScreen>
     );
   }
 
+  billingTypeTypeTextFormFiled() {
+    return TextFormField(
+      readOnly: true,
+      controller: billingController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      onTap: () {
+        billingModeBottomSheet(context);
+      },
+      keyboardType: TextInputType.number,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+          labelText: NewMarkitVendorLocalizations.of(context)!
+              .find('billingModeOfShipment'),
+          labelStyle: Styles.lightGrey14,
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primaryColor),
+          ),
+          suffixIcon: const Icon(
+            Icons.arrow_drop_down,
+            color: AppColors.lightGreyHintText,
+          )),
+    );
+  }
+
+  void billingModeBottomSheet(BuildContext ctx) {
+    showModalBottomSheet(
+        elevation: 10,
+        backgroundColor: Colors.white,
+        context: ctx,
+        builder: (ctx) {
+          return StatefulBuilder(builder: (BuildContext context,
+              StateSetter setState /*You can rename this!*/) {
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 2 - 100,
+              color: Colors.white54,
+              child: Column(
+                children: [
+                  Container(
+                    height: 40,
+                    color: AppColors.primaryColor,
+                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    alignment: Alignment.centerRight,
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            NewMarkitVendorLocalizations.of(context)!
+                                .find('billingModeOfShipment'),
+                            style: Styles.boldWhite16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 1,
+                    color: Colors.grey[400],
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: ListView.builder(
+                          itemCount: ibillingModeList.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                addInBillingTypeView(ibillingModeList[index]);
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                color: Colors.grey.withAlpha(2),
+                                padding: const EdgeInsets.all(16),
+                                alignment: Alignment.center,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        addInBillingTypeView(
+                                            ibillingModeList[index]);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                        ibillingModeList[index],
+                                        style: Styles.boldBlack16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }))
+                ],
+              ),
+            );
+          });
+        });
+  }
+
+  heightTextFormFiled() {
+    return TextFormField(
+      controller: heightController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      onChanged: (v) {
+        calculateWeight();
+      },
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.number,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText: NewMarkitVendorLocalizations.of(context)!.find('heightCM'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  calculateWeight() {
+    var bb = num.parse(breadthController.text);
+    var hh = num.parse(heightController.text);
+    var ll = num.parse(lenghtController.text);
+
+    var totalWeight1 = ((ll * bb * hh) / 5000) * 1000;
+    if (totalWeight1 < 500) {
+      weightController.text = '500';
+    }
+
+    weightController.text = totalWeight1.toStringAsFixed(2);
+
+    // $('.weight_in_grams').val(totalWeight1);
+    // if (totalWeight1 >= 30000) {
+    //   $(".heavy_items_charge").removeClass('hide');
+    // } else {
+    //   $(".heavy_items_charge").addClass('hide');
+    // }
+    // if (totalWeight1 < 500) {
+    //   $('.weight_in_grams').val(500);
+    // }
+  }
+
+  lenghtTextFormFiled() {
+    return TextFormField(
+      controller: lenghtController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      onChanged: (v) {
+        calculateWeight();
+      },
+      keyboardType: TextInputType.number,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText: NewMarkitVendorLocalizations.of(context)!.find('lenghtCM'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  breadthTextFormFiled() {
+    return TextFormField(
+      controller: breadthController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.number,
+      onChanged: (v) {
+        calculateWeight();
+      },
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText: NewMarkitVendorLocalizations.of(context)!.find('breadthCM'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  weightTextFormFiled() {
+    return TextFormField(
+      controller: weightController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.number,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText: NewMarkitVendorLocalizations.of(context)!.find('wightGrams'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  deliveryHeavyTextFormFiled() {
+    return TextFormField(
+      controller: deliveryHeavyController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.number,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText: NewMarkitVendorLocalizations.of(context)!
+            .find('deliveryChargesForHeavy'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  statusShipmentTextFormFiled() {
+    return TextFormField(
+      controller: statusOfShipmentController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      onTap: () {
+        statusOfModeBottomSheet(context);
+      },
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.text,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText:
+            NewMarkitVendorLocalizations.of(context)!.find('statusOfShipment'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+        suffixIcon: const Icon(
+          Icons.arrow_drop_down,
+          color: AppColors.lightGreyHintText,
+        ),
+      ),
+    );
+  }
+
+  void statusOfModeBottomSheet(BuildContext ctx) {
+    showModalBottomSheet(
+        elevation: 10,
+        backgroundColor: Colors.white,
+        context: ctx,
+        builder: (ctx) {
+          return StatefulBuilder(builder: (BuildContext context,
+              StateSetter setState /*You can rename this!*/) {
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 2 - 100,
+              color: Colors.white54,
+              child: Column(
+                children: [
+                  Container(
+                    height: 40,
+                    color: AppColors.primaryColor,
+                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    alignment: Alignment.centerRight,
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            NewMarkitVendorLocalizations.of(context)!
+                                .find('selectShipment'),
+                            style: Styles.boldWhite16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 1,
+                    color: Colors.grey[400],
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: ListView.builder(
+                          itemCount: statusOfShipmentModeList.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                addInsShipMentTypeView(
+                                    statusOfShipmentModeList[index]);
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                color: Colors.grey.withAlpha(2),
+                                padding: const EdgeInsets.all(16),
+                                alignment: Alignment.center,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        addInsShipMentTypeView(
+                                            statusOfShipmentModeList[index]);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                        statusOfShipmentModeList[index],
+                                        style: Styles.boldBlack16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }))
+                ],
+              ),
+            );
+          });
+        });
+  }
+
+  addInBillingTypeView(String value) {
+    billingController.text = value;
+
+    setState(() {});
+  }
+
+  addInsShipMentTypeView(String value) {
+    statusOfShipmentController.text = value;
+
+    setState(() {});
+  }
+
+  maximumShipingTextFormFiled() {
+    return TextFormField(
+      controller: maximumShipingCostController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.number,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText:
+            NewMarkitVendorLocalizations.of(context)!.find('maximumShipment'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  videoUrlTextFormFiled() {
+    return TextFormField(
+      controller: videoUrlController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.text,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText: NewMarkitVendorLocalizations.of(context)!.find('videoUrl'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  seoProductTextFormFiled() {
+    return TextFormField(
+      controller: seoProductTitle,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.text,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText:
+            NewMarkitVendorLocalizations.of(context)!.find('seoProductTitle'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  seoMetaTextFormFiled() {
+    return TextFormField(
+      controller: seoMetaDescription,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.text,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText: NewMarkitVendorLocalizations.of(context)!.find('seoMeta'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  targettedTextFormFiled() {
+    return TextFormField(
+      controller: targettedkeywords,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: AppColors.primaryColor,
+      textAlignVertical: TextAlignVertical.center,
+      style: Styles.formFieldTextStyle,
+      keyboardType: TextInputType.text,
+      validator: (v) => Utility.checkTextFiledValid(v!, context),
+      decoration: InputDecoration(
+        labelText:
+            NewMarkitVendorLocalizations.of(context)!.find('targettedKeyword'),
+        labelStyle: Styles.lightGrey14,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  pinCodeTextFormFiled() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      alignment: Alignment.center,
+      child: Tags(
+        heightHorizontalScroll: 100,
+
+        key: _tagStateKey,
+        textField: TagsTextField(
+          autofocus: false,
+          keyboardType: TextInputType.number,
+          hintText: "Pin code",
+          textStyle: TextStyle(fontSize: 14),
+          onSubmitted: (String str) {
+            print(str);
+            setState(() {
+              // required
+              _items.add(str);
+            });
+          },
+        ),
+        itemCount: _items.length, // required
+        itemBuilder: (int index) {
+          final item = _items[index];
+
+          return ItemTags(
+            // Each ItemTags must contain a Key. Keys allow Flutter to
+            // uniquely identify widgets.
+            key: Key(index.toString()),
+            index: index, // required
+            title: item,
+
+            textStyle: TextStyle(
+              fontSize: 14,
+            ),
+            activeColor: AppColors.primaryColor,
+            combine: ItemTagsCombine.withTextBefore,
+
+            removeButton: ItemTagsRemoveButton(
+              onRemoved: () {
+                // Remove the item from the data source.
+                setState(() {
+                  // required
+                  _items.removeAt(index);
+                });
+                //required
+                return true;
+              },
+            ), // OR null,
+            onPressed: (item) => print(item),
+            onLongPressed: (item) => print(item),
+          );
+        },
+      ),
+    );
+  }
+
   void getUploadBottomSheet(BuildContext context) async {
     final buttons = [
       {
@@ -1920,6 +2671,9 @@ class _EditProductScreenState extends State<EditProductScreen>
   void onSuccess(data) {
     if (whichApiCall == "") {
       model = Brand.fromJson(data);
+      acData = model.data!;
+      allBData = model.data!;
+
       whichApiCall = "attribute";
       ApiCall.attributeList(token, this, context);
     } else if (whichApiCall == "attribute") {

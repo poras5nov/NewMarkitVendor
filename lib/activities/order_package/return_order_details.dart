@@ -780,37 +780,30 @@ class _RetrunOrderDetailsScreenState extends State<RetrunOrderDetailsScreen>
                                   SizedBox(
                                     height: Dimens.sixTeen,
                                   ),
-                                  Container(
-                                    height: 1,
-                                    color: AppColors.greyColor.withOpacity(0.2),
-                                  ),
-                                  SizedBox(
-                                    height: Dimens.sixTeen,
-                                  ),
                                 ],
                               ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    NewMarkitVendorLocalizations.of(context)!
-                                        .find('paymentStatus'),
-                                    style: Styles.blackMedium14,
-                                  ),
-                                  SizedBox(
-                                    height: Dimens.ten,
-                                  ),
-                                  Text(
-                                    model!.paymentType!,
-                                    style: Styles.grey16Regular,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Dimens.sixTeen,
-                              ),
+                              // Column(
+                              //   mainAxisSize: MainAxisSize.min,
+                              //   mainAxisAlignment: MainAxisAlignment.start,
+                              //   crossAxisAlignment: CrossAxisAlignment.start,
+                              //   children: [
+                              //     Text(
+                              //       NewMarkitVendorLocalizations.of(context)!
+                              //           .find('paymentStatus'),
+                              //       style: Styles.blackMedium14,
+                              //     ),
+                              //     SizedBox(
+                              //       height: Dimens.ten,
+                              //     ),
+                              //     Text(
+                              //       model!.paymentType!,
+                              //       style: Styles.grey16Regular,
+                              //     ),
+                              //   ],
+                              // ),
+                              // SizedBox(
+                              //   height: Dimens.sixTeen,
+                              // ),
                               Container(
                                 height: 1,
                                 color: AppColors.greyColor.withOpacity(0.2),
@@ -903,6 +896,8 @@ class _RetrunOrderDetailsScreenState extends State<RetrunOrderDetailsScreen>
                                                                         .images!
                                                                         .split(
                                                                             ",")[i],
+                                                                    type:
+                                                                        'image',
                                                                   )));
                                                         },
                                                         child:
@@ -998,12 +993,12 @@ class _RetrunOrderDetailsScreenState extends State<RetrunOrderDetailsScreen>
                                                             type:
                                                                 PageTransitionType
                                                                     .fade,
-                                                            child:
-                                                                ImageZoomView(
-                                                              url: model!
-                                                                  .returnRequest!
-                                                                  .images,
-                                                            )));
+                                                            child: ImageZoomView(
+                                                                url: model!
+                                                                    .returnRequest!
+                                                                    .images,
+                                                                type:
+                                                                    'image')));
                                                   },
                                                   child: CachedNetworkImage(
                                                     imageUrl: model!
@@ -1126,14 +1121,13 @@ class _RetrunOrderDetailsScreenState extends State<RetrunOrderDetailsScreen>
                                                                   type:
                                                                       PageTransitionType
                                                                           .fade,
-                                                                  child:
-                                                                      ImageZoomView(
-                                                                    url: model!
-                                                                        .returnRequest!
-                                                                        .delivery_image!
-                                                                        .split(
-                                                                            ",")[i],
-                                                                  )));
+                                                                  child: ImageZoomView(
+                                                                      url: model!
+                                                                          .returnRequest!
+                                                                          .delivery_image!
+                                                                          .split(
+                                                                              ",")[i],
+                                                                      type: 'image')));
                                                         },
                                                         child:
                                                             CachedNetworkImage(
@@ -1228,12 +1222,12 @@ class _RetrunOrderDetailsScreenState extends State<RetrunOrderDetailsScreen>
                                                             type:
                                                                 PageTransitionType
                                                                     .fade,
-                                                            child:
-                                                                ImageZoomView(
-                                                              url: model!
-                                                                  .returnRequest!
-                                                                  .delivery_image!,
-                                                            )));
+                                                            child: ImageZoomView(
+                                                                url: model!
+                                                                    .returnRequest!
+                                                                    .delivery_image!,
+                                                                type:
+                                                                    'image')));
                                                   },
                                                   child: CachedNetworkImage(
                                                     imageUrl: model!
@@ -1395,7 +1389,7 @@ class _RetrunOrderDetailsScreenState extends State<RetrunOrderDetailsScreen>
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
-                    width: Get.width,
+                    width: MediaQuery.of(context).size.width,
                     height: 50,
                     alignment: Alignment.centerLeft,
                     child: Row(

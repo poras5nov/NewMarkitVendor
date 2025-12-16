@@ -119,7 +119,7 @@ class _AllReturnOrderScreenState extends State<AllReturnOrderScreen>
             child: Column(children: [
               Container(
                 margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
-                width: Get.width,
+                width: MediaQuery.of(context).size.width,
                 height: 50,
                 alignment: Alignment.centerLeft,
                 child: Row(

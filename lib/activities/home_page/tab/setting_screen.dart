@@ -20,6 +20,7 @@ import '../../../theme/styles.dart';
 import '../../../utils/asset_constants.dart';
 import '../../../utils/notification_receiver.dart';
 import '../../../utils/notification_show.dart';
+import '../../../utils/utility.dart';
 import '../../../widgets/color_range.dart';
 import '../../edit_profile/edit_business.dart';
 import '../../order_package/my_orders_details.dart';
@@ -43,6 +44,7 @@ class _MyAccountSettingScreenState extends State<MyAccountSettingScreen>
   @override
   void initState() {
     NotificationShow.initPlatformState(this);
+    Utility.facebookEvent("setting_screen");
 
     SharedPref.getProfileData().then((value) {
       profileData = json.decode(value);
@@ -89,7 +91,7 @@ class _MyAccountSettingScreenState extends State<MyAccountSettingScreen>
                 children: [
                   Container(
                     margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
-                    width: Get.width,
+                    width: MediaQuery.of(context).size.width,
                     height: 50,
                     alignment: Alignment.centerLeft,
                     child: Row(

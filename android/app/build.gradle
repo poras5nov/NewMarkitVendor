@@ -25,12 +25,12 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '3'
+    flutterVersionCode = '12'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.0.1'
+    flutterVersionName = '1.0.9'
 }
 
 apply plugin: 'com.android.application'
@@ -43,15 +43,17 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 android {
-    compileSdkVersion 31
-
+    namespace 'com.app.market_vendor' // 👈 Change this to match your app's actual package name
+    compileSdkVersion 36
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
-
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
+    }
+    lintOptions {
+        checkReleaseBuilds false
     }
 
     sourceSets {
@@ -64,8 +66,8 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.app.market_vendor"
-        minSdkVersion 20
-        targetSdkVersion 31
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled = true
@@ -85,6 +87,10 @@ android {
         }
     }
 
+//     storePassword=NMKVendor
+// keyPassword=NMKVendor
+// keyAlias=NMKVendor
+
     // buildTypes {
     //     release {
     //         // TODO: Add your own signing config for the release build.
@@ -101,5 +107,7 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:30.2.0')
+    implementation 'com.facebook.android:facebook-android-sdk:15.2.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -2,11 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:market_vendor_app/activities/home_page/drawer_screen/common_page_screen.dart';
 import 'package:market_vendor_app/activities/home_page/drawer_screen/rating_screen.dart';
+import 'package:market_vendor_app/activities/home_page/model/report_count_model.dart';
+import 'package:market_vendor_app/activities/home_page/tab/rating_product.dart';
 import 'package:market_vendor_app/activities/home_page/view_all_prodcut.dart';
 import 'package:market_vendor_app/activities/order_package/view_all_return_product.dart';
+import 'package:market_vendor_app/apiservice/api_call.dart';
+import 'package:market_vendor_app/apiservice/api_interface.dart';
 import 'package:market_vendor_app/apiservice/url_string.dart';
 import 'package:market_vendor_app/theme/app_colors.dart';
 import 'package:market_vendor_app/theme/dimens.dart';
@@ -17,16 +22,19 @@ import 'package:page_transition/page_transition.dart';
 import '../../theme/styles.dart';
 import '../../utils/asset_constants.dart';
 import '../../utils/new_market_vendor_localizations.dart';
+import '../../utils/utility.dart';
 import '../order_package/all_retrun_orders.dart';
 import 'model/profile_model.dart';
 
 class DrawerViewScreen extends StatefulWidget {
   String totalOrder;
   String totalRevenue;
+  String token;
   ProfileModel? model;
   Function(int)? callBack;
   DrawerViewScreen(
       {required this.model,
+      required this.token,
       required this.callBack,
       required this.totalOrder,
       required this.totalRevenue});
@@ -34,11 +42,26 @@ class DrawerViewScreen extends StatefulWidget {
   _DrawerViewScreenState createState() => _DrawerViewScreenState();
 }
 
-class _DrawerViewScreenState extends State<DrawerViewScreen> {
+class _DrawerViewScreenState extends State<DrawerViewScreen>
+    implements ApiInterface {
+  bool isLoader = false;
+  String token = '';
+  int count = 0;
+  int newReviewCount = 0;
+
+  String apiType = 'report_count';
   @override
   void initState() {
     super.initState();
     print(widget.model!.data!.businesses!.storeImages!);
+    getToken();
+  }
+
+  getToken() {
+    SharedPref.getLoginToken().then((value) {
+      token = value;
+      ApiCall.ratingReportCount(token, this, context);
+    });
   }
 
   @override
@@ -266,6 +289,99 @@ class _DrawerViewScreenState extends State<DrawerViewScreen> {
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child:
+                                          RatingProductScreen(type: "report")))
+                              .then((value) {
+                            setState(() {
+                              apiType = "delete";
+                            });
+                            getToken();
+                          });
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(Dimens.sixTeen),
+                          child: Row(children: [
+                            SvgPicture.asset(
+                              AssetConstants.term,
+                              width: 25,
+                              height: 25,
+                            ),
+                            SizedBox(
+                              width: Dimens.sixTeen,
+                            ),
+                            Text(
+                              'Report',
+                              style: Styles.boldMenuText16,
+                            ),
+                            Spacer(),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.primaryColor),
+                              child: Text(
+                                "$count",
+                                style: Styles.whiteLight12,
+                              ),
+                            ),
+                          ]),
+                        ),
+                      ),
+
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child:
+                                          RatingProductScreen(type: "review")))
+                              .then((value) {
+                            setState(() {
+                              apiType = "delete";
+                            });
+                            getToken();
+                          });
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(Dimens.sixTeen),
+                          child: Row(children: [
+                            SvgPicture.asset(
+                              AssetConstants.icStar,
+                              width: 25,
+                              height: 25,
+                            ),
+                            SizedBox(
+                              width: Dimens.sixTeen,
+                            ),
+                            Text(
+                              'Review',
+                              style: Styles.boldMenuText16,
+                            ),
+                            Spacer(),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.primaryColor),
+                              child: Text(
+                                "$newReviewCount",
+                                style: Styles.whiteLight12,
+                              ),
+                            ),
+                          ]),
+                        ),
+                      ),
                       GestureDetector(
                         onTap: () {
                           Navigator.pop(context);
@@ -548,10 +664,7 @@ class _DrawerViewScreenState extends State<DrawerViewScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          LaunchReview.launch(
-                              androidAppId:
-                                  'shri.complete.fitness.gymtrainingapp',
-                              iOSAppId: 'com.example.rating');
+                          rateusFunction();
                         },
                         child: Container(
                           padding: EdgeInsets.all(Dimens.sixTeen),
@@ -571,7 +684,7 @@ class _DrawerViewScreenState extends State<DrawerViewScreen> {
                             ),
                           ]),
                         ),
-                      )
+                      ),
                     ],
                   )),
               SizedBox(
@@ -584,11 +697,7 @@ class _DrawerViewScreenState extends State<DrawerViewScreen> {
                 height: Dimens.ten,
               ),
               GestureDetector(
-                onTap: () {
-                  SharedPref.prefs!.clear();
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/LoginView', (Route<dynamic> route) => false);
-                },
+                onTap: () {},
                 child: Container(
                   width: MediaQuery.of(context).size.width - 50,
                   color: Colors.transparent,
@@ -597,9 +706,37 @@ class _DrawerViewScreenState extends State<DrawerViewScreen> {
                   child: SafeArea(
                     bottom: true,
                     top: false,
-                    child: Text(
-                      NewMarkitVendorLocalizations.of(context)!.find('logout'),
-                      style: Styles.boldMenuText16,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        GestureDetector(
+                            onTap: () {
+                              SharedPref.prefs!.clear();
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  '/LoginView',
+                                  (Route<dynamic> route) => false);
+                            },
+                            child: Text(
+                              NewMarkitVendorLocalizations.of(context)!
+                                  .find('logout'),
+                              style: Styles.boldMenuText16,
+                            )),
+                        Container(
+                          height: 50,
+                          width: 1,
+                          color: Colors.grey,
+                        ),
+                        GestureDetector(
+                            onTap: () {
+                              print(widget.token);
+                              showAlertDialog(context);
+                            },
+                            child: Text(
+                              NewMarkitVendorLocalizations.of(context)!
+                                  .find('deleteAccount'),
+                              style: Styles.boldRed16,
+                            )),
+                      ],
                     ),
                   ),
                 ),
@@ -608,4 +745,75 @@ class _DrawerViewScreenState extends State<DrawerViewScreen> {
       ),
     );
   }
+
+  rateusFunction() async {
+    // final InAppReview inAppReview = InAppReview.instance;
+
+    // if (await inAppReview.isAvailable()) {
+    //   inAppReview.requestReview();
+    // }
+    LaunchReview.launch(androidAppId: "com.app.market_vendor");
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: const Text("No"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+    Widget continueButton = TextButton(
+      child: const Text("Yes"),
+      onPressed: () {
+        Navigator.pop(context);
+        setState(() {
+          apiType = "delete";
+        });
+        ApiCall.deleteAccount(widget.token, this, context);
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("AlertDialog"),
+      content: const Text("Do you want to Delete Account?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  @override
+  void onFailure(message) {
+    Utility.successMessage(message, context);
+    SharedPref.prefs!.clear();
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil('/LoginView', (Route<dynamic> route) => false);
+  }
+
+  @override
+  void onSuccess(data) {
+    if (apiType == 'report_count') {
+      count = ReportCountModel.fromJson(data).feedbacks!;
+      newReviewCount = ReportCountModel.fromJson(data).newReviews!;
+      setState(() {});
+    } else {
+      Utility.successMessage(data['message'], context);
+
+      SharedPref.prefs!.clear();
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          '/LoginView', (Route<dynamic> route) => false);
+    }
+  }
+
+  @override
+  void onTokenExpired() {}
 }

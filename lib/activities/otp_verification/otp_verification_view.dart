@@ -235,6 +235,8 @@ class _OTPVerificationView extends State<OTPVerificationView>
       SharedPref.saveLoginToken(data[KeyConstant.token]);
       var d = jsonEncode(data);
       SharedPref.saveProfileData(d);
+      Utility.facebookEventWithParametter(
+          "login_screen", {'type': 'Login with OTP'});
       if (data['data']['businesses_count'] == 0) {
         Navigator.pushReplacement(
             context,

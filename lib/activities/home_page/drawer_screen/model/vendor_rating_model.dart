@@ -97,7 +97,7 @@ class Ratings {
     id = json['id'];
     userId = json['user_id'];
     vendorId = json['vendor_id'];
-    rating = json['rating'].toString();
+    rating = json['rating'];
     title = json['title'];
     description = json['description'];
     createdAt = json['created_at'];
@@ -124,39 +124,48 @@ class Ratings {
 
 class User {
   int? id;
-  Null? code;
+  dynamic code;
   String? profile;
   String? role;
+  dynamic managerTypeId;
   String? name;
   String? email;
   String? phone;
-  Null? emailVerifiedAt;
-  Null? phoneVerifiedAt;
+  dynamic emailVerifiedAt;
+  dynamic phoneVerifiedAt;
   String? gender;
-  Null? referralCode;
-  Null? addressLine;
-  Null? address;
+  dynamic referralCode;
+  dynamic addressLine;
+  dynamic address;
   String? longitude;
   String? latitude;
-  Null? province;
-  Null? city;
-  Null? postalCode;
+  dynamic province;
+  String? city;
+  dynamic postalCode;
   String? status;
   String? riderVerifyStatus;
   int? riderJobStatus;
   String? appVersion;
   String? deviceType;
   String? oneSignalId;
-  Null? otp;
+  String? provider;
+  String? googleId;
+  dynamic facebookId;
+  dynamic appleId;
+  dynamic otp;
   String? otpTime;
   String? createdAt;
   String? updatedAt;
+  int? profileStep;
+  int? offerOrderCount;
+  String? userTypeStatus;
 
   User(
       {this.id,
       this.code,
       this.profile,
       this.role,
+      this.managerTypeId,
       this.name,
       this.email,
       this.phone,
@@ -177,16 +186,24 @@ class User {
       this.appVersion,
       this.deviceType,
       this.oneSignalId,
+      this.provider,
+      this.googleId,
+      this.facebookId,
+      this.appleId,
       this.otp,
       this.otpTime,
       this.createdAt,
-      this.updatedAt});
+      this.updatedAt,
+      this.profileStep,
+      this.offerOrderCount,
+      this.userTypeStatus});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     code = json['code'];
     profile = json['profile'];
     role = json['role'];
+    managerTypeId = json['manager_type_id'];
     name = json['name'];
     email = json['email'];
     phone = json['phone'];
@@ -207,10 +224,17 @@ class User {
     appVersion = json['app_version'];
     deviceType = json['device_type'];
     oneSignalId = json['one_signal_id'];
+    provider = json['provider'];
+    googleId = json['google_id'];
+    facebookId = json['facebook_id'];
+    appleId = json['apple_id'];
     otp = json['otp'];
     otpTime = json['otp_time'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    profileStep = json['profile_step'];
+    offerOrderCount = json['offer_order_count'];
+    userTypeStatus = json['user_type_status'];
   }
 
   Map<String, dynamic> toJson() {
@@ -219,6 +243,7 @@ class User {
     data['code'] = this.code;
     data['profile'] = this.profile;
     data['role'] = this.role;
+    data['manager_type_id'] = this.managerTypeId;
     data['name'] = this.name;
     data['email'] = this.email;
     data['phone'] = this.phone;
@@ -239,10 +264,17 @@ class User {
     data['app_version'] = this.appVersion;
     data['device_type'] = this.deviceType;
     data['one_signal_id'] = this.oneSignalId;
+    data['provider'] = this.provider;
+    data['google_id'] = this.googleId;
+    data['facebook_id'] = this.facebookId;
+    data['apple_id'] = this.appleId;
     data['otp'] = this.otp;
     data['otp_time'] = this.otpTime;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
+    data['profile_step'] = this.profileStep;
+    data['offer_order_count'] = this.offerOrderCount;
+    data['user_type_status'] = this.userTypeStatus;
     return data;
   }
 }

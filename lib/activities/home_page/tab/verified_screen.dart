@@ -44,9 +44,11 @@ class _VerifiedScreenState extends State<VerifiedScreen>
 
   getProfile() {
     SharedPref.getProfileData().then((value) {
+      if(value.isNotEmpty){
       profileData = json.decode(value);
       model = ProfileModel.fromJson(profileData);
       updateView();
+      }
     });
   }
 
@@ -110,7 +112,7 @@ class _VerifiedScreenState extends State<VerifiedScreen>
                           Container(
                             margin: const EdgeInsets.only(
                                 left: 16, right: 16, top: 20),
-                            width: Get.width,
+                            width: MediaQuery.of(context).size.width,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

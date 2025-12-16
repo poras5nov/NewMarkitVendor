@@ -17,6 +17,43 @@ import 'api_interface.dart';
 import 'key_string.dart';
 
 class ApiCall {
+  static Future<http.Response?> deleteAccount(
+      String token, ApiInterface callBack, BuildContext context) async {
+    print(token);
+    if (await Utility.isNetworkAvailable()) {
+      try {
+        final response =
+            await http.get(Uri.parse(UrlConstant.deleteAccount), headers: {
+          "Accept": "application/json",
+          "Authorization": "Bearer $token",
+        });
+        print(response.body.toString());
+
+        if (response.statusCode == 200) {
+          var data = json.decode(response.body);
+          if (data['status'] == 1) {
+            callBack.onSuccess(data);
+          } else if (data['status'] == 403) {
+            callBack.onFailure(data['message']);
+          } else {
+            callBack.onFailure(data['message']);
+          }
+          // If server returns an OK response, parse the JSON
+        } else {
+          // If that response was not OK, throw an error.
+          callBack.onFailure(
+              NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+        }
+      } catch (e) {
+        callBack.onFailure(
+            NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+      }
+    } else {
+      callBack.onFailure(
+          NewMarkitVendorLocalizations.of(context)!.find('internetError'));
+    }
+  }
+
   static Future<http.Response?> getBusinessList(
       ApiInterface callBack, BuildContext context) async {
     if (await Utility.isNetworkAvailable()) {
@@ -235,7 +272,7 @@ class ApiCall {
           KeyConstant.deviceType: Platform.isAndroid ? "android" : "ios",
           KeyConstant.oneSignalId: SharedPref.getPlayerID()
         });
-
+print(response.body);
         if (response.statusCode == 200) {
           var data = json.decode(response.body);
           if (data['status'] == 1) {
@@ -1311,38 +1348,34 @@ class ApiCall {
     ApiInterface callBack,
     BuildContext context,
   ) async {
+    print(
+        'maximum_shipping_cost:-${model.maximum_shipping_cost!}  video_url:-${model.video_url!}');
     if (await Utility.isNetworkAvailable()) {
       try {
         print(json.encode(model.toJson()));
         final response = await http.post(Uri.parse(UrlConstant.productStore),
             headers: {
-              "Accept": "application/json",
               "content-type": "application/json",
               "Authorization": "Bearer $token",
             },
             body: json.encode(model.toJson()));
-        var data = json.decode(response.body);
-        print(data);
-        if (response.statusCode > 400 || response.statusCode < 200) {
-          callBack.onFailure(data['message']);
-        } else {
-          if (response.statusCode == 200) {
-            if (data['status'] == 1) {
-              callBack.onSuccess(data);
-            } else {
-              callBack.onFailure(data['message']);
-            }
+        var data = json.decode(response.body) as Map<String, dynamic>;
 
-            // If server returns an OK response, parse the JSON
+        if (response.statusCode == 200) {
+          var data = json.decode(response.body);
+          if (data['status'] == 1) {
+            print(data['message']);
+            callBack.onSuccess(data);
+          } else if (data['status'] == 403) {
+            callBack.onFailure(data['message']);
           } else {
             callBack.onFailure(data['message']);
-            //callBack.onFailure("something went wrong");
-
-            // If that response was not OK, throw an error.
-            throw Exception('Failed to load post');
           }
+          // If server returns an OK response, parse the JSON
         }
       } catch (e) {
+        print(e.toString());
+
         callBack.onFailure(
             NewMarkitVendorLocalizations.of(context)!.find('serverError'));
       }
@@ -1363,7 +1396,6 @@ class ApiCall {
         print(json.encode(model.toJson()));
         final response = await http.post(Uri.parse(UrlConstant.productUpdate),
             headers: {
-              "Accept": "application/json",
               "content-type": "application/json",
               "Authorization": "Bearer $token",
             },
@@ -1441,6 +1473,53 @@ class ApiCall {
       try {
         final response = await http.get(
             Uri.parse(UrlConstant.products + page + "&search=" + search),
+            headers: {
+              "Accept": "application/json",
+              "Authorization": "Bearer $token",
+            });
+        print(response.body.toString());
+
+        if (response.statusCode == 200) {
+          var data = json.decode(response.body);
+          if (data['status'] == 1) {
+            callBack.onSuccess(data);
+          } else if (data['status'] == 403) {
+            callBack.onFailure(data['message']);
+          } else {
+            callBack.onFailure(data['message']);
+          }
+          // If server returns an OK response, parse the JSON
+        } else {
+          // If that response was not OK, throw an error.
+          callBack.onFailure(
+              NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+        }
+      } catch (e) {
+        callBack.onFailure(
+            NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+      }
+    } else {
+      callBack.onFailure(
+          NewMarkitVendorLocalizations.of(context)!.find('internetError'));
+    }
+  }
+
+  static Future<http.Response?> ratingProductsApi(
+      String type,
+      String page,
+      String search,
+      String token,
+      ApiInterface callBack,
+      BuildContext context) async {
+    if (await Utility.isNetworkAvailable()) {
+      try {
+        final response = await http.get(
+            Uri.parse(UrlConstant.ratingReport +
+                page +
+                "&search=" +
+                search +
+                "&type=" +
+                type),
             headers: {
               "Accept": "application/json",
               "Authorization": "Bearer $token",
@@ -1865,14 +1944,137 @@ class ApiCall {
     }
   }
 
+  static Future<http.Response?> productRatingApi(
+      String pageNo,
+      String ratingNo,
+      String productId,
+      String token,
+      ApiInterface callBack,
+      BuildContext context) async {
+    if (await Utility.isNetworkAvailable()) {
+      print(
+          '${UrlConstant.productRating}?product_id=$productId&rating_no=$ratingNo&page=$pageNo');
+      try {
+        print(Uri.parse(UrlConstant.vendorRating));
+        final response = await http.get(
+            Uri.parse(
+                '${UrlConstant.productRating}?product_id=$productId&rating_no=$ratingNo&page=$pageNo'),
+            headers: {
+              "Accept": "application/json",
+              "Authorization": "Bearer $token",
+            });
+        print(response.body.toString());
+
+        if (response.statusCode == 200) {
+          var data = json.decode(response.body);
+          if (data['status'] == 1) {
+            callBack.onSuccess(data);
+          } else if (data['status'] == 403) {
+            callBack.onFailure(data['message']);
+          } else {
+            callBack.onFailure(data['message']);
+          }
+          // If server returns an OK response, parse the JSON
+        } else {
+          // If that response was not OK, throw an error.
+          callBack.onFailure(
+              NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+        }
+      } catch (e) {
+        callBack.onFailure(
+            NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+      }
+    } else {
+      callBack.onFailure(
+          NewMarkitVendorLocalizations.of(context)!.find('internetError'));
+    }
+  }
+
   static Future<http.Response?> vendorRatingApi(
       String token, ApiInterface callBack, BuildContext context) async {
     if (await Utility.isNetworkAvailable()) {
       try {
+        print(Uri.parse(UrlConstant.vendorRating));
         final response =
             await http.get(Uri.parse(UrlConstant.vendorRating), headers: {
           "Accept": "application/json",
           "Authorization": "Bearer $token",
+        });
+        print(response.body.toString());
+
+        if (response.statusCode == 200) {
+          var data = json.decode(response.body);
+          if (data['status'] == 1) {
+            callBack.onSuccess(data);
+          } else if (data['status'] == 403) {
+            callBack.onFailure(data['message']);
+          } else {
+            callBack.onFailure(data['message']);
+          }
+          // If server returns an OK response, parse the JSON
+        } else {
+          // If that response was not OK, throw an error.
+          callBack.onFailure(
+              NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+        }
+      } catch (e) {
+        callBack.onFailure(
+            NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+      }
+    } else {
+      callBack.onFailure(
+          NewMarkitVendorLocalizations.of(context)!.find('internetError'));
+    }
+  }
+
+  static Future<http.Response?> ratingReportCount(
+      String token, ApiInterface callBack, BuildContext context) async {
+    if (await Utility.isNetworkAvailable()) {
+      try {
+        print(Uri.parse(UrlConstant.allReport));
+        final response =
+            await http.get(Uri.parse(UrlConstant.ratingReportCount), headers: {
+          "Accept": "application/json",
+          "Authorization": "Bearer $token",
+        });
+        print(response.body.toString());
+
+        if (response.statusCode == 200) {
+          var data = json.decode(response.body);
+          if (data['status'] == 1) {
+            callBack.onSuccess(data);
+          } else if (data['status'] == 403) {
+            callBack.onFailure(data['message']);
+          } else {
+            callBack.onFailure(data['message']);
+          }
+          // If server returns an OK response, parse the JSON
+        } else {
+          // If that response was not OK, throw an error.
+          callBack.onFailure(
+              NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+        }
+      } catch (e) {
+        callBack.onFailure(
+            NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+      }
+    } else {
+      callBack.onFailure(
+          NewMarkitVendorLocalizations.of(context)!.find('internetError'));
+    }
+  }
+
+  static Future<http.Response?> ratingReportApi(String reviewId, String token,
+      ApiInterface callBack, BuildContext context) async {
+    if (await Utility.isNetworkAvailable()) {
+      try {
+        print(Uri.parse(UrlConstant.allReport));
+        final response =
+            await http.post(Uri.parse(UrlConstant.allReport), headers: {
+          "Accept": "application/json",
+          "Authorization": "Bearer $token",
+        }, body: {
+          'review_id': reviewId,
         });
         print(response.body.toString());
 
@@ -2034,6 +2236,92 @@ class ApiCall {
 
         if (response.statusCode == 200) {
           print(response.body);
+          var data = json.decode(response.body);
+          if (data['status'] == 1) {
+            callBack.onSuccess(data);
+          } else if (data['status'] == 403) {
+            callBack.onFailure(data['message']);
+          } else {
+            callBack.onFailure(data['message']);
+          }
+
+          // If server returns an OK response, parse the JSON
+        } else {
+          // If that response was not OK, throw an error.
+          callBack.onFailure(response.statusCode);
+        }
+      } catch (e) {
+        callBack.onFailure(
+            NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+      }
+    } else {
+      callBack.onFailure(
+          NewMarkitVendorLocalizations.of(context)!.find('internetError'));
+    }
+  }
+
+  static Future<http.Response?> checkUser(String type, String id, String role,
+      ApiInterface callBack, BuildContext context) async {
+    if (await Utility.isNetworkAvailable()) {
+      try {
+        final response =
+            await http.post(Uri.parse(UrlConstant.checkUser), headers: {
+          "Accept": "application/json"
+        }, body: {
+          KeyConstant.type: type,
+          KeyConstant.id: id,
+          KeyConstant.role: role,
+        });
+        print(response.body);
+        if (response.statusCode == 200) {
+          var data = json.decode(response.body);
+          if (data['status'] == 1) {
+            callBack.onSuccess(data);
+          } else if (data['status'] == 403) {
+            callBack.onFailure(data['message']);
+          } else {
+            callBack.onFailure(data['message']);
+          }
+
+          // If server returns an OK response, parse the JSON
+        } else {
+          // If that response was not OK, throw an error.
+          callBack.onFailure(response.statusCode);
+        }
+      } catch (e) {
+        callBack.onFailure(
+            NewMarkitVendorLocalizations.of(context)!.find('serverError'));
+      }
+    } else {
+      callBack.onFailure(
+          NewMarkitVendorLocalizations.of(context)!.find('internetError'));
+    }
+  }
+
+  static Future<http.Response?> socialSignUpUser(
+      String type,
+      String id,
+      String role,
+      String email,
+      String phone,
+      String name,
+      ApiInterface callBack,
+      BuildContext context) async {
+    if (await Utility.isNetworkAvailable()) {
+      try {
+        final response = await http
+            .post(Uri.parse(UrlConstant.vendor_social_login), headers: {
+          "Accept": "application/json"
+        }, body: {
+          KeyConstant.type: type,
+          KeyConstant.id: id,
+          KeyConstant.email: email,
+          KeyConstant.phone: phone,
+          KeyConstant.name: name,
+          KeyConstant.role: role,
+        });
+        print(response.body);
+        if (response.statusCode == 200) {
           var data = json.decode(response.body);
           if (data['status'] == 1) {
             callBack.onSuccess(data);

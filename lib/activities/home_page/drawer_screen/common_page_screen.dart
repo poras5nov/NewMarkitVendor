@@ -1,39 +1,63 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../theme/app_colors.dart';
-import '../../../theme/styles.dart';
 
 class CommonViewScreen extends StatefulWidget {
-  var title;
-  var url;
+  final String title;
+  final String url;
 
-  CommonViewScreen({required this.title, required this.url});
+  const CommonViewScreen({super.key, required this.title, required this.url});
+  
   @override
-  _CommonViewScreenState createState() => _CommonViewScreenState();
+  State<CommonViewScreen> createState() => _CommonViewScreenState();
 }
 
 class _CommonViewScreenState extends State<CommonViewScreen> {
-  String kAndroidUserAgent =
-      'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
+  late final WebViewController controller;
+  bool isLoading = true;
 
   @override
   void initState() {
-    WidgetsFlutterBinding.ensureInitialized();
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
-
     super.initState();
+    
+    controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            // Update loading bar.
+          },
+          onPageStarted: (String url) {
+            setState(() {
+              isLoading = true;
+            });
+          },
+          onPageFinished: (String url) {
+            setState(() {
+              isLoading = false;
+            });
+          },
+          onWebResourceError: (WebResourceError error) {},
+          onNavigationRequest: (NavigationRequest request) {
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse(widget.url));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          widget.title,
+          style: const TextStyle(color: Colors.black),
+        ),
         iconTheme: const IconThemeData(
-          color: Colors.black, //change your color here
+          color: Colors.black,
         ),
         backgroundColor: AppColors.topColor,
         shadowColor: Colors.transparent,
@@ -42,17 +66,23 @@ class _CommonViewScreenState extends State<CommonViewScreen> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            AppColors.topColor,
-            Colors.white,
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              AppColors.topColor,
+              Colors.white,
+            ],
+          ),
+        ),
+        child: Stack(
+          children: [
+            WebViewWidget(controller: controller),
+            if (isLoading)
+              const Center(
+                child: CircularProgressIndicator(),
+              ),
           ],
-        )),
-        child: WebView(
-          backgroundColor: AppColors.topColor,
-          initialUrl: widget.url,
         ),
       ),
     );

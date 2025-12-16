@@ -41,7 +41,7 @@ class BuildYourProfileView extends StatefulWidget {
 class _BuildYourProfileView extends State<BuildYourProfileView>
     implements ApiInterface {
   bool _value = false;
-  int val = -1;
+  int val = 1;
   bool isLoader = false;
   bool isPasswordVisible = true;
   bool isConfirmPasswordVisible = true;
@@ -58,6 +58,8 @@ class _BuildYourProfileView extends State<BuildYourProfileView>
   @override
   void initState() {
     super.initState();
+    Utility.facebookEvent("register_screen");
+
     versionName();
   }
 
@@ -158,77 +160,77 @@ class _BuildYourProfileView extends State<BuildYourProfileView>
                           Dimens.boxHeight20,
                           emailTextFormFiled(),
                           Dimens.boxHeight20,
-                          Text(
-                            NewMarkitVendorLocalizations.of(context)!
-                                .find('gender'),
-                            style: Styles.lightGreyHint,
-                          ),
-                          Dimens.boxHeight5,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Radio(
-                                    value: 1,
-                                    groupValue: val,
-                                    activeColor: AppColors.primaryColor,
-                                    onChanged: (v) {
-                                      setState(() {
-                                        val = int.parse(v.toString());
-                                      });
-                                    },
-                                  ),
-                                  Text(
-                                    NewMarkitVendorLocalizations.of(context)!
-                                        .find('male'),
-                                    style: Styles.boldBlack14,
-                                  )
-                                ],
-                              ),
-                              Dimens.boxWidth10,
-                              Row(
-                                children: [
-                                  Radio(
-                                    value: 2,
-                                    activeColor: AppColors.primaryColor,
-                                    groupValue: val,
-                                    onChanged: (v) {
-                                      setState(() {
-                                        val = int.parse(v.toString());
-                                      });
-                                    },
-                                  ),
-                                  Text(
-                                    NewMarkitVendorLocalizations.of(context)!
-                                        .find('female'),
-                                    style: Styles.boldBlack14,
-                                  )
-                                ],
-                              ),
-                              Dimens.boxWidth10,
-                              Row(
-                                children: [
-                                  Radio(
-                                    value: 3,
-                                    activeColor: AppColors.primaryColor,
-                                    groupValue: val,
-                                    onChanged: (v) {
-                                      setState(() {
-                                        val = int.parse(v.toString());
-                                      });
-                                    },
-                                  ),
-                                  Text(
-                                    NewMarkitVendorLocalizations.of(context)!
-                                        .find('others'),
-                                    style: Styles.boldBlack14,
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
+                          // Text(
+                          //   NewMarkitVendorLocalizations.of(context)!
+                          //       .find('gender'),
+                          //   style: Styles.lightGreyHint,
+                          // ),
+                          // Dimens.boxHeight5,
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.start,
+                          //   crossAxisAlignment: CrossAxisAlignment.start,
+                          //   children: [
+                          //     Row(
+                          //       children: [
+                          //         Radio(
+                          //           value: 1,
+                          //           groupValue: val,
+                          //           activeColor: AppColors.primaryColor,
+                          //           onChanged: (v) {
+                          //             setState(() {
+                          //               val = int.parse(v.toString());
+                          //             });
+                          //           },
+                          //         ),
+                          //         Text(
+                          //           NewMarkitVendorLocalizations.of(context)!
+                          //               .find('male'),
+                          //           style: Styles.boldBlack14,
+                          //         )
+                          //       ],
+                          //     ),
+                          //     Dimens.boxWidth10,
+                          //     Row(
+                          //       children: [
+                          //         Radio(
+                          //           value: 2,
+                          //           activeColor: AppColors.primaryColor,
+                          //           groupValue: val,
+                          //           onChanged: (v) {
+                          //             setState(() {
+                          //               val = int.parse(v.toString());
+                          //             });
+                          //           },
+                          //         ),
+                          //         Text(
+                          //           NewMarkitVendorLocalizations.of(context)!
+                          //               .find('female'),
+                          //           style: Styles.boldBlack14,
+                          //         )
+                          //       ],
+                          //     ),
+                          //     Dimens.boxWidth10,
+                          //     Row(
+                          //       children: [
+                          //         Radio(
+                          //           value: 3,
+                          //           activeColor: AppColors.primaryColor,
+                          //           groupValue: val,
+                          //           onChanged: (v) {
+                          //             setState(() {
+                          //               val = int.parse(v.toString());
+                          //             });
+                          //           },
+                          //         ),
+                          //         Text(
+                          //           NewMarkitVendorLocalizations.of(context)!
+                          //               .find('others'),
+                          //           style: Styles.boldBlack14,
+                          //         )
+                          //       ],
+                          //     ),
+                          //   ],
+                          // ),
                           passwordTextFormFiled(),
                           Dimens.boxHeight20,
                           confirmPasswordTextFormFiled(),
@@ -413,7 +415,7 @@ class _BuildYourProfileView extends State<BuildYourProfileView>
     SharedPref.saveLoginToken(data['token']);
     var d = jsonEncode(data['data']);
     SharedPref.saveProfileData(d);
-
+    Utility.facebookEvent("register_vendor");
     if (data['data']['businesses_count'] == 0) {
       Navigator.pushReplacement(
           context,
@@ -421,6 +423,13 @@ class _BuildYourProfileView extends State<BuildYourProfileView>
               type: PageTransitionType.fade, child: SetUpBusinessProfile()));
     } else {
       SharedPref.setLoginStatus(KeyConstant.LOGINSTATUS, true);
+      if (data['data']['businesses']['is_verified'].toString() == "Yes") {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            '/TabScreen', (Route<dynamic> route) => false);
+      } else {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            '/VerifiedScreen', (Route<dynamic> route) => false);
+      }
     }
   }
 

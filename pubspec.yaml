@@ -15,10 +15,11 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.1+3
+version: 1.0.9+12
 
 environment:
-  sdk: ">=2.16.1 <3.0.0"
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.22.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -37,49 +38,63 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  cached_network_image: ^3.1.0
-  country_code_picker: ^2.0.2
-  dotted_border: ^2.0.0+2
-  email_validator: ^2.0.1
-  flutter_cupertino_date_picker: ^1.0.26+2
-  flutter_multi_formatter: ^2.4.1
-  flutter_screenutil: ^5.0.2
-  flutter_staggered_grid_view: ^0.4.1
-  flutter_svg: ^1.0.3
+  cached_network_image: ^3.3.0
+  country_code_picker: ^3.4.0
+  dotted_border: ^2.1.0
+  email_validator: ^3.0.0
+  flutter_datetime_picker_plus: ^2.1.0
+  flutter_multi_formatter: ^2.13.8
+  flutter_screenutil: ^5.9.3
+  flutter_staggered_grid_view: ^0.7.0
+  flutter_svg: ^2.0.10
   flutter_switch: ^0.3.1
-  get: ^4.6.1
+  get: ^4.6.6
   get_storage: ^2.0.2
-  google_fonts: ^2.3.1
-  google_maps_flutter: ^2.1.2
-  image_cropper: ^3.0.0
-  image_picker: ^0.8.5+3
+  google_fonts: ^6.2.1
+ # google_maps_flutter: ^2.1.2
+  image_cropper: ^5.0.1
+  image_picker: ^1.0.7
   internet_connection_checker: ^0.0.1+1
-  intl: ^0.17.0
+  intl: ^0.19.0
   logger: ^1.1.0
   percent_indicator: ^4.0.0
-  pin_code_fields: ^7.3.0
-  page_transition: ^2.0.5
-  animated_snack_bar:
-  shared_preferences: ^2.0.13
-  animated_bottom_navigation_bar: ^0.2.1
-  geolocator: ^8.2.1
-  carousel_slider: ^4.1.1
+  pin_code_fields: ^8.0.1
+  page_transition: ^2.0.9
+  animated_snack_bar: ^0.4.0
+  shared_preferences: ^2.2.2
+  animated_bottom_navigation_bar: ^1.3.3
+  geolocator: ^10.1.0
+  carousel_slider: ^5.1.1
   pinch_zoom: ^1.0.0
-  onesignal_flutter: ^3.4.0
-  package_info_plus: any
-  persistent_bottom_nav_bar: ^4.0.2
-  dotted_line: ^3.1.0
-  webview_flutter: ^3.0.4
+  onesignal_flutter: ^3.5.2
+  package_info_plus: ^8.3.1
+  persistent_bottom_nav_bar: ^6.2.1
+  dotted_line: ^3.2.3
+  webview_flutter: ^4.4.4
   flutter_rating_bar: ^4.0.1
-  flutter_animation_progress_bar: ^2.2.1
-  launch_review: ^1.0.1
+  flutter_animation_progress_bar: ^2.2.0
+  launch_review: ^3.0.1
+  in_app_review: ^2.0.10
+  flutter_login_facebook: ^1.9.0
+  facebook_app_events: ^0.19.1 
+  sign_in_with_apple: any
+  google_sign_in: ^6.2.1
+  firebase_auth: ^4.16.0
+  firebase_analytics: ^10.8.9
+  firebase_core: ^2.24.2
+  flutter_tags_x: ^1.1.0
+  video_player: ^2.8.6
 
+dependency_overrides:
+  modal_bottom_sheet:
+    git:
+      url: https://github.com/danReynolds/modal_bottom_sheet.git
+      path: modal_bottom_sheet
 
-  
 
 
 dev_dependencies:
-  flutter_lints: ^1.0.0
+  flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
   

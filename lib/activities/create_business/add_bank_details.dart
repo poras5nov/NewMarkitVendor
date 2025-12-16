@@ -316,6 +316,7 @@ class _AddBankDetailsState extends State<AddBankDetails>
   accountTextFormFiled() {
     return TextFormField(
       controller: accountController,
+      obscureText: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: AppColors.primaryColor,
       textAlignVertical: TextAlignVertical.center,

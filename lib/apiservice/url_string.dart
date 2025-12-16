@@ -30,6 +30,8 @@ class UrlConstant {
   static const String productDelete = baseUrl + "product-delete";
   static const String productUpdate = baseUrl + "product-update";
   static const String products = baseUrl + "products?page=";
+  static const String ratingReport = baseUrl + "rating_report?page=";
+
   static const String vendorChildSubCategory =
       baseUrl + "vendorChildSubCategory";
 
@@ -83,10 +85,18 @@ class UrlConstant {
   static const String allReturnOrder = baseUrl + "allReturnOrder?page=";
 
   static const String vendorRating = baseUrl + "vendor-rating";
+  static const String productRating = baseUrl + "all_review";
+
   static const String states = baseUrl + "states";
   static const String cities = baseUrl + "cities?state_id=";
 
   static const String bankAddress = "https://ifsc.razorpay.com/";
 
   static const String updateBankDetail = baseUrl + "updateBankDetail";
+  static const String deleteAccount = baseUrl + "deleteAccount";
+  static const String checkUser = baseUrl + "checkUser";
+  static const String vendor_social_login = baseUrl + "vendor-social-login";
+  static const String allReport = baseUrl + "all_report_on_review";
+  static const String ratingReportCount =
+      baseUrl + "rating_report_latest_count";
 }

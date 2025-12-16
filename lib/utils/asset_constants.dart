@@ -72,4 +72,8 @@ abstract class AssetConstants {
   static const String business = 'assets/images/business.svg';
   static const String dummy = 'assets/images/dummy.png';
   static const String error = 'assets/images/error.png';
+  static const String facebook = 'assets/images/facebook.png';
+  static const String google = 'assets/images/google.png';
+  static const String apple = 'assets/images/apple.png';
+  static const String report = 'assets/images/report.png';
 }

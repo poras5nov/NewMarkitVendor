@@ -30,34 +30,59 @@ class AddProductModel {
   String? warranty_month;
   String? refundable;
   String? refend_day;
+  String? billing_mode_of_shipment;
+  String? seo_product_title;
+  String? seo_product_meta;
+  String? targetted_keywords;
+  String? maximum_shipping_cost;
+  String? video_url;
+  String? weight_in_grams;
+  String? length_in_cm;
+  String? breadth_in_cm;
+  String? height_in_cm;
+  String? delivery_charges_for_above_30kg_items;
+  String? status_of_shipment;
+  String? available_pin_code;
 
-  AddProductModel({
-    this.product_id,
-    this.categoryId,
-    this.subCategoryId,
-    this.childCategoryId,
-    this.hsnNo,
-    // this.isPopular,
-    this.isTaxable,
-    this.taxValue,
-    this.sameSayDelivery,
-    this.brandId,
-    this.name,
-    this.description,
-    this.fullDescription,
-    this.deliveryDay,
-    this.images,
-    this.default_image,
-    this.variationsQuantity,
-    this.specifactions,
-    this.attribute_ids,
-    this.cash_on_delivery,
-    this.warranty,
-    this.warranty_type,
-    this.warranty_month,
-    this.refundable,
-    this.refend_day,
-  });
+  AddProductModel(
+      {this.product_id,
+      this.categoryId,
+      this.subCategoryId,
+      this.childCategoryId,
+      this.hsnNo,
+      // this.isPopular,
+      this.isTaxable,
+      this.taxValue,
+      this.sameSayDelivery,
+      this.brandId,
+      this.name,
+      this.description,
+      this.fullDescription,
+      this.deliveryDay,
+      this.images,
+      this.default_image,
+      this.variationsQuantity,
+      this.specifactions,
+      this.attribute_ids,
+      this.cash_on_delivery,
+      this.warranty,
+      this.warranty_type,
+      this.warranty_month,
+      this.refundable,
+      this.refend_day,
+      this.billing_mode_of_shipment,
+      this.seo_product_title,
+      this.seo_product_meta,
+      this.targetted_keywords,
+      this.maximum_shipping_cost,
+      this.video_url,
+      this.weight_in_grams,
+      this.length_in_cm,
+      this.breadth_in_cm,
+      this.height_in_cm,
+      this.delivery_charges_for_above_30kg_items,
+      this.status_of_shipment,
+      this.available_pin_code});
 
   AddProductModel.fromJson(Map<String, dynamic> json) {
     categoryId = json['category_id'];
@@ -94,6 +119,20 @@ class AddProductModel {
     warranty_type = json['warranty_type'].toString();
     refundable = json['refundable'].toString();
     refend_day = json['refend_day'].toString();
+    billing_mode_of_shipment = json['billing_mode_of_shipment'].toString();
+    seo_product_title = json['seo_product_title'].toString();
+    seo_product_meta = json['seo_product_meta'].toString();
+    targetted_keywords = json['targetted_keywords'].toString();
+    maximum_shipping_cost = json['maximum_shipping_cost'].toString();
+    video_url = json['video_url'].toString();
+    weight_in_grams = json['weight_in_grams'].toString();
+    length_in_cm = json['length_in_cm'].toString();
+    breadth_in_cm = json['breadth_in_cm'].toString();
+    height_in_cm = json['height_in_cm'].toString();
+    delivery_charges_for_above_30kg_items =
+        json['delivery_charges_for_above_30kg_items'].toString();
+    status_of_shipment = json['status_of_shipment'].toString();
+    available_pin_code = json['available_pin_code'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -108,6 +147,8 @@ class AddProductModel {
     }
     data['hsn_no'] = this.hsnNo;
     //data['is_popular'] = this.isPopular;
+    data['maximum_shipping_cost'] = maximum_shipping_cost;
+    data['video_url'] = video_url;
     data['is_taxable'] = this.isTaxable;
     data['tax_value'] = this.taxValue;
     data['same_say_delivery'] = this.sameSayDelivery;
@@ -134,6 +175,20 @@ class AddProductModel {
     data['warranty_month'] = warranty_month;
     data['refundable'] = refundable;
     data['refend_day'] = refend_day;
+    data['billing_mode_of_shipment'] = billing_mode_of_shipment;
+    data['seo_product_title'] = seo_product_title;
+    data['seo_product_meta'] = seo_product_meta;
+    data['targetted_keywords'] = targetted_keywords;
+
+    data['weight_in_grams'] = weight_in_grams;
+    data['length_in_cm'] = length_in_cm;
+    data['breadth_in_cm'] = breadth_in_cm;
+    data['height_in_cm'] = height_in_cm;
+    data['delivery_charges_for_above_30kg_items'] =
+        delivery_charges_for_above_30kg_items;
+    data['status_of_shipment'] = status_of_shipment;
+    data['available_pin_code'] = available_pin_code;
+
     return data;
   }
 }

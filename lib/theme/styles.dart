@@ -29,7 +29,7 @@ abstract class Styles {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: AppColors.primaryColor,
-    backgroundColor: AppColors.backgroundColor,
+    scaffoldBackgroundColor: AppColors.backgroundColor,
     primarySwatch: const MaterialColor(
       AppColors.primaryColorHex,
       AppColors.primaryColorSwatch,
@@ -37,18 +37,18 @@ abstract class Styles {
     visualDensity: VisualDensity.adaptivePlatformDensity,
     fontFamily: AppConstants.appRegularFontFamily,
     textTheme: TextTheme(
-      bodyText1: bodyTextLight1,
-      bodyText2: bodyTextLight2,
-      subtitle1: subtitleLight1,
-      subtitle2: subtitleLight2,
-      caption: captionLight,
-      button: buttonLight,
-      headline1: headlineLight1,
-      headline2: headlineLight2,
-      headline3: headlineLight3,
-      headline4: headlineLight4,
-      headline5: headlineLight5,
-      headline6: headlineLight6,
+     bodyLarge: bodyTextLight1,
+  bodyMedium: bodyTextLight2,
+  titleMedium: subtitleLight1,
+  titleSmall: subtitleLight2,
+  bodySmall: captionLight,
+  labelLarge: buttonLight,
+  displayLarge: headlineLight1,
+  displayMedium: headlineLight2,
+  displaySmall: headlineLight3,
+  headlineLarge: headlineLight4,
+  headlineMedium: headlineLight5,
+  headlineSmall: headlineLight6,
     ),
     buttonTheme: buttonThemeData,
     elevatedButtonTheme: elevatedButtonTheme,
@@ -359,6 +359,11 @@ abstract class Styles {
   static TextStyle boldRed14 = TextStyle(
     fontFamily: AppConstants.appBoldFontFamily,
     fontSize: Dimens.fourteen,
+    color: AppColors.primaryColor,
+  );
+  static TextStyle boldRed16 = TextStyle(
+    fontFamily: AppConstants.appBoldFontFamily,
+    fontSize: Dimens.sixTeen,
     color: AppColors.primaryColor,
   );
   static TextStyle boldBlack18 = TextStyle(

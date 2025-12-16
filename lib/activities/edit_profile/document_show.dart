@@ -65,7 +65,7 @@ class _DocumentViewView extends State<DocumentView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: Get.width,
+                        width: MediaQuery.of(context).size.width,
                         height: 50,
                         alignment: Alignment.centerLeft,
                         child: Row(
