@@ -160,7 +160,7 @@ class _RatingScreenState extends State<RatingScreen>
                                                                 .totalRatings ==
                                                             "null"
                                                         ? "0"
-                                                        : "${double.parse(model.rating!.totalRatings!)}",
+                                                        : "${double.parse(model.rating!.totalRatings!).toStringAsFixed(1)}",
                                                     style: Styles.boldBlack30,
                                                   ),
                                                   SizedBox(
@@ -769,7 +769,9 @@ class _RatingScreenState extends State<RatingScreen>
                                                 color: Colors.grey
                                                     .withOpacity(0.3),
                                                 height: 1,
-                                                width: MediaQuery.of(context).size.width,
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
                                               )
                                             ],
                                           ),

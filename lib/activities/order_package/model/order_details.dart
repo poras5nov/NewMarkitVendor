@@ -61,6 +61,7 @@ class OrdersData {
   String? cancel_description;
   List<Products>? products;
   CancelReason? cancel_reason;
+  AwbNumder? awb_number;
 
   OrdersData(
       {this.id,
@@ -99,7 +100,8 @@ class OrdersData {
       this.cancel_by_user,
       this.cancel_description,
       this.cancel_reason,
-      this.products});
+      this.products,
+      this.awb_number});
 
   OrdersData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -156,6 +158,9 @@ class OrdersData {
     cancel_reason = json['cancel_reason'] != null
         ? new CancelReason.fromJson(json['cancel_reason'])
         : null;
+    awb_number = json['awb_number'] != null
+        ? AwbNumder.fromJson(json['awb_number'] as Map<String, dynamic>)
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -209,6 +214,9 @@ class OrdersData {
     }
     if (this.products != null) {
       data['products'] = this.products!.map((v) => v.toJson()).toList();
+    }
+    if (awb_number != null) {
+      data['awb_number'] = awb_number!.toJson();
     }
     return data;
   }
@@ -814,6 +822,71 @@ class VariationJson {
     data['default_variation_image'] = this.defaultVariationImage;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
+    return data;
+  }
+}
+
+class AwbNumder {
+  int? id;
+  String? orderId;
+  String? shipmentId;
+  String? awbNumber;
+  int? courierId;
+  String? courierName;
+  String? status;
+  String? paymentType;
+  String? label;
+  String? createdAt;
+  String? updatedAt;
+  int? orderNumber;
+  String? trackUrl;
+
+  AwbNumder(
+      {this.id,
+      this.orderId,
+      this.shipmentId,
+      this.awbNumber,
+      this.courierId,
+      this.courierName,
+      this.status,
+      this.paymentType,
+      this.label,
+      this.createdAt,
+      this.updatedAt,
+      this.orderNumber,
+      this.trackUrl});
+
+  AwbNumder.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    orderId = json['order_id'];
+    shipmentId = json['shipment_id'];
+    awbNumber = json['awb_number'];
+    courierId = json['courier_id'];
+    courierName = json['courier_name'];
+    status = json['status'];
+    paymentType = json['payment_type'];
+    label = json['label'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    orderNumber = json['order_number'];
+    trackUrl = json['track_url'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['order_id'] = this.orderId;
+    data['shipment_id'] = this.shipmentId;
+    data['awb_number'] = this.awbNumber;
+    data['courier_id'] = this.courierId;
+    data['courier_name'] = this.courierName;
+    data['status'] = this.status;
+    data['payment_type'] = this.paymentType;
+    data['label'] = this.label;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    data['order_number'] = this.orderNumber;
+    data['track_url'] = this.trackUrl;
     return data;
   }
 }

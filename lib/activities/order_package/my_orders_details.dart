@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:market_vendor_app/activities/home_page/drawer_screen/common_page_screen.dart';
 import 'package:market_vendor_app/activities/order_package/model/change_status_list_model.dart';
 import 'package:market_vendor_app/activities/order_package/picked_up.dart';
 
@@ -12,6 +13,7 @@ import 'package:market_vendor_app/utils/new_market_vendor_localizations.dart';
 import 'package:market_vendor_app/utils/shared_preferences.dart';
 import 'package:market_vendor_app/utils/strings/app_constants.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../theme/styles.dart';
 import '../../apiservice/api_call.dart';
@@ -600,18 +602,69 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                               SizedBox(
                                 height: Dimens.sixTeen,
                               ),
-                              // Text(
-                              //   NewMarkitVendorLocalizations.of(context)!
-                              //       .find('paymentStatus'),
-                              //   style: Styles.blackMedium14,
-                              // ),
-                              // SizedBox(
-                              //   height: Dimens.ten,
-                              // ),
-                              // Text(
-                              //   model!.paymentType!,
-                              //   style: Styles.grey16Regular,
-                              // ),
+                              if (model!.awb_number != null &&
+                                  model!.status != "Cancelled")
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child: CommonViewScreen(
+                                                  title: 'Delivery Status',
+                                                  url: model!
+                                                      .awb_number!.trackUrl!,
+                                                )));
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Track Status',
+                                            style: TextStyle(
+                                              color: Colors.green,
+                                              fontSize: Dimens.sixTeen,
+                                              fontWeight: FontWeight.bold,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: Dimens.sixTeen,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        openPdfInBrowser(
+                                            model!.awb_number!.label!);
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            'Shipment lable',
+                                            style: TextStyle(
+                                              color: Colors.green,
+                                              fontSize: Dimens.sixTeen,
+                                              fontWeight: FontWeight.bold,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: Dimens.sixTeen,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               (model!.picked_image == "null" ||
                                       model!.picked_image == "")
                                   ? Container()
@@ -1191,6 +1244,17 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
         ),
       ),
     );
+  }
+
+  Future<void> openPdfInBrowser(String pdfUrl) async {
+    final uri = Uri.parse(pdfUrl);
+
+    if (!await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Could not launch $pdfUrl');
+    }
   }
 
   @override

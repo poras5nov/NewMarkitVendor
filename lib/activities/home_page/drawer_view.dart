@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:in_app_review/in_app_review.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:market_vendor_app/activities/home_page/drawer_screen/common_page_screen.dart';
 import 'package:market_vendor_app/activities/home_page/drawer_screen/rating_screen.dart';
@@ -369,13 +368,13 @@ class _DrawerViewScreenState extends State<DrawerViewScreen>
                             ),
                             Spacer(),
                             Container(
-                              padding: EdgeInsets.all(8),
+                              padding: EdgeInsets.all(10),
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: AppColors.primaryColor),
                               child: Text(
-                                "$newReviewCount",
+                                formatCountCompact(newReviewCount),
                                 style: Styles.whiteLight12,
                               ),
                             ),
@@ -744,6 +743,16 @@ class _DrawerViewScreenState extends State<DrawerViewScreen>
             ]),
       ),
     );
+  }
+
+  String formatCountCompact(int count) {
+    if (count >= 1000000) {
+      return '${(count / 1000000).toStringAsFixed(1)}M';
+    } else if (count >= 1000) {
+      return '${(count / 1000).toStringAsFixed(1)}K';
+    } else {
+      return count.toString();
+    }
   }
 
   rateusFunction() async {

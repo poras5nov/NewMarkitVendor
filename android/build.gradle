@@ -1,5 +1,10 @@
 buildscript {
     ext.kotlin_version = '2.1.0'
+    ext {
+        minSdkVersion = 21
+        targetSdkVersion = 36
+        compileSdkVersion = 34  // ⭐ THIS IS THE KEY
+    }
     repositories {
         google()
         mavenCentral()
@@ -11,7 +16,20 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty("android")) {
+            project.android {
+                compileSdkVersion rootProject.ext.compileSdkVersion
 
+                defaultConfig {
+                    minSdkVersion rootProject.ext.minSdkVersion
+                    targetSdkVersion rootProject.ext.targetSdkVersion
+                }
+            }
+        }
+    }
+}
 allprojects {
     repositories {
         google()
@@ -30,3 +48,4 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
